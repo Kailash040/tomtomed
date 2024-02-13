@@ -3,6 +3,7 @@
 @tailwind utilities;
 body{
     background-color: #101010;
+    
 }
 .signUp{
     background: linear-gradient(#7837CB, #388DB1);
@@ -16,3 +17,41 @@ body{
     /* border-top: 1px solid #232323; */
     border-bottom: 1px solid #232323;
 }
+.triangle, .triangle:before, .triangle:after { width: 2em; height: 2em; }
+.triangle {
+	overflow: hidden;
+	position: relative;
+	/* margin: 7em auto 0; */
+	border-radius: 20%;
+	transform: translateY(50%) rotate(30deg) skewY(30deg) scaleX(.866);
+	cursor: pointer;
+	pointer-events: none;
+    top: 3px;
+} 
+.triangle:before, .triangle:after {
+	position: absolute;
+	background: #FFFFFF;
+	pointer-events: auto;
+	content: '';
+}
+.triangle:before {
+	border-radius: 20% 20% 20% 53%;
+	transform: scaleX(1.155) skewY(-30deg) rotate(-30deg) translateY(-42.3%) 
+			skewX(30deg) scaleY(.866) translateX(-24%);
+}
+.triangle:after {
+	border-radius: 20% 20% 53% 20%;
+	transform: scaleX(1.155) skewY(-30deg) rotate(-30deg) translateY(-42.3%) 
+			skewX(-30deg) scaleY(.866) translateX(24%);
+}
+/* image filter */
+.juno-filter {
+	filter: contrast(110%) brightness(110%) saturate(140%) sepia(20%);
+  }
+  /*  */
+  .lark-filter {
+	filter: contrast(90%) brightness(110%) saturate(140%) hue-rotate(-20deg);
+  }
+  .slumber-filter {
+	filter: contrast(90%) brightness(120%) saturate(85%) sepia(15%);
+  }  

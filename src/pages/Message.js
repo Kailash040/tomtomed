@@ -11,38 +11,381 @@ import {  useRef, useState } from 'react'
 
 const Message = () => {
   const  [showDialogbox,setShowDialogBox] = useState(true)
+  const handleShow = ()=>{
+    setShowDialogBox(!showDialogbox)
+  }
   return (
-    <>
-    {/* {
-showDialogbox && <>
-    <div className="dailogContainer">
-      <div className="searchContainer flex justify-center items-center">
-      <div className="relative ">
+    <div className="font-roboto">
+  
+      <MainNavigation />
+      <div className="message_group"   > 
+
+    
+      {
+showDialogbox && <div className="mb-5">
+<div className="add_friends flex w-[80%] mx-auto">
+
+      <p className="text-base  text-white hidden max-sm:block">Add friends</p>
+</div>
+    <div className="dailogContainer mt-6 flex   justify-end flex-col pr-[60px] max-xl:pr-0 max-xl:mb-[80px]">
+      <div className="dialogbox w-full flex flex-col items-end max-xl:items-center max-sm:relative ">
+
+     
+      <div className="searchContainer flex justify-between items-center w-[80%] bg-[#202020] px-6 pt-6  rounded-t-3xl  max-sm:absolute max-sm:bottom-0  max-sm:justify-center max-sm:pt-[10px]" >
+      <div className="relative max-sm:hidden ">
               <input
                 type="text"
-                className="w-86  bg-[#1B1C1B] p-6 rounded-xl  "
-                placeholder="Write a message "
+                className="w-[580px]  bg-[#1B1C1B] p-5  rounded-[30px] text-[#8F8F8F] max-xl:w-[400px] max-lg:w-[250px] "
+                placeholder="Search Followers "
               />
-              <div className="flex gap-6 absolute left-[88%]  max-xl:left-[86%] bottom-[22px]  max-lg:left-[80%] max-md:left-[73%]">
+              <div className="flex gap-6 absolute left-[92%]  max-xl:left-[86%] bottom-[22px]  max-lg:left-[80%] max-md:left-[73%] ">
                 <img src={search} alt="search" className="" />
               </div>
             </div>
-            <div className="search_button">
-              <button className="signUp text-white px-[104px] py-[20px] rounded-xl text-lg">Create Group</button>
+            <div className="search_button max-sm:w-full max-sm:z-10">
+              <button className="signUp text-white px-[104px] py-[20px] max-lg:px-[50px] max-lg:py-[16px] rounded-xl text-lg max-md:px-9 max-md:text-base max-sm:w-full">Create Group</button>
             </div>
       </div>
-      <div className="list_container">
+      <div className="list_container  w-[80%] bg-[#202020] px-5 pb-6 rounded-b-3xl h-80 overflow-auto max-sm:rounded-t-3xl">
+        {/* list container . */}
+        <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+          <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+          <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+          <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+          <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+          <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+          <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+          <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+          <div className="chat flex items-center justify-between  mt-3">
+            <div className="user_deatails flex gap-3">
+              <div>
+                {" "}
+                <img
+                  src={userimage}
+                  alt="message"
+                  className="h-10 w-10 rounded-full "
+                />
+              </div>
+              <div className="text-white">
+                {" "}
+                <p>Amy Johnson</p>
+                <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+              </div>
+            </div>
+            <div className="cheque_user">
+            <div class="inline-flex items-center">
+  <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+    <input type="checkbox"
+      class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+      id="check" />
+    <span
+      class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+        stroke="currentColor" stroke-width="1">
+        <path fill-rule="evenodd"
+          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+          clip-rule="evenodd"></path>
+      </svg>
+    </span>
+  </label>
+ 
+</div> 
+            </div>
+          </div>
+         </div>
          </div>
     </div>
-</>
-    } */}
-      <MainNavigation />
-      <div className="message_container font-roboto mt-10 flex  max-xl:mb-[60px] max-sm:justify-center max-sm:mt-2">
+</div>
+    }
+      <div className="message_container font-roboto mt-10 flex  max-xl:mb-[60px] max-sm:justify-center max-sm:mt-2 hidden">
         <div className="left_section  bg-black   max-sm:hidden ">
           <div className="message flex bg-black  px-[18px] py-[24px] justify-between items-center max-sm:px-[9px] max-sm:py-[12px] ">
             <p className="text-xl text-white">Messages</p>
             <div className="search_message flex gap-[27px]">
+              <button onClick={handleShow}>
+
               <img src={messageVector} alt="message" />
+              </button>
               <img src={search} alt="search" />
             </div>
           </div>
@@ -343,7 +686,8 @@ which i mentioned earlier tomorrow at 7pm...?  you up? </p>
           </div>
         </div>
       </div>
-    </>
+      </div>
+    </div>
   );
 };
 export default Message;

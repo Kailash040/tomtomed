@@ -9,6 +9,8 @@ import save from "../assets/postassets/vector2.png";
 import verifyTik from "../assets/postassets/bluetik.svg";
 const Home = () => {
   return (
+    <>
+    
     <div class="  flex pl-[60px] pr-[60px]   font-roboto   justify-center max-xl:justify-center max-xl:p-3  mt-[30px]">
       <div className="left_section flex gap-[80px]">
         <div className="news_savePost_group_section w-[220px]	max-xl:hidden">
@@ -241,6 +243,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
