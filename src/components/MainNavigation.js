@@ -20,17 +20,22 @@ import golive from '../assets/navDropDown/mingcute_thought-fill.png'
 import uploadImage from '../assets/navDropDown/uploadlogo.webp'
 import crop from '../assets/navDropDown/humbleicons_crop.png'
 import brithness from '../assets/navDropDown/Vector (1).png'
-import back from '../assets/navDropDown/Vector (1).png'
+import back from '../assets/navDropDown/Vector (2).png'
+import rectangle1 from '../assets/navDropDown/Rectangle 23977.png'
+import rectangle2 from '../assets/navDropDown/Rectangle 23978.png'
+import rectangle3 from '../assets/navDropDown/Rectangle 23979.png'
 
 const MainNavigation = () => {
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
   const [fileInputKey, setFileInputKey] = useState(Date.now());
   const [base64Image, setBase64Image] = useState(null);
-  const [filter, setFilter] = useState(null);
+  const [filterImage, setFilter] = useState(null);
   const [showEditOption, setShowEditOptions] = useState(false)
-  const [setBrithness, setShowBrithness] = useState(false)
-  const [brightness, setBrightness] = useState(100);
+  const [showBrithnessPage, setShowBrithnessPage] = useState(false)
+  const [showCropPage, setShowCropPage] = useState(false)
+
+  const [brightness, setBrightness] = useState();
   const handleShow = () => {
     setHandleShowToggle(!handleShowToggle)
   }
@@ -61,18 +66,21 @@ const MainNavigation = () => {
     setBrightness(e.target.value);
   };
   // 
-  const handleBrithnessPage =()=>{
-    setShowBrithness(true)
+  const handleBrithnessPage = () => {
+    setShowBrithnessPage(true)
   }
-  const calculateClassName = () => {
-    if (brightness >= 0) {
-      return "brightness-high";
-    } else if (brightness >= 50) {
-      return "brightness-medium";
-    } else {
-      return "brightness-low";
-    }
+  const style = {
+    filter: `brightness(${brightness}%)`, // apply brightness filter
   };
+  const handlePrevious = () => {
+    setShowBrithnessPage(false)
+  }
+  const handleShowCropPage =() =>{
+    setShowCropPage(true)
+  }
+  const handlePreviousFirst =()=>{
+    setShowCropPage(false)
+  }
   return (<>
 
     <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:p-4 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
@@ -179,11 +187,11 @@ const MainNavigation = () => {
                       {base64Image ? (
                         <img
 
-                          className={`image ${filter === 'juno' ? 'juno-filter' : filter === "lark" ? 'lark-filter' : filter === "slumber" ? "slumber-filter" : ""} w-[520px] h-[552px] rounded-xl filter  ${calculateClassName()} `}
+                          className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} w-[520px] h-[552px] rounded-xl filter  `}
                           id="files"
                           src={base64Image}
                           alt="Selected"
-                        // style={{ filter: `brightness(${brightness}%)` }}
+                          style={style}
                         />
                       ) : (
                         <img
@@ -204,27 +212,71 @@ const MainNavigation = () => {
                         {
                           showEditOption ?
                             <div className="filter_option flex flex-col items-center bg-[#1B1C1B] h-[554px] ">
-                              <div className="filter_para mb-[18px] w-[98%]">
-                                <p className="text-lg text-white text-center mt-[27px] mb-[18px]  w-[90%] ">{setBrithness ? "Brightness" : "Edit"}</p>
-                                {setBrithness ? <>
-                                  <div className="flex items-center">
-                                    <input type="range" name="price" min="0" max="200" onChange={handleChangeBrightness} value={brightness} class="w-full h-2 bg-blue-100 appearance-none" />
+                              <div className="filter_para mb-[18px]  w-[98%]">
+                                <div className="para_container flex items-center justify-start gap-5 px-3">
+
+
+                                  {showBrithnessPage ?
+                                    <div >
+
+                                      <button onClick={handlePrevious}>  <img src={back} alt="" className="w-6 h-6  " /> </button>  </div> : showCropPage  ? <div >
+
+<button onClick={handlePreviousFirst}>  <img src={back} alt="" className="w-6 h-6  " /> </button>  </div> :"" }
+
+                                  <div className="flex items-center justify-center grow gap-5">
+
+                                    {showBrithnessPage ? <img src={brithness} alt="" className="w-7 h-7 p" /> : showCropPage ? <img src={crop} alt="" className="w-7 h-7 p" /> :"" }
+                                    <p className="text-lg text-white text-center mt-[27px] mb-[18px]  w-[]  ">{showBrithnessPage ? "Brightness " : showCropPage ? "Crop" : "Edit"}</p>
                                   </div>
-                                </> : <div className="crop_brithness_container flex flex-wrap gap-6 ">
+                                </div>
+                                {showBrithnessPage ? <>
+                                  <div className="flex items-center px-3">
+                                    <input type="range" name="brithness" min="0" max="200" onChange={handleChangeBrightness} value={brightness} class="w-full h-2 bg-blue-100 appearance-none" />
+                                  </div>
+                                </> : showCropPage ? <div className="flex gap-10 ">
+                                <div className="item flex items-center flex-col">
+                                    <div className="img_container p-10 bg-[#000000]">
+                                      <img src={rectangle1} alt="" />
+                                    </div>
+                                    <p className="text-[#F5F5F5] text-sm">Original</p>
+                                  </div>
+                                  <div className="item flex items-center flex-col">
+                                    <div className="img_container px-10 py-[35px] bg-[#000000]">
+                                      <img src={rectangle2} alt="" />
+                                    </div>
+                                    <p className="text-[#F5F5F5] text-sm">4:5</p>
+                                  </div>
+                                  <div className="item flex items-center flex-col">
+                                    <div className="img_container px-10 py-[44px] bg-[#000000]">
+                                      <img src={rectangle3} alt="" />
+                                    </div>
+                                    <p className="text-[#F5F5F5] text-sm">16:9</p>
+                                  </div>
+                                </div> :   <div className="crop_brithness_container flex flex-wrap gap-6 "> 
+                                <button onClick={handleShowCropPage}>
+
                                   <div className="item flex items-center flex-col">
                                     <div className="img_container p-10 bg-[#000000]">
                                       <img src={crop} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
-                                    <button onClick={handleBrithnessPage}>
+                                </button>
+                                  <button onClick={handleBrithnessPage}>
+                                    <div className="item flex items-center flex-col">
+                                      <div className="img_container p-10 bg-[#000000]">
+                                        <img src={brithness} alt="" className="w-10 h-10" />
+                                      </div>
+                                      <p className="text-[#F5F5F5] text-sm">Brightness</p>
+                                    </div>
+                                  </button>
+                                  <button >
 
-                                    
                                   <div className="item flex items-center flex-col">
                                     <div className="img_container p-10 bg-[#000000]">
-                                      <img src={brithness} alt="" className="w-10 h-10" />
+                                      <img src={crop} alt="" />
                                     </div>
-                                    <p className="text-[#F5F5F5] text-sm">Brightness</p>
+                                    <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
                                   </button>
                                   <div className="item flex items-center flex-col">
@@ -263,13 +315,7 @@ const MainNavigation = () => {
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
-                                  <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
-                                      <img src={crop} alt="" />
-                                    </div>
-                                    <p className="text-[#F5F5F5] text-sm">Crop</p>
-                                  </div>
-                                </div>}
+                                </div> }
 
                               </div>
 
