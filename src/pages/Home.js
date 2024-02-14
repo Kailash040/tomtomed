@@ -1,18 +1,24 @@
 import React from "react";
 import postImage from "../assets/postassets/Rectangle 587.png";
 import userImage from "../assets/postassets/Ellipse 3.png";
-import like from "../assets/postassets/icon-park_love-and-help.png";
-import comment from "../assets/postassets/iconamoon_comment-light.png";
-import share from "../assets/postassets/vector1.png";
-import view from "../assets/postassets/Group.png";
-import save from "../assets/postassets/vector2.png";
+import like from "../assets/postassets/like.png";
+// import comment from "../assets/postassets/iconamoon_comment-light.png";
+import comment from '../assets/postassets/comment.png'
+// import share from "../assets/postassets/vector1.png";
+import sharePost from '../assets/postassets/sharepost.png'
+// import view from "../assets/postassets/Group.png";
+import view from "../assets/postassets/views.png";
+
+// import save from "../assets/postassets/vector2.png";
+import savePost from '../assets/postassets/savepost.png'
 import verifyTik from "../assets/postassets/bluetik.svg";
+import group from '../assets/Group.png'
 const Home = () => {
   return (
     <>
     
     <div class="  flex pl-[60px] pr-[60px]   font-roboto   justify-center max-xl:justify-center max-xl:p-3  mt-[30px]">
-      <div className="left_section flex gap-[80px]">
+      <div className="left_section flex gap-[75px]">
         <div className="news_savePost_group_section w-[220px]	max-xl:hidden">
           <div>
             <div className="Premium_buutton mb-9">
@@ -26,19 +32,19 @@ const Home = () => {
                 See All
               </button>
             </div>
-            <div className="news_post bg-newbgcolor p-2 rounded-lg mt-2 mb-2">
+            <div className="news_post bg-newbgcolor p-2 rounded-lg mt-2 mb-2 pb-6">
+              <p className="text-[#F5F5F5] text-base font-normal">@abc_news</p>
+              <p className="text-[#B39DCF] text-[15px] font-normal ">
+                Hiring at Indian IT companies drops to 20-year low.
+              </p>
+            </div>
+            <div className="news_post bg-newbgcolor p-2 rounded-lg mt-2 mb-2 pb-6">
               <p className="text-[#F5F5F5] text-base font-normal">@abc_news</p>
               <p className="text-[#B39DCF] text-[15px] font-normal">
                 Hiring at Indian IT companies drops to 20-year low.
               </p>
             </div>
-            <div className="news_post bg-newbgcolor p-2 rounded-lg mt-2 mb-2">
-              <p className="text-[#F5F5F5] text-base font-normal">@abc_news</p>
-              <p className="text-[#B39DCF] text-[15px] font-normal">
-                Hiring at Indian IT companies drops to 20-year low.
-              </p>
-            </div>
-            <div className="news_post bg-newbgcolor p-2 rounded-lg mt-2 mb-2">
+            <div className="news_post bg-newbgcolor p-2 rounded-lg mt-2 mb-2 pb-6">
               <p className="text-[#F5F5F5] text-base font-normal">@abc_news</p>
               <p className="text-[#B39DCF] text-[15px] font-normal">
                 Hiring at Indian IT companies drops to 20-year low.
@@ -60,9 +66,9 @@ const Home = () => {
                 </p>
                 <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
               </div>
-              <div className="photo flex">
-                <img src={userImage} alt="photo" />
-                <p> .</p>
+              <div className="photo flex items-center gap-6">
+                <img src={userImage} alt="photo" className="w-[48px] h-[48px]" />
+                <img src={group} alt="" className="w-[2px] h-[14.06px]" />
               </div>
             </div>
             <div className="post">
@@ -81,39 +87,47 @@ const Home = () => {
                 className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
               />
             </div>
-            <div className="post_status flex  justify-between  mt-2">
+            <div className="post_status flex  justify-between  mt-3">
               <div className="post_status flex gap-4">
-                <div className="like_status h-6">
+                <div className="like_status  flex flex-col gap-3 items-center">
                   <img src={like} alt="like" className="w-6 h-6	" />
                   <p className="text-[#B39DCF] text-sm">124</p>
                 </div>
-                <div className="like_status">
+                <div className="like_status flex flex-col gap-3 items-center">
                   <img src={comment} alt="comment" className="w-6 h-6	" />
                   <p className="text-[#B39DCF] text-sm">14</p>
                 </div>
-                <div className="like_status">
-                  <img src={share} alt="share" className="w-6 h-6	" />
+                <div className="like_status flex flex-col gap-3 items-center">
+                  <img src={sharePost} alt="share" className="w-6 h-6	" />
                   <p className="text-[#B39DCF] text-sm">4</p>
                 </div>
-                <div className="like_status">
+                <div className="like_status flex flex-col gap-3 items-center">
                   <img src={view} alt="view" className="w-6 h-6	" />
                   <p className="text-[#B39DCF] text-sm">34</p>
                 </div>
               </div>
               <div className="post_status">
-                <img src={save} alt="save" className="w-6" />
+                <img src={savePost} alt="save" className="w-6" />
               </div>
             </div>
+            <p className="time text-base text-[#8F8F8F] mt-[14px]" >29 mins ago</p>
           </div>
           <div className="post mb-5">
             <div className="post_name_userName_pic flex justify-between">
               <div className="name_username">
-                <p className="text-[#FFFFFF] max-xl:text-sm">Amy Roy</p>
+                <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1">
+                  {" "}
+                  Amy Roy{" "}
+                  <span>
+                    {" "}
+                    <img src={verifyTik} alt="photo" />{" "}
+                  </span>{" "}
+                </p>
                 <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
               </div>
-              <div className="photo flex">
-                <img src={userImage} alt="photo" />
-                <p> .</p>
+              <div className="photo flex items-center gap-6">
+                <img src={userImage} alt="photo" className="w-[48px] h-[48px]" />
+                <img src={group} alt="" className="w-[2px] h-[14.06px]" />
               </div>
             </div>
             <div className="post">
@@ -132,29 +146,30 @@ const Home = () => {
                 className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
               />
             </div>
-            <div className="post_status flex  justify-between  mt-2">
+            <div className="post_status flex  justify-between  mt-3">
               <div className="post_status flex gap-4">
-                <div className="like_status">
+                <div className="like_status  flex flex-col gap-3 items-center">
                   <img src={like} alt="like" className="w-6 h-6	" />
                   <p className="text-[#B39DCF] text-sm">124</p>
                 </div>
-                <div className="like_status">
+                <div className="like_status flex flex-col gap-3 items-center">
                   <img src={comment} alt="comment" className="w-6 h-6	" />
                   <p className="text-[#B39DCF] text-sm">14</p>
                 </div>
-                <div className="like_status">
-                  <img src={share} alt="share" className="w-6 h-6	" />
+                <div className="like_status flex flex-col gap-3 items-center">
+                  <img src={sharePost} alt="share" className="w-6 h-6	" />
                   <p className="text-[#B39DCF] text-sm">4</p>
                 </div>
-                <div className="like_status">
+                <div className="like_status flex flex-col gap-3 items-center">
                   <img src={view} alt="view" className="w-6 h-6	" />
                   <p className="text-[#B39DCF] text-sm">34</p>
                 </div>
               </div>
               <div className="post_status">
-                <img src={save} alt="save" className="w-6" />
+                <img src={savePost} alt="save" className="w-6" />
               </div>
             </div>
+            <p className="time text-base text-[#8F8F8F] mt-[14px]" >29 mins ago</p>
           </div>
         </div>
       </div>

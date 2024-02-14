@@ -113,7 +113,7 @@ const MainNavigation = () => {
       <div className="tomtomad w-1/5
  ">
         <NavLink to="/">
-          <h1 className=" text-tom font-roboto font-semibold text-3xl	 ">
+          <h1 className=" text-tom font-roboto font-semibold text-3xl	 max-xl:text-2xl ">
             TOM<span class="text-tomad ">TOMED</span>
           </h1>
         </NavLink>
@@ -551,7 +551,7 @@ const MainNavigation = () => {
               </p>
             </div>
           </div>
-          <div className="desktop_view flex gap-[45px]  items-center max-xl:gap-6 ">
+          <div className="desktop_view flex gap-[45px]  items-center max-xl:gap-[10px] ">
 
             <div className="navlink_list flex items-center flex-col max-xl:hidden">
               <li className="rounded-full bg-grey px-[9px] py-[15px] flex items-center max-xl:hidden">
@@ -561,9 +561,9 @@ const MainNavigation = () => {
               <p className="text-sm	 text-[#ffffff] mt-1">Ads</p>
             </div>
             <div className="navlink_list flex items-center flex-col">
-              <li className="rounded-full bg-grey p-2">
+              <li className="rounded-full bg-grey p-2 max-xl:p-1">
                 {" "}
-                <img src={search} alt="media" className="h-5 w-5 " />
+                <img src={search} alt="media" className="h-6 w-6 " />
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Search

@@ -11,7 +11,7 @@ import more from "../assets/postassets/profileseemore.png";
 //
 import postImage from "../assets/postassets/Rectangle 587.png";
 import userImage from "../assets/postassets/Ellipse 3.png";
-import likeuser from "../assets/postassets/icon-park_love-and-help.png";
+import likepost from "../assets/postassets/like.png";
 import commentuser from "../assets/postassets/iconamoon_comment-light.png";
 import sharesuer from "../assets/postassets/vector1.png";
 import viewuser from "../assets/postassets/Group.png";
@@ -257,7 +257,7 @@ const Profile = () => {
                     <div className="post_status flex  justify-between  mt-2">
                       <div className="post_status flex gap-4">
                         <div className="like_status h-6">
-                          <img src={likeuser} alt="like" className="w-6 h-6	" />
+                          <img src={like} alt="like" className="w-6 h-6	" />
                           <p className="text-[#B39DCF] text-sm">124</p>
                         </div>
                         <div className="like_status">
