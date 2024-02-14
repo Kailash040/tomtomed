@@ -11,17 +11,20 @@ import more from "../assets/postassets/profileseemore.png";
 //
 import postImage from "../assets/postassets/Rectangle 587.png";
 import userImage from "../assets/postassets/Ellipse 3.png";
-import likepost from "../assets/postassets/like.png";
-import commentuser from "../assets/postassets/iconamoon_comment-light.png";
-import sharesuer from "../assets/postassets/vector1.png";
-import viewuser from "../assets/postassets/Group.png";
-import save from "../assets/postassets/vector2.png";
+import group from '../assets/Group.png'
+
+
 import artimg from "../assets/postassets/artimage.png";
 import media from "../assets/postassets/media.png";
 import kababmenu from "../assets/postassets/kabab.png";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import search from "../assets/ep_search.png";
+import likepost from "../assets/postassets/like.png";
+import commentpost from '../assets/postassets/comment.png'
+import sharePost from '../assets/postassets/sharepost.png'
+import viewpost from "../assets/postassets/views.png";
 
+import savePost from '../assets/postassets/savepost.png'
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
   //
@@ -67,7 +70,7 @@ const Profile = () => {
     setShowFollowing(true);
   };
   return (
-    <div className="profile_container mt-10 pl-[60px] pr-[60px] font-roboto flex gap-20  max-xl:gap-0 max-xl:justify-center   max-xl:pr-0 max-xl:pl-0">
+    <div className="profile_container mt-10 pl-[60px] pr-[60px] font-roboto flex gap-[50px]  max-xl:gap-0 max-xl:justify-center   max-xl:pr-0 max-xl:pl-0">
       {/*  */}
 
       {/*  */}
@@ -155,13 +158,13 @@ const Profile = () => {
             </div>
             <div className="edit_share_and_more list-none flex  gap-6  ">
               <li>
-                <img src={edit} alt="photo" />
+                <img src={edit} alt="photo" className="w-6 h-6" />
               </li>
               <li>
-                <img src={profileshare} alt="photo" />
+                <img src={profileshare} alt="photo" className="w-6 h-6" />
               </li>
               <li>
-                <img src={more} alt="photo" />
+                <img src={more} alt="photo" className="w-6 h-6" />
               </li>
             </div>
           </div>
@@ -174,7 +177,7 @@ const Profile = () => {
         </div>
         <div className="container_user flex  justify-between  gap-[80px]">
           <div className="user_data ">
-            <div className="user_post_follower_link flex gap-[60px]   max-xl:gap-5 justify-between max-xl:w-[500px] max-sm:w-[350px] ">
+            <div className="user_post_follower_link flex gap-[60px]  w-[587px]  max-xl:gap-5 justify-between max-xl:w-[500px] max-sm:w-[350px] ">
               <div className="user_item items-center flex flex-col">
                 <button onClick={handleShowPost}>
                   <p className="text-base text-white">Posts</p>
@@ -209,7 +212,7 @@ const Profile = () => {
             <div className="post bg-black ">
               {showPost && (
                 <div className="post_container bg-black ">
-                  <div className="post  mt-[18px] px-[20px] pt-[22px] ">
+                  <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 ">
                     <div className="post_name_userName_pic flex justify-between">
                       <div className="name_username">
                         <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1">
@@ -231,9 +234,9 @@ const Profile = () => {
                           className="w-11 h-11"
                         />
                         <img
-                          src={more}
+                          src={group}
                           alt="photo"
-                          className="w-[18px] h-[18px]"
+                          className="w-[1.69px] h-[14.06px]"
                         />
                       </div>
                     </div>
@@ -254,39 +257,39 @@ const Profile = () => {
                         className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
                       />
                     </div>
-                    <div className="post_status flex  justify-between  mt-2">
+                    <div className="post_status flex  justify-between  mt-4">
                       <div className="post_status flex gap-4">
-                        <div className="like_status h-6">
-                          <img src={like} alt="like" className="w-6 h-6	" />
+                        <div className="like_status  flex flex-col  items-center gap-3 ">
+                          <img src={likepost} alt="like" className="w-6 h-6	" />
                           <p className="text-[#B39DCF] text-sm">124</p>
                         </div>
-                        <div className="like_status">
+                        <div className="like_status flex flex-col  items-center gap-3">
                           <img
-                            src={commentuser}
+                            src={commentpost}
                             alt="comment"
                             className="w-6 h-6	"
                           />
                           <p className="text-[#B39DCF] text-sm">14</p>
                         </div>
-                        <div className="like_status">
+                        <div className="like_status flex flex-col  items-center gap-3">
                           <img
-                            src={sharesuer}
+                            src={sharePost}
                             alt="share"
                             className="w-6 h-6	"
                           />
                           <p className="text-[#B39DCF] text-sm">4</p>
                         </div>
-                        <div className="like_status">
-                          <img src={viewuser} alt="view" className="w-6 h-6	" />
+                        <div className="like_status flex flex-col  items-center gap-3">
+                          <img src={viewpost} alt="view" className="w-6 h-6	" />
                           <p className="text-[#B39DCF] text-sm">34</p>
                         </div>
                       </div>
-                      <div className="post_status">
-                        <img src={save} alt="save" className="w-6" />
+                      <div className="post_status flex flex-col  items-center gap-3">
+                        <img src={savePost} alt="save" className="w-6" />
                       </div>
                     </div>
                   </div>
-                  <p className="text-[#8F8F8F] pl-5  mt-[13px] pb-5">
+                  <p className="text-[#8F8F8F] pl-[50px] mt-[13px] pb-5">
                     29 mins ago
                   </p>
                 </div>
@@ -520,41 +523,41 @@ const Profile = () => {
                     </button>
                   </div>
                   <div className="news_trend rounded-xl bg-newbgcolor mt-2">
+                    <div className="news_trend   pt-3 pb-3 pl-3 pr-3 border-b-2 border-[#313131] ">
+                      <div className="new_trend flex justify-between items-center">
+                        <p className="text-base font-normal text-white">
+                          #Cristiano_Ronaldos
+                        </p>
+                        <p className="text-sm text-[#8F8F8F] font-normal	">
+                          {" "}
+                          10K Posts
+                        </p>
+                      </div>
+                      <div className="new_trend">
+                        <p className="text-base font-normal text-[#8F8F8F]">
+                          Sports{" "}
+                        </p>
+                      </div>
+                    </div>
+                    {/*  */}
+                    <div className="news_trend   pt-3 pb-3 pl-3 pr-3 border-b-2 border-[#313131]">
+                      <div className="new_trend flex justify-between items-center">
+                        <p className="text-base font-normal text-white">
+                          #Cristiano_Ronaldos
+                        </p>
+                        <p className="text-sm text-[#8F8F8F] font-normal	">
+                          {" "}
+                          10K Posts
+                        </p>
+                      </div>
+                      <div className="new_trend">
+                        <p className="text-base font-normal text-[#8F8F8F]">
+                          Sports{" "}
+                        </p>
+                      </div>
+                    </div>
+                    {/*  */}
                     <div className="news_trend   pt-3 pb-3 pl-3 pr-3 ">
-                      <div className="new_trend flex justify-between items-center">
-                        <p className="text-base font-normal text-white">
-                          #Cristiano_Ronaldos
-                        </p>
-                        <p className="text-sm text-[#8F8F8F] font-normal	">
-                          {" "}
-                          10K Posts
-                        </p>
-                      </div>
-                      <div className="new_trend">
-                        <p className="text-base font-normal text-[#8F8F8F]">
-                          Sports{" "}
-                        </p>
-                      </div>
-                    </div>
-                    {/*  */}
-                    <div className="news_trend   pt-3 pb-3 pl-3 pr-3">
-                      <div className="new_trend flex justify-between items-center">
-                        <p className="text-base font-normal text-white">
-                          #Cristiano_Ronaldos
-                        </p>
-                        <p className="text-sm text-[#8F8F8F] font-normal	">
-                          {" "}
-                          10K Posts
-                        </p>
-                      </div>
-                      <div className="new_trend">
-                        <p className="text-base font-normal text-[#8F8F8F]">
-                          Sports{" "}
-                        </p>
-                      </div>
-                    </div>
-                    {/*  */}
-                    <div className="news_trend   pt-3 pb-3 pl-3 pr-3">
                       <div className="new_trend flex justify-between items-center">
                         <p className="text-base font-normal text-white">
                           #Cristiano_Ronaldos
