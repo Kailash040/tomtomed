@@ -22,7 +22,7 @@ const Message = () => {
 
     
       {
-showDialogbox && <div className="mb-5">
+showDialogbox && <div className="mb-5 hidden">
 <div className="add_friends flex w-[80%] mx-auto">
 
       <p className="text-base  text-white hidden max-sm:block">Add friends</p>
@@ -377,7 +377,7 @@ showDialogbox && <div className="mb-5">
     </div>
 </div>
     }
-      <div className="message_container font-roboto mt-10 flex  max-xl:mb-[60px] max-sm:justify-center max-sm:mt-2 hidden">
+      <div className="message_container font-roboto mt-10 flex  max-xl:mb-[60px] max-sm:justify-center max-sm:mt-2 ">
         <div className="left_section  bg-black   max-sm:hidden ">
           <div className="message flex bg-black  px-[18px] py-[24px] justify-between items-center max-sm:px-[9px] max-sm:py-[12px] ">
             <p className="text-xl text-white">Messages</p>

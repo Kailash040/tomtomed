@@ -24,24 +24,46 @@ import back from '../assets/navDropDown/Vector (2).png'
 import rectangle1 from '../assets/navDropDown/Rectangle 23977.png'
 import rectangle2 from '../assets/navDropDown/Rectangle 23978.png'
 import rectangle3 from '../assets/navDropDown/Rectangle 23979.png'
-
+import smile from '../assets/ph_smiley.png'
+import articleImg from '../assets/article.png';
+import gallery from '../assets/solar_gallery-round-bold.png';
+import thought from '../assets/Vector (4).png'
 const MainNavigation = () => {
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
+  const [showArticlePage, setArticlePage] = useState(false)
+  const [showThoughtPage, setShowThoughtPage] = useState(false)
+
   const [fileInputKey, setFileInputKey] = useState(Date.now());
   const [base64Image, setBase64Image] = useState(null);
   const [filterImage, setFilter] = useState(null);
   const [showEditOption, setShowEditOptions] = useState(false)
   const [showBrithnessPage, setShowBrithnessPage] = useState(false)
   const [showCropPage, setShowCropPage] = useState(false)
-
   const [brightness, setBrightness] = useState();
+  const [savePost, setSavePost] = useState(false);
   const handleShow = () => {
     setHandleShowToggle(!handleShowToggle)
   }
+  // 
+  const handleShowThought = () => {
+    setShowThoughtPage(true)
+    setHandleShowToggle(false)
+    setAddPost(false)
+  }
+  const handleShowArticle = () => {
+    setArticlePage(true);
+    setHandleShowToggle(false)
+    setAddPost(false)
+    setShowThoughtPage(false)
+  }
+  // 
   const handleShowPhotoSection = () => {
     setAddPost(!addPost);
     setHandleShowToggle(false)
+    setArticlePage(false)
+    setShowThoughtPage(false)
+
   }
   const handleImageChange = (e) => {
     // setBrightness(e.target.value);
@@ -75,12 +97,16 @@ const MainNavigation = () => {
   const handlePrevious = () => {
     setShowBrithnessPage(false)
   }
-  const handleShowCropPage =() =>{
+  const handleShowCropPage = () => {
     setShowCropPage(true)
   }
-  const handlePreviousFirst =()=>{
+  const handlePreviousFirst = () => {
     setShowCropPage(false)
   }
+  const handleSavePost = () => {
+    setSavePost(true)
+  }
+  console.log(savePost)
   return (<>
 
     <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:p-4 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
@@ -146,14 +172,20 @@ const MainNavigation = () => {
                     <img src={video} alt="" className="w-[22px] h-[22px]" />
                     <p className="max-xl:text-sm">Video</p>
                   </div>
-                  <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                    <img src={thoughts} alt="" className="w-[22px] h-[22px]" />
-                    <p className="max-xl:text-sm">Thought</p>
-                  </div>
-                  <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                    <img src={article} alt="" className="w-[22px] h-[22px]" />
-                    <p className="max-xl:text-sm">Article</p>
-                  </div>
+                  <button onClick={handleShowThought}>
+
+                    <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                      <img src={thoughts} alt="" className="w-[22px] h-[22px]" />
+                      <p className="max-xl:text-sm">Thought</p>
+                    </div>
+                  </button>
+                  <button onClick={handleShowArticle} >
+
+                    <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                      <img src={article} alt="" className="w-[22px] h-[22px]" />
+                      <p className="max-xl:text-sm">Article</p>
+                    </div>
+                  </button>
                   <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
                     <img src={gifs} alt="" className="w-[22px] h-[22px]" />
                     <p className="max-xl:text-sm">GIFs</p>
@@ -217,16 +249,15 @@ const MainNavigation = () => {
 
 
                                   {showBrithnessPage ?
-                                    <div >
+                                    <div>
 
-                                      <button onClick={handlePrevious}>  <img src={back} alt="" className="w-6 h-6  " /> </button>  </div> : showCropPage  ? <div >
+                                      <button onClick={handlePrevious}>  <img src={back} alt="" className="w-6 h-6  " /> </button>  </div> : showCropPage ? <div >
 
-<button onClick={handlePreviousFirst}>  <img src={back} alt="" className="w-6 h-6  " /> </button>  </div> :"" }
+                                        <button onClick={handlePreviousFirst}>  <img src={back} alt="" className="w-6 h-6  " /> </button>  </div> : ""}
 
                                   <div className="flex items-center justify-center grow gap-5">
-
-                                    {showBrithnessPage ? <img src={brithness} alt="" className="w-7 h-7 p" /> : showCropPage ? <img src={crop} alt="" className="w-7 h-7 p" /> :"" }
-                                    <p className="text-lg text-white text-center mt-[27px] mb-[18px]  w-[]  ">{showBrithnessPage ? "Brightness " : showCropPage ? "Crop" : "Edit"}</p>
+                                    {showBrithnessPage ? <img src={brithness} alt="" className="w-7 h-7 p" /> : showCropPage ? <img src={crop} alt="" className="w-7 h-7 p" /> : savePost === true ? "" : ""}
+                                    <p className="text-lg text-white text-center mt-[27px] mb-[18px]  w-[]  ">{showBrithnessPage ? "Brightness " : showCropPage ? "Crop" : savePost === true ? "" : ""}</p>
                                   </div>
                                 </div>
                                 {showBrithnessPage ? <>
@@ -234,7 +265,7 @@ const MainNavigation = () => {
                                     <input type="range" name="brithness" min="0" max="200" onChange={handleChangeBrightness} value={brightness} class="w-full h-2 bg-blue-100 appearance-none" />
                                   </div>
                                 </> : showCropPage ? <div className="flex gap-10 ">
-                                <div className="item flex items-center flex-col">
+                                  <div className="item flex items-center flex-col">
                                     <div className="img_container p-10 bg-[#000000]">
                                       <img src={rectangle1} alt="" />
                                     </div>
@@ -252,16 +283,32 @@ const MainNavigation = () => {
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">16:9</p>
                                   </div>
-                                </div> :   <div className="crop_brithness_container flex flex-wrap gap-6 "> 
-                                <button onClick={handleShowCropPage}>
-
-                                  <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
-                                      <img src={crop} alt="" />
+                                </div> : savePost ? <div className="px-6">
+                                  <div className="user_details flex justify-between items-center">
+                                    <div className="user_name_image_username flex gap-3">
+                                      <div className="img"> <img src={userimage} alt="user" className="w-[54px] h-[54px]  rounded-full" /></div>
+                                      <div className="name">
+                                        <p className="text-lg text-white">Das</p>
+                                        <p className="text-base text-[#8F8F8F] ">@das_007</p>
+                                      </div>
                                     </div>
-                                    <p className="text-[#F5F5F5] text-sm">Crop</p>
+                                    <div className="emoji">
+                                      <img src={smile} alt="" />
+                                    </div>
                                   </div>
-                                </button>
+                                  <div className="input_section mt-4">
+                                    <textarea type="text" className=" bg-[#000000] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." />
+                                  </div>
+                                </div> : <div className="crop_brithness_container flex flex-wrap gap-6 ">
+                                  <button onClick={handleShowCropPage}>
+
+                                    <div className="item flex items-center flex-col">
+                                      <div className="img_container p-10 bg-[#000000]">
+                                        <img src={crop} alt="" />
+                                      </div>
+                                      <p className="text-[#F5F5F5] text-sm">Crop</p>
+                                    </div>
+                                  </button>
                                   <button onClick={handleBrithnessPage}>
                                     <div className="item flex items-center flex-col">
                                       <div className="img_container p-10 bg-[#000000]">
@@ -272,12 +319,12 @@ const MainNavigation = () => {
                                   </button>
                                   <button >
 
-                                  <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
-                                      <img src={crop} alt="" />
+                                    <div className="item flex items-center flex-col">
+                                      <div className="img_container p-10 bg-[#000000]">
+                                        <img src={crop} alt="" />
+                                      </div>
+                                      <p className="text-[#F5F5F5] text-sm">Crop</p>
                                     </div>
-                                    <p className="text-[#F5F5F5] text-sm">Crop</p>
-                                  </div>
                                   </button>
                                   <div className="item flex items-center flex-col">
                                     <div className="img_container p-10 bg-[#000000]">
@@ -315,7 +362,7 @@ const MainNavigation = () => {
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
-                                </div> }
+                                </div>}
 
                               </div>
 
@@ -428,11 +475,48 @@ const MainNavigation = () => {
 
                             </div>
                         }
-                        <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={showEditOptionMenu}>Next</button>
+                        {
+                          showBrithnessPage === true ?
+                            <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " >Save changes</button> : showEditOption === true ? <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={handleSavePost} >Post</button> : <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={showEditOptionMenu} >Next</button>
+                        }
                       </div> : ""
                   }
                 </div>
               </ div>
+
+            }
+            {
+              showArticlePage && <div className="absolute right-0 left-[25%] top-[24%]  pr-[60px] text-white">
+                <div className="article_container bg-[#1B1C1B]  rounded-xl mt-10	">
+                  <div className="article flex gap-3 bg-[#161414] px-[30px] py-[32px] rounded-xl	">
+                    <p>Post an Article</p>
+                    <img src={articleImg} alt="article" />
+                  </div>
+                  <div className="input article p-6  mt-6">
+                    <textarea name="" id="" className="w-full h-[350px] bg-black rounded-xl p-6" placeholder="Write an Article here..." ></textarea>
+                  </div>
+                  <div className="article_button flex justify-between p-6 items-center">
+                    <img src={gallery} alt="" className="w-5 h-5" />
+                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl	" >Post Article</button>
+                  </div>
+                </div>
+              </div>
+            }
+            {
+              showThoughtPage && <div className="absolute right-0 left-[25%] top-[24%]  pr-[60px] text-white">
+                <div className="article_container bg-[#1B1C1B]  rounded-xl mt-10	">
+                  <div className="article flex gap-3 bg-[#161414] px-[30px] py-[32px] rounded-xl	">
+                    <p>Post a Thought</p>
+                    <img src={thought} alt="article" />
+                  </div>
+                  <div className="input article p-6  mt-6">
+                    <textarea name="" id="" className="w-full h-[350px] bg-black rounded-xl p-6" placeholder="Write your Thoughts here..." ></textarea>
+                  </div>
+                  <div className="article_button flex  p-6 items-end justify-end">
+                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl	" >Post Thought</button>
+                  </div>
+                </div>
+              </div>
             }
             <div className="navlink_list flex items-center flex-col">
 
@@ -502,13 +586,16 @@ const MainNavigation = () => {
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Settings
               </p>
-            </div>
+            </div> 
+            <NavLink to="/user">
+
             <div className="navlink_list flex items-center flex-col max-xl:hidden">
               <li className=" ">
                 <img src={userimage} alt="message" className="h-10 w-10 rounded-full " />
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1">Das</p>
             </div>
+            </NavLink>
 
           </div>
         </div>
