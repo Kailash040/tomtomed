@@ -5,7 +5,7 @@ import mediaVector from "../assets/mediaVector.png";
 import formAddVector from "../assets/formAddVector.png";
 import messageVector from "../assets/messageVector.png";
 import userVector from "../assets/userVector.png";
-import shoppingCart from "../assets/ph_shopping-cart.png";
+import shoppingCart from "../assets/shoppingCart.png";
 import search from "../assets/ep_search.png";
 import notification from "../assets/basil_notification-outline.png";
 import setting from "../assets/solar_settings-outline.png";
@@ -119,14 +119,14 @@ const MainNavigation = () => {
         </NavLink>
       </div>
       <div className="nav_container bg-black flex w-4/5  justify-end rounded-lg max-xl:bg-[#101010] ml-[40px] max-xl:ml-[0px] font-semibold max-xl:w-[100px]">
-        <div className="list-none flex justify-evenly  gap-[35px]  p-[10px] rounded-lg max-xl:gap-4 w-full">
-          <div className="mobile_desktop_view flex gap-[30px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none">
+        <div className="list-none flex justify-evenly  gap-[45px]  p-[10px] rounded-lg max-xl:gap-4 w-full">
+          <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none">
             <div className="navlink_list flex items-center flex-col">
 
               <NavLink to="/" className="rounded-full bg-grey "
                 style={({ isActive }) => {
                   return {
-                    padding: isActive ? "20px" : "",
+                    padding: isActive ? "20px" : "8px",
 
                   }
                 }}
@@ -523,12 +523,12 @@ const MainNavigation = () => {
               <NavLink to="/message" className="rounded-full bg-grey "
                 style={({ isActive }) => {
                   return {
-                    padding: isActive ? "20px" : "",
+                    padding: isActive ? "20px" : "8px",
 
                   }
                 }}
               >
-                <img src={messageVector} alt="home" className="" />
+                <img src={messageVector} alt="home" className="h-5 w-5" />
               </NavLink>
 
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
@@ -551,10 +551,10 @@ const MainNavigation = () => {
               </p>
             </div>
           </div>
-          <div className="desktop_view flex gap-[30px]  items-center max-xl:gap-6 ">
+          <div className="desktop_view flex gap-[45px]  items-center max-xl:gap-6 ">
 
             <div className="navlink_list flex items-center flex-col max-xl:hidden">
-              <li className="rounded-full bg-grey p-3 flex items-center max-xl:hidden">
+              <li className="rounded-full bg-grey px-[9px] py-[15px] flex items-center max-xl:hidden">
                 {" "}
                 <img src={Ads} alt="ads" className="h-[10px] w-[22px] " />
               </li>

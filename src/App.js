@@ -41,11 +41,11 @@ function App() {
     {
       path: "/user",
       element: <ProfileLayout />,
-         children: [
+      children: [
         { path: "/user", element: <User /> },
       ],
     },
-   ]);
+  ]);
   return <RouterProvider router={appRouter} />;
 }
 
