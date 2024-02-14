@@ -334,7 +334,7 @@ const Profile = () => {
                   <img
                     src={search}
                     alt="search"
-                    className="absolute left-[92%]  bottom-[14px]"
+                    className="absolute left-[92%]  bottom-[15px] w-[18px] h-[18px] "
                   />
                 </div>
                 <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
@@ -428,7 +428,7 @@ const Profile = () => {
                   <img
                     src={search}
                     alt="search"
-                    className="absolute left-[92%]  bottom-[14px]"
+                    className="absolute left-[92%]  bottom-[15px] w-[18px] h-[18px]"
                   />
                 </div>
                 <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
