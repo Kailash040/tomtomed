@@ -543,9 +543,12 @@ const MainNavigation = () => {
               <p className="text-sm	 text-[#ffffff] mt-1">E-Commerce</p>
             </div>
             <div className="navlink_list  items-center flex-col hidden max-xl:flex">
+              <NavLink to="/user" >
+
               <li className="rounded-full bg-grey p-2">
                 <img src={userVector} alt="message" className="h-5 w-5 " />
               </li>
+              </NavLink>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Profile
               </p>
