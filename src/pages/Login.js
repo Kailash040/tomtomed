@@ -28,21 +28,21 @@ const SignUp = () => {
        <div className=" absolute z-[-1]">
          <img src={bg} alt=""/>
        </div>
-      <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[40px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
-      <div className="banner_container max-xl:hidden relative flex  justify-start items-center w-[572px] h-[752px]">
+      <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[30px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
+      <div className="banner_container max-xl:hidden relative flex  justify-start items-center w-[572px] h-[600px]">
         <Splide aria-label="My Favorite Images" options={splideOptions}   className=" z-[5] w-[350px] relative left-10 ">"  
   <SplideSlide>
-    <img src={slider} alt="Image 1" className="rounded-xl h-[665px] w-[300px] "/>
+    <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px] "/>
   </SplideSlide>
   <SplideSlide>
-    <img src={slider2} alt="Image 2" className="h-[665px] w-[300px] rounded-xl"/>
+    <img src={slider2} alt="Image 2" className="h-[550px] w-[300px] rounded-xl"/>
   </SplideSlide>
   <SplideSlide>
-    <img src={slider3} alt="Image 2" className="h-[665px] w-[300px] rounded-xl"/>
+    <img src={slider3} alt="Image 2" className="h-[550px] w-[300px] rounded-xl"/>
   </SplideSlide>
  
 </Splide>
-          <img src={banner} className="w-[572px] h-[752px] absolute" alt=""  />
+          <img src={banner} className="w-[572px]  h-[650px] absolute" alt=""  />
         </div> 
         <div className="form_container">
           <h1 className=" text-tom font-roboto font-semibold text-[40px]	text-center mb-[10px]  max-xl:hidden">
@@ -55,12 +55,12 @@ const SignUp = () => {
           </div>
           <div className="form_container bg-black pl-6  pr-6 max-xl:pl-[0px] max-xl:pr-[0px] rounded-3xl pb-5 max-xl:bg-[#101010]   max-xl:pb-0 max-xl:mx-auto">
           
-            <p className="text-[24px] font-medium text-white mb-4 pt-4 text-center  max-xl:pt-[86px]   max-xl:mb-[60px] max-xl:mt-[0] ">
+            <p className="text-[24px] font-medium text-white mb-2 pt-2 text-center  max-xl:pt-[86px]   max-xl:mb-[60px] max-xl:mt-[0] ">
 
               Login{" "}
             </p>
             <form>
-              <div className="username mb-5 max-xl:mb-[18px]">
+              <div className="username mb-2 max-xl:mb-[18px]">
                 <input
                   type="text"
                   class=" px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px] text-[#8F8F8F] max-xl:bg-[#1B1C1B]"
@@ -75,14 +75,14 @@ const SignUp = () => {
                   placeholder="Password"
                 />
               </div>
-              <div className="username list-none mb-[18px] mt-3">
+              <div className="username list-none mb-2 mt-2">
              <li className="text-[#B68FE7]">
                 <a href="">
                 Forgot  Password?
                 </a>
                 </li>
               </div>
-              <div className="username mt-6 max-xl:mt-10 ">
+              <div className="username mt-3 max-xl:mt-10 ">
                 <button
                   type="submit"
                   class="border  px-[18px] py-5 rounded-xl   w-[360px] text-white max-xl:pt-[14px] max-xl:pb-[15px] max-xl:h-[48px] max-xl:w-[340px] signUp "
@@ -97,7 +97,7 @@ const SignUp = () => {
                 <div className="line text-[grey] text-xs ">or</div>
                 <div className="line h-[1px] bg-[white] w-full"></div>
               </div>
-              <div className=" flex justify-center gap-5 list-none mt-10">
+              <div className=" flex justify-center gap-5 list-none mt-2">
                 <li>
                   {" "}
                   <img src={google} />
@@ -122,8 +122,8 @@ const SignUp = () => {
           {/* app container */}
           <div className="get_app_container max-xl:hidden">
             <div className="get_app_item flex flex-col items-center">
-              <p className="text-base text-white mt-[18px] ">Get App</p>
-              <div className="media_logo flex gap-[13px] mt-5">
+              <p className="text-base text-white mt-2 ">Get App</p>
+              <div className="media_logo flex gap-[13px] mt-[14px]">
                 <li className="list-none">
                   <a href="">
                     {" "}

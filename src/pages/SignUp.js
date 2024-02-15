@@ -40,7 +40,12 @@ const SignUp = () => {
     <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   "/>
   </SplideSlide>
  
- 
+  <SplideSlide>
+    <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   "/>
+  </SplideSlide>
+  <SplideSlide>
+    <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   "/>
+  </SplideSlide>
 </Splide>
           <img src={banner} className="w-[572px] h-[650px] absolute" alt=""  />
         </div>
