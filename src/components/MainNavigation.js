@@ -1,14 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import homeVector from "../assets/homeVector.png";
-import mediaVector from "../assets/mediaVector.png";
-import formAddVector from "../assets/formAddVector.png";
-import messageVector from "../assets/messageVector.png";
-import userVector from "../assets/userVector.png";
-import shoppingCart from "../assets/shoppingCart.png";
-import search from "../assets/ep_search.png";
-import notification from "../assets/basil_notification-outline.png";
-import setting from "../assets/solar_settings-outline.png";
+
 import Ads from "../assets/postassets/Ads.png";
 import userimage from "../assets/postassets/userImage.webp"
 import photo from '../assets/navDropDown/Vector.png'
@@ -52,6 +44,7 @@ const MainNavigation = () => {
     setShowThoughtPage(true)
     setHandleShowToggle(false)
     setAddPost(false)
+   
   }
   const handleShowArticle = () => {
     setArticlePage(true);
@@ -60,13 +53,13 @@ const MainNavigation = () => {
     setShowThoughtPage(false)
   }
   // 
-  const handleShowPhotoSection = () => {
-    setAddPost(!addPost);
-    setHandleShowToggle(false)
-    setArticlePage(false)
-    setShowThoughtPage(false)
+  // const handleShowPhotoSection = () => {
+  //   setAddPost(!addPost);
+  //   setHandleShowToggle(false)
+  //   setArticlePage(false)
+  //   setShowThoughtPage(false)
 
-  }
+  // }
   const handleImageChange = (e) => {
     // setBrightness(e.target.value);
     const file = e.target.files[0];
@@ -80,6 +73,10 @@ const MainNavigation = () => {
       };
 
       reader.readAsDataURL(file);
+      setAddPost(true)
+      setHandleShowToggle(false)
+      setArticlePage(false)
+      setShowThoughtPage(false)
     }
   };
   const showEditOptionMenu = () => {
@@ -111,7 +108,7 @@ const MainNavigation = () => {
   console.log(savePost)
   return (<>
 
-    <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:p-4 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
+    <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:px-3  max-xl:pt-2 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
       <div className="tomtomad w-1/5
  ">
         <NavLink to="/">
@@ -146,7 +143,7 @@ const MainNavigation = () => {
               </li>
               <p className="text-sm	 text-[#ffffff]	mt-1 max-xl:hidden">Videos</p>
             </div>
-            <button onClick={handleShow}>
+            <button onClick={handleShow}className="overflow-hidden" >
               <div className="navlink_list flex items-center flex-col">
 
                 <li className="rounded-full bg-grey p-2">
@@ -161,15 +158,25 @@ const MainNavigation = () => {
             </button>
             {
               handleShowToggle &&
-              <div className="dropdownmenu flex flex-col  text-lg font-roboto items-center z-10 absolute right-0 left-[-16%] top-[24%] scroll-container max-xl:flex-col-reverse max-xl:left-0 max-xl:top-[-70px] " >
+              <div className="dropdownmenu flex flex-col  text-lg font-roboto items-center z-10 absolute right-0 left-[-16%] top-[24%] scroll-container max-xl:flex-col-reverse max-xl:left-0 max-xl:top-[-70px] overflow-hidden " >
                 <div class='triangle rotate-90'></div>
 
                 <div className="dropdownitem bg-white flex flex-col  rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3" >
-                  <button onClick={handleShowPhotoSection}>
+                  <button >
 
-                    <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                    <div className="dropdown flex justify-center  max-xl:gap-2 max-xl:flex-col items-center">
+                      <label htmlFor="files" className="flex gap-[30px]">
                       <img src={photo} alt="" className="w-[22px] h-[22px]" />
+                      <input
+                        type="file"
+                        accept="image/*"
+                        style={{ "visibility": "hidden", "position": "absolute" }}
+                        id="files"
+                        onChange={handleImageChange}
+                        key={fileInputKey}
+                      />
                       <p className="max-xl:text-sm">Photo</p>
+                      </label>
                     </div>
                   </button>
                   <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
@@ -209,16 +216,9 @@ const MainNavigation = () => {
                   <div className="left_section">
 
 
-                    <label htmlFor="files">
+                   
 
-                      <input
-                        type="file"
-                        accept="image/*"
-                        style={{ "visibility": "hidden", "position": "absolute" }}
-                        id="files"
-                        onChange={handleImageChange}
-                        key={fileInputKey}
-                      />
+                    
 
                       {base64Image ? (
                         <img
@@ -231,15 +231,9 @@ const MainNavigation = () => {
                           style={style}
                         />
                       ) : (
-                        <img
-                          className="w-[520px] h-[552px] rounded-xl"
-                          src={uploadImage}
-                          alt="Selected"
-                          id="files"
-
-                        />
+                        ""
                       )}
-                    </label>
+                  
                   </div>
                   {
                     base64Image ?

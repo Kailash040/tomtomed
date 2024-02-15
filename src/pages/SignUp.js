@@ -191,7 +191,11 @@ const SignUp = () => {
       <p className="text-[white] list-none text-center mt-6 text-base hidden max-xl:block mb-10">
                 Already have an account?{" "}
                 <span className="text-tom font-roboto font-semibold">
-                  Log in
+                <NavLink to="/login">
+
+                login
+</NavLink>
+                  
                 </span>
               </p>
       <div className=" absolute z-[-1] bottom-10 max-xl:hidden">

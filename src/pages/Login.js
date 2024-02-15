@@ -93,9 +93,9 @@ const SignUp = () => {
                 </button>
               </div>
               <div className="or_container flex justify-center mt-5 items-center gap-[21px] pl-[10px] pr-[10px]">
-                <div className="line h-[1px] bg-[white] w-full"></div>
+                <div className="line h-[1px] bg-[#8F8F8F] w-full"></div>
                 <div className="line text-[grey] text-xs ">or</div>
-                <div className="line h-[1px] bg-[white] w-full"></div>
+                <div className="line h-[1px] bg-[#8F8F8F] w-full"></div>
               </div>
               <div className=" flex justify-center gap-5 list-none mt-2">
                 <li>

@@ -1,6 +1,4 @@
 import MainNavigation from "../components/MainNavigation";
-import search from "../assets/ep_search.png";
-import messageVector from "../assets/messageVector.png";
 import userimage from "../assets/postassets/userImage.webp";
 import call from "../assets/postassets/call.png";
 import videcall from "../assets/postassets/video.png";
@@ -41,7 +39,7 @@ showDialogbox && <div className="mb-5 hidden">
                 placeholder="Search Followers "
               />
               <div className="flex gap-6 absolute left-[92%]  max-xl:left-[86%] bottom-[22px]  max-lg:left-[80%] max-md:left-[73%] ">
-                <img src={search} alt="search" className="" />
+                <img src="" alt="search" className="" />
               </div>
             </div>
             <div className="search_button max-sm:w-full max-sm:z-10">

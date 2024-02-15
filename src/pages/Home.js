@@ -1,24 +1,20 @@
 import React from "react";
 import postImage from "../assets/postassets/Rectangle 587.png";
 import userImage from "../assets/postassets/Ellipse 3.png";
-// import comment from "../assets/postassets/iconamoon_comment-light.png";
-// import share from "../assets/postassets/vector1.png";
-import sharePost from '../assets/postassets/sharepost.png'
-// import view from "../assets/postassets/Group.png";
-import view from "../assets/postassets/views.png";
+
 
 import verifyTik from "../assets/postassets/bluetik.svg";
 
 import { BiMessageAlt } from "react-icons/bi";
 
-// import { CiBookmarkMinus } from "react-icons/ci";
+
 import { Icon } from '@iconify/react';
 
 const Home = () => {
   return (
     <>
     
-    <div class="  flex pl-[60px] pr-[60px]   font-roboto   justify-center max-xl:justify-center max-xl:p-3  mt-[30px]">
+    <div class="  flex pl-[60px] pr-[60px]   font-roboto   justify-center max-xl:justify-center max-xl:p-3  mt-[30px] max-xl:mt-1 ">
       <div className="left_section flex gap-[75px]">
         <div className="news_savePost_group_section w-[220px]	max-xl:hidden">
           <div>
@@ -151,41 +147,41 @@ const Home = () => {
               </button>
             </div>
             <div className="news_trend rounded-xl bg-newbgcolor mt-2">
+              <div className="news_trend   pt-3 pb-3 pl-3 pr-3  border-b-2 border-[#313131]">
+                <div className="new_trend flex justify-between items-center ">
+                  <p className="text-base font-normal text-white">
+                    #Cristiano_Ronaldos
+                  </p>
+                  <p className="text-sm text-[#8F8F8F] font-normal	">
+                    {" "}
+                    10K Posts
+                  </p>
+                </div>
+                <div className="new_trend">
+                  <p className="text-base font-normal text-[#8F8F8F]">
+                    Sports{" "}
+                  </p>
+                </div>
+              </div>
+              {/*  */}
+              <div className="news_trend   pt-3 pb-3 pl-3 pr-3 border-b-2 border-[#313131]">
+                <div className="new_trend flex justify-between items-center">
+                  <p className="text-base font-normal text-white">
+                    #Cristiano_Ronaldos
+                  </p>
+                  <p className="text-sm text-[#8F8F8F] font-normal	">
+                    {" "}
+                    10K Posts
+                  </p>
+                </div>
+                <div className="new_trend">
+                  <p className="text-base font-normal text-[#8F8F8F]">
+                    Sports{" "}
+                  </p>
+                </div>
+              </div>
+              {/*  */}
               <div className="news_trend   pt-3 pb-3 pl-3 pr-3 ">
-                <div className="new_trend flex justify-between items-center">
-                  <p className="text-base font-normal text-white">
-                    #Cristiano_Ronaldos
-                  </p>
-                  <p className="text-sm text-[#8F8F8F] font-normal	">
-                    {" "}
-                    10K Posts
-                  </p>
-                </div>
-                <div className="new_trend">
-                  <p className="text-base font-normal text-[#8F8F8F]">
-                    Sports{" "}
-                  </p>
-                </div>
-              </div>
-              {/*  */}
-              <div className="news_trend   pt-3 pb-3 pl-3 pr-3">
-                <div className="new_trend flex justify-between items-center">
-                  <p className="text-base font-normal text-white">
-                    #Cristiano_Ronaldos
-                  </p>
-                  <p className="text-sm text-[#8F8F8F] font-normal	">
-                    {" "}
-                    10K Posts
-                  </p>
-                </div>
-                <div className="new_trend">
-                  <p className="text-base font-normal text-[#8F8F8F]">
-                    Sports{" "}
-                  </p>
-                </div>
-              </div>
-              {/*  */}
-              <div className="news_trend   pt-3 pb-3 pl-3 pr-3">
                 <div className="new_trend flex justify-between items-center">
                   <p className="text-base font-normal text-white">
                     #Cristiano_Ronaldos
