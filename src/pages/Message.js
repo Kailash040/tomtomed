@@ -8,6 +8,8 @@ import mic from "../assets/postassets/mic.png";
 import gallery from "../assets/postassets/gallery.png";
 import backicon from   "../assets/postassets/backicon.png"
 import {  useRef, useState } from 'react'
+import { CiSearch } from "react-icons/ci";
+import { AiOutlineMessage } from "react-icons/ai";
 
 const Message = () => {
   const  [showDialogbox,setShowDialogBox] = useState(true)
@@ -383,10 +385,11 @@ showDialogbox && <div className="mb-5 hidden">
             <p className="text-xl text-white">Messages</p>
             <div className="search_message flex gap-[27px]">
               <button onClick={handleShow}>
-
-              <img src={messageVector} alt="message" />
+              <AiOutlineMessage  className="text-white w-5 h-5"/>
+              {/* <img src={messageVector} alt="message" /> */}
               </button>
-              <img src={search} alt="search" />
+<CiSearch className="text-white w-5 h-5"/>
+              {/* <img src={search} alt="search" /> */}
             </div>
           </div>
             <div className="w-[360px] bg-black overflow-auto h-screen max-sm:bg-[#232323] max-sm:rounded-t-[30px] max-sm:mt-3" >

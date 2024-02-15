@@ -28,6 +28,14 @@ import smile from '../assets/ph_smiley.png'
 import articleImg from '../assets/article.png';
 import gallery from '../assets/solar_gallery-round-bold.png';
 import thought from '../assets/Vector (4).png'
+import { GoHomeFill } from "react-icons/go";
+import { LuPlaySquare } from "react-icons/lu";
+import { AiOutlineMessage } from "react-icons/ai";
+import { HiOutlineShoppingCart } from "react-icons/hi";
+import { CiSearch } from "react-icons/ci";
+import { IoNotificationsOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
+import { CiUser } from "react-icons/ci";
 const MainNavigation = () => {
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
@@ -126,19 +134,21 @@ const MainNavigation = () => {
               <NavLink to="/" className="rounded-full bg-grey "
                 style={({ isActive }) => {
                   return {
-                    padding: isActive ? "10px " : "8px",
+                    padding: isActive ? "20px " : "8px",
 
                   }
                 }}
               >
-                <img src={homeVector} alt="home" className="h-5 w-5" />
+                {/* <img src={homeVector} alt="home" className="h-5 w-5" /> */}
+                <GoHomeFill className="text-white h-5 w-5" />
               </NavLink>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden	">Home</p>
             </div>
             <div className="navlink_list flex items-center flex-col">
               <li className="rounded-full bg-grey p-2">
                 {" "}
-                <img src={mediaVector} alt="media" className="h-5 w-5 " />
+                {/* <img src={mediaVector} alt="media" className="h-5 w-5 " /> */}
+                <LuPlaySquare className="text-white h-5 w-5" />
               </li>
               <p className="text-sm	 text-[#ffffff]	mt-1 max-xl:hidden">Videos</p>
             </div>
@@ -528,7 +538,8 @@ const MainNavigation = () => {
                   }
                 }}
               >
-                <img src={messageVector} alt="home" className="h-5 w-5" />
+                <AiOutlineMessage className="h-5 w-5 text-white" />
+                {/* <img src={messageVector} alt="home" className="h-5 w-5" /> */}
               </NavLink>
 
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
@@ -538,7 +549,8 @@ const MainNavigation = () => {
             <div className="navlink_list flex items-center flex-col max-xl:hidden">
               <li className="rounded-full bg-grey p-2 ">
                 {" "}
-                <img src={shoppingCart} alt="home" className="h-5 w-5 " />
+                <HiOutlineShoppingCart className="h-5 w-5 text-white " />
+                {/* <img src={shoppingCart} alt="home" className="h-5 w-5 " /> */}
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1">E-Commerce</p>
             </div>
@@ -546,7 +558,8 @@ const MainNavigation = () => {
               <NavLink to="/user" >
 
               <li className="rounded-full bg-grey p-2">
-                <img src={userVector} alt="message" className="h-5 w-5 " />
+              <CiUser className="h-5 w-5 text-white " />
+                {/* <img src={userVector} alt="message" className="h-5 w-5 " /> */}
               </li>
               </NavLink>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
@@ -564,9 +577,10 @@ const MainNavigation = () => {
               <p className="text-sm	 text-[#ffffff] mt-1">Ads</p>
             </div>
             <div className="navlink_list flex items-center flex-col">
-              <li className="rounded-full bg-grey p-2 max-xl:p-1">
+              <li className="rounded-full bg-grey p-2 max-xl:p-2">
                 {" "}
-                <img src={search} alt="media" className="h-6 w-6 " />
+                <CiSearch className="h-5 w-5 text-white "  />
+                {/* <img src={search} alt="media" className="h-6 w-6 " /> */}
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Search
@@ -575,7 +589,8 @@ const MainNavigation = () => {
             <div className="navlink_list flex items-center flex-col">
               <li className="rounded-full bg-grey p-2">
                 {" "}
-                <img src={notification} alt="form" className="h-5 w-5 " />
+                <IoNotificationsOutline className="h-5 w-5 text-white " />
+                {/* <img src={notification} alt="form" className="h-5 w-5 " /> */}
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Notifications
@@ -584,7 +599,8 @@ const MainNavigation = () => {
             <div className="navlink_list flex items-center flex-col  max-xl:hidden">
               <li className="rounded-full bg-grey p-2">
                 {" "}
-                <img src={setting} alt="form" className="h-5 w-5 " />
+                <IoSettingsOutline className="h-5 w-5 text-white "/> 
+                {/* <img src={setting} alt="form" className="h-5 w-5 " /> */}
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Settings
