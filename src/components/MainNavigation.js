@@ -126,7 +126,7 @@ const MainNavigation = () => {
               <NavLink to="/" className="rounded-full bg-grey "
                 style={({ isActive }) => {
                   return {
-                    padding: isActive ? "20px" : "8px",
+                    padding: isActive ? "10px " : "8px",
 
                   }
                 }}
