@@ -9,7 +9,6 @@ import thoughts from '../assets/navDropDown/fluent_live-24-regular.png'
 import article from '../assets/navDropDown/lets-icons_video-light.png'
 import gifs from '../assets/navDropDown/mingcute_thought-fill (1).png'
 import golive from '../assets/navDropDown/mingcute_thought-fill.png'
-import uploadImage from '../assets/navDropDown/uploadlogo.webp'
 import crop from '../assets/navDropDown/humbleicons_crop.png'
 import brithness from '../assets/navDropDown/Vector (1).png'
 import back from '../assets/navDropDown/Vector (2).png'
@@ -165,7 +164,7 @@ const MainNavigation = () => {
                   <button >
 
                     <div className="dropdown flex justify-center  max-xl:gap-2 max-xl:flex-col items-center">
-                      <label htmlFor="files" className="flex gap-[30px]">
+                      <label htmlFor="files" className="flex gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
                       <img src={photo} alt="" className="w-[22px] h-[22px]" />
                       <input
                         type="file"
