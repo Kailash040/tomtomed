@@ -1,23 +1,18 @@
 import React from "react";
 import postImage from "../assets/postassets/Rectangle 587.png";
 import userImage from "../assets/postassets/Ellipse 3.png";
-import like from "../assets/postassets/like.png";
 // import comment from "../assets/postassets/iconamoon_comment-light.png";
-import comment from '../assets/postassets/comment.png'
 // import share from "../assets/postassets/vector1.png";
 import sharePost from '../assets/postassets/sharepost.png'
 // import view from "../assets/postassets/Group.png";
 import view from "../assets/postassets/views.png";
 
-// import save from "../assets/postassets/vector2.png";
-import savePost from '../assets/postassets/savepost.png'
 import verifyTik from "../assets/postassets/bluetik.svg";
-import group from '../assets/Group.png'
-import { IoIosHeartEmpty } from "react-icons/io";
+
 import { BiMessageAlt } from "react-icons/bi";
-import { FaRegShareFromSquare } from "react-icons/fa6";
-import { VscEye } from "react-icons/vsc";
+
 // import { CiBookmarkMinus } from "react-icons/ci";
+import { Icon } from '@iconify/react';
 
 const Home = () => {
   return (
@@ -75,7 +70,7 @@ const Home = () => {
               </div>
               <div className="photo flex items-center gap-6">
                 <img src={userImage} alt="photo" className="w-[48px] h-[48px]" />
-                <img src={group} alt="" className="w-[2px] h-[14.06px]" />
+                <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white " />
               </div>
             </div>
             <div className="post">
@@ -98,7 +93,7 @@ const Home = () => {
               <div className="post_status flex gap-4">
                 <div className="like_status  flex flex-col gap-3 items-center">
                   {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
-                  <IoIosHeartEmpty className="w-6 h-6 text-white	" />
+                  <Icon icon="mdi:heart-outline" className="w-6 h-6 text-white	" />
                   <p className="text-[#B39DCF] text-sm">124</p>
                 </div>
                 <div className="like_status flex flex-col gap-3 items-center">
@@ -107,19 +102,19 @@ const Home = () => {
                   <p className="text-[#B39DCF] text-sm">14</p>
                 </div>
                 <div className="like_status flex flex-col gap-3 items-center">
-                <FaRegShareFromSquare className="w-6 h-6 text-white	" />
-                  {/* <img src={sharePost} alt="share" className="w-6 h-6	" /> */}
+                <Icon icon="fluent:share-24-regular"  className="w-6 h-6 text-white	"  />
+              
                   <p className="text-[#B39DCF] text-sm">4</p>
                 </div>
                 <div className="like_status flex flex-col gap-3 items-center">
-                  <VscEye className="w-6 h-6 text-white	" />
-                  {/* <img src={view} alt="view" className="w-6 h-6	" /> */}
+                <Icon icon="fluent:eye-16-regular" className="w-6 h-6 text-white	" />
                   <p className="text-[#B39DCF] text-sm">34</p>
                 </div>
               </div>
               <div className="post_status">
                 {/* <CiBookmarkMinus className="w-6" /> */}
-                <img src={savePost} alt="save" className="w-6" />
+                <Icon icon="solar:bookmark-outline"  className="w-6 h-6 text-white" />
+                {/* <img src={savePost} alt="save" className="w-6" /> */}
               </div>
             </div>
             <p className="time text-base text-[#8F8F8F] mt-[14px]" >29 mins ago</p>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import like from "../assets/postassets/profilelike.png";
-import comment from "../assets/postassets/profilecomment.png";
 import view from "../assets/postassets/profileeye.png";
 import share from "../assets/postassets/profileshare.png";
 import userimage from "../assets/postassets/userImage.webp";
@@ -8,26 +7,24 @@ import verifyTik from "../assets/postassets/bluetik.svg";
 import edit from "../assets/postassets/profileedit.png";
 import profileshare from "../assets/postassets/share.png";
 import more from "../assets/postassets/profileseemore.png";
-//
+
 import postImage from "../assets/postassets/Rectangle 587.png";
 import userImage from "../assets/postassets/Ellipse 3.png";
 import group from '../assets/Group.png'
-
-
 import artimg from "../assets/postassets/artimage.png";
 import media from "../assets/postassets/media.png";
 import kababmenu from "../assets/postassets/kabab.png";
 // import { NavLink } from "react-router-dom";
 import search from "../assets/ep_search.png";
-import likepost from "../assets/postassets/like.png";
-import commentpost from '../assets/postassets/comment.png'
+// import commentpost from '../assets/postassets/comment.png'
 import sharePost from '../assets/postassets/sharepost.png'
 import viewpost from "../assets/postassets/views.png";
 
 import savePost from '../assets/postassets/savepost.png'
-import { CiShare2 } from "react-icons/ci";
-import { Settings } from 'lucide-react';
-import { SquarePen } from 'lucide-react';
+import { BiMessageAlt } from "react-icons/bi";
+
+import { Icon } from '@iconify/react';
+
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
   //
@@ -97,7 +94,7 @@ const Profile = () => {
                 <p className="text-[#85C6E1] text-2xl">1.2k</p>
               </div>
               <div className="like_Ctonainer">
-                <img src={like} alt="like" />
+              <Icon icon="mdi:heart-outline" className="w-10 h-10 text-[#303030]	" />
               </div>
             </div>
             <div className="news_post bg-newbgcolor p-3 rounded-lg mt-3 mb-3 flex justify-between items-center">
@@ -106,7 +103,8 @@ const Profile = () => {
                 <p className="text-[#85C6E1] text-2xl">1.2k</p>
               </div>
               <div className="like_Ctonainer">
-                <img src={comment} alt="like" />
+              <BiMessageAlt className="w-10 h-10 text-[#303030]	" />
+                
               </div>
             </div>
             <div className="news_post bg-newbgcolor p-3 rounded-lg mt-3 mb-3 flex justify-between items-center">
@@ -115,16 +113,17 @@ const Profile = () => {
                 <p className="text-[#85C6E1] text-2xl">1.2k</p>
               </div>
               <div className="like_Ctonainer">
-                <img src={view} alt="like" />
+              <Icon icon="fluent:eye-16-regular" className="w-10 h-10 text-[#303030]	" />
+
               </div>
             </div>
             <div className="news_post bg-newbgcolor p-3 rounded-lg mt-3 mb-3 flex justify-between items-center">
               <div className="like_container">
-                <p className="text-white text-base mb-[13px]">Sahre</p>
+                <p className="text-white text-base mb-[13px]">Share</p>
                 <p className="text-[#85C6E1] text-2xl">1.2k</p>
               </div>
               <div className="like_Ctonainer">
-                <img src={share} alt="like" />
+              <Icon icon="fluent:share-24-regular"  className="w-10 h-10 text-[#303030]	"  />
               </div>
             </div>
           </div>
@@ -161,16 +160,15 @@ const Profile = () => {
             </div>
             <div className="edit_share_and_more list-none flex  gap-6  ">
               <li>
-             < SquarePen className="w-6 h-6 text-white" /> 
+              <Icon icon="akar-icons:edit" className="w-6 h-6 text-white" />
               </li>
               <li>
-                <CiShare2 className="w-6 h-6 text-white"  />
-                {/* <img src={profileshare} alt="photo" className="w-6 h-6" /> */}
+              <Icon icon="material-symbols-light:share-outline" className="w-6 h-6 text-white"  />
+                
               </li>
               <li>
-              <Settings className="w-6 h-6 text-white" />
+              <Icon icon="ep:setting" className="w-6 h-6 text-white" />
 
-                {/* <img src={more} alt="photo" className="w-6 h-6" /> */}
               </li>
             </div>
           </div>
@@ -266,32 +264,24 @@ const Profile = () => {
                     <div className="post_status flex  justify-between  mt-4">
                       <div className="post_status flex gap-4">
                         <div className="like_status  flex flex-col  items-center gap-3 ">
-                          <img src={likepost} alt="like" className="w-6 h-6	" />
+                        <Icon icon="mdi:heart-outline" className="w-6 h-6 text-white	" />
                           <p className="text-[#B39DCF] text-sm">124</p>
                         </div>
                         <div className="like_status flex flex-col  items-center gap-3">
-                          <img
-                            src={commentpost}
-                            alt="comment"
-                            className="w-6 h-6	"
-                          />
+                        <BiMessageAlt className="w-6 h-6 text-white	" />
                           <p className="text-[#B39DCF] text-sm">14</p>
                         </div>
                         <div className="like_status flex flex-col  items-center gap-3">
-                          <img
-                            src={sharePost}
-                            alt="share"
-                            className="w-6 h-6	"
-                          />
+                        <Icon icon="fluent:share-24-regular"  className="w-6 h-6 text-white	"  />
                           <p className="text-[#B39DCF] text-sm">4</p>
                         </div>
                         <div className="like_status flex flex-col  items-center gap-3">
-                          <img src={viewpost} alt="view" className="w-6 h-6	" />
+                        <Icon icon="fluent:eye-16-regular" className="w-6 h-6 text-white	" />
                           <p className="text-[#B39DCF] text-sm">34</p>
                         </div>
                       </div>
                       <div className="post_status flex flex-col  items-center gap-3">
-                        <img src={savePost} alt="save" className="w-6" />
+                      <Icon icon="solar:bookmark-outline"  className="w-6 h-6 text-white" />
                       </div>
                     </div>
                   </div>
