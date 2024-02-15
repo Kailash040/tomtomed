@@ -17,6 +17,8 @@ import { IoIosHeartEmpty } from "react-icons/io";
 import { BiMessageAlt } from "react-icons/bi";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import { VscEye } from "react-icons/vsc";
+// import { CiBookmarkMinus } from "react-icons/ci";
+
 const Home = () => {
   return (
     <>
@@ -116,6 +118,7 @@ const Home = () => {
                 </div>
               </div>
               <div className="post_status">
+                {/* <CiBookmarkMinus className="w-6" /> */}
                 <img src={savePost} alt="save" className="w-6" />
               </div>
             </div>

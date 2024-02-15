@@ -55,3 +55,9 @@ body{
   .slumber-filter {
 	filter: contrast(90%) brightness(120%) saturate(85%) sepia(15%);
   }  
+  /* transform: translateY(-90%) rotate(-151deg) skewY(30deg) scaleX(.866 ) */
+  @media (max-width:1280px){
+	.triangle{
+		transform: translateY(-90%) rotate(-151deg) skewY(30deg) scaleX(.866 )
+	}
+  }

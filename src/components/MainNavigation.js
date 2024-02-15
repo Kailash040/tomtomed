@@ -28,14 +28,8 @@ import smile from '../assets/ph_smiley.png'
 import articleImg from '../assets/article.png';
 import gallery from '../assets/solar_gallery-round-bold.png';
 import thought from '../assets/Vector (4).png'
-import { GoHomeFill } from "react-icons/go";
-import { LuPlaySquare } from "react-icons/lu";
-import { AiOutlineMessage } from "react-icons/ai";
-import { HiOutlineShoppingCart } from "react-icons/hi";
-import { CiSearch } from "react-icons/ci";
-import { IoNotificationsOutline } from "react-icons/io5";
-import { IoSettingsOutline } from "react-icons/io5";
-import { CiUser } from "react-icons/ci";
+
+import { Icon } from '@iconify/react';
 const MainNavigation = () => {
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
@@ -128,7 +122,7 @@ const MainNavigation = () => {
       </div>
       <div className="nav_container bg-black flex w-4/5  justify-end rounded-lg max-xl:bg-[#101010] ml-[40px] max-xl:ml-[0px] font-semibold max-xl:w-[100px]">
         <div className="list-none flex justify-evenly  gap-[45px]  p-[10px] rounded-lg max-xl:gap-4 w-full">
-          <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none">
+          <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none max-xl:pr-[17px]">
             <div className="navlink_list flex items-center flex-col">
 
               <NavLink to="/" className="rounded-full bg-grey "
@@ -139,8 +133,7 @@ const MainNavigation = () => {
                   }
                 }}
               >
-                {/* <img src={homeVector} alt="home" className="h-5 w-5" /> */}
-                <GoHomeFill className="text-white h-5 w-5" />
+                <Icon icon="material-symbols-light:home" className="text-white h-6 w-6" />
               </NavLink>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden	">Home</p>
             </div>
@@ -148,7 +141,8 @@ const MainNavigation = () => {
               <li className="rounded-full bg-grey p-2">
                 {" "}
                 {/* <img src={mediaVector} alt="media" className="h-5 w-5 " /> */}
-                <LuPlaySquare className="text-white h-5 w-5" />
+                <Icon icon="lucide:play-square" className="text-white h-5 w-5" />
+                {/* <LuPlaySquare className="text-white h-5 w-5" /> */}
               </li>
               <p className="text-sm	 text-[#ffffff]	mt-1 max-xl:hidden">Videos</p>
             </div>
@@ -157,8 +151,8 @@ const MainNavigation = () => {
 
                 <li className="rounded-full bg-grey p-2">
                   {" "}
-                  <img src={formAddVector} alt="form" className="h-5 w-5 " />
-
+                  {/* <img src={formAddVector} alt="form" className="h-5 w-5 " /> */}
+                  <Icon icon="formkit:add" className="h-5 w-5  text-[#ffffff]" />
                 </li>
                 <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                   Add post
@@ -167,7 +161,7 @@ const MainNavigation = () => {
             </button>
             {
               handleShowToggle &&
-              <div className="dropdownmenu flex flex-col  text-lg font-roboto items-center z-10 absolute right-0 left-[-16%] top-[24%] scroll-container max-xl:flex-col-reverse max-xl:left-0 max-xl:top-[-120px]" >
+              <div className="dropdownmenu flex flex-col  text-lg font-roboto items-center z-10 absolute right-0 left-[-16%] top-[24%] scroll-container max-xl:flex-col-reverse max-xl:left-0 max-xl:top-[-70px] " >
                 <div class='triangle rotate-90'></div>
 
                 <div className="dropdownitem bg-white flex flex-col  rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3" >
@@ -210,8 +204,8 @@ const MainNavigation = () => {
               </div>
             }
             {
-              addPost && < div className="absolute right-0 left-[-16%] top-[24%]  pr-[60px]  ">
-                <div className="main_section w-[100%] flex justify-end gap-[30px]">
+              addPost && < div className="absolute right-0 left-[-16%] top-[24%]  pr-[60px]  max-xl:top-[-720%] max-xl:pr-0 ">
+                <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-0 max-xl:items-center ">
                   <div className="left_section">
 
 
@@ -229,7 +223,8 @@ const MainNavigation = () => {
                       {base64Image ? (
                         <img
 
-                          className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} w-[520px] h-[552px] rounded-xl filter  `}
+                          className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} w-[520px] h-[552px] rounded-xl filter  max-xl:w-[400px]
+                          max-xl:h-[350px] `}
                           id="files"
                           src={base64Image}
                           alt="Selected"
@@ -538,8 +533,9 @@ const MainNavigation = () => {
                   }
                 }}
               >
-                <AiOutlineMessage className="h-5 w-5 text-white" />
-                {/* <img src={messageVector} alt="home" className="h-5 w-5" /> */}
+
+                <Icon icon="ant-design:message-outlined" className="h-5 w-5 text-white" />
+
               </NavLink>
 
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
@@ -549,18 +545,18 @@ const MainNavigation = () => {
             <div className="navlink_list flex items-center flex-col max-xl:hidden">
               <li className="rounded-full bg-grey p-2 ">
                 {" "}
-                <HiOutlineShoppingCart className="h-5 w-5 text-white " />
-                {/* <img src={shoppingCart} alt="home" className="h-5 w-5 " /> */}
+                <Icon icon="ph:shopping-cart-bold" className="h-5 w-5 text-white " />
+
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1">E-Commerce</p>
             </div>
             <div className="navlink_list  items-center flex-col hidden max-xl:flex">
               <NavLink to="/user" >
 
-              <li className="rounded-full bg-grey p-2">
-              <CiUser className="h-5 w-5 text-white " />
-                {/* <img src={userVector} alt="message" className="h-5 w-5 " /> */}
-              </li>
+                <li className="rounded-full bg-grey p-2">
+                <Icon icon="mingcute:user-3-line"  className="h-5 w-5 text-white " />
+                  
+                </li>
               </NavLink>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Profile
@@ -579,8 +575,7 @@ const MainNavigation = () => {
             <div className="navlink_list flex items-center flex-col">
               <li className="rounded-full bg-grey p-2 max-xl:p-2">
                 {" "}
-                <CiSearch className="h-5 w-5 text-white "  />
-                {/* <img src={search} alt="media" className="h-6 w-6 " /> */}
+                <Icon icon="iconamoon:search-light" className="h-5 w-5 text-white " />
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Search
@@ -589,8 +584,7 @@ const MainNavigation = () => {
             <div className="navlink_list flex items-center flex-col">
               <li className="rounded-full bg-grey p-2">
                 {" "}
-                <IoNotificationsOutline className="h-5 w-5 text-white " />
-                {/* <img src={notification} alt="form" className="h-5 w-5 " /> */}
+                <Icon icon="basil:notification-outline" className="h-5 w-5 text-white " />
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Notifications
@@ -599,21 +593,20 @@ const MainNavigation = () => {
             <div className="navlink_list flex items-center flex-col  max-xl:hidden">
               <li className="rounded-full bg-grey p-2">
                 {" "}
-                <IoSettingsOutline className="h-5 w-5 text-white "/> 
-                {/* <img src={setting} alt="form" className="h-5 w-5 " /> */}
+                <Icon icon="ant-design:setting-outlined" className="h-5 w-5 text-white " />
               </li>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Settings
               </p>
-            </div> 
+            </div>
             <NavLink to="/user">
 
-            <div className="navlink_list flex items-center flex-col max-xl:hidden">
-              <li className=" ">
-                <img src={userimage} alt="message" className="h-10 w-10 rounded-full " />
-              </li>
-              <p className="text-sm	 text-[#ffffff] mt-1">Das</p>
-            </div>
+              <div className="navlink_list flex items-center flex-col max-xl:hidden">
+                <li className=" ">
+                  <img src={userimage} alt="message" className="h-10 w-10 rounded-full " />
+                </li>
+                <p className="text-sm	 text-[#ffffff] mt-1">Das</p>
+              </div>
             </NavLink>
 
           </div>

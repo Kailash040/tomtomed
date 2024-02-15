@@ -25,6 +25,9 @@ import sharePost from '../assets/postassets/sharepost.png'
 import viewpost from "../assets/postassets/views.png";
 
 import savePost from '../assets/postassets/savepost.png'
+import { CiShare2 } from "react-icons/ci";
+import { Settings } from 'lucide-react';
+import { SquarePen } from 'lucide-react';
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
   //
@@ -158,13 +161,16 @@ const Profile = () => {
             </div>
             <div className="edit_share_and_more list-none flex  gap-6  ">
               <li>
-                <img src={edit} alt="photo" className="w-6 h-6" />
+             < SquarePen className="w-6 h-6 text-white" /> 
               </li>
               <li>
-                <img src={profileshare} alt="photo" className="w-6 h-6" />
+                <CiShare2 className="w-6 h-6 text-white"  />
+                {/* <img src={profileshare} alt="photo" className="w-6 h-6" /> */}
               </li>
               <li>
-                <img src={more} alt="photo" className="w-6 h-6" />
+              <Settings className="w-6 h-6 text-white" />
+
+                {/* <img src={more} alt="photo" className="w-6 h-6" /> */}
               </li>
             </div>
           </div>

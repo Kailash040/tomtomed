@@ -33,7 +33,7 @@ const SignUp = () => {
        <div className=" absolute z-[-1]">
          <img src={bg} alt=""/>
        </div>
-      <div className="signUp_container flex  justify-between pr-[106px] pl-[124px] pt-[40px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
+      <div className="signUp_container flex  justify-between pr-[106px] pl-[124px] pt-[30px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
         <div className="banner_container max-xl:hidden relative flex  justify-end items-center w-[572px] h-[600px]">
         <Splide aria-label="My Favorite Images" options={splideOptions}   className=" z-[5] w-[350px] ">"  
   <SplideSlide>
@@ -54,9 +54,9 @@ const SignUp = () => {
             <p className="text-tomad font-roboto font-semibold text-[24px]	text-center   hidden max-xl:block">TomTomed</p>
 
           </div>
-          <div className="form_container bg-black pl-6  pr-6 max-xl:pl-[0px] max-xl:pr-[0px] rounded-3xl pb-5 max-xl:bg-[#101010]   max-xl:pb-0 max-xl:mx-auto">
+          <div className="form_container bg-black pl-6  pr-6 max-xl:pl-[0px] max-xl:pr-[0px] rounded-3xl pb-4 max-xl:bg-[#101010]   max-xl:pb-0 max-xl:mx-auto">
           
-            <p className="text-[24px] font-medium text-white mb-4 pt-4 text-center  max-xl:pt-[86px]   max-xl:mb-[60px] max-xl:mt-[0] ">
+            <p className="text-[24px] font-medium text-white mb-2 pt-2 text-center  max-xl:pt-[86px]   max-xl:mb-[60px] max-xl:mt-[0] ">
 
               Sign Up{" "}
             </p>
