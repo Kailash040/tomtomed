@@ -33,25 +33,20 @@ const SignUp = () => {
        <div className=" absolute z-[-1]">
          <img src={bg} alt=""/>
        </div>
-      <div className="signUp_container flex  justify-between pr-[106px] pl-[124px] pt-[90px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
-        <div className="banner_container max-xl:hidden relative flex  justify-end items-center w-[572px] h-[752px]">
+      <div className="signUp_container flex  justify-between pr-[106px] pl-[124px] pt-[40px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
+        <div className="banner_container max-xl:hidden relative flex  justify-end items-center w-[572px] h-[600px]">
         <Splide aria-label="My Favorite Images" options={splideOptions}   className=" z-[5] w-[350px] ">"  
   <SplideSlide>
-    <img src={slider} alt="Image 1" className="rounded-xl h-[665px] w-[300px] "/>
-  </SplideSlide>
-  <SplideSlide>
-    <img src={slider2} alt="Image 2" className="h-[665px] w-[300px] rounded-xl"/>
-  </SplideSlide>
-  <SplideSlide>
-    <img src={slider3} alt="Image 2" className="h-[665px] w-[300px] rounded-xl"/>
+    <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   "/>
   </SplideSlide>
  
+ 
 </Splide>
-          <img src={banner} className="w-[572px] h-[752px] absolute" alt=""  />
+          <img src={banner} className="w-[572px] h-[650px] absolute" alt=""  />
         </div>
         
         <div className="form_container">
-          <h1 className=" text-tom font-roboto font-semibold text-[40px]	text-center mb-[30px]  max-xl:hidden">
+          <h1 className=" text-tom font-roboto font-semibold text-[40px]	text-center mb-[10px]  max-xl:hidden">
             TOM<span class="text-tomad ">TOMED</span>
           </h1>
           <div className="welcome_container">
@@ -59,21 +54,21 @@ const SignUp = () => {
             <p className="text-tomad font-roboto font-semibold text-[24px]	text-center   hidden max-xl:block">TomTomed</p>
 
           </div>
-          <div className="form_container bg-black pl-6  pr-6 max-xl:pl-[0px] max-xl:pr-[0px] rounded-3xl pb-10 max-xl:bg-[#101010]   max-xl:pb-0 max-xl:mx-auto">
+          <div className="form_container bg-black pl-6  pr-6 max-xl:pl-[0px] max-xl:pr-[0px] rounded-3xl pb-5 max-xl:bg-[#101010]   max-xl:pb-0 max-xl:mx-auto">
           
-            <p className="text-[24px] font-medium text-white mb-5 pt-6 text-center  max-xl:pt-[86px]   max-xl:mb-[60px] max-xl:mt-[0] ">
+            <p className="text-[24px] font-medium text-white mb-4 pt-4 text-center  max-xl:pt-[86px]   max-xl:mb-[60px] max-xl:mt-[0] ">
 
               Sign Up{" "}
             </p>
             <form>
-              <div className="username mb-5 max-xl:mb-[18px]">
+              <div className="username mb-2 max-xl:mb-[18px]">
                 <input
                   type="text"
                   class=" px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px] text-[#8F8F8F] max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
                 />
               </div>
-              <div className="username mb-5 max-xl:mb-[18px]">
+              <div className="username mb-2 max-xl:mb-[18px]">
                 <input
                   type="text"
                   class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
@@ -87,7 +82,7 @@ const SignUp = () => {
                   placeholder="Password"
                 />
               </div>
-              <div className="username mt-6 max-xl:mt-10 ">
+              <div className="username mt-3 max-xl:mt-10 ">
                 <button
                   type="submit"
                   class="border  px-[18px] py-5 rounded-xl   w-[360px] text-white max-xl:pt-[14px] max-xl:pb-[15px] max-xl:h-[48px] max-xl:w-[340px] signUp "
@@ -97,12 +92,12 @@ const SignUp = () => {
                   Sign up{" "}
                 </button>
               </div>
-              <div className="or_container flex justify-center mt-10 items-center gap-[21px] pl-[10px] pr-[10px]">
+              <div className="or_container flex justify-center mt-5 items-center gap-[21px] pl-[10px] pr-[10px]">
                 <div className="line h-[1px] bg-[white] w-full"></div>
                 <div className="line text-[grey] text-xs ">or</div>
                 <div className="line h-[1px] bg-[white] w-full"></div>
               </div>
-              <div className=" flex justify-center gap-10 list-none mt-10">
+              <div className=" flex justify-center gap-5 list-none mt-2">
                 <li>
                   {" "}
                   <img src={google} />
@@ -113,7 +108,7 @@ const SignUp = () => {
                 </li>
               </div>
 
-              <p className="text-[white] list-none text-center mt-14 text-lg max-xl:hidden max-xl:mt-[60px]">
+              <p className="text-[white] list-none text-center mt-3 text-lg max-xl:hidden max-xl:mt-[60px]">
                 Already have an account?{" "}
                 <span className="text-tom font-roboto font-semibold">
                 <NavLink to="/login">
@@ -127,7 +122,7 @@ const SignUp = () => {
           {/* app container */}
           <div className="get_app_container max-xl:hidden">
             <div className="get_app_item flex flex-col items-center">
-              <p className="text-base text-white mt-[18px] ">Get App</p>
+              <p className="text-base text-white mt-2 ">Get App</p>
               <div className="media_logo flex gap-[13px] mt-[14px]">
                 <li className="list-none">
                   <a href="">
@@ -151,7 +146,7 @@ const SignUp = () => {
         </div>
       </div>
       <div className="menu_container list-none flex justify-end max-xl:hidden	">
-        <div className="list-none flex justify-between gap-[239px] text-[#8F8F8F] pb-[18px] mt-[53px] ">
+        <div className="list-none flex justify-between gap-[239px] text-[#8F8F8F] pb-[18px] mt-5 ">
           <div className="menu_item flex gap-10 text-[13px]">
             <li>
               {" "}
@@ -188,7 +183,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
-      <p className="text-[white] list-none text-center mt-14 text-base hidden max-xl:block mb-10">
+      <p className="text-[white] list-none text-center mt-6 text-base hidden max-xl:block mb-10">
                 Already have an account?{" "}
                 <span className="text-tom font-roboto font-semibold">
                   Log in
