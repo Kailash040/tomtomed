@@ -13,6 +13,10 @@ import view from "../assets/postassets/views.png";
 import savePost from '../assets/postassets/savepost.png'
 import verifyTik from "../assets/postassets/bluetik.svg";
 import group from '../assets/Group.png'
+import { IoIosHeartEmpty } from "react-icons/io";
+import { BiMessageAlt } from "react-icons/bi";
+import { FaRegShareFromSquare } from "react-icons/fa6";
+import { VscEye } from "react-icons/vsc";
 const Home = () => {
   return (
     <>
@@ -53,6 +57,7 @@ const Home = () => {
           </div>
         </div>
         <div className="post_container ">
+         
           <div className="post mb-5">
             <div className="post_name_userName_pic flex justify-between">
               <div className="name_username">
@@ -90,78 +95,23 @@ const Home = () => {
             <div className="post_status flex  justify-between  mt-3">
               <div className="post_status flex gap-4">
                 <div className="like_status  flex flex-col gap-3 items-center">
-                  <img src={like} alt="like" className="w-6 h-6	" />
+                  {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                  <IoIosHeartEmpty className="w-6 h-6 text-white	" />
                   <p className="text-[#B39DCF] text-sm">124</p>
                 </div>
                 <div className="like_status flex flex-col gap-3 items-center">
-                  <img src={comment} alt="comment" className="w-6 h-6	" />
+                  <BiMessageAlt className="w-6 h-6 text-white	" />
+                  {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
                   <p className="text-[#B39DCF] text-sm">14</p>
                 </div>
                 <div className="like_status flex flex-col gap-3 items-center">
-                  <img src={sharePost} alt="share" className="w-6 h-6	" />
+                <FaRegShareFromSquare className="w-6 h-6 text-white	" />
+                  {/* <img src={sharePost} alt="share" className="w-6 h-6	" /> */}
                   <p className="text-[#B39DCF] text-sm">4</p>
                 </div>
                 <div className="like_status flex flex-col gap-3 items-center">
-                  <img src={view} alt="view" className="w-6 h-6	" />
-                  <p className="text-[#B39DCF] text-sm">34</p>
-                </div>
-              </div>
-              <div className="post_status">
-                <img src={savePost} alt="save" className="w-6" />
-              </div>
-            </div>
-            <p className="time text-base text-[#8F8F8F] mt-[14px]" >29 mins ago</p>
-          </div>
-          <div className="post mb-5">
-            <div className="post_name_userName_pic flex justify-between">
-              <div className="name_username">
-                <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1">
-                  {" "}
-                  Amy Roy{" "}
-                  <span>
-                    {" "}
-                    <img src={verifyTik} alt="photo" />{" "}
-                  </span>{" "}
-                </p>
-                <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
-              </div>
-              <div className="photo flex items-center gap-6">
-                <img src={userImage} alt="photo" className="w-[48px] h-[48px]" />
-                <img src={group} alt="" className="w-[2px] h-[14.06px]" />
-              </div>
-            </div>
-            <div className="post">
-              <p className="description  text-[#FFFFFF] font-normal mt-2 mb-2 max-xl:text-sm">
-                {" "}
-                I wish I loved anything as much as my cat loves catnip :p
-              </p>
-              <p className="text-[#B39DCF] mb-2 max-xl:text-sm">
-                #cats #lovecats #adorable{" "}
-              </p>
-            </div>
-            <div className="main_image">
-              <img
-                src={postImage}
-                alt="photo"
-                className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-              />
-            </div>
-            <div className="post_status flex  justify-between  mt-3">
-              <div className="post_status flex gap-4">
-                <div className="like_status  flex flex-col gap-3 items-center">
-                  <img src={like} alt="like" className="w-6 h-6	" />
-                  <p className="text-[#B39DCF] text-sm">124</p>
-                </div>
-                <div className="like_status flex flex-col gap-3 items-center">
-                  <img src={comment} alt="comment" className="w-6 h-6	" />
-                  <p className="text-[#B39DCF] text-sm">14</p>
-                </div>
-                <div className="like_status flex flex-col gap-3 items-center">
-                  <img src={sharePost} alt="share" className="w-6 h-6	" />
-                  <p className="text-[#B39DCF] text-sm">4</p>
-                </div>
-                <div className="like_status flex flex-col gap-3 items-center">
-                  <img src={view} alt="view" className="w-6 h-6	" />
+                  <VscEye className="w-6 h-6 text-white	" />
+                  {/* <img src={view} alt="view" className="w-6 h-6	" /> */}
                   <p className="text-[#B39DCF] text-sm">34</p>
                 </div>
               </div>

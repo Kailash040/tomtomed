@@ -28,7 +28,7 @@ const SignUp = () => {
        <div className=" absolute z-[-1]">
          <img src={bg} alt=""/>
        </div>
-      <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[90px]  flex-wrap items-center z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px]">
+      <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[90px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
       <div className="banner_container max-xl:hidden relative flex  justify-start items-center w-[572px] h-[752px]">
         <Splide aria-label="My Favorite Images" options={splideOptions}   className=" z-[5] w-[350px] relative left-10 ">"  
   <SplideSlide>
