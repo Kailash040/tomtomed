@@ -106,7 +106,6 @@ const MainNavigation = () => {
     setShowThoughtPage(false)
   }
   return (<>
-
     <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:px-3  max-xl:pt-2 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
       <div className="tomtomad w-1/5
  ">
@@ -135,13 +134,16 @@ const MainNavigation = () => {
               </NavLink>
             </div>
             <div className="navlink_list flex items-center flex-col">
+       
               <li className="rounded-full bg-grey p-[11px]">
                 {" "}
                 <Icon icon="lucide:play-square" className="text-white h-[18px] w-[18px]" />
               </li>
               <p className="text-sm	 text-[#ffffff]	mt-1 max-xl:hidden">Videos</p>
             </div>
+        
             <button onClick={handleShow} className="overflow-hidden" >
+              
               <div className="navlink_list flex items-center flex-col">
 
                 <li className="rounded-full bg-grey p-[9.5px]">
@@ -156,7 +158,7 @@ const MainNavigation = () => {
             </button>
             {
               handleShowToggle &&
-              <div className="dropdownmenu flex flex-col  text-lg font-roboto items-center z-10 absolute right-0 left-[-16%] top-[24%] scroll-container max-xl:flex-col-reverse max-xl:left-0 max-xl:top-[-70px] overflow-hidden " >
+              <div className="dropdownmenu flex flex-col  text-lg font-roboto items-center z-10 absolute right-0 left-[-17%] top-[22%] scroll-container max-xl:flex-col-reverse max-xl:left-0 max-xl:top-[-70px] overflow-hidden " >
                 <div class='triangle rotate-90'></div>
 
                 <div className="dropdownitem bg-white flex flex-col  max-sm:align-baseline rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3" >

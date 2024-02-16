@@ -62,3 +62,7 @@ body{
 		transform: translateY(-90%) rotate(-151deg) skewY(30deg) scaleX(.866 )
 	}
   }
+  .dropdown:hover .dropdown-menu {
+	display: block;
+  }
+  
