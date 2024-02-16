@@ -3,12 +3,6 @@ import { NavLink } from "react-router-dom";
 
 import Ads from "../assets/postassets/Ads.png";
 import userimage from "../assets/postassets/userImage.webp"
-import photo from '../assets/navDropDown/Vector.png'
-import video from '../assets/navDropDown/bxs_file-gif.png'
-import thoughts from '../assets/navDropDown/fluent_live-24-regular.png'
-import article from '../assets/navDropDown/lets-icons_video-light.png'
-import gifs from '../assets/navDropDown/mingcute_thought-fill (1).png'
-import golive from '../assets/navDropDown/mingcute_thought-fill.png'
 import crop from '../assets/navDropDown/humbleicons_crop.png'
 import brithness from '../assets/navDropDown/Vector (1).png'
 import back from '../assets/navDropDown/Vector (2).png'
@@ -17,11 +11,12 @@ import rectangle2 from '../assets/navDropDown/Rectangle 23978.png'
 import rectangle3 from '../assets/navDropDown/Rectangle 23979.png'
 import smile from '../assets/ph_smiley.png'
 import articleImg from '../assets/article.png';
-import gallery from '../assets/solar_gallery-round-bold.png';
 import thought from '../assets/Vector (4).png'
-
 import { Icon } from '@iconify/react';
+
 const MainNavigation = () => {
+  const [isActive, setIsActive] = useState(false);
+  const changeActive = ({ isActive }) => setIsActive(isActive);
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
   const [showArticlePage, setArticlePage] = useState(false)
@@ -43,7 +38,8 @@ const MainNavigation = () => {
     setShowThoughtPage(true)
     setHandleShowToggle(false)
     setAddPost(false)
-   
+    setArticlePage(false);
+
   }
   const handleShowArticle = () => {
     setArticlePage(true);
@@ -104,7 +100,11 @@ const MainNavigation = () => {
   const handleSavePost = () => {
     setSavePost(true)
   }
-  console.log(savePost)
+  console.log(savePost);
+  const handleShowHomePage = () => {
+    setArticlePage(false);
+    setShowThoughtPage(false)
+  }
   return (<>
 
     <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:px-3  max-xl:pt-2 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
@@ -117,38 +117,37 @@ const MainNavigation = () => {
         </NavLink>
       </div>
       <div className="nav_container bg-black flex w-4/5  justify-end rounded-lg max-xl:bg-[#101010] ml-[40px] max-xl:ml-[0px] font-semibold max-xl:w-[100px]">
-        <div className="list-none flex justify-evenly  gap-[45px]  p-[10px] rounded-lg max-xl:gap-4 w-full">
+        <div className="list-none flex justify-evenly  gap-[45px]  p-2 rounded-lg max-xl:gap-4 w-full">
           <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none max-xl:pr-[17px]">
             <div className="navlink_list flex items-center flex-col">
+              <NavLink to="/">
+                {({ isActive }) => (
+                  (
+                    <div className="flex flex-col items-center" >
+                      <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] " : "rounded-full bg-grey p-[11px]"}>
 
-              <NavLink to="/" className="rounded-full bg-grey "
-                style={({ isActive }) => {
-                  return {
-                    padding: isActive ? "20px " : "8px",
-
-                  }
-                }}
-              >
-                <Icon icon="material-symbols-light:home" className="text-white h-6 w-6" />
+                        <Icon icon="material-symbols-light:home" className={isActive ? "text-white h-6 w-6" : "text-white h-5 w-5 "} />
+                      </div>
+                      <span className={isActive ? "text-white text-base" : "text-white text-sm"}>Home</span>
+                    </div>
+                  )
+                )}
               </NavLink>
-              <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden	">Home</p>
             </div>
             <div className="navlink_list flex items-center flex-col">
-              <li className="rounded-full bg-grey p-2">
+              <li className="rounded-full bg-grey p-[11px]">
                 {" "}
-                {/* <img src={mediaVector} alt="media" className="h-5 w-5 " /> */}
-                <Icon icon="lucide:play-square" className="text-white h-5 w-5" />
-                {/* <LuPlaySquare className="text-white h-5 w-5" /> */}
+                <Icon icon="lucide:play-square" className="text-white h-[18px] w-[18px]" />
               </li>
               <p className="text-sm	 text-[#ffffff]	mt-1 max-xl:hidden">Videos</p>
             </div>
-            <button onClick={handleShow}className="overflow-hidden" >
+            <button onClick={handleShow} className="overflow-hidden" >
               <div className="navlink_list flex items-center flex-col">
 
-                <li className="rounded-full bg-grey p-2">
+                <li className="rounded-full bg-grey p-[9.5px]">
                   {" "}
                   {/* <img src={formAddVector} alt="form" className="h-5 w-5 " /> */}
-                  <Icon icon="formkit:add" className="h-5 w-5  text-[#ffffff]" />
+                  <Icon icon="formkit:add" className="h-[21px] w-[21px]  text-[#ffffff]" />
                 </li>
                 <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                   Add post
@@ -160,48 +159,50 @@ const MainNavigation = () => {
               <div className="dropdownmenu flex flex-col  text-lg font-roboto items-center z-10 absolute right-0 left-[-16%] top-[24%] scroll-container max-xl:flex-col-reverse max-xl:left-0 max-xl:top-[-70px] overflow-hidden " >
                 <div class='triangle rotate-90'></div>
 
-                <div className="dropdownitem bg-white flex flex-col  rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3" >
+                <div className="dropdownitem bg-white flex flex-col  max-sm:align-baseline rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3" >
                   <button >
 
                     <div className="dropdown flex justify-center  max-xl:gap-2 max-xl:flex-col items-center">
                       <label htmlFor="files" className="flex gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                      <img src={photo} alt="" className="w-[22px] h-[22px]" />
-                      <input
-                        type="file"
-                        accept="image/*"
-                        style={{ "visibility": "hidden", "position": "absolute" }}
-                        id="files"
-                        onChange={handleImageChange}
-                        key={fileInputKey}
-                      />
-                      <p className="max-xl:text-sm">Photo</p>
+                        <Icon icon="solar:gallery-round-bold" className="w-[22px] h-[22px]" />
+
+                        <input
+                          type="file"
+                          accept="image/*"
+                          style={{ "visibility": "hidden", "position": "absolute" }}
+                          id="files"
+                          onChange={handleImageChange}
+                          key={fileInputKey}
+                        />
+                        <p className="max-xl:text-sm">Photo</p>
                       </label>
                     </div>
                   </button>
                   <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                    <img src={video} alt="" className="w-[22px] h-[22px]" />
+                    <Icon icon="lets-icons:video-fill" className="w-[30px] h-[30px]" />
+
                     <p className="max-xl:text-sm">Video</p>
                   </div>
                   <button onClick={handleShowThought}>
 
                     <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                      <img src={thoughts} alt="" className="w-[22px] h-[22px]" />
+                      <Icon icon="mingcute:thought-fill" className="w-[22px] h-[22px]" />
                       <p className="max-xl:text-sm">Thought</p>
                     </div>
                   </button>
                   <button onClick={handleShowArticle} >
 
                     <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                      <img src={article} alt="" className="w-[22px] h-[22px]" />
+                      <Icon icon="majesticons:article" className="w-[22px] h-[22px]" />
                       <p className="max-xl:text-sm">Article</p>
                     </div>
                   </button>
                   <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                    <img src={gifs} alt="" className="w-[22px] h-[22px]" />
+                    <Icon icon="bxs:file-gif" className="w-[30px] h-[30px]" />
                     <p className="max-xl:text-sm">GIFs</p>
                   </div>
                   <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                    <img src={golive} alt="" className="w-[22px] h-[22px]" />
+                    <Icon icon="fluent:live-20-filled" className="w-[30px] h-[30px]" />
                     <p className="max-xl:text-sm">Go Live</p>
                   </div>
 
@@ -215,24 +216,24 @@ const MainNavigation = () => {
                   <div className="left_section">
 
 
-                   
 
-                    
 
-                      {base64Image ? (
-                        <img
 
-                          className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} w-[520px] h-[552px] rounded-xl filter  max-xl:w-[400px]
+
+                    {base64Image ? (
+                      <img
+
+                        className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} w-[520px] h-[552px] rounded-xl filter  max-xl:w-[400px]
                           max-xl:h-[350px] `}
-                          id="files"
-                          src={base64Image}
-                          alt="Selected"
-                          style={style}
-                        />
-                      ) : (
-                        ""
-                      )}
-                  
+                        id="files"
+                        src={base64Image}
+                        alt="Selected"
+                        style={style}
+                      />
+                    ) : (
+                      ""
+                    )}
+
                   </div>
                   {
                     base64Image ?
@@ -484,56 +485,91 @@ const MainNavigation = () => {
 
             }
             {
-              showArticlePage && <div className="absolute right-0 left-[25%] top-[24%]  pr-[60px] text-white">
-                <div className="article_container bg-[#1B1C1B]  rounded-xl mt-10	">
-                  <div className="article flex gap-3 bg-[#161414] px-[30px] py-[32px] rounded-xl	">
-                    <p>Post an Article</p>
-                    <img src={articleImg} alt="article" />
+              showArticlePage && <div className="absolute right-0 left-[25%] top-[24%]  max-xl:top-[-515%] pr-[60px] text-white mx-xl:absolute">
+                <div className="article_container bg-[#1B1C1B]  max-sm:bg-black rounded-xl mt-10 max-xl:w-96 max-xl:fixed max-sm:w-full max-sm:h-full max-sm:right-0	 max-sm:bottom-0 ">
+                  <div className="back_container hidden items-center  max-sm:flex gap-6 px-6 mb-2 mt-4">
+                    <button onClick={handleShowHomePage}>
+
+                      <li className="bg-[#1B1C1B] p-1 rounded-xl"><Icon icon="eva:arrow-back-fill" className="w-5 h-5" /></li>
+                    </button>
+                    <p className="max-sm:block hidden font-medium ">Post an Article</p>
                   </div>
-                  <div className="input article p-6  mt-6">
-                    <textarea name="" id="" className="w-full h-[350px] bg-black rounded-xl p-6" placeholder="Write an Article here..." ></textarea>
+                  <div className="article flex gap-3 bg-[#161414] px-[30px] py-[32px] rounded-xl max-xl:px-[15px] max-sm:pt-6 max-sm:pb-2 max-sm:justify-between	 max-sm:bg-black  items-center max-xl:py-[12px]">
+                    <div className="mobile_view flex gap-2 px-4">
+
+                      <p className="max-sm:block hidden font-medium ">What you thinking about?</p>
+                      <p className="max-sm:hidden ">Post an Article</p>
+
+                      <img src={articleImg} alt="article" className="w-5 h-5" />
+                    </div>
+                    <li className="bg-[#1B1C1B] p-2 rounded-full hidden max-sm:block">
+
+                      <Icon icon="solar:gallery-round-bold" className="w-5 h-5" />
+                    </li>
+
                   </div>
-                  <div className="article_button flex justify-between p-6 items-center">
-                    <img src={gallery} alt="" className="w-5 h-5" />
-                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl	" >Post Article</button>
+                  <div className="input article p-6  mt-6 max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
+                    <textarea name="" id="" className="w-full h-[350px] max-xl:h-[200px]  bg-black rounded-xl p-6 max-sm:bg-[#161414] max-sm:font-normal " placeholder="Write an Article here..." ></textarea>
+                  </div>
+                  <div className="article_button flex justify-between p-6 items-center max-xl:p-2">
+                    <li className="bg-black p-2 rounded-full max-sm:hidden">
+
+                      <Icon icon="solar:gallery-round-bold" className="w-5 h-5" />
+                    </li>
+                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl max-xl:px-[55px] max-xl:py-[10px]	max-sm:w-full max-sm:text-sm  max-sm:font-medium	" >Post Article</button>
                   </div>
                 </div>
               </div>
             }
             {
-              showThoughtPage && <div className="absolute right-0 left-[25%] top-[24%]  pr-[60px] text-white">
-                <div className="article_container bg-[#1B1C1B]  rounded-xl mt-10	">
-                  <div className="article flex gap-3 bg-[#161414] px-[30px] py-[32px] rounded-xl	">
-                    <p>Post a Thought</p>
-                    <img src={thought} alt="article" />
+              showThoughtPage && <div className="absolute right-0 left-[25%] top-[24%]  max-xl:top-[-515%] pr-[60px] text-white mx-xl:absolute">
+                <div className="article_container bg-[#1B1C1B]  max-sm:bg-black rounded-xl mt-10 max-xl:w-96 max-xl:fixed max-sm:w-full max-sm:h-full max-sm:right-0	 max-sm:bottom-0 ">
+                  <div className="back_container hidden items-center  max-sm:flex gap-6 px-6 mb-2 mt-4">
+                    <button onClick={handleShowHomePage}>
+
+                      <li className="bg-[#1B1C1B] p-1 rounded-xl"><Icon icon="eva:arrow-back-fill" className="w-5 h-5" /></li>
+                    </button>
+                    <p className="max-sm:block hidden font-medium ">Post a Thought</p>
                   </div>
-                  <div className="input article p-6  mt-6">
-                    <textarea name="" id="" className="w-full h-[350px] bg-black rounded-xl p-6" placeholder="Write your Thoughts here..." ></textarea>
+                  <div className="article flex gap-3 bg-[#161414] px-[30px] py-[32px] rounded-xl max-xl:px-[15px] max-sm:pt-6 max-sm:pb-2 max-sm:justify-between	 max-sm:bg-black  items-center max-xl:py-[12px]">
+                    <div className="mobile_view flex gap-2 px-4">
+
+                      <p className="max-sm:block hidden font-medium ">What you thinking about?</p>
+                      <p className="max-sm:hidden ">Post a Thought</p>
+
+                      <img src={thought} alt="article" className="w-5 h-5" />
+                    </div>
+
+
                   </div>
-                  <div className="article_button flex  p-6 items-end justify-end">
-                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl	" >Post Thought</button>
+                  <div className="input article p-6  mt-6 max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
+                    <textarea name="" id="" className="w-full h-[350px] max-xl:h-[200px]  bg-black rounded-xl p-6 max-sm:bg-[#161414] max-sm:font-normal " placeholder="Write your Thoughts here..." ></textarea>
+                  </div>
+                  <div className="article_button flex justify-between p-6 items-center max-xl:p-2">
+                    <li className="bg-black p-2 rounded-full max-sm:hidden">
+
+                      <Icon icon="solar:gallery-round-bold" className="w-5 h-5" />
+                    </li>
+                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl max-xl:px-[55px] max-xl:py-[10px]	max-sm:w-full max-sm:text-sm  max-sm:font-medium	" >Post Thought</button>
                   </div>
                 </div>
               </div>
             }
             <div className="navlink_list flex items-center flex-col">
+              <NavLink to="/message">
+                {({ isActive }) => (
+                  (
+                    <div className="flex flex-col items-center" >
+                      <div className={isActive ? "rounded-full bg-grey p-[14px]  " : "rounded-full bg-grey p-[11px]"}>
 
-              <NavLink to="/message" className="rounded-full bg-grey "
-                style={({ isActive }) => {
-                  return {
-                    padding: isActive ? "20px" : "8px",
-
-                  }
-                }}
-              >
-
-                <Icon icon="ant-design:message-outlined" className="h-5 w-5 text-white" />
-
+                        <Icon icon="ant-design:message-outlined" className={isActive ? "text-white h-[26px] w-[26px]" : "text-white h-[21px] w-[21px] "} />
+                      </div>
+                      <span className={isActive ? "text-white text-base" : "text-white text-sm"}>Messages</span>
+                    </div>
+                  )
+                )}
               </NavLink>
 
-              <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
-                Messages
-              </p>
             </div>
             <div className="navlink_list flex items-center flex-col max-xl:hidden">
               <li className="rounded-full bg-grey p-2 ">
@@ -547,8 +583,7 @@ const MainNavigation = () => {
               <NavLink to="/user" >
 
                 <li className="rounded-full bg-grey p-2">
-                <Icon icon="mingcute:user-3-line"  className="h-5 w-5 text-white " />
-                  
+                  <Icon icon="mingcute:user-3-line" className="h-5 w-5 text-white " />
                 </li>
               </NavLink>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
@@ -557,7 +592,6 @@ const MainNavigation = () => {
             </div>
           </div>
           <div className="desktop_view flex gap-[45px]  items-center max-xl:gap-[10px] ">
-
             <div className="navlink_list flex items-center flex-col max-xl:hidden">
               <li className="rounded-full bg-grey px-[9px] py-[15px] flex items-center max-xl:hidden">
                 {" "}
@@ -593,15 +627,18 @@ const MainNavigation = () => {
               </p>
             </div>
             <NavLink to="/user">
+              {({ isActive }) => (
+                (
+                  <div className="flex flex-col items-center" >
+                    <div>
 
-              <div className="navlink_list flex items-center flex-col max-xl:hidden">
-                <li className=" ">
-                  <img src={userimage} alt="message" className="h-10 w-10 rounded-full " />
-                </li>
-                <p className="text-sm	 text-[#ffffff] mt-1">Das</p>
-              </div>
+                      <img src={userimage} alt="message" className={isActive ? "h-[60px] w-[60px] rounded-full" : "text-white h-[40px] w-[40px]  rounded-full"} />
+                    </div>
+                    <span className={isActive ? "text-white text-base" : "text-white text-sm"}>Das</span>
+                  </div>
+                )
+              )}
             </NavLink>
-
           </div>
         </div>
       </div>

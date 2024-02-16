@@ -300,11 +300,26 @@ const Profile = () => {
             )}
             {showMedia && (
               <div className="media mt-[18px]  ">
+                <div className="followers_grid_layout flex justify-between mt-3 mb-3">
+                 <div className="followers_grid flex gap-3 items-center">
+                 <Icon icon="ri:grid-fill" className="w-[30px] h-[30px] text-[#6D9AAD]" />
+                 <p className="text-sm text-[#6D9AAD]"> 1</p>
+                 </div>
+                 <div className="followers_grid flex gap-3 items-center">
+                 <Icon icon="lets-icons:video-light"  className="w-[22.5px] h-[22.5px] text-[#6D9AAD]" />
+                 <p className="text-sm text-[#6D9AAD]"> 0</p>
+                 </div>
+                 <div className="followers_grid flex gap-3 items-center">
+                 <Icon icon="solar:gallery-bold" className="w-[22.5px] h-[22.5px] text-[#6D9AAD]" />
+                 <p className="text-sm text-[#6D9AAD]"> 1</p>
+                 </div>
+                </div>
                 <img src={media} />
               </div>
             )}
             {showFollower && (
               <div className="followers">
+                
                 <div className="mt-[30px] relative hidden max-xl:block">
                   <input
                     type="text"
