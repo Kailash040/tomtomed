@@ -166,7 +166,7 @@ const MainNavigation = () => {
 
                     {
                       handleShowToggle &&
-                      <div class=" absolute  text-gray-700 pt-1 mt-5  flex items-center flex-col  right-[-125%]   max-xl:bottom-[43px] max-xl:flex-col-reverse max-xl:left-[-145%] z-10 " >
+                      <div class=" absolute  text-gray-700 pt-1 mt-5  flex items-center flex-col  right-[-125%]   max-xl:bottom-[43px] max-xl:flex-col-reverse max-xl:left-[-145%] z-10  " >
                         <div class="triangle triangle-4"></div>
 
 
@@ -525,7 +525,7 @@ const MainNavigation = () => {
                     </li>
 
                   </div>
-                  <div className="input article p-6  mt-6 max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
+                  <div className=" article p-6  mt-6 max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
                     <textarea name="" id="" className="w-full h-[350px] max-xl:h-[200px]  bg-black rounded-xl p-6 max-sm:bg-[#161414] max-sm:font-normal " placeholder="Write an Article here..." ></textarea>
                   </div>
                   <div className="article_button flex justify-between p-6 items-center max-xl:p-2">
@@ -559,7 +559,7 @@ const MainNavigation = () => {
 
 
                   </div>
-                  <div className="input article p-6  mt-6 max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
+                  <div className=" article p-6  mt-6 max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
                     <textarea name="" id="" className="w-full h-[350px] max-xl:h-[200px]  bg-black rounded-xl p-6 max-sm:bg-[#161414] max-sm:font-normal " placeholder="Write your Thoughts here..." ></textarea>
                   </div>
                   <div className="article_button flex justify-between p-6 items-center max-xl:p-2">

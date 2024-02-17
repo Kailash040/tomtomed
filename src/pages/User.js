@@ -8,6 +8,7 @@ import userImage from "../assets/postassets/Ellipse 3.png";
 import artimg from "../assets/postassets/artimage.png";
 import media from "../assets/postassets/media.png";
 import kababmenu from "../assets/postassets/kabab.png";
+import profileimage from '../assets/Avatar.png'
 // import { NavLink } from "react-router-dom";
 import { BiMessageAlt } from "react-icons/bi";
 import { Icon } from '@iconify/react';
@@ -56,6 +57,9 @@ const Profile = () => {
     setShowFollowers(false);
     setShowFollowing(true);
   };
+  const handleformSubmit =(e) =>{
+e.preventDefault()
+  }
   return (
     <div className="profile_container mt-10 pl-[60px] pr-[60px] font-roboto flex gap-[50px]  max-xl:gap-0 max-xl:justify-center   max-xl:pr-0 max-xl:pl-0">
       {/*  */}
@@ -118,8 +122,8 @@ const Profile = () => {
       </div>
       <div className="right_section   w-4/5 max-xl:w-[500px] max-sm:w-[350px] ">
         <div className="user_bio border-b-[red]">
-          <div className="image_username flex   justify-between  ">
-            <div className="flex gap-10 ">
+          <div className="image_username flex   justify-between   ">
+            <div className="flex gap-10 items-center ">
               <div className="user_pic ">
                 <img
                   src={userimage}
@@ -145,9 +149,88 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            <div className="edit_share_and_more list-none flex  gap-6  ">
+            <div className="edit_share_and_more list-none flex  gap-6  relative top-[24px] ">
               <li>
-                <Icon icon="akar-icons:edit" className="w-6 h-6 text-white" />
+                <button className="" onClick={() => document.getElementById('my_modal_1').showModal()}><Icon icon="akar-icons:edit" className="w-6 h-6 text-white" /></button>
+                <dialog id="my_modal_1" className="modal font-roboto   ">
+                  <form onSubmit={handleformSubmit} >
+                  <div className="w-[1000px]" >
+                    <div className="form_upercase flex justify-between bg-[#161414] items-center py-[14px] rounded-xl	 ">
+
+                      <form className="dialog flex">
+                        <div className=" flex gap-6  pl-[25px] pr-3 ">
+
+                          <button className=" bg-[#202020] border rounded-full  p-2 "><Icon icon="eva:arrow-back-fill" className="w-4 h-[14px] text-white" /></button>
+                          <p className="text-xl	 text-white ">Edit Profile</p>
+                        </div>
+                      </form>
+                      <button className="signUp px-[110px] py-[18px] text-lg text-white rounded-xl mr-3 	" type="submit" >Save Changes</button>
+                    </div>
+
+                    <div className=" profile_edit_section  bg-[#202020] pt-[35px] flex gap-[45px] pb-[35px] ">
+                      <div className="left_section pl-[25px]">
+                        <div className="profile_details flex flex-col items-center">
+                          <div className="img"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px] " /></div>
+                          <div className="dob  mt-8  bg-[#3D3E3D] w-[190px]  rounded-lg	">
+                            <div className="dob text-sm text-[#8F8F8F]  pl-3  pt-2">Date of Birth</div>
+                            <div className="dob text-base  text-[#F5F5F5]  pl-3 mt-[9px] mb-3 "> <input type="date" className="bg-[#3D3E3D]" /> </div>
+                          </div>
+                          <div className="dob  mt-3 bg-[#3D3E3D] w-[190px]  rounded-lg	">
+                                     {/*  */}
+                                     <label class="dob text-sm text-[#8F8F8F]  pl-3  pt-2 " for="Email">
+                                     Email
+                          </label>
+                          <input class="  block w-full bg-[#3D3E3D]    rounded    text-base text-white  pl-3 mt-[9px] mb-3" id="Email" type="text" placeholder="Email" />
+                                     {/*  */}
+
+                          </div>
+                          <div className="dob  mt-3  bg-[#3D3E3D] w-[190px]  rounded-lg	">
+                          <label class="dob text-sm text-[#8F8F8F]  pl-3  pt-2 " for="Phone">
+                          Phone
+                          </label>
+                          <input class="  block w-full bg-[#3D3E3D]    rounded    text-base text-white  pl-3 mt-[9px] mb-3" id="Phone" type="text" placeholder="Phone" />
+                          </div>
+
+                        </div>
+                      </div>
+                      <div className="right_section">
+                        <div class="w-[584px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 ">
+                          <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="Name">
+                            Name
+                          </label>
+                          <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="Name" />
+                        </div>
+                        <div class="w-[584px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 mt-3 ">
+                          <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="username">
+                            Username
+                          </label>
+                          <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="username" />
+                        </div>
+                        <div class="w-[584px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 mt-3 ">
+                          <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="profession">
+                            Profession
+                          </label>
+                          <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="Profession" />
+                        </div>
+                        <div class="w-[584px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 mt-3 ">
+                          <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="Bio">
+                            Bio
+                          </label>
+                          <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="Bio" type="text" placeholder="Bio" />
+                        </div>
+                        <div class="w-[584px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 mt-3 ">
+                          <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="city">
+                            Bio
+                          </label>
+                          <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="city" type="text" placeholder="City" />
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  </form>
+                </dialog>
+              
               </li>
               <li>
                 <Icon icon="material-symbols-light:share-outline" className="w-6 h-6 text-white" />
@@ -225,7 +308,7 @@ const Profile = () => {
                           className="w-11 h-11"
                         />
                         <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   " />
-                       
+
                       </div>
                     </div>
                     <div className="post">
@@ -301,25 +384,25 @@ const Profile = () => {
             {showMedia && (
               <div className="media mt-[18px]  ">
                 <div className="followers_grid_layout flex justify-between mt-3 mb-3">
-                 <div className="followers_grid flex gap-3 items-center">
-                 <Icon icon="ri:grid-fill" className="w-[30px] h-[30px] text-[#6D9AAD]" />
-                 <p className="text-sm text-[#6D9AAD]"> 1</p>
-                 </div>
-                 <div className="followers_grid flex gap-3 items-center">
-                 <Icon icon="lets-icons:video-light"  className="w-[22.5px] h-[22.5px] text-[#6D9AAD]" />
-                 <p className="text-sm text-[#6D9AAD]"> 0</p>
-                 </div>
-                 <div className="followers_grid flex gap-3 items-center">
-                 <Icon icon="solar:gallery-bold" className="w-[22.5px] h-[22.5px] text-[#6D9AAD]" />
-                 <p className="text-sm text-[#6D9AAD]"> 1</p>
-                 </div>
+                  <div className="followers_grid flex gap-3 items-center">
+                    <Icon icon="ri:grid-fill" className="w-[30px] h-[30px] text-[#6D9AAD]" />
+                    <p className="text-sm text-[#6D9AAD]"> 1</p>
+                  </div>
+                  <div className="followers_grid flex gap-3 items-center">
+                    <Icon icon="lets-icons:video-light" className="w-[22.5px] h-[22.5px] text-[#6D9AAD]" />
+                    <p className="text-sm text-[#6D9AAD]"> 0</p>
+                  </div>
+                  <div className="followers_grid flex gap-3 items-center">
+                    <Icon icon="solar:gallery-bold" className="w-[22.5px] h-[22.5px] text-[#6D9AAD]" />
+                    <p className="text-sm text-[#6D9AAD]"> 1</p>
+                  </div>
                 </div>
                 <img src={media} />
               </div>
             )}
             {showFollower && (
               <div className="followers">
-                
+
                 <div className="mt-[30px] relative hidden max-xl:block">
                   <input
                     type="text"
@@ -327,7 +410,7 @@ const Profile = () => {
                     placeholder="Search"
                   />
                   <Icon icon="iconamoon:search-light" className="absolute left-[92%]  bottom-[15px] w-[18px] h-[18px] text-white " />
-                  
+
                 </div>
                 <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
                   <div className="child flex gap-[18px] items-center ">
@@ -351,7 +434,7 @@ const Profile = () => {
                     <div className="followers_child flex gap-[18px] items-center">
                       <button className="text-[#7D4CFF]">Follow back</button>
                       <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
-                     
+
                     </div>
                     {/* <div className="followers_child"></div> */}
                   </div>
@@ -375,10 +458,10 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="child">
-                  <div className="followers_child flex gap-[18px] items-center">
+                    <div className="followers_child flex gap-[18px] items-center">
                       <button className="text-[#7D4CFF]">Follow back</button>
                       <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
-                     
+
                     </div>
                     {/* <div className="followers_child"></div> */}
                   </div>
@@ -402,10 +485,10 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="child">
-                  <div className="followers_child flex gap-[18px] items-center">
+                    <div className="followers_child flex gap-[18px] items-center">
                       <button className="text-[#7D4CFF]">Follow back</button>
                       <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
-                     
+
                     </div>
                     {/* <div className="followers_child"></div> */}
                   </div>
@@ -420,7 +503,7 @@ const Profile = () => {
                     className="w-full  bg-[#1B1C1B] pl-[14px] rounded-xl py-[14px] "
                     placeholder="Search"
                   />
-                                    <Icon icon="iconamoon:search-light" className="absolute left-[92%]  bottom-[15px] w-[18px] h-[18px] text-white " />
+                  <Icon icon="iconamoon:search-light" className="absolute left-[92%]  bottom-[15px] w-[18px] h-[18px] text-white " />
 
                 </div>
                 <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
@@ -468,7 +551,7 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="child">
-                  <div className="followers_child flex gap-[18px] items-center">
+                    <div className="followers_child flex gap-[18px] items-center">
                       <button className="text-[#7D4CFF]">Unfollow</button>
                       <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
                     </div>
@@ -494,7 +577,7 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="child">
-                  <div className="followers_child flex gap-[18px] items-center">
+                    <div className="followers_child flex gap-[18px] items-center">
                       <button className="text-[#7D4CFF]">Unfollow</button>
                       <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
                     </div>
