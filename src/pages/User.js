@@ -121,7 +121,7 @@ const Profile = () => {
         </div>
       </div>
       <div className="right_section   w-4/5 max-xl:w-[500px] max-sm:w-[350px] ">
-        <div className="user_bio border-b-[red]">
+        <div className="user_bio border-b-[#171717] border-b-2 ">
           <div className="image_username flex   justify-between   ">
             <div className="flex gap-10 items-center ">
               <div className="user_pic ">
@@ -141,10 +141,10 @@ const Profile = () => {
                   </span>
                 </p>
 
-                <p className="mt-[18px] text-lg	text-white max-xl:text-sm max-xl:mt-2  ">
+                <p className="mt-2 text-lg	text-white max-xl:text-sm max-xl:mt-2  ">
                   das_007
                 </p>
-                <p className="text-lg	text-white mt-[18px] max-xl:text-[14px] max-xl:mt-2 ">
+                <p className="text-lg	text-white mt-2 max-xl:text-[14px] max-xl:mt-2 ">
                   Hyderabad
                 </p>
               </div>
@@ -242,16 +242,16 @@ const Profile = () => {
               </li>
             </div>
           </div>
-          <div className="mt-[30px] mb-[18px] max-xl:mt-[18px]">
+          <div className="mt-[30px] mb-6 max-xl:mt-[18px] max-xl:mb-[18px]">
             <p className="bio text-lg text-white  max-xl:text-base">
               {" "}
               Connect People. Share Opinions. Make a Living.{" "}
             </p>
           </div>
         </div>
-        <div className="container_user flex  justify-between  gap-[80px]">
+        <div className="container_user flex  justify-between  gap-[80px] mt-6 max-xl:mt-[8px] ">
           <div className="user_data ">
-            <div className="user_post_follower_link flex gap-[60px]  w-[587px]  max-xl:gap-5 justify-between max-xl:w-[500px] max-sm:w-[350px] ">
+            <div className="user_post_follower_link flex gap-[60px]  w-[587px]  max-xl:gap-5 justify-between max-xl:w-[500px] max-sm:w-[350px] border-b-[#171717] border-b-4  pb-3 max-xl:pb-2 max-xl:border-b-2 ">
               <div className="user_item items-center flex flex-col">
                 <button onClick={handleShowPost} className="flex flex-col gap-[14px] items-center" >
                   <p className="text-base text-white">Posts</p>
