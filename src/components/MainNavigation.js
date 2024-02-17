@@ -117,8 +117,8 @@ const MainNavigation = () => {
       </div>
       <div className="nav_container bg-black flex w-4/5  justify-end rounded-lg max-xl:bg-[#101010] ml-[40px] max-xl:ml-[0px] font-semibold max-xl:w-[100px]">
         <div className="list-none flex justify-evenly  gap-[45px]  p-2 rounded-lg max-xl:gap-4 w-full">
-          <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none max-xl:pr-[17px]">
-            <div className="navlink_list flex items-center flex-col">
+          <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none max-xl:pr-[17px] max-xl:items-baseline">
+            <div className="navlink_list flex items-center flex-col ">
               <NavLink to="/">
                 {({ isActive }) => (
                   (
@@ -170,7 +170,7 @@ const MainNavigation = () => {
                         <div class="triangle triangle-4"></div>
 
 
-                        <div className="dropdownitem bg-white flex flex-col  max-sm:align-baseline rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3" >
+                        <div className="dropdownitem bg-white flex flex-col  max-sm:align-baseline rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3 items-baseline " >
                           <button >
 
                             <div className="dropdown flex justify-center  max-xl:gap-2 max-xl:flex-col items-center">
@@ -597,11 +597,19 @@ const MainNavigation = () => {
               <p className="text-sm	 text-[#ffffff] mt-1">E-Commerce</p>
             </div>
             <div className="navlink_list  items-center flex-col hidden max-xl:flex">
-              <NavLink to="/user" >
-
-                <li className="rounded-full bg-grey p-2">
-                  <Icon icon="mingcute:user-3-line" className="h-5 w-5 text-white " />
-                </li>
+              
+              <NavLink to="/user">
+                {({ isActive }) => (
+                  (
+                    <li className="rounded-full bg-grey p-2" >
+                    
+                      {isActive ? <Icon icon="typcn:user" className="h-5 w-5 text-white " />:<Icon icon="mingcute:user-3-line" className="h-5 w-5 text-white " />}
+                       
+                     
+                      
+                    </li>
+                  )
+                )}
               </NavLink>
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Profile

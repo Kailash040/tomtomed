@@ -12,7 +12,7 @@ module.exports = {
       global :"#1B1C1B"
     },
     fontFamily: {
-      roboto: ["Roboto"],
+      roboto: ["Roboto", "sans-serif"],
     },
     extend: {
       screens: {

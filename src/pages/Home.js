@@ -64,11 +64,11 @@ const Home = () => {
                 </div>
               </div>
               <div className="post">
-                <p className="description  text-[#FFFFFF] font-normal mt-2 mb-2 max-xl:text-sm">
+                <p className="description  text-[#FFFFFF] font-normal mt-4 mb-4 max-xl:text-sm max-xl:mt-3 max-xl:mb-3">
                   {" "}
                   I wish I loved anything as much as my cat loves catnip :p
                 </p>
-                <p className="text-[#B39DCF] mb-2 max-xl:text-sm">
+                <p className="text-[#B39DCF] mb-3 max-xl:text-sm">
                   #cats #lovecats #adorable{" "}
                 </p>
               </div>
@@ -107,12 +107,12 @@ const Home = () => {
                   {/* <img src={savePost} alt="save" className="w-6" /> */}
                 </div>
               </div>
-              <p className="time text-base text-[#8F8F8F] mt-[14px]" >29 mins ago</p>
+              <p className="time text-base text-[#8F8F8F] mt-[14px] max-lg:text-sm" >29 mins ago</p>
             </div>
           </div>
         </div>
         <div className="right_section flex">
-          <div className="story  pl-[46px] pr-[46px] flex flex-col gap-5 max-xl:hidden  max-xl:p-4">
+          <div className="story  pl-[46px] pr-[46px] flex flex-col gap-[18px] max-xl:hidden  max-xl:p-4">
             {" "}
             <p className="text-xl text-white font-semibold">Stories</p>
             <div className="story_item flex flex-col border-b border-[#313131] mt-1 ">
