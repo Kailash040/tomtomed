@@ -124,8 +124,8 @@ const MainNavigation = () => {
                   (
                     <div className="flex flex-col items-center" >
                       <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] " : "rounded-full bg-grey p-[11px]"}>
-
-                        <Icon icon="material-symbols-light:home" className={isActive ? "text-white h-6 w-6" : "text-white h-5 w-5 "} />
+                      {isActive ?  <Icon icon="material-symbols-light:home" height="22px" width="20px"  className={isActive ? "text-white " : "text-white h-5 w-5 "} />: <Icon icon="majesticons:home-line" className="text-white h-5 w-5" />}
+                       
                       </div>
                       <span className={isActive ? "text-white text-base max-xl:hidden mt-1" : "text-white text-sm max-xl:hidden mt-1"}>Home</span>
                     </div>
@@ -577,9 +577,9 @@ const MainNavigation = () => {
                 {({ isActive }) => (
                   (
                     <div className="flex flex-col items-center" >
-                      <div className={isActive ? "rounded-full bg-grey p-4  " : "rounded-full bg-grey p-2"}>
-
-                        <Icon icon="ant-design:message-outlined" className={isActive ? "text-white h-[26px] w-[26px]" : "text-white h-[21px] w-[21px] "} />
+                      <div className={isActive ? "rounded-full bg-grey p-[14px]  " : "rounded-full bg-grey p-[9.5px]"}>
+{isActive ?  <Icon icon="ant-design:message-filled" className="text-white h-[32px] w-[32px]"   />: <Icon icon="ant-design:message-outlined" className="text-white h-[21px] w-[21px]" />}
+                        
                       </div>
                       <span className={isActive ? "text-white text-base max-xl:hidden mt-1" : "text-white text-sm max-xl:hidden mt-1"}>Messages</span>
                     </div>
@@ -652,7 +652,7 @@ const MainNavigation = () => {
 
                       <img src={userimage} alt="message" className={isActive ? "h-[60px] w-[60px] rounded-full" : "text-white h-[40px] w-[40px]  rounded-full"} />
                     </div>
-                    <span className={isActive ? "text-white text-base" : "text-white text-sm"}>Das</span>
+                    <span className={isActive ? "text-white text-base mt-1" : "text-white text-sm mt-1"}>Das</span>
                   </div>
                 )
               )}
