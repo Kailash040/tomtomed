@@ -128,7 +128,7 @@ const Profile = () => {
                 <img
                   src={userimage}
                   alt="user"
-                  className="w-[160px] h-[160px] rounded-full"
+                  className="w-[160px] h-[160px] rounded-full  max-xl:w-[100px] max-xl:h-[100px] "
                 />
               </div>
 
@@ -141,15 +141,15 @@ const Profile = () => {
                   </span>
                 </p>
 
-                <p className="mt-[18px] text-lg	text-white max-xl:text-sm ">
+                <p className="mt-[18px] text-lg	text-white max-xl:text-sm max-xl:mt-2  ">
                   das_007
                 </p>
-                <p className="text-lg	text-white mt-[18px] max-xl:text-[14px]">
+                <p className="text-lg	text-white mt-[18px] max-xl:text-[14px] max-xl:mt-2 ">
                   Hyderabad
                 </p>
               </div>
             </div>
-            <div className="edit_share_and_more list-none flex  gap-6  relative top-[24px] ">
+            <div className="edit_share_and_more list-none flex  gap-6   ">
               <li>
                 <button className="" onClick={() => document.getElementById('my_modal_1').showModal()}><Icon icon="akar-icons:edit" className="w-6 h-6 text-white" /></button>
                 <dialog id="my_modal_1" className="modal font-roboto   ">
@@ -242,7 +242,7 @@ const Profile = () => {
               </li>
             </div>
           </div>
-          <div className="mt-[30px] mb-[18px]">
+          <div className="mt-[30px] mb-[18px] max-xl:mt-[18px]">
             <p className="bio text-lg text-white  max-xl:text-base">
               {" "}
               Connect People. Share Opinions. Make a Living.{" "}
@@ -253,31 +253,31 @@ const Profile = () => {
           <div className="user_data ">
             <div className="user_post_follower_link flex gap-[60px]  w-[587px]  max-xl:gap-5 justify-between max-xl:w-[500px] max-sm:w-[350px] ">
               <div className="user_item items-center flex flex-col">
-                <button onClick={handleShowPost}>
+                <button onClick={handleShowPost} className="flex flex-col gap-[14px] items-center" >
                   <p className="text-base text-white">Posts</p>
                   <p className="text-base text-[#D6B5FF]">2,031 </p>
                 </button>
               </div>
-              <div className="user_item items-center flex flex-col">
-                <button onClick={handleShowArticle}>
+              <div className="user_item items-center flex flex-col ">
+                <button onClick={handleShowArticle} className="flex flex-col gap-[14px] items-center">
                   <p className="text-base text-white">Articles</p>
                   <p className="text-base text-[#D6B5FF]">2,031 </p>
                 </button>
               </div>
               <div className="user_item items-center flex flex-col">
-                <button onClick={handleShowMedia}>
+                <button onClick={handleShowMedia} className="flex flex-col gap-[14px] items-center" >
                   <p className="text-base text-white">Media</p>
                   <p className="text-base text-[#D6B5FF]">2,031 </p>
                 </button>
               </div>
               <div className="user_item items-center flex flex-col">
-                <button onClick={handleShowFollowers}>
+                <button onClick={handleShowFollowers} className="flex flex-col gap-[14px] items-center" >
                   <p className="text-base text-white">Followers</p>
                   <p className="text-base text-[#D6B5FF]">2,031 </p>
                 </button>
               </div>
               <div className="user_item items-center flex flex-col">
-                <button onClick={handleShowFollowing}>
+                <button onClick={handleShowFollowing} className="flex flex-col gap-[14px] items-center" >
                   <p className="text-base text-white">Following</p>
                   <p className="text-base text-[#D6B5FF]">2,031 </p>
                 </button>
