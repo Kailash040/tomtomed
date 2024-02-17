@@ -15,8 +15,8 @@ import thought from '../assets/Vector (4).png'
 import { Icon } from '@iconify/react';
 
 const MainNavigation = () => {
-  const [isActive, setIsActive] = useState(false);
-  const changeActive = ({ isActive }) => setIsActive(isActive);
+  // const [isActive, setIsActive] = useState(false);
+  // const changeActive = ({ isActive }) => setIsActive(isActive);
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
   const [showArticlePage, setArticlePage] = useState(false)
@@ -127,91 +127,106 @@ const MainNavigation = () => {
 
                         <Icon icon="material-symbols-light:home" className={isActive ? "text-white h-6 w-6" : "text-white h-5 w-5 "} />
                       </div>
-                      <span className={isActive ? "text-white text-base" : "text-white text-sm"}>Home</span>
+                      <span className={isActive ? "text-white text-base max-xl:hidden mt-1" : "text-white text-sm max-xl:hidden mt-1"}>Home</span>
                     </div>
                   )
                 )}
               </NavLink>
             </div>
             <div className="navlink_list flex items-center flex-col">
-       
+
+
               <li className="rounded-full bg-grey p-[11px]">
                 {" "}
                 <Icon icon="lucide:play-square" className="text-white h-[18px] w-[18px]" />
               </li>
+
               <p className="text-sm	 text-[#ffffff]	mt-1 max-xl:hidden">Videos</p>
             </div>
-        
-            <button onClick={handleShow} className="overflow-hidden" >
-              
+
+            <button className="" >
+
               <div className="navlink_list flex items-center flex-col">
 
-                <li className="rounded-full bg-grey p-[9.5px]">
-                  {" "}
-                  {/* <img src={formAddVector} alt="form" className="h-5 w-5 " /> */}
-                  <Icon icon="formkit:add" className="h-[21px] w-[21px]  text-[#ffffff]" />
-                </li>
-                <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
-                  Add post
-                </p>
-              </div>
-            </button>
-            {
-              handleShowToggle &&
-              <div className="dropdownmenu flex flex-col  text-lg font-roboto items-center z-10 absolute right-0 left-[-17%] top-[22%] scroll-container max-xl:flex-col-reverse max-xl:left-0 max-xl:top-[-70px] overflow-hidden " >
-                <div class='triangle rotate-90'></div>
 
-                <div className="dropdownitem bg-white flex flex-col  max-sm:align-baseline rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3" >
-                  <button >
+                <div class=" flex flex-col">
 
-                    <div className="dropdown flex justify-center  max-xl:gap-2 max-xl:flex-col items-center">
-                      <label htmlFor="files" className="flex gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                        <Icon icon="solar:gallery-round-bold" className="w-[22px] h-[22px]" />
+                  <div class=" inline-block relative">
+                    <button class="  font-semibold  rounded inline-flex items-center " onClick={handleShow}>
+                      <div className="flex_item flex flex-col items-center">
 
-                        <input
-                          type="file"
-                          accept="image/*"
-                          style={{ "visibility": "hidden", "position": "absolute" }}
-                          id="files"
-                          onChange={handleImageChange}
-                          key={fileInputKey}
-                        />
-                        <p className="max-xl:text-sm">Photo</p>
-                      </label>
-                    </div>
-                  </button>
-                  <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                    <Icon icon="lets-icons:video-fill" className="w-[30px] h-[30px]" />
+                        <li className="rounded-full bg-grey p-2 ">
+                          {" "}
+                          <Icon icon="formkit:add" className="h-[21px] w-[21px]  text-[#ffffff]" />
+                        </li>
+                        <span className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden	">Add post</span>
+                      </div>
 
-                    <p className="max-xl:text-sm">Video</p>
-                  </div>
-                  <button onClick={handleShowThought}>
+                    </button>
 
-                    <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                      <Icon icon="mingcute:thought-fill" className="w-[22px] h-[22px]" />
-                      <p className="max-xl:text-sm">Thought</p>
-                    </div>
-                  </button>
-                  <button onClick={handleShowArticle} >
+                    {
+                      handleShowToggle &&
+                      <div class=" absolute  text-gray-700 pt-1 mt-5  flex items-center flex-col  right-[-125%]   max-xl:bottom-[43px] max-xl:flex-col-reverse max-xl:left-[-145%] z-10 " >
+                        <div class="triangle triangle-4"></div>
 
-                    <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                      <Icon icon="majesticons:article" className="w-[22px] h-[22px]" />
-                      <p className="max-xl:text-sm">Article</p>
-                    </div>
-                  </button>
-                  <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                    <Icon icon="bxs:file-gif" className="w-[30px] h-[30px]" />
-                    <p className="max-xl:text-sm">GIFs</p>
-                  </div>
-                  <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                    <Icon icon="fluent:live-20-filled" className="w-[30px] h-[30px]" />
-                    <p className="max-xl:text-sm">Go Live</p>
+
+                        <div className="dropdownitem bg-white flex flex-col  max-sm:align-baseline rounded-3xl px-9 py-5 gap-[30px] w-[200px] max-xl:w-[409px] max-xl:flex-row max-xl:gap-[28px] max-xl:py-3  max-xl:px-3" >
+                          <button >
+
+                            <div className="dropdown flex justify-center  max-xl:gap-2 max-xl:flex-col items-center">
+                              <label htmlFor="files" className="flex gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                                <Icon icon="solar:gallery-round-bold" className="w-[22px] h-[22px]" />
+
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  style={{ "visibility": "hidden", "position": "absolute" }}
+                                  id="files"
+                                  onChange={handleImageChange}
+                                  key={fileInputKey}
+                                />
+                                <p className="max-xl:text-sm">Photo</p>
+                              </label>
+                            </div>
+                          </button>
+                          <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                            <Icon icon="lets-icons:video-fill" className="w-[30px] h-[30px]" />
+
+                            <p className="max-xl:text-sm">Video</p>
+                          </div>
+                          <button onClick={handleShowThought}>
+
+                            <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                              <Icon icon="mingcute:thought-fill" className="w-[22px] h-[22px]" />
+                              <p className="max-xl:text-sm">Thought</p>
+                            </div>
+                          </button>
+                          <button onClick={handleShowArticle} >
+
+                            <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                              <Icon icon="majesticons:article" className="w-[22px] h-[22px]" />
+                              <p className="max-xl:text-sm">Article</p>
+                            </div>
+                          </button>
+                          <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                            <Icon icon="bxs:file-gif" className="w-[30px] h-[30px]" />
+                            <p className="max-xl:text-sm">GIFs</p>
+                          </div>
+                          <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                            <Icon icon="fluent:live-20-filled" className="w-[30px] h-[30px]" />
+                            <p className="max-xl:text-sm">Go Live</p>
+                          </div>
+
+                        </div>
+
+                      </div>
+                    }
                   </div>
 
                 </div>
-
               </div>
-            }
+            </button>
+
             {
               addPost && < div className="absolute right-0 left-[-16%] top-[24%]  pr-[60px]  max-xl:top-[-720%] max-xl:pr-0 ">
                 <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-0 max-xl:items-center ">
@@ -562,11 +577,11 @@ const MainNavigation = () => {
                 {({ isActive }) => (
                   (
                     <div className="flex flex-col items-center" >
-                      <div className={isActive ? "rounded-full bg-grey p-[14px]  " : "rounded-full bg-grey p-[11px]"}>
+                      <div className={isActive ? "rounded-full bg-grey p-4  " : "rounded-full bg-grey p-2"}>
 
                         <Icon icon="ant-design:message-outlined" className={isActive ? "text-white h-[26px] w-[26px]" : "text-white h-[21px] w-[21px] "} />
                       </div>
-                      <span className={isActive ? "text-white text-base" : "text-white text-sm"}>Messages</span>
+                      <span className={isActive ? "text-white text-base max-xl:hidden mt-1" : "text-white text-sm max-xl:hidden mt-1"}>Messages</span>
                     </div>
                   )
                 )}
@@ -606,6 +621,7 @@ const MainNavigation = () => {
                 {" "}
                 <Icon icon="iconamoon:search-light" className="h-5 w-5 text-white " />
               </li>
+
               <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Search
               </p>
@@ -631,7 +647,7 @@ const MainNavigation = () => {
             <NavLink to="/user">
               {({ isActive }) => (
                 (
-                  <div className="flex flex-col items-center" >
+                  <div className="flex flex-col items-center max-xl:hidden" >
                     <div>
 
                       <img src={userimage} alt="message" className={isActive ? "h-[60px] w-[60px] rounded-full" : "text-white h-[40px] w-[40px]  rounded-full"} />
