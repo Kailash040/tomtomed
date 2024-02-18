@@ -626,11 +626,10 @@ const Message = () => {
                 <div className="user_deatails flex gap-3 items-center">
                   <div className="flex items-center gap-4">
                     {" "}
-                    <img
-                      src={backicon}
-                      alt="message"
-                      className=" w-4 h-4 hidden "
-                    />
+                  <li className="rounded-full p-1 bg-[#202020] hidden  max-sm:block ">
+
+                    <Icon icon="eva:arrow-back-fill"  className=" w-6 h-6 hidden  max-sm:block  text-white" />
+                  </li>
                     <img
                       src={userimage}
                       alt="message"
@@ -690,7 +689,7 @@ const Message = () => {
               <div className="mt-[30px] relative flex justify-center items-center ">
                 <input
                   type="text"
-                  className="w-full  bg-[#1B1C1B] p-6 rounded-xl  "
+                  className="w-full  bg-[#1B1C1B] p-6 rounded-xl  text-white "
                   placeholder="Write a message "
                 />
                 <div className="flex gap-6 absolute right-[10px]  ">
