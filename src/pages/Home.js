@@ -10,12 +10,14 @@ const Home = () => {
 
       <div class="  flex pl-[60px] pr-[60px]   font-roboto   justify-center max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
         <div className="left_section flex gap-[75px]">
-          <div className="news_savePost_group_section w-[220px]	max-xl:hidden">
-            <div>
+          <div className="news_savePost_group_section 	max-xl:hidden">
+            <div className="w-[220px]" >
               <div className="Premium_buutton mb-9">
-                <button className="text-[#B68FE7] text-base py-5 px-[77px] border border-gradient premium  rounded-xl">
-                  Premium
-                </button>
+              <div class="rounded-xl	 bg-gradient-to-r from-[#4879FA]  to-[#7D4CFF] p-[1px]">
+    <div class="flex   items-center justify-center bg-[#202020] rounded-xl h-[60px] ">
+      <button class="text-base  	 text-[#B68FE7]">Premium</button>
+    </div>
+  </div>
               </div>
               <div className="news_section flex justify-between items-center">
                 <p className="text-xl text-white font-semibold">News</p>
@@ -83,7 +85,7 @@ const Home = () => {
                 <div className="post_status flex gap-4">
                   <div className="like_status  flex flex-col gap-3 items-center">
                     {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
-                    <Icon icon="mdi:heart-outline" className="w-6 h-6 text-white	" />
+                    <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
                     <p className="text-[#B39DCF] text-sm">124</p>
                   </div>
                   <div className="like_status flex flex-col gap-3 items-center">

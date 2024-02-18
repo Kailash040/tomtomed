@@ -66,10 +66,12 @@ const Profile = () => {
 
       {/*  */}
       <div className="left_section w-1/5 max-xl:hidden">
-        <div className="Premium_buutton mb-9">
-          <button className="text-[#B68FE7] text-base py-5 px-[77px] border border-gradient premium  rounded-xl">
-            Premium
-          </button>
+        <div className="Premium_buutton mb-9 w-[220px] ">
+        <div class="rounded-xl	 bg-gradient-to-r from-[#4879FA]  to-[#7D4CFF] p-[1px]">
+    <div class="flex   items-center justify-center bg-[#202020] rounded-xl h-[60px] ">
+      <button class="text-base  	 text-[#B68FE7]">Premium</button>
+    </div>
+  </div>
         </div>
         <div>
           <div className="w-[220px]">
@@ -85,7 +87,7 @@ const Profile = () => {
                 <p className="text-[#85C6E1] text-2xl">1.2k</p>
               </div>
               <div className="like_Ctonainer">
-                <Icon icon="mdi:heart-outline" className="w-10 h-10 text-[#303030]	" />
+                <Icon icon="icon-park-outline:like" className="w-10 h-10 text-[#303030]	" />
               </div>
             </div>
             <div className="news_post bg-newbgcolor p-3 rounded-lg mt-3 mb-3 flex justify-between items-center">
@@ -331,7 +333,8 @@ const Profile = () => {
                     <div className="post_status flex  justify-between  mt-4">
                       <div className="post_status flex gap-4">
                         <div className="like_status  flex flex-col  items-center gap-3 ">
-                          <Icon icon="mdi:heart-outline" className="w-6 h-6 text-white	" />
+                        <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                          {/* <Icon icon="mdi:heart-outline"  /> */}
                           <p className="text-[#B39DCF] text-sm">124</p>
                         </div>
                         <div className="like_status flex flex-col  items-center gap-3">

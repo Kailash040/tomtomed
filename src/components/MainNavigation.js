@@ -117,13 +117,13 @@ const MainNavigation = () => {
       </div>
       <div className="nav_container bg-black flex w-4/5  justify-end rounded-lg max-xl:bg-[#101010] ml-[40px] max-xl:ml-[0px] font-semibold max-xl:w-[100px]">
         <div className="list-none flex justify-evenly  gap-[45px]  p-2 rounded-lg max-xl:gap-4 w-full">
-          <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none max-xl:pr-[17px] max-xl:items-baseline">
+          <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none  max-xl:items-baseline">
             <div className="navlink_list flex items-center flex-col ">
               <NavLink to="/">
                 {({ isActive }) => (
                   (
                     <div className="flex flex-col items-center" >
-                      <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] " : "rounded-full bg-grey p-[11px]"}>
+                      <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] max-xl:p-[11px] " : "rounded-full bg-grey p-[11px]  "}>
                       {isActive ?  <Icon icon="material-symbols-light:home" height="22px" width="20px"  className={isActive ? "text-white " : "text-white h-5 w-5 "} />: <Icon icon="majesticons:home-line" className="text-white h-5 w-5" />}
                        
                       </div>
@@ -166,7 +166,7 @@ const MainNavigation = () => {
 
                     {
                       handleShowToggle &&
-                      <div class=" absolute  text-gray-700 pt-1 mt-5  flex items-center flex-col  right-[-125%]   max-xl:bottom-[43px] max-xl:flex-col-reverse max-xl:left-[-145%] z-10  " >
+                      <div class=" absolute  text-gray-700 pt-1 mt-5  flex items-center flex-col  right-[-125%]   max-xl:bottom-[43px] max-xl:flex-col-reverse max-xl:left-[-130%] z-10  " >
                         <div class="triangle triangle-4"></div>
 
 
@@ -577,8 +577,8 @@ const MainNavigation = () => {
                 {({ isActive }) => (
                   (
                     <div className="flex flex-col items-center" >
-                      <div className={isActive ? "rounded-full bg-grey p-[14px]  " : "rounded-full bg-grey p-[9.5px]"}>
-{isActive ?  <Icon icon="ant-design:message-filled" className="text-white h-[32px] w-[32px]"   />: <Icon icon="ant-design:message-outlined" className="text-white h-[21px] w-[21px]" />}
+                      <div className={isActive ? "rounded-full bg-grey p-[14px]  max-xl:p-[9.5px] " : "rounded-full bg-grey p-[9.5px]"}>
+{isActive ?  <Icon icon="ant-design:message-filled" className="text-white h-[32px] w-[32px]      max-xl:h-[21px] max-xl:w-[21px] "   />: <Icon icon="ant-design:message-outlined" className="text-white h-[21px] w-[21px]" />}
                         
                       </div>
                       <span className={isActive ? "text-white text-base max-xl:hidden mt-1" : "text-white text-sm max-xl:hidden mt-1"}>Messages</span>
