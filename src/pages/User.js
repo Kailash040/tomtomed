@@ -21,7 +21,10 @@ const Profile = () => {
   const [showMedia, setShowMedia] = useState(false);
   const [showFollower, setShowFollowers] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
+
   //
+  
   const handleShowPost = () => {
     setShowPost(true);
     setShowArticle(false);
@@ -60,6 +63,19 @@ const Profile = () => {
   const handleformSubmit = (e) => {
     e.preventDefault()
   }
+  // Function to handle date change
+  const handleDateChange = (event) => {
+    const selectedDate = event.target.value;
+    
+    // Check if the selected date is after today
+    const currentDate = new Date().toISOString().split('T')[0]; // Today's date
+    if (selectedDate <= currentDate) {
+      setSelectedDate(selectedDate);
+    } else {
+      alert('Please select a date on or before today.');
+      // You can also set an error state or display an error message instead of an alert
+    }
+  };
   return (
     <div className="profile_container mt-10 pl-[60px] pr-[60px] font-roboto flex gap-[50px]  max-xl:gap-0 max-xl:justify-center   max-xl:pr-0 max-xl:pl-0">
       {/*  */}
@@ -175,7 +191,9 @@ const Profile = () => {
                             <div className="img"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px] " /></div>
                             <div className="dob  mt-8  bg-[#3D3E3D] w-[190px]  rounded-lg	">
                               <div className="dob text-sm text-[#8F8F8F]  pl-3  pt-2">Date of Birth</div>
-                              <div className="dob text-base  text-[#F5F5F5]  pl-3 mt-[9px] mb-3 "> <input type="date" className="bg-[#3D3E3D]" /> </div>
+                              <div className="dob text-base  text-[#F5F5F5]  pl-3 mt-[9px] mb-3 "> <input type="date" className="bg-[#3D3E3D]"  value={selectedDate} 
+        onChange={handleDateChange} 
+        max={new Date().toISOString().split('T')[0]} /> </div>
                             </div>
                             <div className="dob  mt-3 bg-[#3D3E3D] w-[190px]  rounded-lg	">
                               {/*  */}
@@ -254,6 +272,7 @@ const Profile = () => {
         <div className="container_user flex  justify-between  gap-[80px] mt-6 max-xl:mt-[8px] ">
           <div className="user_data ">
             <div className="user_post_follower_link flex gap-[60px]  w-[587px]  max-xl:gap-5 justify-between max-xl:w-[500px] max-sm:w-[350px] border-b-[#171717] border-b-4  pb-3 max-xl:pb-2 max-xl:border-b-2 ">
+              
               <div className="user_item items-center flex flex-col">
                 <button onClick={handleShowPost} className="flex flex-col gap-[14px] items-center" >
                   <p className="text-base text-white">Posts</p>

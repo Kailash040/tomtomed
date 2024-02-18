@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect ,useCallback } from "react";
+import Cropper from "react-easy-crop";
 import { NavLink } from "react-router-dom";
-
 import Ads from "../assets/postassets/Ads.png";
 import userimage from "../assets/postassets/userImage.webp"
 import crop from '../assets/navDropDown/humbleicons_crop.png'
@@ -15,8 +15,9 @@ import thought from '../assets/Vector (4).png'
 import { Icon } from '@iconify/react';
 
 const MainNavigation = () => {
-  // const [isActive, setIsActive] = useState(false);
-  // const changeActive = ({ isActive }) => setIsActive(isActive);
+  // 
+  
+  // 
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
   const [showArticlePage, setArticlePage] = useState(false)
@@ -254,7 +255,7 @@ const MainNavigation = () => {
                   </div>
                   {
                     base64Image ?
-                      <div className="right_section w-[470px]   h-[554px] p-6">
+                      <div className="right_section w-[470px]   h-[554px] ">
 
 
                         {
@@ -285,7 +286,7 @@ const MainNavigation = () => {
                                     <div className="img_container p-10 bg-[#000000]">
                                       <img src={rectangle1} alt="" />
                                     </div>
-                                    <p className="text-[#F5F5F5] text-sm">Original</p>
+                                    <p className="text-[#F5F5F5] text-sm ">Original</p>
                                   </div>
                                   <div className="item flex items-center flex-col">
                                     <div className="img_container px-10 py-[35px] bg-[#000000]">
@@ -382,11 +383,11 @@ const MainNavigation = () => {
 
                               </div>
 
-                            </div> : <div className="filer_container flex flex-col items-center bg-[#1B1C1B]">
+                            </div> : <div className="filer_container flex flex-col items-center bg-[#1B1C1B] pb-7 pt-4 rounded-xl	">
                               <div className="filter_para mb-[18px]">
                                 <p className="text-lg text-white ">Filters</p>
                               </div>
-                              <div className="filter_photo flex flex-wrap gap-6 ">
+                              <div className="filter_photo flex flex-wrap gap-6 justify-center ">
                                 <button onClick={() => setFilter('')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
@@ -396,7 +397,7 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  Original
+                                  <p className="mt-[10px]"> Original</p>
                                 </button>
                                 <button onClick={() => setFilter('lark')} className="text-[#8F8F8F] text-sm ">
 
@@ -407,7 +408,7 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  lark
+                                  <p className="mt-[10px]"> lark</p>
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
@@ -418,7 +419,9 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  Juno
+                                  <p className="mt-[10px]"> Juno</p>
+
+                                  
                                 </button>
 
                                 <button onClick={() => setFilter('slumber')} className="text-[#8F8F8F] text-sm ">
@@ -430,7 +433,9 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  slumber
+                                  <p className="mt-[10px]"> slumber</p>
+                                  
+                                  
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
@@ -441,7 +446,7 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  Juno
+                                   <p className="mt-[10px]"> Juno</p>
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
@@ -452,7 +457,9 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  Original
+                                   <p className="mt-[10px]"> Original</p>
+
+                                  
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
@@ -463,7 +470,9 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  Juno
+                                   <p className="mt-[10px]"> Juno</p>
+
+                                  
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
@@ -474,7 +483,9 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  Juno
+                                   <p className="mt-[10px]"> Juno</p>
+
+                                  
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
@@ -485,7 +496,7 @@ const MainNavigation = () => {
                                     id="files"
 
                                   />
-                                  Juno
+                                  <p className="mt-[10px]"> Juno</p>
                                 </button>
                               </div>
 
