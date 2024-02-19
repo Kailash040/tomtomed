@@ -170,7 +170,7 @@ const Profile = () => {
             <div className="edit_share_and_more list-none flex  gap-6   ">
               <li>
                 <button className="" onClick={() => document.getElementById('my_modal_1').showModal()}><Icon icon="akar-icons:edit" className="w-6 h-6 text-white" /></button>
-                <dialog id="my_modal_1" className="modal font-roboto   ">
+                <dialog id="my_modal_1" className="modal font-roboto  overflow-auto  ">
                   <form onSubmit={handleformSubmit} className="max-sm:w-[100%] max-sm:h-full" >
                     <div className="w-[1000px] max-lg:w-[700px] max-md:w-[500px] max-sm:w-full " >
                       <div className="form_upercase flex justify-between bg-[#161414]  max-sm:bg-[black] items-center py-[14px] max-lg:py-1 rounded-xl	 max-sm:py-2 ">
