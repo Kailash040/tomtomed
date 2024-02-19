@@ -212,7 +212,7 @@ const Profile = () => {
                               </label>
                               <input class="  block w-full bg-[#3D3E3D]    rounded    text-base text-white  pl-3 mt-[9px] mb-3 max-sm:my-1 max-sm:pl-1 " id="Phone" type="text" placeholder="Phone" />
                             </div>
-                            <button className="hidden max-sm:block text-white py-[15px] mt-3 signUp w-full rounded-xl	" >Save Changes</button>
+                            <button className="hidden max-sm:block text-white py-[15px] mt-5 signUp w-full rounded-xl	" >Save Changes</button>
                           </div>
                         </div>
                         <div className="right_section max-sm:pt-1  max-sm:order-1 max-sm:pb-2  border-b-2 border-[#1D1D1D] ">
