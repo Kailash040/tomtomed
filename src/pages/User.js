@@ -186,7 +186,7 @@ const Profile = () => {
                       </div>
 
                       <div className=" profile_edit_section  bg-[#202020] pt-[35px] flex gap-[45px]  max-sm:gap-0 pb-[35px] max-lg:pt-[10px] max-sm:flex-col max-sm:items-center  max-sm:bg-black">
-                          <div className="img hidden max-sm:block"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px] " /></div>
+                        <div className="img hidden max-sm:block"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px] " /></div>
                         <div className="left_section pl-[25px] max-sm:pl-0 max-sm:pb-6 max-sm:order-2  max-sm:pt-6  ">
 
                           <div className="profile_details flex flex-col items-center">
@@ -260,7 +260,7 @@ const Profile = () => {
                           </div>
                         </div>
 
-                     
+
                       </div>
                     </div>
                   </form>
@@ -388,9 +388,9 @@ const Profile = () => {
                         <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                       </div>
                     </div>
-                  <p className="text-[#8F8F8F]  mt-[13px] ">
-                    29 mins ago
-                  </p>
+                    <p className="text-[#8F8F8F]  mt-[13px] ">
+                      29 mins ago
+                    </p>
                   </div>
                   <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 border-t-2 border-[#252525] ">
                     <div className="post_name_userName_pic flex justify-between">
@@ -458,9 +458,9 @@ const Profile = () => {
                         <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                       </div>
                     </div>
-                  <p className="text-[#8F8F8F]  mt-[13px] pb-5">
-                    29 mins ago
-                  </p>
+                    <p className="text-[#8F8F8F]  mt-[13px] pb-5">
+                      29 mins ago
+                    </p>
                   </div>
                 </div>
               )}
