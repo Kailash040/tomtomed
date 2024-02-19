@@ -24,7 +24,7 @@ const Profile = () => {
   const [selectedDate, setSelectedDate] = useState('');
 
   //
-  
+
   const handleShowPost = () => {
     setShowPost(true);
     setShowArticle(false);
@@ -66,7 +66,7 @@ const Profile = () => {
   // Function to handle date change
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
-    
+
     // Check if the selected date is after today
     const currentDate = new Date().toISOString().split('T')[0]; // Today's date
     if (selectedDate <= currentDate) {
@@ -83,11 +83,11 @@ const Profile = () => {
       {/*  */}
       <div className="left_section w-1/5 max-xl:hidden">
         <div className="Premium_buutton mb-9 w-[220px] ">
-        <div class="rounded-xl	 bg-gradient-to-r from-[#4879FA]  to-[#7D4CFF] p-[1px]">
-    <div class="flex   items-center justify-center bg-[#202020] rounded-xl h-[60px] ">
-      <button class="text-base  	 text-[#B68FE7]">Premium</button>
-    </div>
-  </div>
+          <div class="rounded-xl	 bg-gradient-to-r from-[#4879FA]  to-[#7D4CFF] p-[1px]">
+            <div class="flex   items-center justify-center bg-[#202020] rounded-xl h-[60px] ">
+              <button class="text-base  	 text-[#B68FE7]">Premium</button>
+            </div>
+          </div>
         </div>
         <div>
           <div className="w-[220px]">
@@ -171,81 +171,96 @@ const Profile = () => {
               <li>
                 <button className="" onClick={() => document.getElementById('my_modal_1').showModal()}><Icon icon="akar-icons:edit" className="w-6 h-6 text-white" /></button>
                 <dialog id="my_modal_1" className="modal font-roboto   ">
-                  <form onSubmit={handleformSubmit} >
-                    <div className="w-[1000px] max-lg:w-[500px]" >
-                      <div className="form_upercase flex justify-between bg-[#161414] items-center py-[14px] rounded-xl	 ">
+                  <form onSubmit={handleformSubmit} className="max-sm:w-[100%] max-sm:h-full" >
+                    <div className="w-[1000px] max-lg:w-[700px] max-md:w-[500px] max-sm:w-full " >
+                      <div className="form_upercase flex justify-between bg-[#161414]  max-sm:bg-[black] items-center py-[14px] max-lg:py-1 rounded-xl	 max-sm:py-7 ">
 
                         <form className="dialog flex">
-                          <div className=" flex gap-6  pl-[25px] pr-3 ">
+                          <div className=" flex gap-6  pl-[25px] pr-3  items-center">
 
-                            <button className=" bg-[#202020] border rounded-full  p-2 "><Icon icon="eva:arrow-back-fill" className="w-4 h-[14px] text-white" /></button>
-                            <p className="text-xl	 text-white ">Edit Profile</p>
+                            <button className=" bg-[#202020] border rounded-full  p-2 max-lg:p-1 "><Icon icon="eva:arrow-back-fill" className="w-4 h-[14px] text-white" /></button>
+                            <p className="text-xl	 text-white  max-lg:text-base">Edit Profile</p>
                           </div>
                         </form>
-                        <button className="signUp px-[110px] py-[18px] text-lg text-white rounded-xl mr-3 	" type="submit" >Save Changes</button>
+                        <button className="signUp px-[110px] py-[18px] text-lg text-white rounded-xl mr-3  max-lg:text-base max-lg:py-[10px]	 max-lg:px-[55px]  max-sm:hidden" type="submit" >Save Changes</button>
                       </div>
 
-                      <div className=" profile_edit_section  bg-[#202020] pt-[35px] flex gap-[45px] pb-[35px] ">
-                        <div className="left_section pl-[25px]">
+                      <div className=" profile_edit_section  bg-[#202020] pt-[35px] flex gap-[45px]  max-sm:gap-0 pb-[35px] max-lg:pt-[10px] max-sm:flex-col max-sm:items-center  max-sm:bg-black">
+                          <div className="img hidden max-sm:block"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px] " /></div>
+                        <div className="left_section pl-[25px] max-sm:pl-0 max-sm:pb-6 max-sm:order-2  max-sm:pt-6  ">
+
                           <div className="profile_details flex flex-col items-center">
-                            <div className="img"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px] " /></div>
-                            <div className="dob  mt-8  bg-[#3D3E3D] w-[190px]  rounded-lg	">
-                              <div className="dob text-sm text-[#8F8F8F]  pl-3  pt-2">Date of Birth</div>
-                              <div className="dob text-base  text-[#F5F5F5]  pl-3 mt-[9px] mb-3 "> <input type="date" className="bg-[#3D3E3D]"  value={selectedDate} 
-        onChange={handleDateChange} 
-        max={new Date().toISOString().split('T')[0]} /> </div>
+                            <div className="img"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px] max-sm:hidden " /></div>
+                            <div className="dob  mt-8  bg-[#3D3E3D] w-[190px]  max-sm:w-[320px]  px-3 rounded-lg	 max-lg:mt-[10px]">
+                              <div className="dob text-sm text-[#8F8F8F]  pl-3  max-sm:pl-1  max-sm:pt-1  pt-2">Date of Birth</div>
+                              <div className="dob text-base  text-[#F5F5F5]  pl-3 mt-[9px] mb-3 max-sm:my-1 max-sm:pl-1 "> <input type="date" className="bg-[#3D3E3D]" value={selectedDate}
+                                onChange={handleDateChange}
+                                max={new Date().toISOString().split('T')[0]} /> </div>
                             </div>
-                            <div className="dob  mt-3 bg-[#3D3E3D] w-[190px]  rounded-lg	">
+                            <div className="dob  mt-3 bg-[#3D3E3D] w-[190px]  max-sm:w-[320px]  px-3 rounded-lg	 max-lg:mt-[10px]	">
                               {/*  */}
-                              <label class="dob text-sm text-[#8F8F8F]  pl-3  pt-2 " for="Email">
+                              <label class="dob text-sm text-[#8F8F8F] pl-3  max-sm:pl-1  max-sm:pt-1  pt-2" for="Email">
                                 Email
                               </label>
-                              <input class="  block w-full bg-[#3D3E3D]    rounded    text-base text-white  pl-3 mt-[9px] mb-3" id="Email" type="text" placeholder="Email" />
+                              <input class="  block w-full bg-[#3D3E3D]    rounded    text-base text-white  pl-3 mt-[9px] mb-3 max-sm:my-1 max-sm:pl-1 " id="Email" type="text" placeholder="Email" />
                               {/*  */}
 
                             </div>
-                            <div className="dob  mt-3  bg-[#3D3E3D] w-[190px]  rounded-lg	">
-                              <label class="dob text-sm text-[#8F8F8F]  pl-3  pt-2 " for="Phone">
+                            <div className="dob  mt-3  bg-[#3D3E3D] w-[190px]  max-sm:w-[320px]  px-3 rounded-lg	 max-lg:mt-[10px]">
+                              <label class="dob text-sm text-[#8F8F8F] pl-3  max-sm:pl-1  max-sm:pt-1  pt-2 " for="Phone">
                                 Phone
                               </label>
-                              <input class="  block w-full bg-[#3D3E3D]    rounded    text-base text-white  pl-3 mt-[9px] mb-3" id="Phone" type="text" placeholder="Phone" />
+                              <input class="  block w-full bg-[#3D3E3D]    rounded    text-base text-white  pl-3 mt-[9px] mb-3 max-sm:my-1 max-sm:pl-1 " id="Phone" type="text" placeholder="Phone" />
                             </div>
-
+                            <button className="hidden max-sm:block text-white py-[15px] mt-5 signUp w-full rounded-xl	" >Save Changes</button>
                           </div>
                         </div>
-                        <div className="right_section">
-                          <div class="w-[584px]  max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg	 ">
+                        <div className="right_section max-sm:pt-6   max-sm:order-1 max-sm:pb-6  border-b-2 border-[#1D1D1D] ">
+                          <div class="w-[584px] max-sm:w-[320px]  max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 max-sm:py-1 max-sm:px-3 rounded-lg	 ">
                             <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="Name">
                               Name
                             </label>
-                            <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="Name" />
+                            <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white  max-sm:mt-1" id="Name" type="text" placeholder="Name" />
                           </div>
-                          <div class="w-[584px]  max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg	 mt-3 ">
+                          <div class="w-[584px] max-sm:w-[320px] max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg max-sm:py-1	 max-sm:px-3 mt-3   max-lg:mt-1 ">
                             <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="username">
                               Username
                             </label>
-                            <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="username" />
+                            <input class="  block w-full bg-[#1B1C1B]  max-sm:mt-1  rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="username" />
                           </div>
-                          <div class="w-[584px] max-lg:w-[190px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 mt-3 ">
-                            <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="profession">
-                              Profession
-                            </label>
-                            <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="Profession" />
+                          <div class="w-[584px] max-sm:w-[320px] max-lg:w-[190px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 max-sm:px-3 max-sm:py-1 mt-3  max-lg:mt-1 relative flex   items-center">
+                            <div className="input_section">
+
+                              <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="profession">
+                                Profession
+                              </label>
+                              <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2  max-sm:mt-1 text-base text-white " id="Name" type="text" placeholder="Profession" />
+                            </div>
+
+
+                            <button className="text-[#B39DCF] absolute right-3"> Show</button>
+
                           </div>
-                          <div class="w-[584px]  max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg	 mt-3 ">
+                          <div class="w-[584px] max-sm:w-[320px] max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg	 max-sm:px-3 max-sm:py-1 mt-3 max-lg:mt-1 ">
                             <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="Bio">
                               Bio
                             </label>
-                            <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="Bio" type="text" placeholder="Bio" />
+                            <input class="  block w-full bg-[#1B1C1B]   max-sm:mt-1  rounded   mt-2 text-base text-white " id="Bio" type="text" placeholder="Bio" />
                           </div>
-                          <div class="w-[584px]  max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg	 mt-3 ">
-                            <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="city">
-                              Bio
-                            </label>
-                            <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white " id="city" type="text" placeholder="City" />
+                          <div class="w-[584px] max-sm:w-[320px] max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg max-sm:px-3	max-sm:py-1 mt-3 relative flex  max-lg:mt-1 items-center ">
+                            <div className="input_section">
+
+                              <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="city">
+                                City
+                              </label>
+                              <input class="  block w-full bg-[#1B1C1B]  max-sm:mt-1  rounded   mt-2 text-base text-white " id="city" type="text" placeholder="City" />
+                            </div>
+                            <button className="text-[#B39DCF] absolute right-3"> Hide</button>
+
                           </div>
                         </div>
 
+                     
                       </div>
                     </div>
                   </form>
@@ -272,7 +287,7 @@ const Profile = () => {
         <div className="container_user flex  justify-between  gap-[80px] mt-6 max-xl:mt-[8px] ">
           <div className="user_data ">
             <div className="user_post_follower_link flex gap-[60px]  w-[587px]  max-xl:gap-5 justify-between max-xl:w-[500px] max-sm:w-[350px] border-b-[#171717] border-b-4  pb-3 max-xl:pb-2 max-xl:border-b-2 ">
-              
+
               <div className="user_item items-center flex flex-col">
                 <button onClick={handleShowPost} className="flex flex-col gap-[14px] items-center" >
                   <p className="text-base text-white">Posts</p>
@@ -352,7 +367,7 @@ const Profile = () => {
                     <div className="post_status flex  justify-between  mt-4">
                       <div className="post_status flex gap-4">
                         <div className="like_status  flex flex-col  items-center gap-3 ">
-                        <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                          <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
                           {/* <Icon icon="mdi:heart-outline"  /> */}
                           <p className="text-[#B39DCF] text-sm">124</p>
                         </div>
@@ -373,10 +388,80 @@ const Profile = () => {
                         <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                       </div>
                     </div>
-                  </div>
-                  <p className="text-[#8F8F8F] pl-[50px] mt-[13px] pb-5">
+                  <p className="text-[#8F8F8F]  mt-[13px] ">
                     29 mins ago
                   </p>
+                  </div>
+                  <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 border-t-2 border-[#252525] ">
+                    <div className="post_name_userName_pic flex justify-between">
+                      <div className="name_username">
+                        <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1">
+                          {" "}
+                          Amy Roy{" "}
+                          <span>
+                            {" "}
+                            <img src={verifyTik} alt="photo" />{" "}
+                          </span>{" "}
+                        </p>
+                        <p className="text-[#8F8F8F] max-xl:text-sm">
+                          @amy_roy
+                        </p>
+                      </div>
+                      <div className="photo flex gap-6 items-center">
+                        <img
+                          src={userImage}
+                          alt="photo"
+                          className="w-11 h-11"
+                        />
+                        <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   " />
+
+                      </div>
+                    </div>
+                    <div className="post">
+                      <p className="description  text-[#FFFFFF] font-normal mt-2 mb-2 max-xl:text-sm">
+                        {" "}
+                        I wish I loved anything as much as my cat loves catnip
+                        :p
+                      </p>
+                      <p className="text-[#B39DCF] mb-2 max-xl:text-sm">
+                        #cats #lovecats #adorable{" "}
+                      </p>
+                    </div>
+                    <div className="main_image max-lg:flex max-xl:justify-center">
+                      <img
+                        src={postImage}
+                        alt="photo"
+                        className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                      />
+                    </div>
+                    <div className="post_status flex  justify-between  mt-4">
+                      <div className="post_status flex gap-4">
+                        <div className="like_status  flex flex-col  items-center gap-3 ">
+                          <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                          {/* <Icon icon="mdi:heart-outline"  /> */}
+                          <p className="text-[#B39DCF] text-sm">124</p>
+                        </div>
+                        <div className="like_status flex flex-col  items-center gap-3">
+                          <BiMessageAlt className="w-6 h-6 text-white	" />
+                          <p className="text-[#B39DCF] text-sm">14</p>
+                        </div>
+                        <div className="like_status flex flex-col  items-center gap-3">
+                          <Icon icon="fluent:share-24-regular" className="w-6 h-6 text-white	" />
+                          <p className="text-[#B39DCF] text-sm">4</p>
+                        </div>
+                        <div className="like_status flex flex-col  items-center gap-3">
+                          <Icon icon="fluent:eye-16-regular" className="w-6 h-6 text-white	" />
+                          <p className="text-[#B39DCF] text-sm">34</p>
+                        </div>
+                      </div>
+                      <div className="post_status flex flex-col  items-center gap-3">
+                        <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
+                      </div>
+                    </div>
+                  <p className="text-[#8F8F8F]  mt-[13px] pb-5">
+                    29 mins ago
+                  </p>
+                  </div>
                 </div>
               )}
             </div>
