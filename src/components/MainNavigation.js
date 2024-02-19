@@ -229,9 +229,10 @@ const MainNavigation = () => {
             </button>
 
             {
-              addPost && < div className="absolute right-0 left-[-16%] top-[24%]  pr-[60px]  max-xl:top-[-720%] max-xl:pr-0 ">
-                <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-0 max-xl:items-center ">
-                  <div className="left_section">
+              addPost && < div className="absolute right-0 left-[-16%] top-[24%]  pr-[60px]  max-xl:top-[-620%] max-xl:pr-0 max-xl:right-0 max-xl:left-0 ">
+                <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-7 max-xl:items-center max-xl:justify-center max-xl:mt-6  max-[820px]:gap-1">
+                  <div className="left_section w-[520px] h-[552px] max-xl:w-[400px]
+                          max-xl:h-[350px]">
 
 
 
@@ -241,8 +242,7 @@ const MainNavigation = () => {
                     {base64Image ? (
                       <img
 
-                        className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} w-[520px] h-[552px] rounded-xl filter  max-xl:w-[400px]
-                          max-xl:h-[350px] `}
+                        className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} rounded-xl filter  object-cover	   w-full h-full `}
                         id="files"
                         src={base64Image}
                         alt="Selected"
@@ -255,12 +255,12 @@ const MainNavigation = () => {
                   </div>
                   {
                     base64Image ?
-                      <div className="right_section w-[470px]   h-[554px] ">
+                      <div className="right_section w-[470px]   h-[554px] max-xl:w-[350px] ">
 
 
                         {
                           showEditOption ?
-                            <div className="filter_option flex flex-col items-center bg-[#1B1C1B] h-[554px] ">
+                            <div className="filter_option flex flex-col items-center bg-[#1B1C1B] h-[554px] rounded-xl	 border-2 border-[#8F8F8F] max-xl:h-[410px] ">
                               <div className="filter_para mb-[18px]  w-[98%]">
                                 <div className="para_container flex items-center justify-start gap-5 px-3">
 
@@ -268,9 +268,9 @@ const MainNavigation = () => {
                                   {showBrithnessPage ?
                                     <div>
 
-                                      <button onClick={handlePrevious}>  <img src={back} alt="" className="w-6 h-6  " /> </button>  </div> : showCropPage ? <div >
-
-                                        <button onClick={handlePreviousFirst}>  <img src={back} alt="" className="w-6 h-6  " /> </button>  </div> : ""}
+                                      <button onClick={handlePrevious}> <Icon icon="eva:arrow-back-fill" className="w-6 h-6 text-white  " /> </button>  </div> : showCropPage ? <div >
+                                     
+                                        <button onClick={handlePreviousFirst}>   <Icon icon="eva:arrow-back-fill" className="w-6 h-6 text-white  " /> </button>  </div> : ""}
 
                                   <div className="flex items-center justify-center grow gap-5">
                                     {showBrithnessPage ? <img src={brithness} alt="" className="w-7 h-7 p" /> : showCropPage ? <img src={crop} alt="" className="w-7 h-7 p" /> : savePost === true ? "" : ""}
@@ -281,21 +281,21 @@ const MainNavigation = () => {
                                   <div className="flex items-center px-3">
                                     <input type="range" name="brithness" min="0" max="200" onChange={handleChangeBrightness} value={brightness} class="w-full h-2 bg-blue-100 appearance-none" />
                                   </div>
-                                </> : showCropPage ? <div className="flex gap-10 ">
+                                </> : showCropPage ? <div className="flex gap-10 justify-center ">
                                   <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
+                                    <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                       <img src={rectangle1} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm ">Original</p>
                                   </div>
                                   <div className="item flex items-center flex-col">
-                                    <div className="img_container px-10 py-[35px] bg-[#000000]">
+                                    <div className="img_container px-10 py-[35px] bg-[#000000] max-xl:p-4">
                                       <img src={rectangle2} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">4:5</p>
                                   </div>
                                   <div className="item flex items-center flex-col">
-                                    <div className="img_container px-10 py-[44px] bg-[#000000]">
+                                    <div className="img_container px-10 py-[44px] bg-[#000000] max-xl:p-7  ">
                                       <img src={rectangle3} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">16:9</p>
@@ -316,11 +316,11 @@ const MainNavigation = () => {
                                   <div className="input_section mt-4">
                                     <textarea type="text" className=" bg-[#000000] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." />
                                   </div>
-                                </div> : <div className="crop_brithness_container flex flex-wrap gap-6 ">
+                                </div> : <div className="crop_brithness_container flex flex-wrap gap-6  justify-center">
                                   <button onClick={handleShowCropPage}>
 
                                     <div className="item flex items-center flex-col">
-                                      <div className="img_container p-10 bg-[#000000]">
+                                      <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                         <img src={crop} alt="" />
                                       </div>
                                       <p className="text-[#F5F5F5] text-sm">Crop</p>
@@ -328,7 +328,7 @@ const MainNavigation = () => {
                                   </button>
                                   <button onClick={handleBrithnessPage}>
                                     <div className="item flex items-center flex-col">
-                                      <div className="img_container p-10 bg-[#000000]">
+                                      <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                         <img src={brithness} alt="" className="w-10 h-10" />
                                       </div>
                                       <p className="text-[#F5F5F5] text-sm">Brightness</p>
@@ -337,44 +337,44 @@ const MainNavigation = () => {
                                   <button >
 
                                     <div className="item flex items-center flex-col">
-                                      <div className="img_container p-10 bg-[#000000]">
+                                      <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                         <img src={crop} alt="" />
                                       </div>
                                       <p className="text-[#F5F5F5] text-sm">Crop</p>
                                     </div>
                                   </button>
                                   <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
+                                    <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                       <img src={crop} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
                                   <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
+                                    <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                       <img src={crop} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
                                   <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
+                                    <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                       <img src={crop} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
                                   <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
+                                    <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                       <img src={crop} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
-                                  <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
+                                  <div className="item flex items-center flex-col ">
+                                    <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                       <img src={crop} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
                                   </div>
-                                  <div className="item flex items-center flex-col">
-                                    <div className="img_container p-10 bg-[#000000]">
+                                  <div className="item flex items-center flex-col ">
+                                    <div className="img_container p-10 bg-[#000000] max-xl:p-5">
                                       <img src={crop} alt="" />
                                     </div>
                                     <p className="text-[#F5F5F5] text-sm">Crop</p>
@@ -383,43 +383,43 @@ const MainNavigation = () => {
 
                               </div>
 
-                            </div> : <div className="filer_container flex flex-col items-center bg-[#1B1C1B] pb-7 pt-4 rounded-xl	">
-                              <div className="filter_para mb-[18px]">
+                            </div> : <div className="filer_container flex flex-col items-center bg-[#1B1C1B] pb-7 pt-4 rounded-xl  border-2 border-[#8F8F8F] max-xl:pt-2 max-xl:pb-2	">
+                              <div className="filter_para mb-[18px] max-xl:mb-2">
                                 <p className="text-lg text-white ">Filters</p>
                               </div>
-                              <div className="filter_photo flex flex-wrap gap-6 justify-center ">
+                              <div className="filter_photo flex flex-wrap gap-4 justify-center ">
                                 <button onClick={() => setFilter('')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                  <p className="mt-[10px]"> Original</p>
+                                  <p className="mt-[10px] max-xl:mt-1"> Original</p>
                                 </button>
                                 <button onClick={() => setFilter('lark')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                  <p className="mt-[10px]"> lark</p>
+                                  <p className="mt-[10px] max-xl:mt-1"> lark</p>
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                  <p className="mt-[10px]"> Juno</p>
+                                  <p className="mt-[10px] max-xl:mt-1"> Juno</p>
 
                                   
                                 </button>
@@ -427,76 +427,76 @@ const MainNavigation = () => {
                                 <button onClick={() => setFilter('slumber')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                  <p className="mt-[10px]"> slumber</p>
+                                  <p className="mt-[10px] max-xl:mt-1"> slumber</p>
                                   
                                   
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                   <p className="mt-[10px]"> Juno</p>
+                                   <p className="mt-[10px] max-xl:mt-1"> Juno</p>
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                   <p className="mt-[10px]"> Original</p>
+                                   <p className="mt-[10px] max-xl:mt-1"> Original</p>
 
                                   
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                   <p className="mt-[10px]"> Juno</p>
+                                   <p className="mt-[10px] max-xl:mt-1"> Juno</p>
 
                                   
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                   <p className="mt-[10px]"> Juno</p>
+                                   <p className="mt-[10px]  max-xl:mt-1"> Juno</p>
 
                                   
                                 </button>
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
 
                                   />
-                                  <p className="mt-[10px]"> Juno</p>
+                                  <p className="mt-[10px] max-xl:mt-1"> Juno</p>
                                 </button>
                               </div>
 
@@ -504,7 +504,7 @@ const MainNavigation = () => {
                         }
                         {
                           showBrithnessPage === true ?
-                            <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " >Save changes</button> : showEditOption === true ? <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={handleSavePost} >Post</button> : <button className="signUp  text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={showEditOptionMenu} >Next</button>
+                            <button className="signUp   text-lg text-white w-full h-[60px] rounded-xl mt-4  max-xl:h-[40px] max-xl:text-base max-xl:mt-2 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full max-xl:h-[40px] max-xl:text-base max-xl:mt-2 h-[60px] rounded-xl mt-4  " >Save changes</button> : showEditOption === true ? <button className="signUp max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={handleSavePost} >Post</button> : <button className="signUp  text-lg max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-white w-full h-[60px] rounded-xl mt-4  max-xl:mt-2" onClick={showEditOptionMenu} >Next</button>
                         }
                       </div> : ""
                   }
