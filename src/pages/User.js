@@ -173,7 +173,7 @@ const Profile = () => {
                 <dialog id="my_modal_1" className="modal font-roboto   ">
                   <form onSubmit={handleformSubmit} className="max-sm:w-[100%] max-sm:h-full" >
                     <div className="w-[1000px] max-lg:w-[700px] max-md:w-[500px] max-sm:w-full " >
-                      <div className="form_upercase flex justify-between bg-[#161414]  max-sm:bg-[black] items-center py-[14px] max-lg:py-1 rounded-xl	 max-sm:py-7 ">
+                      <div className="form_upercase flex justify-between bg-[#161414]  max-sm:bg-[black] items-center py-[14px] max-lg:py-1 rounded-xl	 max-sm:py-2 ">
 
                         <form className="dialog flex">
                           <div className=" flex gap-6  pl-[25px] pr-3  items-center">
@@ -215,7 +215,7 @@ const Profile = () => {
                             <button className="hidden max-sm:block text-white py-[15px] mt-5 signUp w-full rounded-xl	" >Save Changes</button>
                           </div>
                         </div>
-                        <div className="right_section max-sm:pt-6   max-sm:order-1 max-sm:pb-6  border-b-2 border-[#1D1D1D] ">
+                        <div className="right_section max-sm:pt-1  max-sm:order-1 max-sm:pb-6  border-b-2 border-[#1D1D1D] ">
                           <div class="w-[584px] max-sm:w-[320px]  max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 max-sm:py-1 max-sm:px-3 rounded-lg	 ">
                             <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="Name">
                               Name
