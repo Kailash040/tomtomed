@@ -170,7 +170,7 @@ const MainNavigation = () => {
                     {
                       handleShowToggle &&
 
-                      <div class=" absolute z-20  text-gray-700 pt-1 mt-5  flex items-center flex-col  right-[-125%]   max-xl:bottom-[43px] max-xl:flex-col-reverse max-xl:left-[-130%] z-10  " >
+                      <div class=" absolute z-20  text-gray-700 pt-1 mt-5  flex items-center flex-col  right-[-125%]   max-xl:bottom-[43px] max-xl:flex-col-reverse max-xl:left-[-130%]   " >
                         <div class="triangle triangle-4"></div>
 
 
