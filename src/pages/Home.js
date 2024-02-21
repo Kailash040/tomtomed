@@ -6,6 +6,9 @@ import { BiMessageAlt } from "react-icons/bi";
 import { Icon } from '@iconify/react';
 import story from '../assets/story.png'
 import story1 from '../assets/story1.png'
+import imagesave from '../assets/Rectangle 599.png'
+import suggestionImage from '../assets/Rectangle 600.png'
+import group from '../assets/Rectangle 599 (1).png'
 const Home = () => {
   return (
     <>
@@ -46,6 +49,81 @@ const Home = () => {
                 </p>
               </div>
             </div>
+            <div className="w-[220px] mt-10" >
+             
+              <div className="news_section flex justify-between items-center">
+                <p className="text-xl text-white font-semibold">Saved Posts</p>
+                <button className="text-[#B68FE7] text-base	 font-medium">
+                  See All
+                </button>
+              </div>
+             <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3">
+              <div className="img_name flex items-center gap-3 ">
+<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+  <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
+  <p className="text-[#8F8F8F] text-base " >Photo</p>
+</div>
+              </div>
+              <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
+             </div>
+             <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3">
+              <div className="img_name flex items-center gap-3 ">
+<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+  <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
+  <p className="text-[#8F8F8F] text-base " >Photo</p>
+</div>
+              </div>
+              <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
+             </div>
+             <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3">
+              <div className="img_name flex items-center gap-3 ">
+<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+  <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
+  <p className="text-[#8F8F8F] text-base " >Photo</p>
+</div>
+              </div>
+              <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
+             </div>
+            </div>
+            <div className="w-[220px] mt-10" >
+             
+             <div className="news_section flex justify-between items-center">
+               <p className="text-xl text-white font-semibold">Groups</p>
+               <button className="text-[#B68FE7] text-base	 font-medium">
+                 See All
+               </button>
+             </div>
+            <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
+             <div className="img_name flex items-center gap-3  ">
+<div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+ <p className="text-[#F5F5F5] font-normal	" >School friendss</p>
+</div>
+             </div>
+             <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
+            </div>
+            <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
+             <div className="img_name flex items-center gap-3  ">
+<div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+ <p className="text-[#F5F5F5] font-normal	" >School friendss</p>
+</div>
+             </div>
+             <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
+            </div>
+            <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
+             <div className="img_name flex items-center gap-3  ">
+<div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+ <p className="text-[#F5F5F5] font-normal	" >School friendss</p>
+</div>
+             </div>
+             <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
+            </div>
+           </div>
           </div>
           <div className="post_container ">
 
@@ -302,6 +380,45 @@ const Home = () => {
                 </div>
               </div>
             </div>
+            <div className=" w-[320px] mt-10" >
+             
+             <div className="news_section flex justify-between items-center">
+               <p className="text-xl text-white font-semibold">Suggestions</p>
+               <button className="text-[#B68FE7] text-base	 font-medium">
+                 See All
+               </button>
+             </div>
+            <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+             <div className="img_name flex items-center gap-3 ">
+<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+ <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+ <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
+</div>
+             </div>
+             <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+            </div>
+            <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+             <div className="img_name flex items-center gap-3 ">
+<div className="img w-[76px] h-[84px]"> <img src={suggestionImage} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+ <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+ <p className="text-[#8F8F8F] text-base " >@Emilyy__</p>
+</div>
+             </div>
+             <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+            </div>
+            <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+             <div className="img_name flex items-center gap-3 ">
+<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+<div className="name_photo">
+ <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+ <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
+</div>
+             </div>
+             <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+            </div>
+           </div>
           </div>
         </div>
       </div>
