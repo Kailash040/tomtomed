@@ -77,7 +77,7 @@ const Profile = () => {
     }
   };
   return (
-    <div className="profile_container mt-10 pl-[60px] pr-[60px] font-roboto flex gap-[50px]  max-xl:gap-0 max-xl:justify-center   max-xl:pr-0 max-xl:pl-0">
+    <div className="profile_container mt-10 pl-[60px] pr-[60px] font-roboto flex gap-[50px]  max-xl:gap-0 max-xl:justify-center   max-xl:pr-0 max-xl:pl-0 3xl:w-[1400px]">
       {/*  */}
 
       {/*  */}
@@ -122,7 +122,8 @@ const Profile = () => {
                 <p className="text-[#85C6E1] text-2xl">1.2k</p>
               </div>
               <div className="like_Ctonainer">
-                <Icon icon="fluent:eye-16-regular" className="w-10 h-10 text-[#303030]	" />
+                
+                <Icon icon="grommet-icons:view" className="w-10 h-10 text-[#303030]	" />
 
               </div>
             </div>
@@ -132,7 +133,7 @@ const Profile = () => {
                 <p className="text-[#85C6E1] text-2xl">1.2k</p>
               </div>
               <div className="like_Ctonainer">
-                <Icon icon="fluent:share-24-regular" className="w-10 h-10 text-[#303030]	" />
+                <Icon icon="fluent:share-ios-24-filled" className="w-10 h-10 text-[#303030]	" />
               </div>
             </div>
           </div>
@@ -142,11 +143,11 @@ const Profile = () => {
         <div className="user_bio border-b-[#171717] border-b-2 ">
           <div className="image_username flex   justify-between   ">
             <div className="flex gap-10 items-center ">
-              <div className="user_pic ">
+              <div className="user_pic w-[160px] h-[160px] max-xl:w-[100px] max-xl:h-[100px] ">
                 <img
-                  src={userimage}
+                  src={profileimage}
                   alt="user"
-                  className="w-[160px] h-[160px] rounded-full  max-xl:w-[100px] max-xl:h-[100px] "
+                  className=" rounded-full w-full h-full object-cover   "
                 />
               </div>
 
@@ -325,7 +326,7 @@ const Profile = () => {
                   <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 ">
                     <div className="post_name_userName_pic flex justify-between">
                       <div className="name_username">
-                        <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1">
+                        <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
                           {" "}
                           Amy Roy{" "}
                           <span>
@@ -365,25 +366,30 @@ const Profile = () => {
                       />
                     </div>
                     <div className="post_status flex  justify-between  mt-4">
-                      <div className="post_status flex gap-4">
-                        <div className="like_status  flex flex-col  items-center gap-3 ">
-                          <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
-                          {/* <Icon icon="mdi:heart-outline"  /> */}
-                          <p className="text-[#B39DCF] text-sm">124</p>
-                        </div>
-                        <div className="like_status flex flex-col  items-center gap-3">
-                          <BiMessageAlt className="w-6 h-6 text-white	" />
-                          <p className="text-[#B39DCF] text-sm">14</p>
-                        </div>
-                        <div className="like_status flex flex-col  items-center gap-3">
-                          <Icon icon="fluent:share-24-regular" className="w-6 h-6 text-white	" />
-                          <p className="text-[#B39DCF] text-sm">4</p>
-                        </div>
-                        <div className="like_status flex flex-col  items-center gap-3">
-                          <Icon icon="fluent:eye-16-regular" className="w-6 h-6 text-white	" />
-                          <p className="text-[#B39DCF] text-sm">34</p>
-                        </div>
-                      </div>
+                    <div className="post_status flex gap-4">
+                <div className="like_status flex  gap-1 items-center">
+                    <BiMessageAlt className="w-6 h-6 text-white	" />
+                    {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
+                    <p className="text-[#8F8F8F] text-sm font-medium">14</p>
+                  </div>
+                  <div className="like_status  flex  gap-1 items-center">
+                    {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                    <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                    <p className="text-[#8F8F8F] text-sm font-medium">124</p>
+                  </div>
+                 
+                  <div className="like_status flex gap-1 items-center">
+                    
+                    <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
+
+                    <p className="text-[#8F8F8F] text-sm font-medium">4</p>
+                  </div>
+                  <div className="like_status flex  gap-1 items-center">
+                  {/* <Icon icon="grommet-icons:view" /> */}
+                    <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
+                    <p className="text-[#8F8F8F] text-sm font-medium">34</p>
+                  </div>
+                </div>
                       <div className="post_status flex flex-col  items-center gap-3">
                         <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                       </div>
@@ -395,7 +401,7 @@ const Profile = () => {
                   <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 border-t-2 border-[#252525] ">
                     <div className="post_name_userName_pic flex justify-between">
                       <div className="name_username">
-                        <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1">
+                        <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
                           {" "}
                           Amy Roy{" "}
                           <span>
@@ -435,25 +441,29 @@ const Profile = () => {
                       />
                     </div>
                     <div className="post_status flex  justify-between  mt-4">
-                      <div className="post_status flex gap-4">
-                        <div className="like_status  flex flex-col  items-center gap-3 ">
-                          <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
-                          {/* <Icon icon="mdi:heart-outline"  /> */}
-                          <p className="text-[#B39DCF] text-sm">124</p>
-                        </div>
-                        <div className="like_status flex flex-col  items-center gap-3">
-                          <BiMessageAlt className="w-6 h-6 text-white	" />
-                          <p className="text-[#B39DCF] text-sm">14</p>
-                        </div>
-                        <div className="like_status flex flex-col  items-center gap-3">
-                          <Icon icon="fluent:share-24-regular" className="w-6 h-6 text-white	" />
-                          <p className="text-[#B39DCF] text-sm">4</p>
-                        </div>
-                        <div className="like_status flex flex-col  items-center gap-3">
-                          <Icon icon="fluent:eye-16-regular" className="w-6 h-6 text-white	" />
-                          <p className="text-[#B39DCF] text-sm">34</p>
-                        </div>
-                      </div>
+                    <div className="post_status flex gap-4">
+                <div className="like_status flex  gap-1 items-center">
+                    <BiMessageAlt className="w-6 h-6 text-white	" />
+                    {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
+                    <p className="text-[#8F8F8F] text-sm font-medium">14</p>
+                  </div>
+                  <div className="like_status  flex  gap-1 items-center">
+                    {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                    <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                    <p className="text-[#8F8F8F] text-sm font-medium">124</p>
+                  </div>
+                 
+                  <div className="like_status flex gap-1 items-center">
+                    <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
+
+                    <p className="text-[#8F8F8F] text-sm font-medium">4</p>
+                  </div>
+                  <div className="like_status flex  gap-1 items-center">
+                  {/* <Icon icon="grommet-icons:view" /> */}
+                    <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
+                    <p className="text-[#8F8F8F] text-sm font-medium">34</p>
+                  </div>
+                </div>
                       <div className="post_status flex flex-col  items-center gap-3">
                         <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                       </div>
