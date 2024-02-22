@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <>
 
-      <div class="  flex pl-[60px] pr-[60px]   font-roboto    max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
+      <div class="  flex pl-[60px] pr-[60px]   font-roboto min-[1440px]:justify-between  max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
         <div className="left_section flex   ">
           <div className="news_savePost_group_section 	max-xl:hidden">
             <div className="w-[220px]" >

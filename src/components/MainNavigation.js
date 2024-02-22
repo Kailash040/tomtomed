@@ -195,7 +195,7 @@ const MainNavigation = () => {
                             </div>
                           </button>
                           <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                            <Icon icon="lets-icons:video-fill" className="w-[30px] h-[30px]" />
+                            <Icon icon="lets-icons:video-fill" className="w-[22px] h-[22px]" />
 
                             <p className="max-xl:text-sm">Video</p>
                           </div>
@@ -214,11 +214,11 @@ const MainNavigation = () => {
                             </div>
                           </button>
                           <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                            <Icon icon="bxs:file-gif" className="w-[30px] h-[30px]" />
+                            <Icon icon="bxs:file-gif" className="w-[22px] h-[22px]" />
                             <p className="max-xl:text-sm">GIFs</p>
                           </div>
                           <div className="dropdown flex justify-center gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
-                            <Icon icon="fluent:live-20-filled" className="w-[30px] h-[30px]" />
+                            <Icon icon="fluent:live-20-filled" className="w-[22px] h-[22px]" />
                             <p className="max-xl:text-sm">Go Live</p>
                           </div>
 
@@ -678,7 +678,7 @@ const MainNavigation = () => {
                 }
                 {
                   showBrithnessPage === true ?
-                    <button className="signUp   text-lg text-white w-full h-[60px] rounded-xl mt-4  max-xl:h-[40px] max-xl:text-base max-xl:mt-2  max-sm:mb-4 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full max-xl:h-[40px] max-sm:mb-4 max-xl:text-base max-xl:mt-2 h-[60px] rounded-xl mt-4  " >Save changes</button> : showEditOption === true ? <button className="signUp max-xl:h-[40px] max-sm:mb-4 max-xl:text-base max-xl:mt-2 text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={handleSavePost} >Post</button> : <button className="signUp  max-sm:mb-4 text-lg max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-white w-full h-[60px] rounded-xl mt-4  " onClick={showEditOptionMenu} >Next</button>
+                    <button className="signUp   text-lg text-white w-full h-[60px] rounded-xl mt-4  max-xl:h-[40px] max-xl:text-base max-xl:mt-2  max-sm:mb-4 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full max-xl:h-[40px] max-xl:text-base max-xl:mt-2 h-[60px] rounded-xl mt-4  " >Save changes</button> : showEditOption === true ? <button className="signUp max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={handleSavePost} >Post</button> : <button className="signUp  text-lg max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-white w-full h-[60px] rounded-xl mt-4  " onClick={showEditOptionMenu} >Next</button>
                 }
               </div> : ""
           }
