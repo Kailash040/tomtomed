@@ -256,7 +256,70 @@ const Home = () => {
               </div>
               <p className="time text-sm text-[#8F8F8F] mt-3 max-lg:text-sm" >29 mins ago</p>
             </div>
+            <div className="post  pl-[50px] pr-[50px] max-xl:pl-0 max-xl:pr-0 border-x-2 border-[#171717] border-b-2 pb-5  pt-5">
+              <div className="post_name_userName_pic flex justify-between">
+                <div className="name_username">
+                  <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
+                    {" "}
+                    Amy Roy{" "}
+                    <span>
+                      {" "}
+                      <img src={verifyTik} alt="photo" />{" "}
+                    </span>{" "}
+                  </p>
+                  <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
+                </div>
+                <div className="photo flex items-center gap-6">
+                  <img src={userImage} alt="photo" className="w-[48px] h-[48px]" />
+                  <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white " />
+                </div>
+              </div>
+              <div className="post">
+                <p className="description  text-[#FFFFFF] font-normal mt-4 mb-4 max-xl:text-sm max-xl:mt-3 max-xl:mb-3">
+                  {" "}
+                  I wish I loved anything as much as my cat loves catnip :p
+                </p>
+                <p className="text-[#B39DCF] mb-3 max-xl:text-sm">
+                  #cats #lovecats #adorable{" "}
+                </p>
+              </div>
+              <div className="main_image">
+                <img
+                  src={postImage}
+                  alt="photo"
+                  className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                />
+              </div>
+              <div className="post_status flex  justify-between  mt-3">
+                <div className="post_status flex gap-4">
+                  <div className="like_status flex  gap-1 items-center">
+                    <BiMessageAlt className="w-6 h-6 text-white	" />
+                    {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
+                    <p className="text-[#8F8F8F] text-sm font-medium">14</p>
+                  </div>
+                  <div className="like_status  flex  gap-1 items-center">
+                    {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                    <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                    <p className="text-[#8F8F8F] text-sm font-medium">124</p>
+                  </div>
 
+                  <div className="like_status flex gap-1 items-center">
+                    <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
+
+                    <p className="text-[#8F8F8F] text-sm font-medium">4</p>
+                  </div>
+                  <div className="like_status flex  gap-1 items-center">
+                    {/* <Icon icon="grommet-icons:view" /> */}
+                    <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
+                    <p className="text-[#8F8F8F] text-sm font-medium">34</p>
+                  </div>
+                </div>
+                <div className="post_status">
+                  <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
+                </div>
+              </div>
+              <p className="time text-sm text-[#8F8F8F] mt-3 max-lg:text-sm" >29 mins ago</p>
+            </div>
           </div>
         </div>
         <div className="right_section flex pl-[60px]  max-xl:pl-0">

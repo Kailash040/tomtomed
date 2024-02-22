@@ -404,16 +404,20 @@ const MainNavigation = () => {
       </div>
     </div>
     {
-              addPost && < div className=" absolute  z-10 top-[70%] left-[52%] translate-x-[-40%]   translate-y-[-50%]   max-lg:left-[42%] max-md:top-[95%]  max-md:left-[45%] max-sm:top-[70%] ">
-                <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-7 max-xl:items-start max-xl:justify-center   max-xl:mt-6  max-[820px]:gap-1 items-start max-md:flex-col max-md:black  ">
+              addPost && < div className=" absolute  font-roboto z-10 top-[75%] left-[52%] translate-x-[-40%]  translate-y-[-50%] max-xl:top-[90%]  max-xl:left-[45%]  max-lg:left-[40%]  max-sm:fixed max-sm:w-[100%] max-sm:h-[100%] max-sm:right-0	 max-sm:bottom-0  max-sm:top-[50%]  max-sm:bg-black max-sm:translate-x-[-40%]   max-sm:translate-y-[-50%] max-sm:overflow-y-scroll">
+                <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-7 max-xl:items-start max-xl:justify-center   max-xl:mt-6  max-[820px]:gap-1 items-start max-md:flex-col max-md:black    max-sm:bg-black max-sm:items-center  ">
                   <div className="left_section w-[520px] h-[552px] max-xl:w-[400px]
-                          max-xl:h-[350px] max-md:w-[300px] max-md:h-[200px] ">
+                          max-xl:h-[350px] max-md:w-[345px] max-md:h-[200px] max-sm:w-[382px] max-sm:h-[306px] ">
 
 
 
 
 
 
+                     <div className="exit list-none  hidden max-sm:flex mb-2 mt-6 gap-4"> 
+                     <button className="p-1 bg-grey rounded-full" onClick={()=> setAddPost(false)} ><Icon icon="eva:arrow-back-fill" className="w-4 h-[14px] text-white " /></button>
+                     {showEditOption === true  ? <p className="exitbutton text-white text-base ">Edit Post</p> : showBrithnessPage === true ? <p className="exitbutton text-white text-base ">Edit Post</p> : <p className="exitbutton text-white text-base ">New Post</p>  }
+                     </div>
                     {base64Image ? (
                       <img
 
@@ -430,15 +434,14 @@ const MainNavigation = () => {
                   </div>
                   {
                     base64Image ?
-                      <div className="right_section w-[470px]   h-[554px] max-xl:w-[350px] ">
+                      <div className="right_section w-[470px]   h-[554px] max-xl:w-[350px] max-sm:mt-20 max-sm:flex max-sm:flex-col max-sm:justify-between ">
 
 
                         {
                           showEditOption ?
-                            <div className="filter_option flex flex-col items-center bg-[#1B1C1B] h-[554px] rounded-xl	 border-2 border-[#8F8F8F] max-xl:h-[410px] ">
+                            <div className="filter_option flex flex-col items-center bg-[#1B1C1B] h-[554px] rounded-xl	 border-2 border-[#8F8F8F] max-xl:h-[410px] max-sm:border-0 max-sm:bg-black ">
                               <div className="filter_para mb-[18px]  w-[98%]">
                                 <div className="para_container flex items-center justify-start gap-5 px-3">
-
 
                                   {showBrithnessPage ?
                                     <div>
@@ -450,7 +453,7 @@ const MainNavigation = () => {
                                   <div className="flex items-center justify-center grow gap-5">
                                     {showBrithnessPage ? <img src={brithness} alt="" className="w-7 h-7 p" /> : showCropPage ? <img src={crop} alt="" className="w-7 h-7 p" /> : savePost === true ? "" : ""}
 
-                                    {showBrithnessPage ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2">Brightness</p> : showCropPage ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2 ">Crop</p> : savePost === true ? "" : showEditOption === true ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2">Edit</p> : ""}
+                                    {showBrithnessPage ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2">Brightness</p> : showCropPage ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2 ">Crop</p> : savePost === true ? "" : showEditOption === true ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2  max-sm:hidden">Edit</p> : ""}
                                   </div>
                                 </div>
                                 {showBrithnessPage ? <>
@@ -559,15 +562,15 @@ const MainNavigation = () => {
 
                               </div>
 
-                            </div> : <div className="filer_container flex flex-col items-center bg-[#1B1C1B] pb-7 pt-4 rounded-xl  border-2 border-[#8F8F8F] max-xl:pt-2 max-xl:pb-2	">
+                            </div> : <div className="filer_container flex flex-col items-center bg-[#1B1C1B] pb-7 pt-4 rounded-xl  border-2 border-[#8F8F8F] max-xl:pt-2 max-xl:pb-2 	max-sm:bg-black max-sm:border-0 max-sm:items-start ">
                               <div className="filter_para mb-[18px] max-xl:mb-2">
-                                <p className="text-lg text-white max-md:text-sm ">Filters</p>
+                                <p className="text-lg text-white max-md:text-base ">Filters</p>
                               </div>
-                              <div className="filter_photo flex flex-wrap gap-4 justify-center ">
+                              <div className="filter_photo flex flex-wrap gap-4 justify-center max-sm:justify-start max-sm:gap-2 ">
                                 <button onClick={() => setFilter('')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20  max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
@@ -578,7 +581,7 @@ const MainNavigation = () => {
                                 <button onClick={() => setFilter('lark')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
@@ -589,7 +592,7 @@ const MainNavigation = () => {
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
@@ -603,7 +606,7 @@ const MainNavigation = () => {
                                 <button onClick={() => setFilter('slumber')} className="text-[#8F8F8F] text-sm  ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
@@ -616,7 +619,7 @@ const MainNavigation = () => {
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
@@ -624,10 +627,10 @@ const MainNavigation = () => {
                                   />
                                   <p className="mt-[10px] max-xl:mt-1"> Juno</p>
                                 </button>
-                                <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
+                                <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm   ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
@@ -637,10 +640,10 @@ const MainNavigation = () => {
 
 
                                 </button>
-                                <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
+                                <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
@@ -650,10 +653,10 @@ const MainNavigation = () => {
 
 
                                 </button>
-                                <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
+                                <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm   ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
@@ -666,7 +669,7 @@ const MainNavigation = () => {
                                 <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
 
                                   <img
-                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20"
+                                    className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
                                     src={base64Image}
                                     alt="Selected"
                                     id="files"
