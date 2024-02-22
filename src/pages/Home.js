@@ -13,8 +13,8 @@ const Home = () => {
   return (
     <>
 
-      <div class="  flex pl-[60px] pr-[60px]   font-roboto   justify-between max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
-        <div className="left_section flex  gap-[80px] ">
+      <div class="  flex pl-[60px] pr-[60px]   font-roboto    max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
+        <div className="left_section flex   ">
           <div className="news_savePost_group_section 	max-xl:hidden">
             <div className="w-[220px]" >
               <div className="Premium_buutton mb-9">
@@ -125,7 +125,7 @@ const Home = () => {
             </div>
            </div>
           </div>
-          <div className="post_container ">
+          <div className="post_container pl-[80px] max-xl:pl-0 ">
 
             <div className="post  pl-[50px] pr-[50px] max-xl:pl-0 max-xl:pr-0 border-x-2 border-[#171717] border-b-2 pb-5 max-xl:border-0 ">
               <div className="post_name_userName_pic flex justify-between">
@@ -259,7 +259,7 @@ const Home = () => {
 
           </div>
         </div>
-        <div className="right_section flex  ">
+        <div className="right_section flex pl-[60px]  max-xl:pl-0">
         
           <div className="trending w-[320px]	 max-xl:hidden">
             <div className="mb-10">
