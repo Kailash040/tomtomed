@@ -1,15 +1,10 @@
 import MainNavigation from "../components/MainNavigation";
 import userimage from "../assets/postassets/userImage.webp";
-import call from "../assets/postassets/call.png";
-import videcall from "../assets/postassets/video.png";
-import mic from "../assets/postassets/mic.png";
-import gallery from "../assets/postassets/gallery.png";
-import backicon from "../assets/postassets/backicon.png"
 import { useRef, useState } from 'react'
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineMessage } from "react-icons/ai";
 import { Icon } from '@iconify/react';
-
+import userImage from '../assets/Avatar (1).png'
 const Message = () => {
   const [showDialogbox, setShowDialogBox] = useState(true)
   const handleShow = () => {
@@ -379,9 +374,9 @@ const Message = () => {
           </div>
         }
         <div className="message_container font-roboto mt-10 flex list-none  max-xl:mb-[60px] max-sm:justify-center max-sm:mt-2 ">
-          <div className="left_section  bg-black   max-sm:hidden ">
+          <div className="left_section  bg-black   max-sm:hidden  ">
             <div className="message flex bg-black  px-[18px] py-[24px] justify-between items-center max-sm:px-[9px] max-sm:py-[12px] ">
-              <p className="text-xl text-white">Messages</p>
+              <p className="text-xl text-white font-semibold">Messages</p>
               <div className="search_message flex gap-[27px]">
                 <button onClick={handleShow}>
                   <li className="p-1 bg-[#202020] rounded-full">
@@ -390,248 +385,248 @@ const Message = () => {
                   </li>
                 </button>
                 <li className="p-1 bg-[#202020] rounded-full">
-
-                  <CiSearch className="text-white w-5 h-5" />
+                  <Icon icon="ep:search" className="text-white w-5 h-5" />
                 </li>
 
               </div>
             </div>
-            <div className="w-[360px] bg-black overflow-auto h-screen max-sm:bg-[#232323] max-sm:rounded-t-[30px] max-sm:mt-3" >
+            <div className="w-[340px] bg-black overflow-y-scroll  scrollbar-thumb-rounded-full scrollbar-track-rounded-full h-screen   scrollbar scrollbar-thumb-[#DDDDDD] scrollbar-track-[#414141]  max-sm:bg-[#232323] max-sm:rounded-t-[30px] max-sm:mt-3" >
 
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
-                </div>
-              </div> <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
-                    {" "}
-                    <img
-                      src={userimage}
-                      alt="message"
-                      className="h-10 w-10 rounded-full "
-                    />
-                  </div>
-                  <div className="text-white">
-                    {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
-                  </div>
-                </div>
-                <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px]border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-6 borderdiv max-md:p-3">
-                <div className="user_deatails flex gap-3">
-                  <div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
                     {" "}
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
-                      className="h-10 w-10 rounded-full "
+                      className="w-full  h-full rounded-full object-cover "
                     />
                   </div>
                   <div className="text-white">
                     {" "}
-                    <p>Amy Johnson</p>
-                    <p className="text-sm">Alrighttt!</p>
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
                   </div>
                 </div>
                 <div className="user_time">
-                  <p className="text-xs	text-white ">21:40 PM</p>
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
+                </div>
+              </div>
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
+                <div className="user_deatails flex gap-3 items-center">
+                  <div className="w-[54px] h-[54px]" >
+                    {" "}
+                    <img
+                      src={userImage}
+                      alt="message"
+                      className="w-full  h-full rounded-full object-cover "
+                    />
+                  </div>
+                  <div className="text-white">
+                    {" "}
+                    <p className=" font-semibold "  >Amy Johnson</p>
+                    <p className="text-sm font-medium	">Alrighttt!</p>
+                  </div>
+                </div>
+                <div className="user_time">
+                  <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
 
             </div>
           </div>
-          <div className="right_section w-4/5 px-[30px] flex flex-col justify-between max-xl:px-[10px] ">
+          <div className="right_section  bg-[#202020] rounded-t-xl  flex flex-col justify-between max-xl:px-[10px] ">
             <div>
-              <div className="chat flex items-center justify-between  px-6 py-[18px] borderdiv1 max-xl:p-2">
+              <div className="chat flex items-center justify-between  px-6 py-[18px] borderdiv1 max-xl:p-2 ">
                 <div className="user_deatails flex gap-3 items-center">
                   <div className="flex items-center gap-4">
                     {" "}
-                  <li className="rounded-full p-1 bg-[#202020] hidden  max-sm:block ">
+                    <li className="rounded-full p-1 bg-[#202020] hidden  max-sm:block ">
 
-                    <Icon icon="eva:arrow-back-fill"  className=" w-6 h-6 hidden  max-sm:block  text-white" />
-                  </li>
+                      <Icon icon="eva:arrow-back-fill" className=" w-6 h-6 hidden  max-sm:block  text-white" />
+                    </li>
                     <img
-                      src={userimage}
+                      src={userImage}
                       alt="message"
                       className="h-[60px] w-[60px] rounded-full  max-sm:w-6 max-sm:h-6"
                     />
@@ -663,13 +658,13 @@ const Message = () => {
                   alt="message"
                   className="h-10 w-10 rounded-full max-sm:w-6 max-sm:h-6"
                 />
-                <p className="text-lg text-white px-3 py-[18px] border border-[#4879FA] inline-block rounded-b-3xl rounded-tr-3xl mt-2 max-xl:text-[16px]">Heyyy!! What is up? </p>
+                <p className="text-lg text-white px-3 py-[18px] border border-[#4879FA] inline-block rounded-b-3xl rounded-tr-3xl mt-2 max-xl:text-[16px] bg-[#101010]">Heyyy!! What is up? </p>
                 <p className="text-sm text-[#8F8F8F] mt-2">10:39 AM</p>
 
               </div>
               <div className="chat_container text-end mt-2">
 
-                <p className="text-lg text-white px-3 py-[18px] border border-[#4879FA] inline-block rounded-t-3xl rounded-bl-3xl mt-2 max-xl:text-[16px]">Hi!!! Nothing much just hanging around, supp??    </p>
+                <p className="text-lg text-white px-3 py-[18px] border border-[#4879FA] inline-block rounded-t-3xl rounded-bl-3xl mt-2 max-xl:text-[16px] bg-[#101010]">Hi!!! Nothing much just hanging around, supp??    </p>
 
               </div>
               <div className="chat_container mt-2">
@@ -678,7 +673,7 @@ const Message = () => {
                   alt="message"
                   className="h-10 w-10 rounded-full max-sm:w-6 max-sm:h-6"
                 />
-                <p className="text-lg text-white px-3 py-[18px] border border-[#4879FA] inline-block rounded-b-3xl rounded-tr-3xl mt-2 max-w-lg font-normal max-xl:text-[16px]">Nothing.. i was wondering if we could go to watch that movie
+                <p className="text-lg text-white px-3 py-[18px] border border-[#4879FA] inline-block rounded-b-3xl rounded-tr-3xl mt-2 max-w-lg  bg-[#101010] font-normal max-xl:text-[16px]">Nothing.. i was wondering if we could go to watch that movie
                   which i mentioned earlier tomorrow at 7pm...?  you up? </p>
                 <p className="text-sm text-[#8F8F8F] mt-2">10:00 AM</p>
 
@@ -689,10 +684,10 @@ const Message = () => {
               <div className="mt-[30px] relative flex justify-center items-center ">
                 <input
                   type="text"
-                  className="w-full  bg-[#1B1C1B] p-6 rounded-xl  text-white "
+                  className="w-full  bg-[#1B1C1B] p-6 rounded-[30px]  text-white "
                   placeholder="Write a message "
                 />
-                <div className="flex gap-6 absolute right-[10px]  ">
+                <div className="flex gap-6 absolute right-6  ">
                   <li className="p-1 bg-[#202020] rounded-full">
 
                     <Icon icon="lets-icons:mic-light" className="w-[30px] h-[30px] text-white" />
