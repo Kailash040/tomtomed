@@ -14,7 +14,7 @@ const Home = () => {
     <>
 
       <div class="  flex pl-[60px] pr-[60px]   font-roboto   justify-between max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
-        <div className="left_section flex  gap-[80px] max-[1285]:gap-[75px]">
+        <div className="left_section flex  gap-[80px] ">
           <div className="news_savePost_group_section 	max-xl:hidden">
             <div className="w-[220px]" >
               <div className="Premium_buutton mb-9">
