@@ -390,7 +390,7 @@ const Message = () => {
 
               </div>
             </div>
-            <div className="w-[350px] bg-black overflow-y-scroll  scrollbar-thumb-rounded-full scrollbar-track-rounded-full h-screen   scrollbar scrollbar-thumb-[#DDDDDD] scrollbar-track-[#414141]  max-sm:bg-[#232323] max-sm:rounded-t-[30px] max-sm:mt-3" >
+            <div className="w-[355px] bg-black overflow-y-scroll  scrollbar-thumb-rounded-full scrollbar-track-rounded-full h-screen   scrollbar scrollbar-thumb-[#DDDDDD] scrollbar-track-[#414141]  max-sm:bg-[#232323] max-sm:rounded-t-[30px] max-sm:mt-3" >
 
               <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
                 <div className="user_deatails flex gap-3 items-center">
@@ -432,7 +432,7 @@ const Message = () => {
                   <p className="text-xs	text-white font-normal	 ">21:40 PM</p>
                 </div>
               </div>
-              <div className="chat flex items-center justify-between  px-6 py-[18px]border-y-[1px] border-[#232323]  ">
+              <div className="chat flex items-center justify-between  px-6 py-[18px] border-y-[1px] border-[#232323]  ">
                 <div className="user_deatails flex gap-3 items-center">
                   <div className="w-[54px] h-[54px]" >
                     {" "}
