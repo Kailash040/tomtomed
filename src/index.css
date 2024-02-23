@@ -6,7 +6,9 @@ body {
 	background-color: black;
 
 }
-
+.item_equal{
+	align-items: baseline;
+}
 .signUp {
 	background: linear-gradient(#7837CB, #388DB1);
 	border: none;

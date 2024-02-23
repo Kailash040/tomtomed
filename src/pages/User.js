@@ -15,6 +15,9 @@ import { Icon } from '@iconify/react';
 import imagesave from '../assets/Rectangle 599.png'
 import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
+import Setting from "../components/Setting";
+// 
+
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
   //
@@ -256,7 +259,7 @@ const Profile = () => {
                         <form className="dialog flex">
                           <div className=" flex gap-6  pl-[25px] pr-3  items-center max-sm:mt-6">
 
-                            <button className=" bg-[#202020] border rounded-full  p-2 max-lg:p-1 "><Icon icon="eva:arrow-back-fill" className="w-4 h-[14px] text-white" /></button>
+                            <button className=" bg-[#202020] border rounded-full  p-2 max-lg:p-1 " ><Icon icon="eva:arrow-back-fill" className="w-4 h-[14px] text-white" /></button>
                             <p className="text-xl	 text-white  max-lg:text-base">Edit Profile</p>
                           </div>
                         </form>
@@ -350,8 +353,11 @@ const Profile = () => {
 
               </li>
               <li>
-                <Icon icon="ep:setting" className="w-6 h-6 text-white" />
+                {/* Open the modal using document.getElementById('ID').showModal() method */}
 
+    <button>
+      <Setting/>
+      </button>            
               </li>
             </div>
           </div>

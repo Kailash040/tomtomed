@@ -75,7 +75,7 @@ const SignUp = () => {
               </div>
               <div className="username mb-2 max-xl:mb-[18px]">
                 <input
-                  type="text"
+                  type="email"
                   class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Email or Phone"
                 />
