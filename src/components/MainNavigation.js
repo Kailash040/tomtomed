@@ -117,7 +117,7 @@ const MainNavigation = () => {
           </h1>
         </NavLink>
       </div>
-      <div className="nav_container bg-[#101010] flex w-4/5  justify-end rounded-lg max-xl:bg-[#101010] ml-[40px] max-xl:ml-[0px] font-semibold max-xl:w-[100px]">
+      <div className="nav_container bg-[#101010] flex w-4/5  justify-end rounded-lg  ml-[40px] max-xl:ml-[0px] font-semibold max-xl:w-[100px] max-xl:bg-[black]">
         <div className="list-none flex justify-evenly  gap-[45px]  p-2 rounded-lg max-xl:gap-4 w-full">
           <div className="mobile_desktop_view flex gap-[45px] items-center  max-xl:fixed  max-xl:bottom-0  max-xl:left-0  max-xl:w-full  max-xl:flex  max-xl:justify-center  max-xl:bg-[#101010]  max-xl:pb-2 max-xl:pt-2  max-xl:gap-8 max-xl:rounded-none  max-xl:items-baseline">
             <div className="navlink_list flex items-center flex-col ">
