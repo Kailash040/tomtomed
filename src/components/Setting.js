@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Icon } from '@iconify/react';
 import arrow from '../assets/arrow/arrow.svg'
 import avatar from '../assets/Avatar (1).png'
+import qrCode from '../assets/Group 34038.png'
 const Setting = () => {
     const [openTab, setOpenTab] = useState(0);
     // 
@@ -10,7 +11,7 @@ const Setting = () => {
         e.preventDefault()
     }
     return (
-        <div  className='font-roboto' ><button className="" onClick={() => document.getElementById('my_modal_2').showModal()}><Icon icon="ep:setting" className="w-6 h-6 text-white" /></button>
+        <div className='font-roboto' ><button className="" onClick={() => document.getElementById('my_modal_2').showModal()}><Icon icon="ep:setting" className="w-6 h-6 text-white" /></button>
             <dialog id="my_modal_2" className="modal  text-white ">
                 <div className="modal-box bg-grey flex p-0  max-w-[1320px] h-[630px]">
                     <div className="left_section bg-black">
@@ -172,7 +173,8 @@ const Setting = () => {
 
                     </div>
                     <div className="right_section  w-full">
-                        {openTab}
+                        {/*  */}
+                        {/* {openTab} */}
                         <div className="setting_heading flex items-center gap-[18px] bg-[#161414] py-6 px-6">
                             {openTab === 2 ? <Icon icon="streamline:fingerprint-2" className='w-[23px] h-[23px]' /> :
                                 // 
@@ -182,15 +184,37 @@ const Setting = () => {
                                 }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 7 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
                                     e.preventDefault();
                                     setOpenTab(2);
-                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab=== 8 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 8 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
                                     e.preventDefault();
                                     setOpenTab(2);
-                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>:
+                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 9 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(8);
+                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>
+                                
+                                : openTab === 10 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(9);
+                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 11 ?   <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(10);
+                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : 
+                                openTab === 12 ?      <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(8);
+                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>  
+                                :
+                                
+                                openTab === 13 ?      <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(12);
+                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>
+                                :
                                     // 
                                     <Icon icon="material-symbols:settings-account-box-outline" className=' w-[23px] h-[23px]' />}
 
                             {
-                                <h1 className='text-xl	'>{openTab === 0 ? "Account" : openTab === 1 ? "Teams" : openTab === 6 ? "Manage Access" : openTab === 3 ? "Passwords & Security" : openTab === 2 ? "Passwords & Security" : openTab === 7 ? "Change Password" : openTab === 8 ? "Two-Factor Authentication" : ""}</h1>
+                                <h1 className='text-xl	'>{openTab === 0 ? "Account" : openTab === 1 ? "Teams" : openTab === 6 ? "Manage Access" : openTab === 3 ? "Passwords & Security" : openTab === 2 ? "Passwords & Security" : openTab === 7 ? "Change Password" : openTab === 8 ? "Two-Factor Authentication" : openTab === 9 ? "SMS Authentication" : openTab === 10 ?"Change Mobile Number": openTab === 11 ?"Verify Code" :openTab === 12 ?"Google Authentication":   openTab === 13 ?"Google Authentication": "Settings"}</h1>
 
                             }
                         </div>
@@ -330,36 +354,193 @@ const Setting = () => {
                                     <button className='px-[85px] py-5 signUp rounded-xl	'>Change Password</button>
                                 </form>
                             </div> : ""}
- {openTab ===8  ?
- <div>
+                            {openTab === 8 ?
+                                <div>
 
-     <div className="two_fector flex text-justify flex-col">
-        <p className='font-normal	text-[#8F8F8F]' >Two-factor authentication adds an extra layer of security to your account by requiring two forms of verification before granting access. </p>
-        <p  className='font-normal	text-[#8F8F8F]' >Even if someone knows your password, they won't be able to access your account without the second factor of authentication.</p>
-     </div>
-     <div className="auth  bg-[#1B1C1B] py-[14px] px-[18px] rounded-xl  mt-6	 ">
-        <div  className='flex text-justify  justify-between'>
-            <p>SMS Authentication</p>
-            <img src={arrow} alt="" />
-        </div>
-        <div className=' flex text-justify mt-[2px]'>
-            <p  className='text-[#8F8F8F]  text-sm' >We will send a code to your mobile number: *******890.</p>
-        </div>
-     </div>
-     <div className="auth  bg-[#1B1C1B] py-[14px] px-[18px] rounded-xl  mt-3	 ">
-        <div  className='flex text-justify  justify-between'>
-            <p>Google Authentication</p>
-            <img src={arrow} alt="" />
-        </div>
-        <div className=' flex text-justify mt-[2px]'>
-            <p  className='text-[#8F8F8F]  text-sm' >A code will be generated at the authentication app</p>
-        </div>
-     </div>
- </div>
- :""  }
+                                    <div className="two_fector flex text-justify flex-col">
+                                        <p className='font-normal	text-[#8F8F8F]' >Two-factor authentication adds an extra layer of security to your account by requiring two forms of verification before granting access. </p>
+                                        <p className='font-normal	text-[#8F8F8F]' >Even if someone knows your password, they won't be able to access your account without the second factor of authentication.</p>
+                                    </div>
+                                    <button onClick={e => {
+                                        e.preventDefault();
+                                        setOpenTab(9);
+                                    }} className="auth  bg-[#1B1C1B] py-[14px] px-[18px] rounded-xl  mt-6	 w-full ">
+                                        <div className='flex text-justify  justify-between sms-auth'>
+                                            <p>SMS Authentication</p>
+                                            <img src={arrow} alt="" />
+                                        </div>
+                                        <div className=' flex text-justify mt-[2px]'>
+                                            <p className='text-[#8F8F8F]  text-sm' >We will send a code to your mobile number: *******890.</p>
+                                        </div>
+                                    </button>
+                                    {/*  */}
+                                    <button     
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        setOpenTab(12);
+                                    }}
+                                    className="auth  bg-[#1B1C1B] py-[14px] px-[18px] rounded-xl  mt-3 w-full	 ">
+                                        <div className='flex text-justify  justify-between'>
+                                            <p>Google Authentication</p>
+                                            <img src={arrow} alt="" />
+                                        </div>
+                                        <div className=' flex text-justify mt-[2px]'>
+                                            <p className='text-[#8F8F8F]  text-sm' >A code will be generated at the authentication app</p>
+                                        </div>
+                                    </button>
+                                </div>
+                                : ""}
+                            {openTab === 9 ? <div>
+                                <div className="heading flex flex-col text-justify	">
+                                    <p className='text-base  text-[#8F8F8F] ' >Two-factor authentication adds an extra layer of security to your account by requiring two forms of verification before granting access. </p>
+                                    <p className='text-[#8F8F8F] mt-3' >Even if someone knows your password, they won't be able to access your account without the second factor of authentication.</p>
+                                </div>
+                                <div className="bottom_section mt-6">
+
+                               
+                            <button  
+                                 className='flex items-center gap-[18px] justify-between w-full  bg-[#1B1C1B]  py-[22px]  px-[18px] rounded-lg'>
 
 
-                        </div>
+                                    <p>+91 1234567890</p>
+                                    {/*  */}
+                                    <button className='text-sm text-[#8F8F8F]' >Verified</button>
+                                </button>
+                                <button     onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(10);
+                                }}  className='flex items-center gap-[18px] justify-between w-full mt-3 bg-[#1B1C1B]  py-[22px]  px-[18px] rounded-lg'>
+
+
+                                    <p>Change Mobile Number</p>
+                                    <img src={arrow} alt="arrow" />
+                                </button>
+                                </div>
+                            </div> : ""}
+                            {/*  */}
+                            {/*  */}
+
+ {openTab === 10  ?    <div className='flex flex-col '> 
+    <div>
+
+   
+    <div className="two_fector flex text-justify flex-col">
+                                        <p className='font-normal	text-[#8F8F8F]' >Verify your new number to ensure uninterrupted account access and enhanced protection against unauthorized access attempts. </p>
+                                        
+                                    </div>
+                                    <div className="input_box flex  items-center w-full gap-3 mt-5 ">
+                                        <div className="left">
+                                        <select id="countries" class=" w-[85px] h-[65px] rounded-lg	 px-3 py-3 bg-[#1B1C1B] ">
+        <option selected>+91</option>
+        <option value="US">+92</option>
+        <option value="CA">+86</option>
+        <option value="FR">+972</option>
+        <option value="FR">+7</option>
+    </select>
+
+                                        </div>
+                                        <div className="right w-full  ">   
+                                        <input type="text" className='w-full  h-[64px]  rounded-lg	 px-4 bg-[#1B1C1B] ' />
+                                        </div>
+                                    </div>
+                                    </div>
+                                    {/*  */}
+                                    <div className="button mt-20 ">
+                                        <button  onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(11);
+                                }} className="py-5 px-[124px] signUp rounded-xl text-lg 	" >Verify</button>
+                                        {/* <div className="after:content-[>]"></div> */}
+                                    </div>
+ </div> :""}
+ {
+    openTab === 11 ? 
+    <div className='w-full' >
+
+    
+    <div className="heading flex flex-col text-justify	">
+    <p className='text-base  text-[#8F8F8F] ' >Enter Verification Code sent to your mobile number</p>
+  
+</div> 
+<div className="enter_otp flex flex-col justify-center  mt-5  w-full relative
+">
+    <div className="input_box  text-justify ">
+
+    <input type="text"  className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-lg	' placeholder='Enter Code' /> 
+    </div>
+    <div className="button   right-2 absolute">
+
+    <button className   ='bg-[black] py-[15px] px-[70px] rounded-xl	' >Confirm</button>
+    </div>
+</div>
+</div>
+:""
+ }
+ {/* 12 */}
+ {openTab== 12 ?
+   <div className='w-full' >
+
+    
+   <div className="heading flex flex-col text-justify	">
+   <p className='text-base  text-[#8F8F8F] ' >Two-For added security, please enter your account password before proceeding with Google Authenticator setup.</p>
+ 
+</div> 
+<div className="enter_otp flex flex-col justify-center  mt-5  w-full relative
+">
+   <div className="input_box  text-justify ">
+
+   <input type="text"  className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-lg	' placeholder='Enter Password' /> 
+   </div>
+   <div className="button   right-2 absolute">
+
+   <button  className='mt-2'  ><Icon icon="basil:eye-closed-solid"  className='w-6 h-6 text-[#8F8F8F]' /></button>
+   </div>
+</div>
+   <div className="button_div mt-10">
+    <button     
+     onClick={e => {
+        e.preventDefault();
+        setOpenTab(13);
+    }}
+    className='py-5 px-[124px] signUp rounded-xl text-lg'>Confirm</button>
+   </div>
+</div>
+ :""}
+{openTab === 13  ?   <div>
+    <div className="two_fector flex text-justify flex-col">
+                                        <li className='font-normal	text-[#8F8F8F] list-disc	' >Verify your new number to ensure uninterrupted account access and enhanced protection against unauthorized access attempts. </li>
+                                        <li   className='font-normal	text-[#8F8F8F] list-disc	mt-3' >Scan the “QR code” or enter a “setup key” on the Google Authenticator app. </li>
+                                    </div>
+                                    <div className="qr_text  flex justify-text mt-10 justify-between   bg-[#1B1C1B] p-2 rounded-xl	">
+                                        <p className='py-[22px]  px-[18px]' >ABCD EFGH IJKL MNOP QRST UVWX YZAB CDEF</p>
+<label htmlFor="copy"  className='flex  items-center gap-3 py-[14px] px-[47px] bg-[#000000] rounded-xl	 '>
+<Icon icon="fluent:copy-16-regular" className='w-[18px] h-[18px]'  />
+    <p>Copy code</p>
+</label>
+                                    </div>
+                                    {/*  */}
+                                    
+                                    <button  onClick={()=>document.getElementById('my_modal_13').showModal()}  className='flex items-center gap-[18px] justify-between w-full mt-[30px] '>
+
+
+                                    <p>Scan QR Code</p>
+                                    <img src={arrow} alt="arrow" />
+                                </button>
+                                {/*  */}
+                                {/* <button  onClick={()=>document.getElementById('my_modal_13').showModal()}>open modal</button> */}
+<dialog id="my_modal_13" className="modal">
+  <div className="modal-box bg-[#1B1C1B] w-[280px] flex flex-col items-center py-6 px-[18px]  ">
+    <h3 className=" font-normal 	 text-base text-justify	 ">Scan this QR code on your google authenticator app.!</h3>
+    <img src={qrCode}   className='w-[180px] h-[180px] mt-6' alt="Qr " />
+  </div>
+  <form method="dialog" className="modal-backdrop">
+    <button>close</button>
+  </form>
+          </dialog>                      {/*  */}
+</div> :""}
+                        </div> 
+
+                        {/*  */}
                     </div>
 
                 </div>
