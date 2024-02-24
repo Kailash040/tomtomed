@@ -11,6 +11,8 @@ import ProfileLayout from "./pages/ProfileLayout";
 // import Profile from '../src/pages/Profile'
 import User from "../src/pages/User"
 import Message from "./pages/Message";
+import ForgetPassword from  "../src/pages/ForgetPassword"
+import ResetPassword from '../src/pages/ResetPassword'
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -27,8 +29,16 @@ function App() {
       element: <Ecommerce />,
     },
     {
+      path: "/reset-password",
+      element: <ResetPassword />,
+    },
+    {
       path: "/signUp",
       element: <SignUp />,
+    },
+    {
+      path: "/forget-password",
+      element: <ForgetPassword />,
     },
     {
       path: "/login",

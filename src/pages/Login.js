@@ -25,7 +25,7 @@ const SignUp = () => {
   }
   return (
     <div className=" font-roboto  relative  ">
-       <div className=" absolute z-[-1]">
+       <div className=" absolute ">
          <img src={bg} alt=""/>
        </div>
       <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[30px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
@@ -44,7 +44,7 @@ const SignUp = () => {
 </Splide>
           <img src={banner} className="w-[572px]  h-[650px] absolute" alt=""  />
         </div> 
-        <div className="form_container">
+        <div className="form_container z-10">
           <h1 className=" text-tom font-roboto font-semibold text-[40px]	text-center mb-[10px]  max-xl:hidden">
             TOM<span class="text-tomad ">TOMED</span>
           </h1>
@@ -192,7 +192,7 @@ Sign up
 </NavLink>
                 </span>
               </p>
-      <div className=" absolute z-[-1] bottom-10 max-xl:hidden">
+      <div className=" absolute  bottom-10 max-xl:hidden">
          <img src={bgBottom} alt=""/>
        </div>
        <div className="hidden max-xl:block ">

@@ -1,5 +1,5 @@
 import React from "react";
-import banner from "../assets/postassets/signUpBanner.png";
+import banner from "../assets/postassets/loginbanner.png";
 import apple from "../assets/postassets/apple.png";
 import google from "../assets/postassets/google.png";
 import applestore from "../assets/postassets/applestore.png";
@@ -13,44 +13,20 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import slider from "../assets/postassets/slider.png"
 import slider2 from "../assets/postassets/slider2.png"
 import slider3 from "../assets/postassets/slider3.png"
-
+import forgetPassword from '../assets/Group 34044.png'
 const SignUp = () => {
-  // 
- 
-    const splideOptions = {
-      type: 'slide',
-      perPage: 1,
-      pagination: false,
-      arrows: false,
-      autoplay: true,
-    interval: 2000,
-    
-    }
- 
-   
+
   return (
     <div className=" font-roboto  relative  ">
        <div className=" absolute ">
          <img src={bg} alt=""/>
        </div>
-      <div className="signUp_container flex  justify-between pr-[106px] pl-[124px] pt-[30px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
-        <div className="banner_container max-xl:hidden relative flex  justify-end items-center w-[572px] h-[600px]">
-        <Splide aria-label="My Favorite Images" options={splideOptions}   className=" z-[5] w-[350px] ">"  
-  <SplideSlide>
-    <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   "/>
-  </SplideSlide>
- 
-  <SplideSlide>
-    <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   "/>
-  </SplideSlide>
-  <SplideSlide>
-    <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   "/>
-  </SplideSlide>
-</Splide>
-          <img src={banner} className="w-[572px] h-[650px] absolute" alt=""  />
-        </div>
-        
-        <div className="form_container  z-10">
+      <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[30px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
+      <div className="banner_container max-xl:hidden relative flex  justify-start items-center w-[572px] h-[600px]">
+       
+          <img src={forgetPassword} className="w-[410px]  h-[338px] absolute" alt=""  />
+        </div> 
+        <div className="form_container z-10">
           <h1 className=" text-tom font-roboto font-semibold text-[40px]	text-center mb-[10px]  max-xl:hidden">
             TOM<span class="text-tomad ">TOMED</span>
           </h1>
@@ -59,66 +35,43 @@ const SignUp = () => {
             <p className="text-tomad font-roboto font-semibold text-[24px]	text-center   hidden max-xl:block">TomTomed</p>
 
           </div>
-          <div className="form_container bg-black pl-6  pr-6 max-xl:pl-[0px] max-xl:pr-[0px] rounded-3xl pb-4 max-xl:bg-[#101010]   max-xl:pb-0 max-xl:mx-auto">
+          <div className="form_container bg-black pl-6  pr-6 max-xl:pl-[0px] max-xl:pr-[0px] rounded-3xl pb-5 max-xl:bg-[#101010]   max-xl:pb-0 max-xl:mx-auto">
           
             <p className="text-[24px] font-medium text-white mb-2 pt-2 text-center  max-xl:pt-[86px]   max-xl:mb-[60px] max-xl:mt-[0] ">
 
-              Sign Up{" "}
+            Forgot password?{" "}
             </p>
-            <form>
-              <div className="username mb-2 max-xl:mb-[18px]">
-                <input
-                  type="text"
-                  class=" px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px] text-[#8F8F8F] max-xl:bg-[#1B1C1B]"
-                  placeholder="Username"
-                />
-              </div>
-              <div className="username mb-2 max-xl:mb-[18px]">
-                <input
-                  type="email"
-                  class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
-                  placeholder="Email or Phone"
-                />
-              </div>
+            <p className="w-[400px]  text-center mb-5 mt-5 text-[#8F8F8F]	 ">No worries! Enter your email address below, and we'll send you a secure link to reset it.</p>
+            <form className="flex flex-col justify-between  items-center
+            ">
+              
+             
               <div className="username ">
                 <input
                   type="text"
                   class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
-                  placeholder="Password"
+                  placeholder="Enter Email "
                 />
               </div>
-              <div className="username mt-3 max-xl:mt-10 ">
+              
+              <div className="username mt-3 max-xl:mt-3 ">
                 <button
                   type="submit"
                   class="border  px-[18px] py-5 rounded-xl   w-[360px] text-white max-xl:pt-[14px] max-xl:pb-[15px] max-xl:h-[48px] max-xl:w-[340px] signUp "
                   placeholder="Password"
                 >
                   {" "}
-                  Sign up{" "}
+                  Reset Password{" "}
                 </button>
               </div>
-              <div className="or_container flex justify-center mt-5 items-center gap-[21px] pl-[10px] pr-[10px]">
-                <div className="line h-[1px] bg-[white] w-full"></div>
-                <div className="line text-[grey] text-xs ">or</div>
-                <div className="line h-[1px] bg-[white] w-full"></div>
-              </div>
-              <div className=" flex justify-center gap-5 list-none mt-2">
-                <li>
-                  {" "}
-                  <img src={google} />
-                </li>
-                <li>
-                  {" "}
-                  <img src={apple} />
-                </li>
-              </div>
+             
+             
 
-              <p className="text-[white] list-none text-center mt-3 text-lg max-xl:hidden max-xl:mt-[60px]">
-                Already have an account?{" "}
+              <p className=" list-none text-center mt-3 text-lg max-xl:hidden max-xl:mt-[60px]">
                 <span className="text-tom font-roboto font-semibold">
                 <NavLink to="/login">
 
-                  Log in
+                Back to login
                 </NavLink>
                 </span>
               </p>
@@ -189,16 +142,15 @@ const SignUp = () => {
         </div>
       </div>
       <p className="text-[white] list-none text-center mt-6 text-base hidden max-xl:block mb-10">
-                Already have an account?{" "}
+      Don’t have an account? {" "}
                 <span className="text-tom font-roboto font-semibold">
-                <NavLink to="/login">
+                <NavLink to="/signUp">
 
-                login
+Sign up
 </NavLink>
-                  
                 </span>
               </p>
-      <div className=" absolute z-[-1] bottom-10 max-xl:hidden">
+      <div className=" absolute  bottom-10 max-xl:hidden">
          <img src={bgBottom} alt=""/>
        </div>
        <div className="hidden max-xl:block ">

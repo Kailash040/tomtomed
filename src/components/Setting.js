@@ -174,7 +174,7 @@ const Setting = () => {
                     </div>
                     <div className="right_section  w-full">
                         {/*  */}
-                        {openTab}
+                        {/* {openTab} */}
                         <div className="setting_heading flex items-center gap-[18px] bg-[#161414] py-6 px-6">
                             {openTab === 2 ? <Icon icon="streamline:fingerprint-2" className='w-[23px] h-[23px]' /> :
                                 // 
