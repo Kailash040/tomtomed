@@ -4,7 +4,6 @@ import RootLayout from "./pages/RootLayout";
 import ErrorPage from "../src/pages/ErrorPage";
 import Home from "../src/pages/Home";
 // import UserLayout from "./pages/UserLayout";
-import Ecommerce from '../src/pages/Ecommerce'
 import Login from '../src/pages/Login';
 import SignUp from "../src/pages/SignUp";
 import ProfileLayout from "./pages/ProfileLayout";
@@ -23,10 +22,6 @@ function App() {
         { index: true, element: <Home /> },
         // { path: "users", element: <UserLayout /> },
       ],
-    },
-    {
-      path: "/ecommerce",
-      element: <Ecommerce />,
     },
     {
       path: "/reset-password",
