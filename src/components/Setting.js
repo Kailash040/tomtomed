@@ -175,6 +175,7 @@ const Setting = () => {
                     <div className="right_section  w-full">
                         {/*  */}
                         {/* {openTab} */}
+                        {/* value */}
                         <div className="setting_heading flex items-center gap-[18px] bg-[#161414] py-6 px-6">
                             {openTab === 2 ? <Icon icon="streamline:fingerprint-2" className='w-[23px] h-[23px]' /> :
                                 // 
@@ -218,16 +219,26 @@ const Setting = () => {
                                             }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>
 
                                                 :
+                                                openTab === 16 ?   <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                                    e.preventDefault();
+                                                    setOpenTab(1);
+                                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 17 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                                    e.preventDefault();
+                                                    setOpenTab(1);
+                                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>  : openTab === 18 ?  <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                                    e.preventDefault();
+                                                    setOpenTab(1);
+                                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>   :
                                                 // 
                                                 <Icon icon="material-symbols:settings-account-box-outline" className=' w-[23px] h-[23px]' />}
 
                             {
-                                <h1 className='text-xl	'>{openTab === 0 ? "Account" : openTab === 1 ? "Teams" : openTab === 6 ? "Manage Access" : openTab === 3 ? "Passwords & Security" : openTab === 2 ? "Passwords & Security" : openTab === 7 ? "Change Password" : openTab === 8 ? "Two-Factor Authentication" : openTab === 9 ? "SMS Authentication" : openTab === 10 ? "Change Mobile Number" : openTab === 11 ? "Verify Code" : openTab === 12 ? "Google Authentication" : openTab === 13 ? "Google Authentication" : openTab === 14 ?"Verify Code" : openTab === 15 ? "Google Authentication setup complete":  "Settings"}</h1>
+                                <h1 className='text-xl	'>{openTab === 0 ? "Account" : openTab === 1 ? "Teams" : openTab === 6 ? "Manage Access" : openTab === 3 ? "Passwords & Security" : openTab === 2 ? "Passwords & Security" : openTab === 7 ? "Change Password" : openTab === 8 ? "Two-Factor Authentication" : openTab === 9 ? "SMS Authentication" : openTab === 10 ? "Change Mobile Number" : openTab === 11 ? "Verify Code" : openTab === 12 ? "Google Authentication" : openTab === 13 ? "Google Authentication" : openTab === 14 ?"Verify Code" : openTab === 15 ? "Google Authentication setup complete": openTab === 16 ? "Add new member"    :  openTab === 17  ?"Accounts assigned to you (2)":  openTab === 18 ? "Members you assigned (1)": "Settings"}</h1>
 
                             }
                         </div>
 
-                        <div className='flex   mt-[30px] pl-[30px] pr-[50px]'>
+                        <div className='flex   mt-[30px] pl-[30px] pr-[50px] flex-col'>
                             {/* tab-1 */}
                             {openTab === 0 ? <div className='flex justify-between w-full'>
 
@@ -252,14 +263,59 @@ const Setting = () => {
                                     <img src={arrow} alt="arrow" />
                                 </button>
 
-                                {openTab === 6 ? "" : <button className='flex items-center gap-[18px] justify-between w-full mt-[30px]'>
+                                {openTab === 6 ? "" : <button
+                                onClick={e => {
+                                    e.preventDefault();
+                                    setOpenTab(16);
+                                }}
+                                className='flex items-center gap-[18px] justify-between w-full mt-[30px]'>
 
 
                                     <p>Add new member</p>
                                     <img src={arrow} alt="arrow" />
                                 </button>}
 
+
                             </div> : ""}
+                            {
+    openTab === 1 ? 
+<div className='w-full'>
+
+
+    <button
+    onClick={e => {
+        e.preventDefault();
+        setOpenTab(17);
+    }} 
+    className='flex justify-between w-full mt-[30px]'>
+
+    <div className='flex items-center gap-[18px]'>
+
+       
+
+        <p>Accounts assigned to you</p>
+    </div>
+    <img src={arrow} alt="arrow" />
+</button>
+<button
+ onClick={e => {
+    e.preventDefault();
+    setOpenTab(18);
+}} 
+className='flex justify-between w-full mt-[30px]'>
+
+<div className='flex items-center gap-[18px]'>
+
+   
+
+    <p>Members you have assigned</p>
+</div>
+<img src={arrow} alt="arrow" />
+</button>
+</div>
+:""
+}
+                            {/*  */}
                             {openTab === 6 ? <div className='flex flex-col   justify-between w-full'>
 
                                 <div className="manage w-full justify-between flex bg-[#1B1C1B] items-center px-[18px] py-2 rounded-xl	 ">
@@ -594,6 +650,84 @@ const Setting = () => {
 Your account is now protected with an extra layer of security.</p>
 
 </div>:""}
+{
+    openTab === 16 ?    <div className='w-full' >
+<div className="heading flex flex-col text-justify	">
+                                            <p className='text-base  text-[#8F8F8F] ' >Effortlessly grant edit access by searching for users and sending them permissions to modify content.</p>
+
+                                        </div>
+
+    <div className="enter_otp flex flex-col justify-center  mt-5  w-full relative
+">
+    <div className="input_box  text-justify ">
+
+        <input type="text" className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-[30px]	' placeholder='Search name or username...' />
+    </div>
+    <div className="button   right-2 absolute p-2 bg-[#1B1C1B]  rounded-full">
+  
+    <Icon icon="ep:search"   className='w-5 h-5' />
+        
+    </div>
+</div> 
+
+
+{/*  */}
+<div className='flex gap-3 mt-[30px]'>
+
+<button className="img" onClick={()=>document.getElementById('my_modal_account_access').showModal()}><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></button>
+<div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
+</div>
+<dialog id="my_modal_account_access" className="modal">
+  <div className="modal-box w-[430px]   bg-[#141414]">
+    <h3 className="font-extrabold	 text-lg">Give Amy Johnson access of your account?!</h3>
+    <div className="suggest_button_cancel_accept flex justify-between mt-[52px]">
+<button  className='text-xl	text-[#FB6363]'>Cancel</button>
+<div className='w-[1px] bg-[#393939]'></div>
+<button  className='text-xl	'>Give Access</button>
+    </div>
+  </div>
+  <form method="dialog" className="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
+{/*  */}
+</div>
+    :""
+}
+{
+    openTab === 17 ? 
+    <div>
+
+<div className="heading flex flex-col text-justify	">
+                                            <p className='text-base  text-[#8F8F8F] ' >View and manage accounts assigned specifically to you, ensuring efficient organization and oversight.</p>
+
+                                        </div>
+                                        <div className='flex gap-3 mt-[30px]'>
+
+<div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
+<div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
+</div>
+<div className='flex gap-3 mt-[18px]'>
+
+<div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
+<div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
+</div>
+    </div>
+    :""
+}
+{openTab  === 18    ? <div>
+
+<div className="heading flex flex-col text-justify	">
+                                            <p className='text-base  text-[#8F8F8F] ' >Track and manage members whom you've designated to oversee account activities, ensuring streamlined collaboration.</p>
+
+                                        </div>
+                                        <div className='flex gap-3 mt-[30px]'>
+
+<div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
+<div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
+</div>
+
+    </div> :"" }
  {/*  */}
                         </div>
 

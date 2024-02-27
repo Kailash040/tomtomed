@@ -18,7 +18,7 @@ const Message = () => {
 
 
         {
-          showDialogbox && <div className="mb-5 hidden">
+          showDialogbox && <div className="mb-5   hidden">
             <div className="add_friends flex w-[80%] mx-auto">
 
               <p className="text-base  text-white hidden max-sm:block">Add friends</p>
@@ -35,7 +35,7 @@ const Message = () => {
                       placeholder="Search Followers "
                     />
                     <div className="flex gap-6 absolute left-[92%]  max-xl:left-[86%] bottom-[22px]  max-lg:left-[80%] max-md:left-[73%] ">
-                      <img src="" alt="search" className="" />
+                    <Icon icon="ep:search"  className="text-white w-5 h-5" />
                     </div>
                   </div>
                   <div className="search_button max-sm:w-full max-sm:z-10">

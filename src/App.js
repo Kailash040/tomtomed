@@ -12,6 +12,8 @@ import User from "../src/pages/User"
 import Message from "./pages/Message";
 import ForgetPassword from  "../src/pages/ForgetPassword"
 import ResetPassword from '../src/pages/ResetPassword'
+import Notification from "./pages/Notification";
+import NotificationLayout from '../src/pages/NotificationLayout'
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -30,6 +32,13 @@ function App() {
     {
       path: "/signUp",
       element: <SignUp />,
+    },
+    {
+      path: "/notification",
+      element: <NotificationLayout />,
+      children: [
+        { path: "/notification", element: <Notification /> },
+      ],
     },
     {
       path: "/forget-password",

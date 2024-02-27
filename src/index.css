@@ -74,3 +74,18 @@ body.modal-active {
 	overflow-x: hidden;
 	overflow-y: visible !important;
   }
+  .ql-font{
+	display: none   !important;
+  }
+  .ql-toolbar.ql-snow{
+	border: none !important;
+  }
+  .ql-snow {
+	border: none !important;
+	
+}
+.ql-editor{
+	background: #000000;
+	border-radius: 12px;
+	margin-top: 15px;
+}

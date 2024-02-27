@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
-import Cropper from "react-easy-crop";
+import { useState, useRef, useEffect, useCallback,useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import Ads from "../assets/postassets/Ads.png";
 import userimage from "../assets/postassets/userImage.webp"
@@ -14,9 +13,10 @@ import articleImg from '../assets/article.png';
 import thought from '../assets/Vector (4).png'
 import { Icon } from '@iconify/react';
 import profileImage from '../assets/Avatar.png'
+import { Editor } from 'primereact/editor';
 const MainNavigation = () => {
   // 
-
+  const [text, setText] = useState('');
   // 
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
@@ -257,15 +257,18 @@ const MainNavigation = () => {
                     </li>
 
                   </div>
-                  <div className=" article p-6  mt-6 max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
-                    <textarea name="" id="" className="w-full h-[350px] max-xl:h-[200px]  bg-black rounded-xl p-6 max-sm:bg-[#161414] max-sm:font-normal " placeholder="Write an Article here..." ></textarea>
+                  <div className=" article p-6  max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
+                    {/* <textarea name="" id="" className="w-full h-[350px] max-xl:h-[200px]  bg-black rounded-xl p-6 max-sm:bg-[#161414] max-sm:font-normal " placeholder="Write an Article here..." ></textarea> */}
+                    <Editor value={text}
+                    
+                    onTextChange={(e) => setText(e.htmlValue)} 
+                    
+                    className="h-[220px]   "
+                    />
                   </div>
-                  <div className="article_button flex justify-between p-6 items-center max-xl:p-2">
-                    <li className="bg-black p-2 rounded-full max-sm:hidden">
-
-                      <Icon icon="solar:gallery-round-bold" className="w-5 h-5" />
-                    </li>
-                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl max-xl:px-[55px] max-xl:py-[10px]	max-sm:w-full max-sm:text-sm  max-sm:font-medium	" >Post Article</button>
+                  <div className="article_button flex justify-end p-6 items-center max-xl:p-2">
+                   
+                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl max-xl:px-[55px] max-xl:py-[10px]	max-sm:w-full max-sm:text-sm  max-sm:font-medium mt-4	" >Post Article</button>
                   </div>
                 </div>
               </div>
@@ -369,13 +372,26 @@ const MainNavigation = () => {
               </p>
             </div>
             <div className="navlink_list flex items-center flex-col">
-              <li className="rounded-full bg-grey p-2">
+              <li className="rounded-full ">
+              <NavLink to="/notification">
+                {({ isActive }) => (
+                  (
+                    <div className="flex flex-col items-center" >
+                      <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] max-xl:p-[11px] " : "rounded-full bg-grey p-[11px]  "}>
+                        {isActive ? <Icon icon="clarity:notification-solid" height="22px" width="20px" className={isActive ? "text-white " : "text-white h-5 w-5 "} /> : <Icon icon="basil:notification-outline" className="text-white h-5 w-5" />}
+
+                      </div>
+                      <span className={isActive ? "text-white text-base max-xl:hidden mt-1" : "text-white text-sm max-xl:hidden mt-1"}>Notifications</span>
+                    </div>
+                  )
+                )}
+              </NavLink>
                 {" "}
-                <Icon icon="basil:notification-outline" className="h-5 w-5 text-white " />
+                {/* <Icon icon="basil:notification-outline" className="h-5 w-5 text-white " /> */}
               </li>
-              <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
+              {/* <p className="text-sm	 text-[#ffffff] mt-1 max-xl:hidden">
                 Notifications
-              </p>
+              </p> */}
             </div>
             <div className="navlink_list flex items-center flex-col  max-xl:hidden">
               <li className="rounded-full bg-grey p-2">
@@ -489,6 +505,11 @@ const MainNavigation = () => {
                           </div>
                           <div className="input_section mt-4">
                             <textarea type="text" className=" bg-[#000000] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." />
+                            {/*  */}
+                            <div className="search_friends  relative flex justify-between items-center">
+                                      <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg	" />
+                                      <button  className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl	">Tag People</button>
+                                    </div>
                           </div>
                         </div> : <div className="crop_brithness_container flex flex-wrap gap-6  justify-center">
                           <button onClick={handleShowCropPage}>
