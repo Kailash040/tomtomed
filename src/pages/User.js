@@ -27,8 +27,15 @@ const Profile = () => {
   const [showFollower, setShowFollowers] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
-
+const  [showAction,setShowAction] =useState(false);
+const  [userAction,setUserAction] =useState(false);
+const handleAction =()=>{
+  setShowAction(!showAction)
+}
   //
+  const handleUserAction =()=>{
+    setUserAction(!userAction)
+  }
 
   const handleShowPost = () => {
     setShowPost(true);
@@ -427,7 +434,45 @@ const Profile = () => {
                           alt="photo"
                           className="w-11 h-11"
                         />
+                        <div className="relative">
+
+                        <button  onClick={handleUserAction}  >
+
                         <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   " />
+                        </button>
+                        {
+                          userAction &&  <div className="report_block_mute absolute z-30 list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 top-10">
+                          <div className="user_div_image flex   gap-[18px] items-center">
+                      <img src={userImage} alt="user" className="w-[60px] h-[60px]" />
+                         <div className="name_username">
+                                            <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
+                                              {" "}
+                                              Amy Roy{" "}
+                                              
+                                            </p>
+                                            <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
+                                          </div>
+                          </div>
+                          <div className="option_div mt-10 flex flex-col gap-6">
+                            
+                          <div className="flex gap-[18px]">
+                          {/* <Icon icon="solar:pin-outline" /> */}
+                          <Icon icon="solar:pin-outline" className="w-6 h-6 text-white" />
+                          <li className="text-lg text-white">Mute</li>
+                          </div>
+                          <div className="flex gap-[18px]">
+                          <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />
+                          <li className="text-lg text-white">Hide</li>
+                          </div>
+                          <div className="flex gap-[18px]">
+                          <Icon icon="fluent:delete-24-regular" className="w-6 h-6 text-[#FB6363]" />
+                          <li className="text-lg text-[#FB6363]">Delete</li>
+                          </div>
+                          </div>
+                         
+                        </div>
+                        }
+                        </div>
 
                       </div>
                     </div>
@@ -631,10 +676,18 @@ const Profile = () => {
                     </div>
                   </div>
                   <div className="child">
-                    <div className="followers_child flex gap-[18px] items-center">
-                      <button className="text-[#7D4CFF]">Follow back</button>
-                      <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
+                    <div className="followers_child flex gap-[18px] items-center relative">
+                      
+                      <button  onClick={handleAction}>
 
+                      <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
+                      </button>
+{
+  showAction && <div className="absolute flex flex-col top-5 right-0 bg-[#202020] py-6 px-[18px] gap-[27px] rounded-xl	">
+    <button className="text-base font-semibold text-white	">UnFollow</button>
+    <button className="font-medium text-[#FB6363]">Block</button>
+  </div> 
+}
                     </div>
                     {/* <div className="followers_child"></div> */}
                   </div>
