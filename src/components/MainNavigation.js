@@ -504,11 +504,11 @@ const MainNavigation = () => {
                             </div>
                           </div>
                           <div className="input_section mt-4">
-                            <textarea type="text" className=" bg-[#000000] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." />
+                            <textarea type="text" className=" bg-[#000000] max-sm:bg-[#171717] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." />
                             {/*  */}
                             <div className="search_friends  relative flex justify-between items-center">
-                                      <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg	" />
-                                      <button  className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl	">Tag People</button>
+                                      <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg max-sm:bg-[#171717]	" />
+                                      <button  className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl  max-sm:bg-black	">Tag People</button>
                                     </div>
                           </div>
                         </div> : <div className="crop_brithness_container flex flex-wrap gap-6  justify-center">
