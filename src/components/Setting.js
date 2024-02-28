@@ -144,8 +144,7 @@ const Setting = () => {
                             {
                                 openTab === 4 ? <img src={arrow} alt="arrow" /> : ""
                             }
-                            {/* <Icon icon="iconamoon:arrow-right-2-bold" /> */}
-                            {/* <span className="after:content-[]"> </span>/ */}
+                       
                         </button>
                         <button
                             className={

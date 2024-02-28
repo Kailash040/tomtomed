@@ -377,7 +377,7 @@ const MainNavigation = () => {
                 {({ isActive }) => (
                   (
                     <div className="flex flex-col items-center" >
-                      <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] max-xl:p-[11px] " : "rounded-full bg-grey p-[11px]  "}>
+                      <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] max-xl:p-[11px] " : "rounded-full bg-grey p-2  "}>
                         {isActive ? <Icon icon="clarity:notification-solid" height="22px" width="20px" className={isActive ? "text-white " : "text-white h-5 w-5 "} /> : <Icon icon="basil:notification-outline" className="text-white h-5 w-5" />}
 
                       </div>

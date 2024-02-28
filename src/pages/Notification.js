@@ -28,7 +28,7 @@ const Notification = () => {
     return (
         <>
 
-            <div class="  flex pl-[60px] pr-[60px]   font-roboto min-[1440px]:justify-between  max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
+            <div class="  flex pl-[60px] pr-[60px]  max-sm:pr-0 max-sm:pl-0  font-roboto min-[1440px]:justify-between  max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
                 <div className="left_section flex   ">
                     <div className="news_savePost_group_section 	max-xl:hidden">
                         <div className="w-[220px]" >
@@ -142,7 +142,7 @@ const Notification = () => {
                     </div>
                     <div className="post_container pl-[80px] max-xl:pl-0 ">
                         <div className='comment_section'>
-                            <div className="top_section pb-3   px-[30px]  border-x-2 border-[#171717]">
+                            <div className="top_section pb-3   px-[30px]  max-sm:px-0  border-x-2 border-[#171717] max-sm:border-none">
                                 <div className="button flex items-center gap-[18px] ">
 
                                     <p className='font-semibold	text-white' >Notifications
@@ -153,18 +153,18 @@ const Notification = () => {
                             <div className="comment_list">
 
 
-                                <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
-                                    <p className="text-lg text-white font-semibold	" >New</p>
-                                    <div className="comment_item mt-6">
-                                        <div className="details_user flex justify-between  w-[540px]">
+                                <div className="comment_section  py-3 border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
+                                    <p className="text-lg text-white font-semibold max-sm:text-base	" >New</p>
+                                    <div className="comment_item mt-6 max-sm:border-b-2 max-sm:border-[#171717] max-sm:pb-2">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
                                             <div className="name flex gap-3">
                                                 <div className="user_img">
                                                     <img src={rectangle} alt="user" className="w-10 h-10" />
                                                 </div>
                                                 <div className="dp_img">
 
-                                                <p className="name font-bold text-white text-base	">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
-                                                <p className='time  text-[#8F8F8F]  text-sm'>2m ago</p>
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
                                                 </div>
                                             </div>
                                             <div className="dp">
@@ -175,20 +175,20 @@ const Notification = () => {
                                         {/* show comment */}
 
                                     </div>
-
+                                   
                                 </div>
-                                <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
                                     
-                                    <div className="comment_item ">
-                                        <div className="details_user flex justify-between  w-[540px]">
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
                                             <div className="name flex gap-3">
                                                 <div className="user_img">
                                                     <img src={rectangle} alt="user" className="w-10 h-10" />
                                                 </div>
                                                 <div className="dp_img">
 
-                                                <p className="name font-bold text-white text-base	">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
-                                                <p className='time  text-[#8F8F8F]  text-sm'>2m ago</p>
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
                                                 </div>
                                             </div>
                                             <div className="dp">
@@ -199,20 +199,20 @@ const Notification = () => {
                                         {/* show comment */}
 
                                     </div>
-
+                                   
                                 </div>
-                                <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
                                     
-                                    <div className="comment_item ">
-                                        <div className="details_user flex justify-between  w-[540px]">
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
                                             <div className="name flex gap-3">
                                                 <div className="user_img">
                                                     <img src={rectangle} alt="user" className="w-10 h-10" />
                                                 </div>
                                                 <div className="dp_img">
 
-                                                <p className="name font-bold text-white text-base	">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
-                                                <p className='time  text-[#8F8F8F]  text-sm'>2m ago</p>
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
                                                 </div>
                                             </div>
                                             <div className="dp">
@@ -223,20 +223,20 @@ const Notification = () => {
                                         {/* show comment */}
 
                                     </div>
-
+                                   
                                 </div>
-                                <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
                                     
-                                    <div className="comment_item ">
-                                        <div className="details_user flex justify-between  w-[540px]">
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
                                             <div className="name flex gap-3">
                                                 <div className="user_img">
                                                     <img src={rectangle} alt="user" className="w-10 h-10" />
                                                 </div>
                                                 <div className="dp_img">
 
-                                                <p className="name font-bold text-white text-base	">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
-                                                <p className='time  text-[#8F8F8F]  text-sm'>2m ago</p>
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
                                                 </div>
                                             </div>
                                             <div className="dp">
@@ -247,20 +247,20 @@ const Notification = () => {
                                         {/* show comment */}
 
                                     </div>
-
+                                   
                                 </div>
-                                <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
                                     
-                                    <div className="comment_item ">
-                                        <div className="details_user flex justify-between  w-[540px]">
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
                                             <div className="name flex gap-3">
                                                 <div className="user_img">
                                                     <img src={rectangle} alt="user" className="w-10 h-10" />
                                                 </div>
                                                 <div className="dp_img">
 
-                                                <p className="name font-bold text-white text-base	">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
-                                                <p className='time  text-[#8F8F8F]  text-sm'>2m ago</p>
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
                                                 </div>
                                             </div>
                                             <div className="dp">
@@ -271,20 +271,20 @@ const Notification = () => {
                                         {/* show comment */}
 
                                     </div>
-
+                                   
                                 </div>
-                                <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
                                     
-                                    <div className="comment_item ">
-                                        <div className="details_user flex justify-between  w-[540px]">
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
                                             <div className="name flex gap-3">
                                                 <div className="user_img">
                                                     <img src={rectangle} alt="user" className="w-10 h-10" />
                                                 </div>
                                                 <div className="dp_img">
 
-                                                <p className="name font-bold text-white text-base	">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
-                                                <p className='time  text-[#8F8F8F]  text-sm'>2m ago</p>
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
                                                 </div>
                                             </div>
                                             <div className="dp">
@@ -295,7 +295,128 @@ const Notification = () => {
                                         {/* show comment */}
 
                                     </div>
+                                   
+                                </div>
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
+                                    
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
+                                            <div className="name flex gap-3">
+                                                <div className="user_img">
+                                                    <img src={rectangle} alt="user" className="w-10 h-10" />
+                                                </div>
+                                                <div className="dp_img">
 
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
+                                                </div>
+                                            </div>
+                                            <div className="dp">
+                                                <img src={userImage} alt="user" className='w-[38px] h-[38px]' />
+                                            </div>
+                                        </div>
+
+                                        {/* show comment */}
+
+                                    </div>
+                                   
+                                </div>
+                                {/*  */}
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
+                                    
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
+                                            <div className="name flex gap-3">
+                                                <div className="user_img">
+                                                    <img src={rectangle} alt="user" className="w-10 h-10" />
+                                                </div>
+                                                <div className="dp_img">
+
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
+                                                </div>
+                                            </div>
+                                            <div className="dp">
+                                                <img src={userImage} alt="user" className='w-[38px] h-[38px]' />
+                                            </div>
+                                        </div>
+
+                                        {/* show comment */}
+
+                                    </div>
+                                   
+                                </div>
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
+                                    
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
+                                            <div className="name flex gap-3">
+                                                <div className="user_img">
+                                                    <img src={rectangle} alt="user" className="w-10 h-10" />
+                                                </div>
+                                                <div className="dp_img">
+
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
+                                                </div>
+                                            </div>
+                                            <div className="dp">
+                                                <img src={userImage} alt="user" className='w-[38px] h-[38px]' />
+                                            </div>
+                                        </div>
+
+                                        {/* show comment */}
+
+                                    </div>
+                                   
+                                </div>
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
+                                    
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
+                                            <div className="name flex gap-3">
+                                                <div className="user_img">
+                                                    <img src={rectangle} alt="user" className="w-10 h-10" />
+                                                </div>
+                                                <div className="dp_img">
+
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
+                                                </div>
+                                            </div>
+                                            <div className="dp">
+                                                <img src={userImage} alt="user" className='w-[38px] h-[38px]' />
+                                            </div>
+                                        </div>
+
+                                        {/* show comment */}
+
+                                    </div>
+                                   
+                                </div>
+                                <div className="comment_section   border-2 border-[#171717] px-[30px] max-sm:px-0 max-sm:border-b-2 max-sm:border-none">
+                                    
+                                    <div className="comment_item pt-3 max-sm:border-b-2 max-sm:border-[#171717] pb-3">
+                                        <div className="details_user flex justify-between  w-[540px] max-sm:w-full">
+                                            <div className="name flex gap-3">
+                                                <div className="user_img">
+                                                    <img src={rectangle} alt="user" className="w-10 h-10" />
+                                                </div>
+                                                <div className="dp_img">
+
+                                                <p className="name font-bold text-white text-base	max-sm:text-sm">Richa Singh     <span  className="font-normal	" >liked your post</span></p>
+                                                <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs	'>2m ago</p>
+                                                </div>
+                                            </div>
+                                            <div className="dp">
+                                                <img src={userImage} alt="user" className='w-[38px] h-[38px]' />
+                                            </div>
+                                        </div>
+
+                                        {/* show comment */}
+
+                                    </div>
+                                   
                                 </div>
                             </div>
 

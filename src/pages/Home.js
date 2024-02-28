@@ -245,7 +245,7 @@ const Home = () => {
                           <p className="text-[#8F8F8F] text-sm font-medium">4</p>
                         </button>
                         {
-                          showshareModal === true ? <div className="absolute top-8 flex flex-col gap-5 items-baseline rounded-xl	  text-lg w-[185px]	 bg-[#141414] text-white py-[18px] px-3" >
+                          showshareModal === true ? <div className="absolute top-8 flex flex-col gap-5 items-baseline rounded-xl	max-sm:p-3 max-sm:w-[157px]  text-lg w-[185px]	 bg-[#141414] text-white py-[18px] px-3 " >
                             {/*  */}
                             <div className="mb-5  hidden ">
                               <div className="add_friends flex w-[80%] mx-auto">
@@ -314,39 +314,45 @@ const Home = () => {
                                 </div>
                               </div>
                             </div>
-                            <button className="" onClick={() => document.getElementById('my_modal_share_with_friend').showModal()}>Share with Friends</button>
+                            <button className="max-sm:text-sm	" onClick={() => document.getElementById('my_modal_share_with_friend').showModal()}>Share with Friends</button>
                             <dialog id="my_modal_share_with_friend" className="modal">
-                              <div className="modal-box p-0 bg-[#202020] w-11/12 max-w-4xl">
+                              <div className="modal-box p-0 bg-[#202020] w-11/12 max-w-4xl  max-sm:bg-black  max-sm:w-[100%] max-sm:max-h-[100%]">
                                 {/*  */}
 
-                                <div className="add_friends flex  mx-auto">
-
-                                  <p className="text-base  text-white hidden max-sm:block">Add friends</p>
-                                </div>
                                 <div className="dailogContainer flex   justify-end flex-col">
                                   <div className="dialogbox  flex flex-col    ">
+                                    <div className="flex_container flex   flex-col max-sm:flex-row items-center  max-sm:px-5  ">
+
+                               
+                                <form method="dialog" className="hidden max-sm:block"  >
+      {/* if there is a button in form, it will close the modal */}
+      <button className="p-2 rounded-full bg-[#1B1C1B] mt-[10px]">   <Icon icon="eva:arrow-back-fill" className="w-4 h-4 text-white" /></button>
+    </form>
+                               
+                              
 
 
-                                    <div className="searchContainer flex justify-between items-center gap-10   px-6 pt-6  rounded-t-3xl  max-sm:absolute max-sm:bottom-0  max-sm:justify-center max-sm:pt-[10px]" >
-                                      <div className="relative  w-full  flex justify-end items-center  ">
+                                    <div className="searchContainer flex justify-between items-center gap-10   px-6 pt-6  rounded-t-3xl    max-sm:justify-center max-sm:pt-[10px]  w-full max-sm:pr-0 max-sm:w-full" >
+                                      <div className="relative  w-full  flex justify-end items-center max-sm:w-full  ">
                                         <input
                                           type="text"
-                                          className="  bg-[#1B1C1B] p-5  rounded-[30px] text-[#8F8F8F] w-full"
+                                          className="  bg-[#1B1C1B] p-5  max-sm:p-3 max-sm:text-sm	 max-sm:w-full rounded-[30px] text-[#8F8F8F] w-full"
                                           placeholder="Search Friends "
                                         />
                                         <div className="flex gap-6 absolute p-1 bg-[#1B1C1B] right-[18px] ">
                                           <Icon icon="ep:search" className="text-white w-5 h-5" />
                                         </div>
                                       </div>
-                                      <div className="search_button max-sm:w-full max-sm:z-10">
+                                      <div className="search_button max-sm:w-full max-sm:z-10 max-sm:hidden">
                                         <button className="signUp text-white   px-[135px] py-5 max-lg:px-[50px] max-lg:py-[16px] rounded-xl text-lg max-md:px-9 max-md:text-base max-sm:w-full">Share</button>
                                       </div>
                                     </div>
-                                    <div className="list_container    px-5 pb-6 rounded-b-3xl h-80 overflow-y-scroll  scrollbar-thumb-rounded-full scrollbar-track-rounded-full  scrollbar scrollbar-thumb-[#DDDDDD] scrollbar-track-[#414141] max-sm:rounded-t-3xl">
+                                    </div>
+                                    <div className="list_container  max-sm:h-[100%]  px-5 pb-6 rounded-b-3xl h-95 overflow-y-scroll  scrollbar-thumb-rounded-full scrollbar-track-rounded-full  scrollbar scrollbar-thumb-[#DDDDDD] scrollbar-track-[#414141] max-sm:rounded-t-3xl">
                                       {/* list container . */}
                                       {/* carousel item */}
-                                      <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                      <div className="chat flex items-center justify-between  mt-3 ">
+                                        <div className="user_deatails flex gap-3 items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -357,7 +363,187 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+                                          </div>
+                                        </div>
+                                        <div className="cheque_user">
+                                          <div class="inline-flex items-center">
+                                            <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+                                              <input type="checkbox"
+                                                class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                                                id="check" />
+                                              <span
+                                                class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+                                                  stroke="currentColor" stroke-width="1">
+                                                  <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd"></path>
+                                                </svg>
+                                              </span>
+                                            </label>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="chat flex items-center justify-between  mt-3 ">
+                                        <div className="user_deatails flex gap-3 items-center">
+                                          <div>
+                                            {" "}
+                                            <img
+                                              src={userImage}
+                                              alt="message"
+                                              className="h-10 w-10 rounded-full "
+                                            />
+                                          </div>
+                                          <div className="text-white">
+                                            {" "}
+                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+                                          </div>
+                                        </div>
+                                        <div className="cheque_user">
+                                          <div class="inline-flex items-center">
+                                            <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+                                              <input type="checkbox"
+                                                class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                                                id="check" />
+                                              <span
+                                                class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+                                                  stroke="currentColor" stroke-width="1">
+                                                  <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd"></path>
+                                                </svg>
+                                              </span>
+                                            </label>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="chat flex items-center justify-between  mt-3 ">
+                                        <div className="user_deatails flex gap-3 items-center">
+                                          <div>
+                                            {" "}
+                                            <img
+                                              src={userImage}
+                                              alt="message"
+                                              className="h-10 w-10 rounded-full "
+                                            />
+                                          </div>
+                                          <div className="text-white">
+                                            {" "}
+                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+                                          </div>
+                                        </div>
+                                        <div className="cheque_user">
+                                          <div class="inline-flex items-center">
+                                            <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+                                              <input type="checkbox"
+                                                class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                                                id="check" />
+                                              <span
+                                                class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+                                                  stroke="currentColor" stroke-width="1">
+                                                  <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd"></path>
+                                                </svg>
+                                              </span>
+                                            </label>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="chat flex items-center justify-between  mt-3 ">
+                                        <div className="user_deatails flex gap-3 items-center">
+                                          <div>
+                                            {" "}
+                                            <img
+                                              src={userImage}
+                                              alt="message"
+                                              className="h-10 w-10 rounded-full "
+                                            />
+                                          </div>
+                                          <div className="text-white">
+                                            {" "}
+                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+                                          </div>
+                                        </div>
+                                        <div className="cheque_user">
+                                          <div class="inline-flex items-center">
+                                            <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+                                              <input type="checkbox"
+                                                class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                                                id="check" />
+                                              <span
+                                                class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+                                                  stroke="currentColor" stroke-width="1">
+                                                  <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd"></path>
+                                                </svg>
+                                              </span>
+                                            </label>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="chat flex items-center justify-between  mt-3 ">
+                                        <div className="user_deatails flex gap-3 items-center">
+                                          <div>
+                                            {" "}
+                                            <img
+                                              src={userImage}
+                                              alt="message"
+                                              className="h-10 w-10 rounded-full "
+                                            />
+                                          </div>
+                                          <div className="text-white">
+                                            {" "}
+                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
+                                          </div>
+                                        </div>
+                                        <div className="cheque_user">
+                                          <div class="inline-flex items-center">
+                                            <label class="relative flex items-center p-3 rounded-full cursor-pointer" htmlFor="check">
+                                              <input type="checkbox"
+                                                class="before:content[''] peer relative  bg-white h-6 w-6 cursor-pointer appearance-none rounded-full border border-blue-gray-200 transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:bg-blue-gray-500 before:opacity-0 before:transition-opacity checked:border-gray-900 checked:bg-gray-900 checked:before:bg-gray-900 hover:before:opacity-10"
+                                                id="check" />
+                                              <span
+                                                class="absolute text-black transition-opacity opacity-0 pointer-events-none top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 peer-checked:opacity-100">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor"
+                                                  stroke="currentColor" stroke-width="1">
+                                                  <path fill-rule="evenodd"
+                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                    clip-rule="evenodd"></path>
+                                                </svg>
+                                              </span>
+                                            </label>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div className="chat flex items-center justify-between  mt-3 ">
+                                        <div className="user_deatails flex gap-3 items-center">
+                                          <div>
+                                            {" "}
+                                            <img
+                                              src={userImage}
+                                              alt="message"
+                                              className="h-10 w-10 rounded-full "
+                                            />
+                                          </div>
+                                          <div className="text-white">
+                                            {" "}
+                                            <p   className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -382,7 +568,7 @@ const Home = () => {
                                         </div>
                                       </div>
                                       <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                        <div className="user_deatails flex gap-3 items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -393,7 +579,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p  className="max-sm:text-base" >Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -418,7 +604,7 @@ const Home = () => {
                                         </div>
                                       </div>
                                       <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                        <div className="user_deatails flex gap-3 items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -429,7 +615,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p  className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -454,7 +640,7 @@ const Home = () => {
                                         </div>
                                       </div>
                                       <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                        <div className="user_deatails flex gap-3 items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -465,7 +651,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p  className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -490,7 +676,7 @@ const Home = () => {
                                         </div>
                                       </div>
                                       <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                        <div className="user_deatails flex gap-3  items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -501,7 +687,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p  className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -526,7 +712,7 @@ const Home = () => {
                                         </div>
                                       </div>
                                       <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                        <div className="user_deatails flex gap-3 items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -537,7 +723,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p  className="max-sm:text-base"> Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -562,7 +748,7 @@ const Home = () => {
                                         </div>
                                       </div>
                                       <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                        <div className="user_deatails flex gap-3 items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -573,7 +759,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p  className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -598,7 +784,7 @@ const Home = () => {
                                         </div>
                                       </div>
                                       <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                        <div className="user_deatails flex gap-3 items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -609,7 +795,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p  className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -634,7 +820,7 @@ const Home = () => {
                                         </div>
                                       </div>
                                       <div className="chat flex items-center justify-between  mt-3">
-                                        <div className="user_deatails flex gap-3">
+                                        <div className="user_deatails flex gap-3 items-center">
                                           <div>
                                             {" "}
                                             <img
@@ -645,7 +831,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p>Amy Johnson</p>
+                                            <p  className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -668,6 +854,9 @@ const Home = () => {
 
                                           </div>
                                         </div>
+                                      </div>
+                                      <div className="search_button max-sm:w-full max-sm:z-10 hidden max-sm:block  max-sm:bg-[#101010]">
+                                        <button className="signUp text-white   px-[135px] py-5 max-lg:px-[50px] max-lg:py-[16px] rounded-xl text-lg max-md:px-9 max-md:text-base max-sm:w-full">Share</button>
                                       </div>
                                     </div>
 
@@ -676,29 +865,42 @@ const Home = () => {
 
                                 {/*  */}
                               </div>
-                              <form method="dialog" className="modal-backdrop">
+                              <form method="dialog" className="modal-backdrop max-sm:hidden">
                                 <button>close</button>
                               </form>
                             </dialog>
                             {/*  */}
                             {/* repost on feed */}
                             {/* Open the modal using document.getElementById('ID').showModal() method */}
-                            <button className="" onClick={() => document.getElementById('my_modal_repost_on_feed').showModal()}>   Repost with caption</button>
+                            <button className="max-sm:text-sm" onClick={() => document.getElementById('my_modal_repost_on_feed').showModal()}>   Repost with caption</button>
                             <dialog id="my_modal_repost_on_feed" className="modal  ">
-                              <div className="modal-box bg-transparent  w-11/12 max-w-5xl p-0 	"  >
-                                <div className="flex_container flex gap-[30px]">
+                              <div className="modal-box bg-transparent  max-md:bg-black  w-11/12 max-w-5xl p-0  max-md:max-h-[100%] max-md:w-[100%]	"  >
+                                <div className="user_deatails  justify-between items-center mt-5 hidden max-sm:block mb-2 ">
+                                      <div className="left_section flex items-center gap-5  ">
+                                      <form method="dialog">
+      {/* if there is a button in form, it will close the modal */}
+      <button className="p-1 rounded-full bg-[#1B1C1B] ml-[27px]"> <Icon icon="eva:arrow-back-fill" className="w-5 h-5 text-white" /></button>
+    </form>
+                                       
+                                        <div className="item flex gap-2">
+                                          <p className="text-lg max-sm:text-base	" >Repost from Amy Ray</p>
+                                          <p className="text-[#8F8F8F] text-base	"  >@amy_ray</p>
+                                        </div>
+                                      </div>
+                                    
+                                    </div>
+                                <div className="flex_container flex gap-[30px] max-xl:justify-center max-md:flex-col max-md:items-center max-md:gap-6">
 
-
-                                  <div className="img_container w-[520px] h-[520px]">
+                                  <div className="img_container w-[520px] h-[520px] max-xl:w-[320px] max-xl:h-[320px] max-[860px]:w-[250px] max-[860px]:h-[250px] max-md:w-[350px] max-md:h-[300px] ">
 
                                     <img src={repostFeedUser} alt="user" className="w-full h-full object-cover rounded-xl" />
                                   </div>
                                   <div className="right_div_container">
 
                                   
-                                  <div className="right_container w-[470px] rounded-xl	  h-[400px] bg-[#1B1C1B] ">
+                                  <div className="right_container w-[470px] rounded-xl max-[860px]:w-[350px]	 max-xl:w-[400px]  h-[400px] bg-[#1B1C1B]  max-md:bg-black">
                                     
-                                    <div className="user_deatails flex justify-between items-center p-6 ">
+                                    <div className="user_deatails flex justify-between items-center p-6 max-sm:hidden ">
                                       <div className="left_section flex items-center gap-5">
                                         <Icon icon="eva:arrow-back-fill" className="w-5 h-5 text-white" />
                                         <div className="item">
@@ -710,17 +912,17 @@ const Home = () => {
                                         <Icon icon="ph:smiley" className="w-[30px] h-[30px] " />
                                       </div>
                                     </div>
-                                    <div className="input_box px-6 w-full">
-                                      <textarea type="text" className="w-full rounded-xl p-6 bg-[#000000]	" placeholder="Write a caption here..." />
+                                    <div className="input_box px-6 w-full  max-sm:px-0">
+                                      <textarea type="text" className="w-full rounded-xl p-6 bg-[#000000] max-sm:text-sm		max-sm:bg-[#1B1C1B]" placeholder="Write a caption here..." />
                                     </div>
-                                    <div className="search_friends px-6 relative flex justify-between items-center">
-                                      <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg	" />
-                                      <button  className="text-base bg-[#1B1C1B] absolute  px-[15px] right-10 py-[10px] rounded-xl	">Tag People</button>
+                                    <div className="search_friends px-6 max-sm:px-0 relative flex justify-between items-center">
+                                      <input type="text" className="  max-sm:text-sm w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg max-sm:bg-[#1B1C1B] 	" placeholder="Search Friends..." />
+                                      <button  className="text-base bg-[#1B1C1B] absolute  max-sm:bg-black px-[15px] right-10 py-[10px] rounded-xl max-sm:right-2	">Tag People</button>
                                     </div>
                                   </div>
                                     <div className="button_div  mt-10 ">
 
-                                  <button className="w-full signUp py-5 rounded-xl	 ">Post</button>
+                                  <button className="w-full signUp py-5  max-sm:py-[15px] rounded-xl	 max-sm:text-base ">Post</button>
                                     </div>
                                   </div>
                                 </div>
@@ -728,14 +930,14 @@ const Home = () => {
                               </div>
 
 
-                              <form method="dialog" className="modal-backdrop">
+                              <form method="dialog" className="modal-backdrop max-sm:hidden">
                                 <button>close</button>
                               </form>
 
 
                             </dialog>
                             {/* <button>Repost on feed</button> */}
-                            <button>Repost on feed</button>
+                            <button className="max-sm:text-sm">Repost on feed</button>
                           </div> : ""
                         }
 
