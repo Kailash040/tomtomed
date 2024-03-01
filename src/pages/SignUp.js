@@ -19,7 +19,7 @@ const SignUp = () => {
   // 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [emailorphone,SetEmailOrphone] =useState('')
+  const [emailorphone, SetEmailOrphone] = useState('')
   const [error, setError] = useState('');
   // 
 
@@ -32,34 +32,26 @@ const SignUp = () => {
     interval: 2000,
   }
   // 
-
-
-
- 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Perform form validation
-    if (!username || !password || !emailorphone  ) {
-      setError('Username , emailorphone password  are required');
-      return;
-    }
+
 
     try {
       // Send login data to the server
       const response = await axios.post(`https://tomtomed.onrender.com/api/v1/auth/register`, {
         username: username,
         password: password,
-        emailorphone:emailorphone
+        emailorphone: emailorphone
       },
-      {
-        usecredentials : true,
-      }
-  
+        {
+          usecredentials: true,
+        }
+
       );
 
-     console.log(response)
+      console.log(response)
     } catch (error) {
       // Handle login failure
       setError('Invalid username or password or emailorphone');
@@ -118,9 +110,9 @@ const SignUp = () => {
               <div className="username mb-2 max-xl:mb-[18px]">
                 <input type="text" id="contact" placeholder="Email or phone" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
 
-                value={
-                  emailorphone}  onChange={(e)=> SetEmailOrphone(e.target.value)}
-                /> 
+                  value={
+                    emailorphone} onChange={(e) => SetEmailOrphone(e.target.value)}
+                />
 
               </div>
               <div className="username ">
