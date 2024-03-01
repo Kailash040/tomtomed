@@ -168,7 +168,7 @@ const Home = () => {
                        <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white " />
 </button>
 {
-  showMuteModal && <div className="report_block_mute absolute z-30 list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 top-10">
+  showMuteModal && <div className="report_block_mute absolute  list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 top-10">
     <div className="user_div_image flex   gap-[18px] items-center">
 <img src={userImage} alt="user" className="w-[60px] h-[60px]" />
    <div className="name_username">
