@@ -35,7 +35,7 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     // Assuming you have an API endpoint for sign-up
-    const response = await fetch(`https://tomtomed.onrender.com` + `/api/v1/admin/auth/register`, {
+    const response = await fetch(`https://tomtomed.onrender.com` + `/api/v1/auth/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const SignUp = () => {
       setUsername('');
       setEmail('');
       setPassword('');
-
+alert("verification email send to your email")
     } else {
       // Handle sign-up errors
       console.error('Sign-up failed:', data.error);
