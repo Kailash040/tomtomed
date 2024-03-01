@@ -527,7 +527,7 @@ className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
                                     <button onClick={e => {
                                         e.preventDefault();
                                         setOpenTab(11);
-                                    }} className="py-5 px-[124px] signUp rounded-xl text-lg  max-sm:py-3 max-sm:text-base	" >Verify</button>
+                                    }} className="py-5 px-[124px] signUp rounded-xl text-lg  max-sm:py-3 max-sm:text-base max-sm:px-0 max-sm:w-full	" >Verify</button>
                                     {/* <div className="after:content-[>]"></div> */}
                                 </div>
                             </div> : ""}
@@ -580,7 +580,7 @@ className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
                                                 e.preventDefault();
                                                 setOpenTab(13);
                                             }}
-                                            className='py-5 px-[124px] signUp rounded-xl text-lg max-sm:py-3 max-sm:text-base '>Confirm</button>
+                                            className='py-5 px-[124px] signUp rounded-xl text-lg max-sm:py-3 max-sm:text-base  max-sm:px-0 max-sm:w-full'>Confirm</button>
                                     </div>
                                 </div>
                                 : ""}
@@ -589,7 +589,7 @@ className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
                                     <li className='font-normal	text-[#8F8F8F] list-disc	 max-sm:text-sm max-sm:leading-4	' >Verify your new number to ensure uninterrupted account access and enhanced protection against unauthorized access attempts. </li>
                                     <li className='font-normal	text-[#8F8F8F] list-disc	mt-3  max-sm:text-sm max-sm:leading-4' >Scan the “QR code” or enter a “setup key” on the Google Authenticator app. </li>
                                 </div>
-                                <div className="qr_text  max-sm:p-1 flex justify-text mt-10  max-sm:mt-[30px] justify-between   bg-[#1B1C1B] p-2 rounded-xl	">
+                                <div className="qr_text  max-sm:p-1 flex justify-text mt-10  max-sm:mt-[28px] justify-between   bg-[#1B1C1B] p-2 rounded-xl	">
                                     <p className='py-[22px]  px-[18px] max-sm:text-sm max-sm:p-3  max-sm:leading-4' >ABCD EFGH IJKL MNOP QRST UVWX YZAB CDEF</p>
                                     <label htmlFor="copy" className='flex  max-sm:w-[179px] items-center gap-3 py-[14px] px-[47px] bg-[#000000] rounded-xl	 max-sm:text-sm max-sm:p-3 '>
                                         <Icon icon="fluent:copy-16-regular" className='w-[18px] h-[18px]' />
@@ -598,7 +598,7 @@ className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
                                 </div>
                                 {/*  */}
 
-                                <button onClick={() => document.getElementById('my_modal_13').showModal()} className='flex items-center gap-[18px] justify-between w-full mt-[30px] '>
+                                <button onClick={() => document.getElementById('my_modal_13').showModal()} className='flex items-center gap-[18px] justify-between w-full mt-[30px] max-sm:mt-[28px]'>
 
 
                                     <p>Scan QR Code</p>
@@ -635,14 +635,14 @@ className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
 
 
 <div className="heading flex flex-col text-justify	">
-    <p className='text-base  text-[#8F8F8F] ' >Enter Verification Code sent to your mobile number</p>
+    <p className='text-base  text-[#8F8F8F] max-sm:text-sm ' >Enter Verification Code sent to your mobile number</p>
 
 </div>
 <div className="enter_otp flex flex-col justify-center  mt-5  w-full relative
 ">
     <div className="input_box  text-justify ">
 
-        <input type="text" className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-lg	' placeholder='Enter Code' />
+        <input type="text" className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-lg max-sm:py-3 max-sm:text-sm	' placeholder='Enter Code' />
     </div>
     <div className="button   right-2 absolute">
 
@@ -652,17 +652,17 @@ className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
             e.preventDefault();
             setOpenTab(15);
         }}
-         className='bg-[black] py-[15px] px-[70px] rounded-xl	' >Confirm</button>
+         className='bg-[black] py-[15px] px-[70px] rounded-xl max-sm:py-[9px] max-sm:px-[22px]	 max-sm:text-sm' >Confirm</button>
     </div>
 </div>
 </div>  :""}
  {/*  */}
  {openTab ===15  ? 
 <div className="heading flex flex-col text-justify	">
-    <p className='text-base  text-[#8F8F8F] ' >Your Google Authenticator setup is complete!
+    <p className='text-base  text-[#8F8F8F] max-sm:text-white ' >Your Google Authenticator setup is complete!
 
-Your account is now protected with an extra layer of security.</p>
-
+</p>
+<p     className='text-base  text-[#8F8F8F] max-sm:text-white'   >Your account is now protected with an extra layer of security.</p>
 </div>:""}
 {
     openTab === 16 ?    <div className='w-full' >
