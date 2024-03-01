@@ -20,7 +20,7 @@ const EmailVerify = () => {
 
   const verifyToken = async (token, userId) => {
     try {
-      const response = await axios.put("https://tomtomed.onrender.com/api/v1/verify-email", { userId: userId, token: token });
+      const response = await axios.put("https://tomtomed.onrender.com/api/v1/user/verify-email", { userId: userId, token: token });
       
       if (response.status === 200 || response.status === 401 || response.status === 500) {
         setLoading(false);

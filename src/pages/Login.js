@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import banner from "../assets/postassets/loginbanner.png";
 import apple from "../assets/postassets/apple.png";
 import google from "../assets/postassets/google.png";
@@ -14,6 +14,34 @@ import slider from "../assets/postassets/slider.png"
 import slider2 from "../assets/postassets/slider2.png"
 import slider3 from "../assets/postassets/slider3.png"
 const SignUp = () => {
+
+  const [username, setUsername] = useState('');
+  const [token, setToken] = useState('');
+  const [password, setPassword] = useState('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Assuming you have an API endpoint for sign-up
+    const response = await fetch(`https://tomtomed.onrender.com` + `/api/v1/auth/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username, password }),
+    });
+
+    const data = await response.json();
+    if (response.ok) {
+      console.log(token)
+      setToken(data.token); // Assuming the token is returned upon successful sign-up
+      setUsername('');
+     
+      setPassword('');
+alert("verification email send to your email")
+    } else {
+      // Handle sign-up errors
+      console.error('Sign-up failed:', data.error);
+    }
+  }
   const splideOptions = {
     type: 'slide',
     perPage: 1,
@@ -59,12 +87,13 @@ const SignUp = () => {
 
               Login{" "}
             </p>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="username mb-2 max-xl:mb-[18px]">
                 <input
                   type="text"
                   class=" px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px] text-[#8F8F8F] max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
+                  value={username} onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
              
@@ -73,6 +102,7 @@ const SignUp = () => {
                   type="text"
                   class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
+                  value={password} onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="username list-none mb-2 mt-2">
