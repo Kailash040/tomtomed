@@ -31,7 +31,7 @@ function App() {
       element: <ResetPassword />,
     },
     {
-      path:"/verify-email",
+      path:"/verify",
       element : <EmailVerify/>
     },
     {
