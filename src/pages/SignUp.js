@@ -69,10 +69,10 @@ const SignUp = () => {
             </SplideSlide>
 
             <SplideSlide>
-              <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   " />
+              <img src={slider2} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   " />
             </SplideSlide>
             <SplideSlide>
-              <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   " />
+              <img src={slider3} alt="Image 1" className="rounded-xl h-[550px] w-[300px]   " />
             </SplideSlide>
           </Splide>
           <img src={banner} className="w-[572px] h-[650px] absolute" alt="" />
