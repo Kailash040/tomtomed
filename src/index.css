@@ -90,3 +90,17 @@ body.modal-active {
 	border-radius: 12px;
 	margin-top: 15px;
 }
+/*  */
+.ql-snow .ql-picker.ql-header .ql-picker-label::before{
+    content: "Normal";
+    color: white;
+}
+.ql-snow .ql-stroke {
+   
+    stroke: white !important ;
+    
+}
+
+.ql-snow .ql-picker-options .ql-picker-item {
+    color: white;
+}

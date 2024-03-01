@@ -268,7 +268,7 @@ const MainNavigation = () => {
                   </div>
                   <div className="article_button flex justify-end p-6 items-center max-xl:p-2">
                    
-                    <button className="signUp text-white text-lg px-[110px] py-[20px] rounded-xl max-xl:px-[55px] max-xl:py-[10px]	max-sm:w-full max-sm:text-sm  max-sm:font-medium mt-4	" >Post Article</button>
+                    <button className="signUp text-white text-lg px-[110px] z-10 py-[20px] rounded-xl max-xl:px-[55px] max-xl:py-[10px]	max-sm:w-full max-sm:text-sm  max-sm:font-medium mt-4	" >Post Article</button>
                   </div>
                 </div>
               </div>
