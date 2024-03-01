@@ -14,6 +14,7 @@ import ForgetPassword from  "../src/pages/ForgetPassword"
 import ResetPassword from '../src/pages/ResetPassword'
 import Notification from "./pages/Notification";
 import NotificationLayout from '../src/pages/NotificationLayout'
+import EmailVerify from "./utils/EmailVerify";
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ function App() {
     {
       path: "/reset-password",
       element: <ResetPassword />,
+    },
+    {
+      path:"/verify-email",
+      element : <EmailVerify/>
     },
     {
       path: "/signUp",
