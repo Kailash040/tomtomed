@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import banner from "../assets/postassets/signUpBanner.png";
 import apple from "../assets/postassets/apple.png";
 import google from "../assets/postassets/google.png";
@@ -13,13 +13,15 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import slider from "../assets/postassets/slider.png"
 import slider2 from "../assets/postassets/slider2.png"
 import slider3 from "../assets/postassets/slider3.png"
+import axios from 'axios';
 
 const SignUp = () => {
   // 
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useState('');
+  const [emailorphone,SetEmailOrphone] =useState('')
+  const [error, setError] = useState('');
+  // 
 
   const splideOptions = {
     type: 'slide',
@@ -30,32 +32,42 @@ const SignUp = () => {
     interval: 2000,
   }
   // 
-  
-  // 
-  const handleSignUp = async (e) => {
-    e.preventDefault();
-    // Assuming you have an API endpoint for sign-up
-    const response = await fetch(`https://tomtomed.onrender.com` + `/api/v1/auth/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, email, password }),
-    });
 
-    const data = await response.json();
-    if (response.ok) {
-      console.log(token)
-      setToken(data.token); // Assuming the token is returned upon successful sign-up
-      setUsername('');
-      setEmail('');
-      setPassword('');
-alert("verification email send to your email")
-    } else {
-      // Handle sign-up errors
-      console.error('Sign-up failed:', data.error);
+
+
+ 
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Perform form validation
+    if (!username || !password || !emailorphone  ) {
+      setError('Username , emailorphone password  are required');
+      return;
     }
-  }
+
+    try {
+      // Send login data to the server
+      const response = await axios.post(`https://tomtomed.onrender.com/api/v1/auth/register`, {
+        username: username,
+        password: password,
+        emailorphone:emailorphone
+      },
+      {
+        usecredentials : true,
+      }
+  
+      );
+
+     console.log(response)
+    } catch (error) {
+      // Handle login failure
+      setError('Invalid username or password or emailorphone');
+    }
+  };
+
+  // 
+
   return (
     <div className=" font-roboto  relative  ">
       <div className=" absolute ">
@@ -93,37 +105,37 @@ alert("verification email send to your email")
 
               Sign Up{" "}
             </p>
-            <form onSubmit={handleSignUp}>
+            <form onSubmit={handleSubmit} >
               <div className="username mb-2 max-xl:mb-[18px]">
                 <input
                   type="text"
                   class=" px-[18px] text-white py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
-                  value={username}
-          onChange={(e) => setUsername(e.target.value)}
+                  value={username} onChange={(e) => setUsername(e.target.value)}
+
                 />
               </div>
               <div className="username mb-2 max-xl:mb-[18px]">
-                <input type="text" id="contact" name="contact" placeholder="Email or phone" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]" required 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                />
+                <input type="text" id="contact" placeholder="Email or phone" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
+
+                value={
+                  emailorphone}  onChange={(e)=> SetEmailOrphone(e.target.value)}
+                /> 
 
               </div>
               <div className="username ">
                 <input
-                  type="text"
+
                   class="px-[18px] py-5 text-white rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={password} onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className="username mt-3 max-xl:mt-10 ">
                 <button
                   type="submit"
                   class="border  px-[18px] py-5 rounded-xl   w-[360px] text-white max-xl:pt-[14px] max-xl:pb-[15px] max-xl:h-[48px] max-xl:w-[340px] signUp "
-                  placeholder="Password"
+
                 >
                   {" "}
                   Sign up{" "}
