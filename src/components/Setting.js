@@ -184,7 +184,33 @@ const Setting = () => {
                             {/* <Icon icon="iconamoon:arrow-right-2-bold" /> */}
                             {/* <span className="after:content-[]"> </span>/ */}
                         </button>
+                        <button
+                            className={
+                                "   text-base flex items-center gap-3  justify-between mt-2  max-sm:mt-0 " +
+                                (openTab === 20
+                                    ? "text-white bg-[#202020]  px-[18px] w-[264px] max-sm:w-[90px] py-3 rounded-lg max-sm:mt-0	 mr-[18px] max-sm:mr-0"
+                                    : " bg-black px-[18px] w-[264px]   py-3 max-sm:w-[90px] mr-[18px] max-sm:mr-0")
+                            }
+                            onClick={e => {
+                                e.preventDefault();
+                                setOpenTab(20);
+                            }}
 
+                        >
+                            <div className="icons_left flex gap-3 items-center">
+                            {/* <Icon icon="mynaui:logout" /> */}
+                                <Icon icon="mynaui:logout" className='w-[23px] h-[23px]' />
+                                <p className='max-sm:hidden'>
+
+                                Log out
+                                </p>
+                            </div>
+                            {
+                                openTab === 20 ? <img src={arrow} alt="arrow" /> : ""
+                            }
+                            {/* <Icon icon="iconamoon:arrow-right-2-bold" /> */}
+                            {/* <span className="after:content-[]"> </span>/ */}
+                        </button>
                     </div>
                     <div className="right_section  w-full">
                         {/*  */}
