@@ -14,12 +14,13 @@ import slider from "../assets/postassets/slider.png"
 import slider2 from "../assets/postassets/slider2.png"
 import slider3 from "../assets/postassets/slider3.png"
 import axios from 'axios';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const SignUp = () => {
   // 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email,setEmail] =useState('')
+  const [email, setEmail] = useState('')
   const [error, setError] = useState('');
   // 
 
@@ -32,28 +33,26 @@ const SignUp = () => {
     interval: 2000,
   }
   // 
-
-
-
  
-
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     // Perform form validation
-    if (!username || !password || !email  ) {
+    if (!username || !password || !email) {
       setError('Username , emailorphone password  are required');
       return;
     }
-    const formData={
+    const formData = {
       username: username,
-        password: password,
-        email:email
+      password: password,
+      email: email
     }
     try {
-      const response = await axios.post("https://tomtomed.onrender.com/api/v1/auth/register", formData,{  usecredentials : true,});
+      const response = await axios.post("https://tomtomed.onrender.com/api/v1/auth/register", formData, { usecredentials: true, });
 
-     alert(response.data.message)
+      // alert(response.data.message);
+       toast.success(response.data.message);
+      
     } catch (error) {
       // Handle login failure
       setError('Invalid username or password or emailorphone');
@@ -64,6 +63,8 @@ const SignUp = () => {
 
   return (
     <div className=" font-roboto  relative  ">
+      <ToastContainer />
+
       <div className=" absolute ">
         <img src={bg} alt="" />
       </div>
@@ -110,11 +111,11 @@ const SignUp = () => {
                 />
               </div>
               <div className="username mb-2 max-xl:mb-[18px]">
-                <input type="email" id="contact" placeholder="Email or phone" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
+                <input type="email" id="contact" placeholder="Email or phone"  class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
 
-                value={
-                  email}  onChange={(e)=> setEmail(e.target.value)}
-                /> 
+                  value={
+                    email} onChange={(e) => setEmail(e.target.value)}
+                />
 
               </div>
               <div className="username ">

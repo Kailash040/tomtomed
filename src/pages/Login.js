@@ -14,6 +14,8 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import slider from "../assets/postassets/slider.png"
 import slider2 from "../assets/postassets/slider2.png"
 import slider3 from "../assets/postassets/slider3.png"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const SignUp = () => {
 
   const [username, setUsername] = useState('');
@@ -25,9 +27,18 @@ const SignUp = () => {
         username,
         password
       }
-    const response = await axios.post("https://tomtomed.onrender.com/api/v1/auth/login",formData,{usecredentials:true})
-   alert(response.data.message)
+      try{
+
+        const response = await axios.post("https://tomtomed.onrender.com/api/v1/auth/login",formData,{usecredentials:true})
+        toast.success(response.data.message);
+        // alert(response.data.message)
+      }
+      catch(error){
+        console.log(error)
+      }
   }
+  // 
+  // 
   const splideOptions = {
     type: 'slide',
     perPage: 1,
@@ -39,6 +50,7 @@ const SignUp = () => {
   }
   return (
     <div className=" font-roboto  relative  ">
+      <ToastContainer />
        <div className=" absolute ">
          <img src={bg} alt=""/>
        </div>
@@ -77,7 +89,7 @@ const SignUp = () => {
               <div className="username mb-2 max-xl:mb-[18px]">
                 <input
                   type="text"
-                  class=" px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px] text-[#8F8F8F] max-xl:bg-[#1B1C1B]"
+                  class=" px-[18px] py-5 rounded-xl bg-[#101010]  text-white w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
                   value={username} onChange={(e) => setUsername(e.target.value)}
                 />
@@ -86,7 +98,7 @@ const SignUp = () => {
               <div className="username ">
                 <input
                   type="password"
-                  class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
+                  class="px-[18px] py-5 rounded-xl bg-[#101010] text-white w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
                   value={password} onChange={(e) => setPassword(e.target.value)}
                 />
