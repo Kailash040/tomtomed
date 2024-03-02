@@ -1,4 +1,5 @@
 import {useState} from "react";
+import axios from 'axios'
 import banner from "../assets/postassets/loginbanner.png";
 import apple from "../assets/postassets/apple.png";
 import google from "../assets/postassets/google.png";
@@ -20,27 +21,12 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Assuming you have an API endpoint for sign-up
-    const response = await fetch(`https://tomtomed.onrender.com` + `/api/v1/auth/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    });
-
-    const data = await response.json();
-    if (response.ok) {
-      console.log(token)
-      setToken(data.token); // Assuming the token is returned upon successful sign-up
-      setUsername('');
-     
-      setPassword('');
-alert("verification email send to your email")
-    } else {
-      // Handle sign-up errors
-      console.error('Sign-up failed:', data.error);
-    }
+      const formData={
+        username,
+        password
+      }
+    const response = await axios.post("https://tomtomed.onrender.com/api/v1/auth/login",formData,{usecredentials:true})
+   alert(response.data.message)
   }
   const splideOptions = {
     type: 'slide',
@@ -99,7 +85,7 @@ alert("verification email send to your email")
              
               <div className="username ">
                 <input
-                  type="text"
+                  type="password"
                   class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
                   value={password} onChange={(e) => setPassword(e.target.value)}
