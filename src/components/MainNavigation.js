@@ -102,7 +102,6 @@ const MainNavigation = () => {
   const handleSavePost = () => {
     setSavePost(true)
   }
-  console.log(savePost);
   const handleShowHomePage = () => {
     setArticlePage(false);
     setShowThoughtPage(false)

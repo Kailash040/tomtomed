@@ -15,6 +15,7 @@ import ResetPassword from '../src/pages/ResetPassword'
 import Notification from "./pages/Notification";
 import NotificationLayout from '../src/pages/NotificationLayout'
 import EmailVerify from "./utils/EmailVerify";
+import Protected from "./components/Protected";
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ function App() {
       element: <RootLayout />,
       errorElement: <ErrorPage />,
       children: [
-        { index: true, element: <Home /> },
+        { index: true, element: <Protected Component={Home} /> },
         // { path: "users", element: <UserLayout /> },
       ],
     },
@@ -42,7 +43,7 @@ function App() {
       path: "/notification",
       element: <NotificationLayout />,
       children: [
-        { path: "/notification", element: <Notification /> },
+        { path: "/notification", element: <Protected Component={Notification} /> },
       ],
     },
     {
@@ -55,13 +56,13 @@ function App() {
     },
     {
       path: "/message",
-      element: <Message />,
+      element: <Protected Component={Message} />,
     },
     {
       path: "/user",
       element: <ProfileLayout />,
       children: [
-        { path: "/user", element: <User /> },
+        { path: "/user", element: <Protected Component={User} /> },
       ],
     },
   ]);

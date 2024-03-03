@@ -16,14 +16,28 @@ import slider3 from "../assets/postassets/slider3.png"
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const SignUp = () => {
-  // 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('')
-  const [error, setError] = useState('');
-  // 
+import { useDispatch ,useSelector} from 'react-redux';
+import { signUpUser } from "../app/auth/signUpSlice";
 
+const SignUp = () => {
+  // const userData = useSelector((state) => state.signUpAuth.data.message);
+  // console.log(userData)
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    email:''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(signUpUser(formData));
+   
+  };
   const splideOptions = {
     type: 'slide',
     perPage: 1,
@@ -34,33 +48,6 @@ const SignUp = () => {
   }
   // 
  
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    // Perform form validation
-    if (!username || !password || !email) {
-      setError('Username , emailorphone password  are required');
-      return;
-    }
-    const formData = {
-      username: username,
-      password: password,
-      email: email
-    }
-    try {
-      const response = await axios.post("https://tomtomed.onrender.com/api/v1/auth/register", formData, { usecredentials: true, });
-
-      // alert(response.data.message);
-       toast.success(response.data.message);
-      
-    } catch (error) {
-      // Handle login failure
-      setError('Invalid username or password or emailorphone');
-    }
-  };
-
-  // 
-
   return (
     <div className=" font-roboto  relative  ">
       <ToastContainer />
@@ -106,15 +93,14 @@ const SignUp = () => {
                   type="text"
                   class=" px-[18px] text-white py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
-                  value={username} onChange={(e) => setUsername(e.target.value)}
+                  name="username" value={formData.username} onChange={handleChange}
 
                 />
               </div>
               <div className="username mb-2 max-xl:mb-[18px]">
                 <input type="email" id="contact" placeholder="Email or phone"  class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
-
-                  value={
-                    email} onChange={(e) => setEmail(e.target.value)}
+name="email" value={formData.email} onChange={handleChange}
+                 
                 />
 
               </div>
@@ -123,7 +109,7 @@ const SignUp = () => {
                   type="password"
                   class="px-[18px] py-5 text-white rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
-                  value={password} onChange={(e) => setPassword(e.target.value)}
+                  name="password" value={formData.password} onChange={handleChange}
                 />
               </div>
               <div className="username mt-3 max-xl:mt-10 ">

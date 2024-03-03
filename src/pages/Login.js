@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import axios from 'axios'
 import banner from "../assets/postassets/loginbanner.png";
 import apple from "../assets/postassets/apple.png";
@@ -16,28 +16,34 @@ import slider2 from "../assets/postassets/slider2.png"
 import slider3 from "../assets/postassets/slider3.png"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { loginUser } from '../app/auth/loginSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
+
 const SignUp = () => {
 
-  const [username, setUsername] = useState('');
-  const [token, setToken] = useState('');
-  const [password, setPassword] = useState('');
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-      const formData={
-        username,
-        password
-      }
-      try{
+  /////////////////////
+  // const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const userData = useSelector((state) => state.loginAuth);
 
-        const response = await axios.post("https://tomtomed.onrender.com/api/v1/auth/login",formData,{usecredentials:true})
-        toast.success(response.data.message);
-        // alert(response.data.message)
-      }
-      catch(error){
-        console.log(error)
-      }
-  }
-  // 
+
+  // console.log(userData)
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(loginUser(formData));
+    // toast.success("login SuccessFully");
+    // 
+  };
   // 
   const splideOptions = {
     type: 'slide',
@@ -45,31 +51,31 @@ const SignUp = () => {
     pagination: false,
     arrows: false,
     autoplay: true,
-  interval: 2000,
-  
+    interval: 2000,
+
   }
   return (
     <div className=" font-roboto  relative  ">
       <ToastContainer />
-       <div className=" absolute ">
-         <img src={bg} alt=""/>
-       </div>
+      <div className=" absolute ">
+        <img src={bg} alt="" />
+      </div>
       <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[30px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
-      <div className="banner_container max-xl:hidden relative flex  justify-start items-center w-[572px] h-[600px]">
-        <Splide aria-label="My Favorite Images" options={splideOptions}   className=" z-[5] w-[350px] relative left-10 ">"  
-  <SplideSlide>
-    <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px] "/>
-  </SplideSlide>
-  <SplideSlide>
-    <img src={slider2} alt="Image 2" className="h-[550px] w-[300px] rounded-xl"/>
-  </SplideSlide>
-  <SplideSlide>
-    <img src={slider3} alt="Image 2" className="h-[550px] w-[300px] rounded-xl"/>
-  </SplideSlide>
- 
-</Splide>
-          <img src={banner} className="w-[572px]  h-[650px] absolute" alt=""  />
-        </div> 
+        <div className="banner_container max-xl:hidden relative flex  justify-start items-center w-[572px] h-[600px]">
+          <Splide aria-label="My Favorite Images" options={splideOptions} className=" z-[5] w-[350px] relative left-10 ">"
+            <SplideSlide>
+              <img src={slider} alt="Image 1" className="rounded-xl h-[550px] w-[300px] " />
+            </SplideSlide>
+            <SplideSlide>
+              <img src={slider2} alt="Image 2" className="h-[550px] w-[300px] rounded-xl" />
+            </SplideSlide>
+            <SplideSlide>
+              <img src={slider3} alt="Image 2" className="h-[550px] w-[300px] rounded-xl" />
+            </SplideSlide>
+
+          </Splide>
+          <img src={banner} className="w-[572px]  h-[650px] absolute" alt="" />
+        </div>
         <div className="form_container z-10">
           <h1 className=" text-tom font-roboto font-semibold text-[40px]	text-center mb-[10px]  max-xl:hidden">
             TOM<span class="text-tomad ">TOMED</span>
@@ -80,7 +86,7 @@ const SignUp = () => {
 
           </div>
           <div className="form_container bg-black pl-6  pr-6 max-xl:pl-[0px] max-xl:pr-[0px] rounded-3xl pb-5 max-xl:bg-[#101010]   max-xl:pb-0 max-xl:mx-auto">
-          
+
             <p className="text-[24px] font-medium text-white mb-2 pt-2 text-center  max-xl:pt-[86px]   max-xl:mb-[60px] max-xl:mt-[0] ">
 
               Login{" "}
@@ -91,23 +97,24 @@ const SignUp = () => {
                   type="text"
                   class=" px-[18px] py-5 rounded-xl bg-[#101010]  text-white w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
-                  value={username} onChange={(e) => setUsername(e.target.value)}
+                  name="username" value={formData.username} onChange={handleChange}
                 />
               </div>
-             
+
               <div className="username ">
                 <input
                   type="password"
                   class="px-[18px] py-5 rounded-xl bg-[#101010] text-white w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
-                  value={password} onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  value={formData.password} onChange={handleChange}
                 />
               </div>
               <div className="username list-none mb-2 mt-2">
-             <li className="text-[#B68FE7]">
-                <a href="">
-                Forgot  Password?
-                </a>
+                <li className="text-[#B68FE7]">
+                  <a href="">
+                    Forgot  Password?
+                  </a>
                 </li>
               </div>
               <div className="username mt-3 max-xl:mt-10 ">
@@ -117,7 +124,7 @@ const SignUp = () => {
                   placeholder="Password"
                 >
                   {" "}
-                  Sign up{" "}
+                  login{" "}
                 </button>
               </div>
               <div className="or_container flex justify-center mt-5 items-center gap-[21px] pl-[10px] pr-[10px]">
@@ -137,12 +144,12 @@ const SignUp = () => {
               </div>
 
               <p className="text-[white] list-none text-center mt-3 text-lg max-xl:hidden max-xl:mt-[60px]">
-              Don’t have an account?{" "}
+                Don’t have an account?{" "}
                 <span className="text-tom font-roboto font-semibold">
-                <NavLink to="/signUp">
+                  <NavLink to="/signUp">
 
-                Sign up
-                </NavLink>
+                    Sign up
+                  </NavLink>
                 </span>
               </p>
             </form>
@@ -212,21 +219,21 @@ const SignUp = () => {
         </div>
       </div>
       <p className="text-[white] list-none text-center mt-6 text-base hidden max-xl:block mb-10">
-      Don’t have an account? {" "}
-                <span className="text-tom font-roboto font-semibold">
-                <NavLink to="/signUp">
+        Don’t have an account? {" "}
+        <span className="text-tom font-roboto font-semibold">
+          <NavLink to="/signUp">
 
-Sign up
-</NavLink>
-                </span>
-              </p>
+            Sign up
+          </NavLink>
+        </span>
+      </p>
       <div className=" absolute  bottom-10 max-xl:hidden">
-         <img src={bgBottom} alt=""/>
-       </div>
-       <div className="hidden max-xl:block ">
+        <img src={bgBottom} alt="" />
+      </div>
+      <div className="hidden max-xl:block ">
 
-       <img src={footer} alt="" className=" h-[92px] w-full" />
-       </div>
+        <img src={footer} alt="" className=" h-[92px] w-full" />
+      </div>
     </div>
   );
 };
