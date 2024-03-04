@@ -20,3 +20,24 @@ export const signUp = async (userData) => {
     throw error;
   }
 };
+// logOut
+// 
+export const logOutUser = async (userData) => {
+  try {
+    const response = await axios.get('https://tomtomed.onrender.com/api/v1/auth/logout', userData);
+    return response.data;
+
+  } catch (error) {
+    throw error;
+  }
+};
+// 
+export const getProfile = async () => {
+  try {
+    const response = await axios.get('https://tomtomed.onrender.com/api/v1/auth/profile');
+    return response.data;
+
+  } catch (error) {
+    throw error;
+  }
+};

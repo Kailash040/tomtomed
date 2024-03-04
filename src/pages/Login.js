@@ -25,10 +25,10 @@ const SignUp = () => {
   /////////////////////
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const userData = useSelector((state) => state.loginAuth);
+  const userData = useSelector((state) => state.loginAuth);
 
 
-  // console.log(userData)
+  console.log(userData)
   const [formData, setFormData] = useState({
     username: '',
     password: '',

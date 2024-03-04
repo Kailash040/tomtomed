@@ -3,10 +3,18 @@ import { Icon } from '@iconify/react';
 import arrow from '../assets/arrow/arrow.svg'
 import avatar from '../assets/Avatar (1).png'
 import qrCode from '../assets/Group 34038.png'
+import { logOut } from '../app/auth/logOutSlice';
+import { useDispatch, useSelector } from 'react-redux';
 const Setting = () => {
     const [openTab, setOpenTab] = useState(0);
     // 
     // 
+      const dispatch = useDispatch();
+
+  const handleLogout = () => {
+      localStorage.removeItem('token');
+    dispatch(logOut());
+  };
     const handleForgetPassword = (e) => {
         e.preventDefault()
     }
@@ -200,10 +208,10 @@ const Setting = () => {
                             <div className="icons_left flex gap-3 items-center">
                             {/* <Icon icon="mynaui:logout" /> */}
                                 <Icon icon="mynaui:logout" className='w-[23px] h-[23px]' />
-                                <p className='max-sm:hidden'>
+                                <button  onClick={handleLogout} className='max-sm:hidden'>
 
                                 Log out
-                                </p>
+                                </button>
                             </div>
                             {
                                 openTab === 20 ? <img src={arrow} alt="arrow" /> : ""

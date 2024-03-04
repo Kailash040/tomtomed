@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import postImage from "../assets/postassets/Rectangle 587.png";
 import userImage from "../assets/postassets/Ellipse 3.png";
 import verifyTik from "../assets/postassets/bluetik.svg";
@@ -11,9 +11,19 @@ import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
+// 
+import { ProfileData } from "../app/auth/ProfileSlice";
+import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
-  const [showComment, setShowComment] = useState(false)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(ProfileData());
+  }, [dispatch]);
   // 
+  const userData = useSelector((state) => state.getProfile);
+  console.log(userData)
+  const [showComment, setShowComment] = useState(false)
+  
   const [showshareModal, setShowShareModal] = useState(false)
   const [showMuteModal, setShowMuteModal] = useState(false)
 
