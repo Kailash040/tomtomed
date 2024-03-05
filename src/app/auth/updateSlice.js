@@ -1,11 +1,11 @@
 // authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getProfile } from './authServices';
-export const ProfileData = createAsyncThunk(
-    'auth/getProfile',
+import { updateProfile } from './authServices';
+export const updateUserProfile = createAsyncThunk(
+    'auth/updateProfile',
     async ( thunkAPI) => {
         try {
-            const response = await getProfile();
+            const response = await updateProfile();
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data.error);
@@ -14,7 +14,7 @@ export const ProfileData = createAsyncThunk(
 );
 // 
 const authSlice = createSlice({
-    name: 'getProfile',
+    name: 'updateProfile',
     initialState: {
         user: null,
         isLoading: false,
@@ -22,20 +22,21 @@ const authSlice = createSlice({
     },
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(ProfileData.pending, (state, action) => {
+        builder.addCase(updateUserProfile.pending, (state, action) => {
             state.isLoading = true;
         })
-        builder.addCase(ProfileData.fulfilled, (state, action) => {
+        builder.addCase(updateUserProfile.fulfilled, (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
+         console.log(state.data)
         })
-        builder.addCase(ProfileData.rejected, (state, action) => {
+        builder.addCase(updateUserProfile.rejected, (state, action) => {
             console.log("Error", action.payload);
             state.error = true;
         })
     },
 });
 
-export const profileReducer = authSlice.reducer; // Export the reducer
+export const updateReducer = authSlice.reducer; // Export the reducer
 
 export default authSlice; // Also export the slice itself

@@ -68,8 +68,8 @@ const authSlice = createSlice({
         error: null,
     },
     reducers: {
-     
-    
+
+
     },
     extraReducers: (builder) => {
         builder
@@ -81,10 +81,10 @@ const authSlice = createSlice({
                 state.data = action.payload;
 
                 console.log(state.data);
-                localStorage.setItem('userData', JSON.stringify(state.data));
+                // localStorage.setItem('userData', JSON.stringify(state.data));
                 state.isAuthenticated = true;
                 state.accessToken = action.payload.accessToken;
-                localStorage.setItem('accessToken', JSON.stringify(action.payload.accessToken));
+                localStorage.setItem('accessToken', JSON.stringify(state.data.accessToken));
                 state.refreshToken = action.payload.refreshToken;
                 localStorage.setItem('refreshToken', JSON.stringify(action.payload.refreshToken));
             })
@@ -95,8 +95,8 @@ const authSlice = createSlice({
             .addCase(logOut.pending, (state) => {
                 state.isLoading = true;
             })
-            .addCase(logOut.fulfilled, (state,action) => {
-                
+            .addCase(logOut.fulfilled, (state, action) => {
+
                 state.isLoading = false;
                 state.isAuthenticated = false;
                 state.accessToken = null;

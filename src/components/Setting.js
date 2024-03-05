@@ -9,10 +9,10 @@ const Setting = () => {
     const [openTab, setOpenTab] = useState(0);
     // 
     // 
-    const userData = useSelector((state) => state);
+//     const userData = useSelector((state) => state);
 
 
-  console.log(userData)
+//   console.log(userData)
       const dispatch = useDispatch();
 
   const handleLogout = () => {

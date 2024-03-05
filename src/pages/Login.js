@@ -25,7 +25,7 @@ const SignUp = () => {
   /////////////////////
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state);
+  const userData = useSelector((state) => state.loginAuth);
 
 
   console.log(userData)

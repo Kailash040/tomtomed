@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import userimage from "../assets/postassets/userImage.webp";
 import verifyTik from "../assets/postassets/bluetik.svg";
@@ -17,6 +17,10 @@ import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
 import Setting from "../components/Setting";
 // 
+import { ProfileData } from "../app/auth/ProfileSlice";
+import { updateUserProfile } from '../app/auth/updateSlice'
+import { useDispatch, useSelector } from 'react-redux';
+import axios from "axios";
 
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
@@ -27,16 +31,48 @@ const Profile = () => {
   const [showFollower, setShowFollowers] = useState(false);
   const [showFollowing, setShowFollowing] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
-const  [showAction,setShowAction] =useState(false);
-const  [userAction,setUserAction] =useState(false);
-const handleAction =()=>{
-  setShowAction(!showAction)
-}
-  //
-  const handleUserAction =()=>{
+  const [showAction, setShowAction] = useState(false);
+  const [userAction, setUserAction] = useState(false);
+  const handleAction = () => {
+    setShowAction(!showAction)
+  }
+  const handleUserAction = () => {
     setUserAction(!userAction)
   }
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(ProfileData());
+    dispatch(updateUserProfile())
+  }, [dispatch]);
+  //  
+  const userData = useSelector((state) => state.getProfile);
+  console.log("profile Data", userData.data)
+  // 
+  const userUpdateData = useSelector((state) => state);
+  console.log("updateprofileData", userUpdateData.updateProfile);
 
+  // 
+  const [formData, setFormData] = useState({
+    name: '',
+    username: '',
+    image: '',
+    about: '',
+    isVerified: false,
+    address: {
+      city: '',
+      country: ''
+    }
+  });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData)
+  };
+  // 
+  const handleformSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateUserProfile(formData));
+  }
+  // 
   const handleShowPost = () => {
     setShowPost(true);
     setShowArticle(false);
@@ -72,9 +108,7 @@ const handleAction =()=>{
     setShowFollowers(false);
     setShowFollowing(true);
   };
-  const handleformSubmit = (e) => {
-    e.preventDefault()
-  }
+
   // Function to handle date change
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
@@ -134,7 +168,7 @@ const handleAction =()=>{
                 <p className="text-[#85C6E1] text-2xl">1.2k</p>
               </div>
               <div className="like_Ctonainer">
-                
+
                 <Icon icon="grommet-icons:view" className="w-10 h-10 text-[#303030]	" />
 
               </div>
@@ -150,97 +184,110 @@ const handleAction =()=>{
             </div>
           </div>
           <div className="w-[220px] mt-10" >
-             
-             <div className="news_section flex justify-between items-center">
-               <p className="text-xl text-white font-semibold">Saved Posts</p>
-               <button className="text-[#B68FE7] text-base	 font-medium">
-                 See All
-               </button>
-             </div>
-            <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3">
-             <div className="img_name flex items-center gap-3 ">
-<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
- <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
- <p className="text-[#8F8F8F] text-base " >Photo</p>
-</div>
-             </div>
-             <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
+
+            <div className="news_section flex justify-between items-center">
+              <p className="text-xl text-white font-semibold">Saved Posts</p>
+              <button className="text-[#B68FE7] text-base	 font-medium">
+                See All
+              </button>
             </div>
             <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3">
-             <div className="img_name flex items-center gap-3 ">
-<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
- <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
- <p className="text-[#8F8F8F] text-base " >Photo</p>
-</div>
-             </div>
-             <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
+              <div className="img_name flex items-center gap-3 ">
+                <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+                <div className="name_photo">
+                  <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
+                  <p className="text-[#8F8F8F] text-base " >Photo</p>
+                </div>
+              </div>
+              <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
             </div>
             <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3">
-             <div className="img_name flex items-center gap-3 ">
-<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
- <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
- <p className="text-[#8F8F8F] text-base " >Photo</p>
-</div>
-             </div>
-             <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
+              <div className="img_name flex items-center gap-3 ">
+                <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+                <div className="name_photo">
+                  <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
+                  <p className="text-[#8F8F8F] text-base " >Photo</p>
+                </div>
+              </div>
+              <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
             </div>
-           </div>
-           <div className="w-[220px] mt-10" >
-            
+            <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3">
+              <div className="img_name flex items-center gap-3 ">
+                <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+                <div className="name_photo">
+                  <p className="text-[#F5F5F5] font-normal	" >@jamie_c03</p>
+                  <p className="text-[#8F8F8F] text-base " >Photo</p>
+                </div>
+              </div>
+              <div className="save"> <Icon icon="solar:bookmark-bold" className="text-[white]" /></div>
+            </div>
+          </div>
+          <div className="w-[220px] mt-10" >
+
             <div className="news_section flex justify-between items-center">
               <p className="text-xl text-white font-semibold">Groups</p>
               <button className="text-[#B68FE7] text-base	 font-medium">
                 See All
               </button>
             </div>
-           <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
-            <div className="img_name flex items-center gap-3  ">
-<div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
-<p className="text-[#F5F5F5] font-normal	" >School friendss</p>
-</div>
+            <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
+              <div className="img_name flex items-center gap-3  ">
+                <div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
+                <div className="name_photo">
+                  <p className="text-[#F5F5F5] font-normal	" >School friendss</p>
+                </div>
+              </div>
+              <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
             </div>
-            <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
-           </div>
-           <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
-            <div className="img_name flex items-center gap-3  ">
-<div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
-<p className="text-[#F5F5F5] font-normal	" >School friendss</p>
-</div>
+            <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
+              <div className="img_name flex items-center gap-3  ">
+                <div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
+                <div className="name_photo">
+                  <p className="text-[#F5F5F5] font-normal	" >School friendss</p>
+                </div>
+              </div>
+              <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
             </div>
-            <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
-           </div>
-           <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
-            <div className="img_name flex items-center gap-3  ">
-<div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
-<p className="text-[#F5F5F5] font-normal	" >School friendss</p>
-</div>
+            <div className="savepostCard flex justify-between rounded-xl flex-col	  bg-[#202020] p-2 mt-3">
+              <div className="img_name flex items-center gap-3  ">
+                <div className="img w-[42px] h-[42px]"> <img src={group} alt="" className="w-full h-full object-cover" /> </div>
+                <div className="name_photo">
+                  <p className="text-[#F5F5F5] font-normal	" >School friendss</p>
+                </div>
+              </div>
+              <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
             </div>
-            <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
-           </div>
           </div>
         </div>
       </div>
       <div className="right_section   w-4/5 max-xl:w-[500px] max-sm:w-[350px] ">
         <div className="user_bio border-b-[#171717] border-b-2 ">
           <div className="image_username flex   justify-between   ">
+            {
+              userData.data &&   userData.data.data?.map((item)=>(
+
             <div className="flex gap-10 items-center ">
               <div className="user_pic w-[160px] h-[160px] max-xl:w-[100px] max-xl:h-[100px] ">
-                <img
-                  src={profileimage}
+                {
+                  item.image  ?     <img
+                  src={item.image}
                   alt="user"
                   className=" rounded-full w-full h-full object-cover   "
-                />
+                /> :  <img
+                src={profileimage}
+                alt="user"
+                className=" rounded-full w-full h-full object-cover   "
+              />
+                }
+             
               </div>
 
               <div className="user_name_username">
                 <p className="flex items-center gap-1  text-2xl font-semibold	text-white max-xl:text-lg">
-                  Das{" "}
+                  {
+                    item.name ? <>{item.name}</> :"name"
+                  }
+                  {/* {item.name}{" "} */}
                   <span>
                     {" "}
                     <img src={verifyTik} alt="photo" />{" "}
@@ -248,13 +295,20 @@ const handleAction =()=>{
                 </p>
 
                 <p className="mt-2 text-lg	text-white max-xl:text-sm max-xl:mt-2  ">
-                  das_007
+                  {
+                    item.username  ? <>{item.username}</> : "username"
+                  }
+                 
                 </p>
                 <p className="text-lg	text-white mt-2 max-xl:text-[14px] max-xl:mt-2 ">
-                  Hyderabad
+                  {
+                    item.about ? <>{item.about}</> :"about"
+                  }
                 </p>
               </div>
             </div>
+              ))
+            }
             <div className="edit_share_and_more list-none flex  gap-6   ">
               <li>
                 <button className="" onClick={() => document.getElementById('my_modal_1').showModal()}><Icon icon="akar-icons:edit" className="w-6 h-6 text-white" /></button>
@@ -308,13 +362,16 @@ const handleAction =()=>{
                             <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="Name">
                               Name
                             </label>
-                            <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white  max-sm:mt-1" id="Name" type="text" placeholder="Name" />
+                            <input class="  block w-full bg-[#1B1C1B]    rounded   mt-2 text-base text-white  max-sm:mt-1" id="Name" type="text" placeholder="Name" name="name" value={formData.name} onChange={handleChange} />
+
                           </div>
                           <div class="w-[584px] max-sm:w-[320px] max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg max-sm:py-1	 max-sm:px-3 mt-3   max-lg:mt-1 ">
                             <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="username">
                               Username
                             </label>
-                            <input class="  block w-full bg-[#1B1C1B]  max-sm:mt-1  rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="username" />
+                            <input class="  block w-full bg-[#1B1C1B]  max-sm:mt-1  rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="username"
+                              name="username" value={formData.username} onChange={handleChange}
+                            />
                           </div>
                           <div class="w-[584px] max-sm:w-[320px] max-lg:w-[190px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 max-sm:px-3 max-sm:py-1 mt-3  max-lg:mt-1 relative flex   items-center">
                             <div className="input_section">
@@ -333,7 +390,9 @@ const handleAction =()=>{
                             <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="Bio">
                               Bio
                             </label>
-                            <input class="  block w-full bg-[#1B1C1B]   max-sm:mt-1  rounded   mt-2 text-base text-white " id="Bio" type="text" placeholder="Bio" />
+                            <input class="  block w-full bg-[#1B1C1B]   max-sm:mt-1  rounded   mt-2 text-base text-white " id="Bio" type="text" placeholder="Bio"
+                              name="about" value={formData.about} onChange={handleChange}
+                            />
                           </div>
                           <div class="w-[584px] max-sm:w-[320px] max-lg:w-[190px] bg-[#1B1C1B]  px-2 py-3 rounded-lg max-sm:px-3	max-sm:py-1 mt-3 relative flex  max-lg:mt-1 items-center ">
                             <div className="input_section">
@@ -341,7 +400,9 @@ const handleAction =()=>{
                               <label class="block  tracking-wide text-[#8F8F8F] text-sm  font-bold " for="city">
                                 City
                               </label>
-                              <input class="  block w-full bg-[#1B1C1B]  max-sm:mt-1  rounded   mt-2 text-base text-white " id="city" type="text" placeholder="City" />
+                              <input class="  block w-full bg-[#1B1C1B]  max-sm:mt-1  rounded   mt-2 text-base text-white " id="city" type="text" placeholder="City"
+                              // name="city" value={formData.address.city} onChange={handleChange}
+                              />
                             </div>
                             <button className="text-[#B39DCF] absolute right-3"> Hide</button>
 
@@ -362,9 +423,9 @@ const handleAction =()=>{
               <li>
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
 
-    <button>
-      <Setting/>
-      </button>            
+                <button>
+                  <Setting />
+                </button>
               </li>
             </div>
           </div>
@@ -436,42 +497,42 @@ const handleAction =()=>{
                         />
                         <div className="relative">
 
-                        <button  onClick={handleUserAction}  >
+                          <button onClick={handleUserAction}  >
 
-                        <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   " />
-                        </button>
-                        {
-                          userAction &&  <div className="report_block_mute absolute z-30 list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 top-10">
-                          <div className="user_div_image flex   gap-[18px] items-center">
-                      <img src={userImage} alt="user" className="w-[60px] h-[60px]" />
-                         <div className="name_username">
-                                            <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
-                                              {" "}
-                                              Amy Roy{" "}
-                                              
-                                            </p>
-                                            <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
-                                          </div>
-                          </div>
-                          <div className="option_div mt-10 flex flex-col gap-6">
-                            
-                          <div className="flex gap-[18px]">
-                          {/* <Icon icon="solar:pin-outline" /> */}
-                          <Icon icon="solar:pin-outline" className="w-6 h-6 text-white" />
-                          <li className="text-lg text-white">Mute</li>
-                          </div>
-                          <div className="flex gap-[18px]">
-                          <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />
-                          <li className="text-lg text-white">Hide</li>
-                          </div>
-                          <div className="flex gap-[18px]">
-                          <Icon icon="fluent:delete-24-regular" className="w-6 h-6 text-[#FB6363]" />
-                          <li className="text-lg text-[#FB6363]">Delete</li>
-                          </div>
-                          </div>
-                         
-                        </div>
-                        }
+                            <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   " />
+                          </button>
+                          {
+                            userAction && <div className="report_block_mute absolute z-30 list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 top-10">
+                              <div className="user_div_image flex   gap-[18px] items-center">
+                                <img src={userImage} alt="user" className="w-[60px] h-[60px]" />
+                                <div className="name_username">
+                                  <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
+                                    {" "}
+                                    Amy Roy{" "}
+
+                                  </p>
+                                  <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
+                                </div>
+                              </div>
+                              <div className="option_div mt-10 flex flex-col gap-6">
+
+                                <div className="flex gap-[18px]">
+                                  {/* <Icon icon="solar:pin-outline" /> */}
+                                  <Icon icon="solar:pin-outline" className="w-6 h-6 text-white" />
+                                  <li className="text-lg text-white">Mute</li>
+                                </div>
+                                <div className="flex gap-[18px]">
+                                  <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />
+                                  <li className="text-lg text-white">Hide</li>
+                                </div>
+                                <div className="flex gap-[18px]">
+                                  <Icon icon="fluent:delete-24-regular" className="w-6 h-6 text-[#FB6363]" />
+                                  <li className="text-lg text-[#FB6363]">Delete</li>
+                                </div>
+                              </div>
+
+                            </div>
+                          }
                         </div>
 
                       </div>
@@ -494,30 +555,30 @@ const handleAction =()=>{
                       />
                     </div>
                     <div className="post_status flex  justify-between  mt-4">
-                    <div className="post_status flex gap-4">
-                <div className="like_status flex  gap-1 items-center">
-                    <BiMessageAlt className="w-6 h-6 text-white	" />
-                    {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
-                    <p className="text-[#8F8F8F] text-sm font-medium">14</p>
-                  </div>
-                  <div className="like_status  flex  gap-1 items-center">
-                    {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
-                    <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
-                    <p className="text-[#8F8F8F] text-sm font-medium">124</p>
-                  </div>
-                 
-                  <div className="like_status flex gap-1 items-center">
-                    
-                    <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
+                      <div className="post_status flex gap-4">
+                        <div className="like_status flex  gap-1 items-center">
+                          <BiMessageAlt className="w-6 h-6 text-white	" />
+                          {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
+                          <p className="text-[#8F8F8F] text-sm font-medium">14</p>
+                        </div>
+                        <div className="like_status  flex  gap-1 items-center">
+                          {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                          <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                          <p className="text-[#8F8F8F] text-sm font-medium">124</p>
+                        </div>
 
-                    <p className="text-[#8F8F8F] text-sm font-medium">4</p>
-                  </div>
-                  <div className="like_status flex  gap-1 items-center">
-                  {/* <Icon icon="grommet-icons:view" /> */}
-                    <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
-                    <p className="text-[#8F8F8F] text-sm font-medium">34</p>
-                  </div>
-                </div>
+                        <div className="like_status flex gap-1 items-center">
+
+                          <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
+
+                          <p className="text-[#8F8F8F] text-sm font-medium">4</p>
+                        </div>
+                        <div className="like_status flex  gap-1 items-center">
+                          {/* <Icon icon="grommet-icons:view" /> */}
+                          <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
+                          <p className="text-[#8F8F8F] text-sm font-medium">34</p>
+                        </div>
+                      </div>
                       <div className="post_status flex flex-col  items-center gap-3">
                         <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                       </div>
@@ -569,29 +630,29 @@ const handleAction =()=>{
                       />
                     </div>
                     <div className="post_status flex  justify-between  mt-4">
-                    <div className="post_status flex gap-4">
-                <div className="like_status flex  gap-1 items-center">
-                    <BiMessageAlt className="w-6 h-6 text-white	" />
-                    {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
-                    <p className="text-[#8F8F8F] text-sm font-medium">14</p>
-                  </div>
-                  <div className="like_status  flex  gap-1 items-center">
-                    {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
-                    <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
-                    <p className="text-[#8F8F8F] text-sm font-medium">124</p>
-                  </div>
-                 
-                  <div className="like_status flex gap-1 items-center">
-                    <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
+                      <div className="post_status flex gap-4">
+                        <div className="like_status flex  gap-1 items-center">
+                          <BiMessageAlt className="w-6 h-6 text-white	" />
+                          {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
+                          <p className="text-[#8F8F8F] text-sm font-medium">14</p>
+                        </div>
+                        <div className="like_status  flex  gap-1 items-center">
+                          {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                          <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                          <p className="text-[#8F8F8F] text-sm font-medium">124</p>
+                        </div>
 
-                    <p className="text-[#8F8F8F] text-sm font-medium">4</p>
-                  </div>
-                  <div className="like_status flex  gap-1 items-center">
-                  {/* <Icon icon="grommet-icons:view" /> */}
-                    <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
-                    <p className="text-[#8F8F8F] text-sm font-medium">34</p>
-                  </div>
-                </div>
+                        <div className="like_status flex gap-1 items-center">
+                          <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
+
+                          <p className="text-[#8F8F8F] text-sm font-medium">4</p>
+                        </div>
+                        <div className="like_status flex  gap-1 items-center">
+                          {/* <Icon icon="grommet-icons:view" /> */}
+                          <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
+                          <p className="text-[#8F8F8F] text-sm font-medium">34</p>
+                        </div>
+                      </div>
                       <div className="post_status flex flex-col  items-center gap-3">
                         <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                       </div>
@@ -677,17 +738,17 @@ const handleAction =()=>{
                   </div>
                   <div className="child">
                     <div className="followers_child flex gap-[18px] items-center relative">
-                      
-                      <button  onClick={handleAction}>
 
-                      <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
+                      <button onClick={handleAction}>
+
+                        <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
                       </button>
-{
-  showAction && <div className="absolute flex flex-col top-5 right-0 bg-[#202020] py-6 px-[18px] gap-[27px] rounded-xl	">
-    <button className="text-base font-semibold text-white	">UnFollow</button>
-    <button className="font-medium text-[#FB6363]">Block</button>
-  </div> 
-}
+                      {
+                        showAction && <div className="absolute flex flex-col top-5 right-0 bg-[#202020] py-6 px-[18px] gap-[27px] rounded-xl	">
+                          <button className="text-base font-semibold text-white	">UnFollow</button>
+                          <button className="font-medium text-[#FB6363]">Block</button>
+                        </div>
+                      }
                     </div>
                     {/* <div className="followers_child"></div> */}
                   </div>
@@ -906,44 +967,44 @@ const handleAction =()=>{
               </div>
             </div>
             <div className=" w-[320px] mt-10" >
-             
-             <div className="news_section flex justify-between items-center">
-               <p className="text-xl text-white font-semibold">Suggestions</p>
-               <button className="text-[#B68FE7] text-base	 font-medium">
-                 See All
-               </button>
-             </div>
-            <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
-             <div className="img_name flex items-center gap-3 ">
-<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
- <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
- <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
-</div>
-             </div>
-             <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+
+              <div className="news_section flex justify-between items-center">
+                <p className="text-xl text-white font-semibold">Suggestions</p>
+                <button className="text-[#B68FE7] text-base	 font-medium">
+                  See All
+                </button>
+              </div>
+              <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+                <div className="img_name flex items-center gap-3 ">
+                  <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+                  <div className="name_photo">
+                    <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+                    <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
+                  </div>
+                </div>
+                <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+              </div>
+              <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+                <div className="img_name flex items-center gap-3 ">
+                  <div className="img w-[76px] h-[84px]"> <img src={suggestionImage} alt="" className="w-full h-full object-cover" /> </div>
+                  <div className="name_photo">
+                    <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+                    <p className="text-[#8F8F8F] text-base " >@Emilyy__</p>
+                  </div>
+                </div>
+                <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+              </div>
+              <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+                <div className="img_name flex items-center gap-3 ">
+                  <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+                  <div className="name_photo">
+                    <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+                    <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
+                  </div>
+                </div>
+                <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+              </div>
             </div>
-            <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
-             <div className="img_name flex items-center gap-3 ">
-<div className="img w-[76px] h-[84px]"> <img src={suggestionImage} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
- <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
- <p className="text-[#8F8F8F] text-base " >@Emilyy__</p>
-</div>
-             </div>
-             <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
-            </div>
-            <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
-             <div className="img_name flex items-center gap-3 ">
-<div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
-<div className="name_photo">
- <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
- <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
-</div>
-             </div>
-             <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
-            </div>
-           </div>
           </div>
         </div>
       </div>

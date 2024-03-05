@@ -12,16 +12,16 @@ import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
 // 
-import { ProfileData } from "../app/auth/ProfileSlice";
-import { useDispatch, useSelector } from 'react-redux';
+// import { ProfileData } from "../app/auth/ProfileSlice";
+// import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(ProfileData());
-  }, [dispatch]);
-  // 
-  const userData = useSelector((state) => state);
-  console.log(userData)
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(ProfileData());
+  // }, [dispatch]);
+  // // 
+  // const userData = useSelector((state) => state);
+  // console.log(userData)
   const [showComment, setShowComment] = useState(false)
   
   const [showshareModal, setShowShareModal] = useState(false)

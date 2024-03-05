@@ -40,11 +40,26 @@ export const logOutUser = async () => {
 // 
 export const getProfile = async () => {
   try {
-    const response = await axios.get('https://tomtomed.onrender.com/api/v1/auth/profile'
-    ,
-      { withCredentials: true, }
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/auth/profile`
+      ,
+      { withCredentials: true },
+
     );
     return response.data;
+
+  } catch (error) {
+    throw error;
+  }
+};
+// 
+export const updateProfile = async () => {
+  try {
+    const response = await axios.put('https://tomtomed.onrender.com/v1/auth/editProfile'
+      ,
+      { withCredentials: true }
+
+    );
+    console.log(response.data)
 
   } catch (error) {
     throw error;
