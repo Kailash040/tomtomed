@@ -20,7 +20,7 @@ const Home = () => {
     dispatch(ProfileData());
   }, [dispatch]);
   // 
-  const userData = useSelector((state) => state.getProfile);
+  const userData = useSelector((state) => state);
   console.log(userData)
   const [showComment, setShowComment] = useState(false)
   

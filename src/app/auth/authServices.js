@@ -3,7 +3,9 @@ import axios from 'axios';
 // for Login
 export const login = async (userData) => {
   try {
-    const response = await axios.post('https://tomtomed.onrender.com/api/v1/auth/login', userData);
+    const response = await axios.post('https://tomtomed.onrender.com/api/v1/auth/login', userData,
+      { withCredentials: true, }
+    );
     return response.data;
 
   } catch (error) {
@@ -14,7 +16,9 @@ export const login = async (userData) => {
 // for signUp
 export const signUp = async (userData) => {
   try {
-    const response = await axios.post('https://tomtomed.onrender.com/api/v1/auth/register', userData);
+    const response = await axios.post('https://tomtomed.onrender.com/api/v1/auth/register', userData,
+      { withCredentials: true, }
+    );
     return response.data;
   } catch (error) {
     throw error;
@@ -22,10 +26,12 @@ export const signUp = async (userData) => {
 };
 // logOut
 // 
-export const logOutUser = async (userData) => {
+export const logOutUser = async () => {
   try {
-    const response = await axios.get('https://tomtomed.onrender.com/api/v1/auth/logout', userData);
-    return response.data;
+    const response = await axios.get('https://tomtomed.onrender.com/api/v1/auth/logout',
+      { withCredentials: true, }
+    );
+    console.log(response.data);
 
   } catch (error) {
     throw error;
@@ -34,7 +40,10 @@ export const logOutUser = async (userData) => {
 // 
 export const getProfile = async () => {
   try {
-    const response = await axios.get('https://tomtomed.onrender.com/api/v1/auth/profile');
+    const response = await axios.get('https://tomtomed.onrender.com/api/v1/auth/profile'
+    ,
+      { withCredentials: true, }
+    );
     return response.data;
 
   } catch (error) {

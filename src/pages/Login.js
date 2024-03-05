@@ -25,7 +25,7 @@ const SignUp = () => {
   /////////////////////
   // const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.loginAuth);
+  const userData = useSelector((state) => state);
 
 
   console.log(userData)
@@ -37,7 +37,7 @@ const SignUp = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+    
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formData));

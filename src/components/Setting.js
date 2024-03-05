@@ -3,16 +3,20 @@ import { Icon } from '@iconify/react';
 import arrow from '../assets/arrow/arrow.svg'
 import avatar from '../assets/Avatar (1).png'
 import qrCode from '../assets/Group 34038.png'
-import { logOut } from '../app/auth/logOutSlice';
+import {logOut} from '../app/auth/loginSlice'
 import { useDispatch, useSelector } from 'react-redux';
 const Setting = () => {
     const [openTab, setOpenTab] = useState(0);
     // 
     // 
+    const userData = useSelector((state) => state);
+
+
+  console.log(userData)
       const dispatch = useDispatch();
 
   const handleLogout = () => {
-      localStorage.removeItem('token');
+    //   localStorage.removeItem('token');
     dispatch(logOut());
   };
     const handleForgetPassword = (e) => {

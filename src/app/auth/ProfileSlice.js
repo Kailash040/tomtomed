@@ -1,6 +1,6 @@
 // authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getProfile} from './authServices';
+import { getProfile } from './authServices';
 export const ProfileData = createAsyncThunk(
     'auth/getProfile',
     async (userData, thunkAPI) => {
@@ -21,7 +21,7 @@ const authSlice = createSlice({
         error: false,
     },
     reducers: {},
-    extraReducers: (builder)=> {
+    extraReducers: (builder) => {
         builder.addCase(ProfileData.pending, (state, action) => {
             state.isLoading = true;
         })
