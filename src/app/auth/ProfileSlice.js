@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getProfile } from './authServices';
 export const ProfileData = createAsyncThunk(
     'auth/getProfile',
-    async ( thunkAPI) => {
+    async (thunkAPI) => {
         try {
             const response = await getProfile();
             return response;

@@ -33,6 +33,7 @@ const Profile = () => {
   const [selectedDate, setSelectedDate] = useState('');
   const [showAction, setShowAction] = useState(false);
   const [userAction, setUserAction] = useState(false);
+ 
   const handleAction = () => {
     setShowAction(!showAction)
   }
@@ -45,8 +46,10 @@ const Profile = () => {
     dispatch(updateUserProfile())
   }, [dispatch]);
   //  
-  const userData = useSelector((state) => state.getProfile);
-  console.log("profile Data", userData.data)
+  const userData = useSelector((state) =>[ state.getProfile]);
+  console.log("profile Data", userData)
+  const [profileUserData,setProfileUserData] = useState([userData])
+  console.log(profileUserData);
   // 
   const userUpdateData = useSelector((state) => state);
   console.log("updateprofileData", userUpdateData.updateProfile);
@@ -263,8 +266,9 @@ const Profile = () => {
       <div className="right_section   w-4/5 max-xl:w-[500px] max-sm:w-[350px] ">
         <div className="user_bio border-b-[#171717] border-b-2 ">
           <div className="image_username flex   justify-between   ">
+            {/* Object.keys(userData.data.data) */}
             {
-              userData.data &&   userData.data.data?.map((item)=>(
+         profileUserData?.map((item)=>(
 
             <div className="flex gap-10 items-center ">
               <div className="user_pic w-[160px] h-[160px] max-xl:w-[100px] max-xl:h-[100px] ">
@@ -285,7 +289,7 @@ const Profile = () => {
               <div className="user_name_username">
                 <p className="flex items-center gap-1  text-2xl font-semibold	text-white max-xl:text-lg">
                   {
-                    item.name ? <>{item.name}</> :"name"
+                    item.name ? <>{item.name}</> :  "username"
                   }
                   {/* {item.name}{" "} */}
                   <span>
