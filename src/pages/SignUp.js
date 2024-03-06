@@ -16,27 +16,33 @@ import slider3 from "../assets/postassets/slider3.png"
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useDispatch ,useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { signUpUser } from "../app/auth/signUpSlice";
 
 const SignUp = () => {
-  // const userData = useSelector((state) => state.signUpAuth.data.message);
-  // console.log(userData)
+  const userData = useSelector((state) => state?.signUpAuth);
+  console.log(userData)
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    email:''
+    email: ''
   });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(signUpUser(formData));
-   
+    dispatch(signUpUser(formData))
+if(userData?.data?.success === "PENDING"){
+  toast.success(userData.data.message)
+
+}
+
+    // toast.success(userData)
   };
   const splideOptions = {
     type: 'slide',
@@ -47,7 +53,7 @@ const SignUp = () => {
     interval: 2000,
   }
   // 
- 
+
   return (
     <div className=" font-roboto  relative  ">
       <ToastContainer />
@@ -98,9 +104,9 @@ const SignUp = () => {
                 />
               </div>
               <div className="username mb-2 max-xl:mb-[18px]">
-                <input type="email" id="contact" placeholder="Email or phone"  class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
-name="email" value={formData.email} onChange={handleChange}
-                 
+                <input type="email" id="contact" placeholder="Email or phone" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
+                  name="email" value={formData.email} onChange={handleChange}
+
                 />
 
               </div>

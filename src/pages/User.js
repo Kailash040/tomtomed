@@ -20,8 +20,8 @@ import Setting from "../components/Setting";
 import { ProfileData } from "../app/auth/ProfileSlice";
 import { updateUserProfile } from '../app/auth/updateSlice'
 import { useDispatch, useSelector } from 'react-redux';
-import axios from "axios";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
   //
@@ -40,13 +40,9 @@ const Profile = () => {
   const handleUserAction = () => {
     setUserAction(!userAction)
   }
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(ProfileData());
-    dispatch(updateUserProfile())
-  }, [dispatch]);
+ 
   //  
-  const userData = useSelector((state) =>[ state.getProfile]);
+  const userData = useSelector((state) => state.getProfile);
   console.log("profile Data", userData)
   const [profileUserData,setProfileUserData] = useState([userData])
   console.log(profileUserData);
@@ -56,10 +52,10 @@ const Profile = () => {
 
   // 
   const [formData, setFormData] = useState({
-    name: '',
-    username: '',
+    name: userData?.data?.data?.name,
+    username: userData?.data?.data?.username,
     image: '',
-    about: '',
+    about: userData?.data?.data?.about,
     isVerified: false,
     address: {
       city: '',
@@ -74,7 +70,12 @@ const Profile = () => {
   const handleformSubmit = (e) => {
     e.preventDefault();
     dispatch(updateUserProfile(formData));
+    toast("Profile Update successfully")
   }
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(ProfileData());
+  }, [dispatch]);
   // 
   const handleShowPost = () => {
     setShowPost(true);
@@ -128,6 +129,7 @@ const Profile = () => {
   return (
     <div className="profile_container mt-10 pl-[60px] pr-[60px] font-roboto flex gap-[50px]  max-xl:gap-0 max-xl:justify-center   max-xl:pr-0 max-xl:pl-0 3xl:w-[1400px]">
       {/*  */}
+      <ToastContainer />
 
       {/*  */}
       <div className="left_section w-1/5 max-xl:hidden">

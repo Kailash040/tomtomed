@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { updateProfile } from './authServices';
 export const updateUserProfile = createAsyncThunk(
     'auth/updateProfile',
-    async ( thunkAPI) => {
+    async (userData, thunkAPI) => {
         try {
-            const response = await updateProfile();
+            const response = await updateProfile(userData);
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data.error);

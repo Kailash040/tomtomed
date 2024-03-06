@@ -80,7 +80,7 @@ const authSlice = createSlice({
                 state.isLoading = false;
                 state.data = action.payload;
 
-                console.log(state.data);
+               
                 // localStorage.setItem('userData', JSON.stringify(state.data));
                 state.isAuthenticated = true;
                 state.accessToken = action.payload.accessToken;

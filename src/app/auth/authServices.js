@@ -52,15 +52,14 @@ export const getProfile = async () => {
   }
 };
 // 
-export const updateProfile = async () => {
+export const updateProfile = async (userData) => {
   try {
-    const response = await axios.put('https://tomtomed.onrender.com/v1/auth/editProfile'
-      ,
+    const response = await axios.put('https://tomtomed.onrender.com/api/v1/auth/editProfile'
+      , userData,
       { withCredentials: true }
-
+,
     );
-    console.log(response.data)
-
+     return response.data
   } catch (error) {
     throw error;
   }
