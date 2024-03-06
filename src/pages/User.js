@@ -127,9 +127,11 @@ const Profile = () => {
     }
   };
   return (
+    <>
+    
+      <ToastContainer />
     <div className="profile_container mt-10 pl-[60px] pr-[60px] font-roboto flex gap-[50px]  max-xl:gap-0 max-xl:justify-center   max-xl:pr-0 max-xl:pl-0 3xl:w-[1400px]">
       {/*  */}
-      <ToastContainer />
 
       {/*  */}
       <div className="left_section w-1/5 max-xl:hidden">
@@ -1015,6 +1017,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
