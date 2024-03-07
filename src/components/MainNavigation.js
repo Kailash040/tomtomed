@@ -24,18 +24,16 @@ const MainNavigation = () => {
   const [showArticlePage, setArticlePage] = useState(false)
   const [showThoughtPage, setShowThoughtPage] = useState(false)
 
-  // const [fileInputKey, setFileInputKey] = useState(Date.now());
-  const [base64Image, setBase64Image] = useState(null);
   const [filterImage, setFilter] = useState(null);
   const [showEditOption, setShowEditOptions] = useState(false)
   const [showBrithnessPage, setShowBrithnessPage] = useState(false)
   const [showCropPage, setShowCropPage] = useState(false)
   const [brightness, setBrightness] = useState();
   const [savePost, setSavePost] = useState(false);
-  const  [ description,setDescription] = useState("");
-  const [image, setImage] = useState(null)
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("")
   // 
-  const  [ preview,setPreview]  =useState(null)
+  const [preview, setPreview] = useState('')
   const postData = useSelector((state) => state.addPost)
   console.log(postData);
   const dispatch = useDispatch();
@@ -89,52 +87,23 @@ const MainNavigation = () => {
     setArticlePage(false);
     setShowThoughtPage(false)
   }
-  // 
-//   const handleImageChange = (e) => {
-
-    
-// setImage(URL.createObjectURL(e.target.files[0]))
-//     // if (file) {
-//     //   const reader = new FileReader();
-
-//     //   reader.onloadend = () => {
-//     //     // setSelectedImage(file);
-//     //     setBase64Image(reader.result); // Base64-encoded image data
-//     //   };
-
-//     //   reader.readAsDataURL(file);
-//     //   setAddPost(true)
-//     //   setHandleShowToggle(false)
-//     //   setArticlePage(false)
-//     //   setShowThoughtPage(false)
-//     // }
-//   };
+ 
   const handleImageChange = (e) => {
-    // const img = {
-      setPreview(URL.createObjectURL(e.target.files[0]))
-      // data: e.target.files[0],
-    // }
+    setPreview(URL.createObjectURL(e.target.files[0]))
     setImage(e.target.files[0])
+    
     setAddPost(true)
   }
   console.log(image)
-  // const [formData, setFormData] = useState({
-  //   image: '',
-  //   description: '',
-  // });
-  // 
- 
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const formData = new FormData();
     formData.append('description', description);
-    formData.append('image',image)
+    formData.append('image', image)
     dispatch(addPosts(formData));
   }
-  // console.log(formData);
-  // 
   return (<div className="font-roboto ">
-    {/* {preview && <img src={preview} width='100' height='100' />} */}
     <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:px-3  max-xl:pt-2 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
       <div className="tomtomad w-1/5
  ">
@@ -205,7 +174,7 @@ const MainNavigation = () => {
                           <button >
 
                             <div className="dropdown flex justify-center  max-xl:gap-2 max-xl:flex-col items-center">
-                              <label htmlFor="files" className="flex gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+                              <label htmlFor="image" className="flex gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
                                 <Icon icon="solar:gallery-round-bold" className="w-[22px] h-[22px]" />
 
 
@@ -213,8 +182,8 @@ const MainNavigation = () => {
                                   type="file"
                                   accept="image/*"
                                   style={{ "visibility": "hidden", "position": "absolute" }}
-                                  id="files"
-                              
+                                  id="image"
+
                                   onChange={handleImageChange}
                                 /> <p className="max-xl:text-sm">Photo</p>
 
@@ -535,8 +504,8 @@ const MainNavigation = () => {
                               </div>
                             </div>
                             <div className="input_section mt-4">
-                              <textarea type="text" className=" bg-[#000000] max-sm:bg-[#171717] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." 
-                              value={description}  onChange={(e)=> setDescription(e.target.value)}
+                              <textarea type="text" className=" bg-[#000000] max-sm:bg-[#171717] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..."
+                                value={description} onChange={(e) => setDescription(e.target.value)}
                               />
                               {/*  */}
                               <div className="search_friends  relative flex justify-between items-center">

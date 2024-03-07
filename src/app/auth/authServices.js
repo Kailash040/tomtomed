@@ -68,13 +68,8 @@ export const updateProfile = async (userData) => {
 export const addPost = async (userData) => {
   try {
     const response = await axios.post('https://tomtomed.onrender.com/api/v1/post/create-post', userData,
-    {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-        // 'Content-Type': 'application/json'
-
-      }
-    },
+   
+  
       { withCredentials: true, }
     );
     return response.data;
