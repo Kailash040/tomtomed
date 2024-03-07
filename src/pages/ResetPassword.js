@@ -13,11 +13,11 @@ import resetPassword from '../assets/Rectangle 23985 (1).png'
 const SignUp = () => {
 
   return (
-    <div className=" font-roboto  relative  ">
+    <div className=" font-roboto  relative  h-[100vh]  mt-10 flex flex-col justify-between w-[1250px] max-xl:w-full  mx-[auto]  ">
       <div className=" absolute ">
         <img src={bg} alt="" />
       </div>
-      <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[30px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
+      <div className="signUp_container  m-[auto] flex  flex-row-reverse justify-between   flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
         <div className="banner_container max-xl:hidden relative flex  justify-start items-center w-[572px] h-[600px]">
 
           <img src={resetPassword} className="w-[410px]  h-[338px] absolute" alt="" />
