@@ -64,7 +64,8 @@ console.log(base64Image);
   //  
   const userData = useSelector((state) => state.getProfile);
   console.log("profile Data", userData)
-  const [profileUserData,setProfileUserData] = useState([userData])
+  const [profileUserData,setProfileUserData] = useState([userData?.data?.data])
+  
   console.log(profileUserData);
   // 
   
@@ -88,15 +89,18 @@ console.log(base64Image);
     console.log(formData)
   };
   // 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(ProfileData());
+    setProfileUserData(profileUserData)
+  }, []);
+  // 
   const handleformSubmit = (e) => {
     e.preventDefault();
     dispatch(updateUserProfile(formData));
     toast("Profile Update successfully")
   }
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(ProfileData());
-  }, []);
+
   // 
   const handleShowPost = () => {
     setShowPost(true);
@@ -299,8 +303,8 @@ console.log(base64Image);
               <div className="user_pic w-[160px] h-[160px] max-xl:w-[100px] max-xl:h-[100px] ">
 
                 {
-                  item.image  ?     <img
-                  src={item.image}
+                  item?.image  ?     <img
+                  src={item?.image}
                   alt="user"
                   className=" rounded-full w-full h-full object-cover   "
                 /> :  <img
@@ -315,7 +319,7 @@ console.log(base64Image);
               <div className="user_name_username">
                 <p className="flex items-center gap-1  text-2xl font-semibold	text-white max-xl:text-lg">
                   {
-                    item.name ? <>{item.name}</> :  "username"
+                    item?.name ? <>{item?.name}</> :  "username"
                   }
                   {/* {item.name}{" "} */}
                   <span>
@@ -326,13 +330,13 @@ console.log(base64Image);
 
                 <p className="mt-2 text-lg	text-white max-xl:text-sm max-xl:mt-2  ">
                   {
-                    item.username  ? <>{item.username}</> : "username"
+                    item?.username  ? <>{item?.username}</> : "username"
                   }
                  
                 </p>
                 <p className="text-lg	text-white mt-2 max-xl:text-[14px] max-xl:mt-2 ">
                   {
-                    item.about ? <>{item.about}</> :"about"
+                    item?.about ? <>{item?.about}</> :"about"
                   }
                 </p>
               </div>
