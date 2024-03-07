@@ -62,11 +62,9 @@ const Profile = () => {
   }
 
   //  
-  const userData = useSelector((state) => state.getProfile);
+  const userData = useSelector((state) => [state?.getProfile?.data?.data]);
   console.log("profile Data", userData)
-  const [profileUserData, setProfileUserData] = useState([userData?.data?.data])
-
-  console.log(profileUserData);
+ 
   // 
 
   const userUpdateData = useSelector((state) => state);
@@ -92,7 +90,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(ProfileData());
-    setProfileUserData(profileUserData)
+    // setProfileUserData(profileUserData)
   }, []);
   // 
   const handleformSubmit = (e) => {
@@ -297,7 +295,7 @@ const Profile = () => {
             <div className="image_username flex   justify-between   ">
               {/* Object.keys(userData.data.data) */}
               {
-                profileUserData?.map((item) => (
+                userData?.map((item) => (
 
                   <div className="flex gap-10 items-center ">
                     <div className="user_pic w-[160px] h-[160px] max-xl:w-[100px] max-xl:h-[100px] ">
