@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { addPost } from './authServices';
 export const addPosts = createAsyncThunk(
     'auth/addPost',
-    async ( thunkAPI) => {
+    async ( userData ,thunkAPI) => {
         try {
-            const response = await addPost();
+            const response = await addPost(userData);
             return response;
 
         } catch (error) {
