@@ -57,12 +57,12 @@ const Login = () => {
 
   }
   return (
-    <div className=" font-roboto  relative  ">
+    <div className=" font-roboto  relative   h-[100vh]  mt-10 flex flex-col justify-between w-[1250px] max-xl:w-full  mx-[auto]">
       <ToastContainer />
       <div className=" absolute ">
         <img src={bg} alt="" />
       </div>
-      <div className="signUp_container flex  flex-row-reverse justify-between pr-[106px] pl-[124px] pt-[30px]  flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
+      <div className="signUp_container flex  bg-black flex-row-reverse justify-around   flex-wrap  z-10	max-xl:justify-center max-xl:items-center  max-xl:pr-[0px] max-xl:pl-[0px] max-xl:pt-[100px] items-start">
         <div className="banner_container max-xl:hidden relative flex  justify-start items-center w-[572px] h-[600px]">
           <Splide aria-label="My Favorite Images" options={splideOptions} className=" z-[5] w-[350px] relative left-10 ">"
             <SplideSlide>
@@ -182,7 +182,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className="menu_container list-none flex justify-end max-xl:hidden	">
+      <div className="menu_container list-none  bg-black flex justify-end max-xl:hidden	">
         <div className="list-none flex justify-between gap-[239px] text-[#8F8F8F] pb-[18px] mt-5 ">
           <div className="menu_item flex gap-10 text-[13px]">
             <li>

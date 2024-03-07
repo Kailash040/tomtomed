@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import userimage from "../assets/postassets/userImage.webp";
 import verifyTik from "../assets/postassets/bluetik.svg";
@@ -35,7 +35,17 @@ const Profile = () => {
   const [userAction, setUserAction] = useState(false);
   const [base64Image, setBase64Image] = useState(null);
   const [fileInputKey, setFileInputKey] = useState(Date.now());
-
+  // for update state//
+  const [name, setName] = useState('');
+  const [username, setUserName] = useState('');
+  const [about, setAbout] = useState('');
+  const [address, setAddress] = useState({
+    city: "",
+    country: ""
+  });
+  const [image, setImage] = useState("")
+  // setName(userData?.name)
+  // console.log(setName(userData?.name));
   //  
   const handleImageChange = (e) => {
     // setBrightness(e.target.value);
@@ -64,24 +74,33 @@ const Profile = () => {
   //  
   const userData = useSelector((state) => [state?.getProfile?.data?.data]);
   console.log("profile Data", userData)
- 
+  const refData = useRef(useSelector((state) => state?.getProfile?.data?.data))
   // 
-
+  console.log(refData);
+  // 
+  // 
   const userUpdateData = useSelector((state) => state);
   console.log("updateprofileData", userUpdateData.updateProfile);
 
   // 
   const [formData, setFormData] = useState({
-    name: userData?.data?.data?.name,
-    username: userData?.data?.data?.username,
-    image: userData?.data?.data?.image,
-    about: userData?.data?.data?.about,
+    // Object.values(userData)
+    name: userData?.name,
+    username: userData?.username,
+    image: userData?.image,
+    about: userData?.about,
     isVerified: false,
     address: {
       city: '',
       country: ''
     }
   });
+  // 
+  console.log(formData);
+  useEffect(() => {
+    setName(userData?.data?.name)
+    console.log(name);
+  }, [])
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     console.log(formData)
@@ -359,6 +378,7 @@ const Profile = () => {
                           <button className="signUp px-[110px] py-[18px] text-lg text-white rounded-xl mr-3  max-lg:text-base max-lg:py-[10px]	 max-lg:px-[55px]  max-sm:hidden" type="submit" >Save Changes</button>
                         </div>
 
+
                         <div className=" profile_edit_section  bg-[#202020] pt-[35px] flex gap-[45px]  max-sm:gap-0 pb-[35px] max-lg:pt-[10px] max-sm:flex-col max-sm:items-center  max-sm:bg-black">
                           <div className="img hidden max-sm:block relative">
                             <input
@@ -490,6 +510,7 @@ const Profile = () => {
 
 
                         </div>
+
                       </div>
                     </form>
                   </dialog>

@@ -6,7 +6,9 @@ body {
 	background-color: black;
 
 }
-
+html{
+	background-color: black !important;
+}
 .item_equal{
 	align-items: baseline;
 }
