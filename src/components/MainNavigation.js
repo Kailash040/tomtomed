@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback,useMemo } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { NavLink } from "react-router-dom";
 import Ads from "../assets/postassets/Ads.png";
 import userimage from "../assets/postassets/userImage.webp"
@@ -14,10 +14,11 @@ import thought from '../assets/Vector (4).png'
 import { Icon } from '@iconify/react';
 import profileImage from '../assets/Avatar.png'
 import { Editor } from 'primereact/editor';
+import { addPosts } from "../app/auth/addPostSlice";
+import { useDispatch, useSelector } from 'react-redux';
+
 const MainNavigation = () => {
-  // 
   const [text, setText] = useState('');
-  // 
   const [handleShowToggle, setHandleShowToggle] = useState(false);
   const [addPost, setAddPost] = useState(false);
   const [showArticlePage, setArticlePage] = useState(false)
@@ -31,6 +32,9 @@ const MainNavigation = () => {
   const [showCropPage, setShowCropPage] = useState(false)
   const [brightness, setBrightness] = useState();
   const [savePost, setSavePost] = useState(false);
+const postData = useSelector((state)=> state.addPost)
+console.log(   postData);
+const dispatch = useDispatch();
 
   const handleShow = () => {
     setHandleShowToggle(!handleShowToggle)
@@ -49,33 +53,8 @@ const MainNavigation = () => {
     setAddPost(false)
     setShowThoughtPage(false)
   }
-  // 
-  // const handleShowPhotoSection = () => {
-  //   setAddPost(!addPost);
-  //   setHandleShowToggle(false)
-  //   setArticlePage(false)
-  //   setShowThoughtPage(false)
 
-  // }
-  const handleImageChange = (e) => {
-    // setBrightness(e.target.value);
-    const file = e.target.files[0];
 
-    if (file) {
-      const reader = new FileReader();
-
-      reader.onloadend = () => {
-        // setSelectedImage(file);
-        setBase64Image(reader.result); // Base64-encoded image data
-      };
-
-      reader.readAsDataURL(file);
-      setAddPost(true)
-      setHandleShowToggle(false)
-      setArticlePage(false)
-      setShowThoughtPage(false)
-    }
-  };
   const showEditOptionMenu = () => {
     setShowEditOptions(true)
   }
@@ -106,6 +85,41 @@ const MainNavigation = () => {
     setArticlePage(false);
     setShowThoughtPage(false)
   }
+  // 
+  const handleImageChange = (e) => {
+    // setBrightness(e.target.value);
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        // setSelectedImage(file);
+        setBase64Image(reader.result); // Base64-encoded image data
+      };
+
+      reader.readAsDataURL(file);
+      setAddPost(true)
+      setHandleShowToggle(false)
+      setArticlePage(false)
+      setShowThoughtPage(false)
+    }
+  };
+  const [formData, setFormData] = useState({
+    image: '',
+    description: '',
+  });
+  // 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(addPosts(formData));
+  }
+  console.log(formData);
+  // 
   return (<div className="font-roboto ">
     <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:px-3  max-xl:pt-2 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
       <div className="tomtomad w-1/5
@@ -259,14 +273,14 @@ const MainNavigation = () => {
                   <div className=" article p-6  max-xl:mt-2 max-sm:mt-0  max-xl:p-2">
                     {/* <textarea name="" id="" className="w-full h-[350px] max-xl:h-[200px]  bg-black rounded-xl p-6 max-sm:bg-[#161414] max-sm:font-normal " placeholder="Write an Article here..." ></textarea> */}
                     <Editor value={text}
-                    
-                    onTextChange={(e) => setText(e.htmlValue)} 
-                    
-                    className="h-[220px]   "
+
+                      onTextChange={(e) => setText(e.htmlValue)}
+
+                      className="h-[220px]   "
                     />
                   </div>
                   <div className="article_button flex justify-end p-6 items-center max-xl:p-2">
-                   
+
                     <button className="signUp text-white text-lg px-[110px] z-10 py-[20px] rounded-xl max-xl:px-[55px] max-xl:py-[10px]	max-sm:w-full max-sm:text-sm  max-sm:font-medium mt-4	" >Post Article</button>
                   </div>
                 </div>
@@ -372,19 +386,19 @@ const MainNavigation = () => {
             </div>
             <div className="navlink_list flex items-center flex-col">
               <li className="rounded-full ">
-              <NavLink to="/notification">
-                {({ isActive }) => (
-                  (
-                    <div className="flex flex-col items-center" >
-                      <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] max-xl:p-[11px] " : "rounded-full bg-grey p-2  "}>
-                        {isActive ? <Icon icon="clarity:notification-solid" height="22px" width="20px" className={isActive ? "text-white " : "text-white h-5 w-5 "} /> : <Icon icon="basil:notification-outline" className="text-white h-5 w-5" />}
+                <NavLink to="/notification">
+                  {({ isActive }) => (
+                    (
+                      <div className="flex flex-col items-center" >
+                        <div className={isActive ? "rounded-full bg-grey p-5  pt-[18px] max-xl:p-[11px] " : "rounded-full bg-grey p-2  "}>
+                          {isActive ? <Icon icon="clarity:notification-solid" height="22px" width="20px" className={isActive ? "text-white " : "text-white h-5 w-5 "} /> : <Icon icon="basil:notification-outline" className="text-white h-5 w-5" />}
 
+                        </div>
+                        <span className={isActive ? "text-white text-base max-xl:hidden mt-1" : "text-white text-sm max-xl:hidden mt-1"}>Notifications</span>
                       </div>
-                      <span className={isActive ? "text-white text-base max-xl:hidden mt-1" : "text-white text-sm max-xl:hidden mt-1"}>Notifications</span>
-                    </div>
-                  )
-                )}
-              </NavLink>
+                    )
+                  )}
+                </NavLink>
                 {" "}
                 {/* <Icon icon="basil:notification-outline" className="h-5 w-5 text-white " /> */}
               </li>
@@ -418,295 +432,301 @@ const MainNavigation = () => {
         </div>
       </div>
     </div>
-    {
-      addPost && < div className=" absolute  font-roboto z-10 top-[75%] left-[52%] translate-x-[-40%]  translate-y-[-50%] max-xl:top-[90%]  max-xl:left-[45%]  max-lg:left-[40%]  max-sm:fixed max-sm:w-[100%] max-sm:h-[100%] max-sm:right-0	 max-sm:bottom-0  max-sm:top-[50%]  max-sm:bg-black max-sm:translate-x-[-40%]   max-sm:translate-y-[-50%] max-sm:overflow-y-scroll">
-        <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-7 max-xl:items-start max-xl:justify-center   max-xl:mt-6  max-[820px]:gap-1 items-start max-md:flex-col max-md:black    max-sm:bg-black max-sm:items-center  ">
-          <div className="left_section w-[520px] h-[552px] max-xl:w-[400px]
+   
+      {
+        addPost && 
+        <form onSubmit={handleSubmit} >
+        < div className=" absolute  font-roboto z-10 top-[75%] left-[52%] translate-x-[-40%]  translate-y-[-50%] max-xl:top-[90%]  max-xl:left-[45%]  max-lg:left-[40%]  max-sm:fixed max-sm:w-[100%] max-sm:h-[100%] max-sm:right-0	 max-sm:bottom-0  max-sm:top-[50%]  max-sm:bg-black max-sm:translate-x-[-40%]   max-sm:translate-y-[-50%] max-sm:overflow-y-scroll">
+          <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-7 max-xl:items-start max-xl:justify-center   max-xl:mt-6  max-[820px]:gap-1 items-start max-md:flex-col max-md:black    max-sm:bg-black max-sm:items-center  ">
+            <div className="left_section w-[520px] h-[552px] max-xl:w-[400px]
                           max-xl:h-[350px] max-md:w-[345px] max-md:h-[200px] max-sm:w-[382px] max-sm:h-[306px] ">
-            <div className="exit list-none  hidden max-sm:flex mb-2 mt-6 gap-4">
-              <button className="p-1 bg-grey rounded-full" onClick={() => setAddPost(false)} ><Icon icon="eva:arrow-back-fill" className="w-4 h-[14px] text-white " /></button>
-              {showEditOption === true ? <p className="exitbutton text-white text-base ">Edit Post</p> : showBrithnessPage === true ? <p className="exitbutton text-white text-base ">Edit Post</p> : <p className="exitbutton text-white text-base ">New Post</p>}
+              <div className="exit list-none  hidden max-sm:flex mb-2 mt-6 gap-4">
+                <button className="p-1 bg-grey rounded-full" onClick={() => setAddPost(false)} ><Icon icon="eva:arrow-back-fill" className="w-4 h-[14px] text-white " /></button>
+                {showEditOption === true ? <p className="exitbutton text-white text-base ">Edit Post</p> : showBrithnessPage === true ? <p className="exitbutton text-white text-base ">Edit Post</p> : <p className="exitbutton text-white text-base ">New Post</p>}
+              </div>
+
+              {base64Image ? (
+                <img
+
+                  className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} rounded-xl filter  object-cover	   w-full h-full `}
+                  id="files"
+                  src={base64Image}
+                  alt="Selected"
+                  style={style}
+                />
+              ) : (
+                ""
+              )}
+
             </div>
-            
-            {base64Image ? (
-              <img
+            {
+              base64Image ?
 
-                className={`image ${filterImage === 'juno' ? 'juno-filter' : filterImage === "lark" ? 'lark-filter' : filterImage === "slumber" ? "slumber-filter" : ""} rounded-xl filter  object-cover	   w-full h-full `}
-                id="files"
-                src={base64Image}
-                alt="Selected"
-                style={style}
-              />
-            ) : (
-              ""
-            )}
-
-          </div>
-          {
-            base64Image ?
-              <div className="right_section w-[470px]   h-[554px] max-xl:w-[350px] max-sm:mt-20 max-sm:flex max-sm:flex-col max-sm:justify-between ">
+                <div className="right_section w-[470px]   h-[554px] max-xl:w-[350px] max-sm:mt-20 max-sm:flex max-sm:flex-col max-sm:justify-between ">
 
 
-                {
-                  showEditOption ?
-                    <div className="filter_option flex flex-col items-center bg-[#1B1C1B] h-[554px] rounded-xl	 border-2 border-[#8F8F8F] max-xl:h-[410px] max-sm:border-0 max-sm:bg-black ">
-                      <div className="filter_para mb-[18px]  w-[98%]">
-                        <div className="para_container flex items-center justify-start gap-5 px-3">
+                  {
+                    showEditOption ?
+                      <div className="filter_option flex flex-col items-center bg-[#1B1C1B] h-[554px] rounded-xl	 border-2 border-[#8F8F8F] max-xl:h-[410px] max-sm:border-0 max-sm:bg-black ">
+                        <div className="filter_para mb-[18px]  w-[98%]">
+                          <div className="para_container flex items-center justify-start gap-5 px-3">
 
-                          {showBrithnessPage ?
-                            <div>
+                            {showBrithnessPage ?
+                              <div>
 
-                              <button onClick={handlePrevious}> <Icon icon="eva:arrow-back-fill" className="w-6 h-6 text-white  " /> </button>  </div> : showCropPage ? <div >
+                                <button onClick={handlePrevious}> <Icon icon="eva:arrow-back-fill" className="w-6 h-6 text-white  " /> </button>  </div> : showCropPage ? <div >
 
-                                <button onClick={handlePreviousFirst}>   <Icon icon="eva:arrow-back-fill" className="w-6 h-6 text-white  " /> </button>  </div> : ""}
+                                  <button onClick={handlePreviousFirst}>   <Icon icon="eva:arrow-back-fill" className="w-6 h-6 text-white  " /> </button>  </div> : ""}
 
-                          <div className="flex items-center justify-center grow gap-5">
-                            {showBrithnessPage ? <img src={brithness} alt="" className="w-7 h-7 p" /> : showCropPage ? <img src={crop} alt="" className="w-7 h-7 p" /> : savePost === true ? "" : ""}
+                            <div className="flex items-center justify-center grow gap-5">
+                              {showBrithnessPage ? <img src={brithness} alt="" className="w-7 h-7 p" /> : showCropPage ? <img src={crop} alt="" className="w-7 h-7 p" /> : savePost === true ? "" : ""}
 
-                            {showBrithnessPage ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2">Brightness</p> : showCropPage ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2 ">Crop</p> : savePost === true ? "" : showEditOption === true ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2  max-sm:hidden">Edit</p> : ""}
+                              {showBrithnessPage ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2">Brightness</p> : showCropPage ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2 ">Crop</p> : savePost === true ? "" : showEditOption === true ? <p className="text-lg text-white text-center mt-[27px] mb-[18px] max-md:mb-2 max-md:mt-2 max-xl:mb-2 max-xl:mt-2  max-sm:hidden">Edit</p> : ""}
+                            </div>
                           </div>
+                          {showBrithnessPage ? <>
+                            <div className="flex items-center px-3">
+                              <input type="range" name="brithness" min="0" max="200" onChange={handleChangeBrightness} value={brightness} class="w-full h-2 bg-blue-100 appearance-none" />
+                            </div>
+                          </> : showCropPage ? <div className="flex gap-10 justify-center ">
+                            <div className="item flex items-center flex-col">
+                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                <img src={rectangle1} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm ">Original</p>
+                            </div>
+                            <div className="item flex items-center flex-col">
+                              <div className="img_container px-10 py-[35px] bg-[#000000] max-xl:p-4">
+                                <img src={rectangle2} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm">4:5</p>
+                            </div>
+                            <div className="item flex items-center flex-col">
+                              <div className="img_container px-10 py-[44px] bg-[#000000] max-xl:p-7  ">
+                                <img src={rectangle3} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm">16:9</p>
+                            </div>
+                          </div> : savePost ? <div className="px-6">
+                            <div className="user_details flex justify-between items-center mt-2">
+                              <div className="user_name_image_username flex gap-3">
+                                <div className="img"> <img src={userimage} alt="user" className="w-[54px] h-[54px]  rounded-full" /></div>
+                                <div className="name">
+                                  <p className="text-lg text-white">Das</p>
+                                  <p className="text-base text-[#8F8F8F] ">@das_007</p>
+                                </div>
+                              </div>
+                              <div className="emoji">
+                                <img src={smile} alt="" />
+                              </div>
+                            </div>
+                            <div className="input_section mt-4">
+                              <textarea type="text" className=" bg-[#000000] max-sm:bg-[#171717] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." value={formData.description}
+                              name="description" onChange={handleChange}
+                              />
+                              {/*  */}
+                              <div className="search_friends  relative flex justify-between items-center">
+                                <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg max-sm:bg-[#171717]	" />
+                                <button className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl  max-sm:bg-black	">Tag People</button>
+                              </div>
+                            </div>
+                          </div> : <div className="crop_brithness_container flex flex-wrap gap-6  justify-center">
+                            <button onClick={handleShowCropPage}>
+
+                              <div className="item flex items-center flex-col">
+                                <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                  <img src={crop} alt="" />
+                                </div>
+                                <p className="text-[#F5F5F5] text-sm">Crop</p>
+                              </div>
+                            </button>
+                            <button onClick={handleBrithnessPage}>
+                              <div className="item flex items-center flex-col">
+                                <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                  <img src={brithness} alt="" className="w-10 h-10" />
+                                </div>
+                                <p className="text-[#F5F5F5] text-sm">Brightness</p>
+                              </div>
+                            </button>
+                            <button >
+
+                              <div className="item flex items-center flex-col">
+                                <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                  <img src={crop} alt="" />
+                                </div>
+                                <p className="text-[#F5F5F5] text-sm">Crop</p>
+                              </div>
+                            </button>
+                            <div className="item flex items-center flex-col">
+                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                <img src={crop} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm">Crop</p>
+                            </div>
+                            <div className="item flex items-center flex-col">
+                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                <img src={crop} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm">Crop</p>
+                            </div>
+                            <div className="item flex items-center flex-col">
+                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                <img src={crop} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm">Crop</p>
+                            </div>
+                            <div className="item flex items-center flex-col">
+                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                <img src={crop} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm">Crop</p>
+                            </div>
+                            <div className="item flex items-center flex-col ">
+                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                <img src={crop} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm">Crop</p>
+                            </div>
+                            <div className="item flex items-center flex-col ">
+                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
+                                <img src={crop} alt="" />
+                              </div>
+                              <p className="text-[#F5F5F5] text-sm">Crop</p>
+                            </div>
+                          </div>}
+
                         </div>
-                        {showBrithnessPage ? <>
-                          <div className="flex items-center px-3">
-                            <input type="range" name="brithness" min="0" max="200" onChange={handleChangeBrightness} value={brightness} class="w-full h-2 bg-blue-100 appearance-none" />
-                          </div>
-                        </> : showCropPage ? <div className="flex gap-10 justify-center ">
-                          <div className="item flex items-center flex-col">
-                            <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                              <img src={rectangle1} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm ">Original</p>
-                          </div>
-                          <div className="item flex items-center flex-col">
-                            <div className="img_container px-10 py-[35px] bg-[#000000] max-xl:p-4">
-                              <img src={rectangle2} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm">4:5</p>
-                          </div>
-                          <div className="item flex items-center flex-col">
-                            <div className="img_container px-10 py-[44px] bg-[#000000] max-xl:p-7  ">
-                              <img src={rectangle3} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm">16:9</p>
-                          </div>
-                        </div> : savePost ? <div className="px-6">
-                          <div className="user_details flex justify-between items-center mt-2">
-                            <div className="user_name_image_username flex gap-3">
-                              <div className="img"> <img src={userimage} alt="user" className="w-[54px] h-[54px]  rounded-full" /></div>
-                              <div className="name">
-                                <p className="text-lg text-white">Das</p>
-                                <p className="text-base text-[#8F8F8F] ">@das_007</p>
-                              </div>
-                            </div>
-                            <div className="emoji">
-                              <img src={smile} alt="" />
-                            </div>
-                          </div>
-                          <div className="input_section mt-4">
-                            <textarea type="text" className=" bg-[#000000] max-sm:bg-[#171717] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." />
-                            {/*  */}
-                            <div className="search_friends  relative flex justify-between items-center">
-                                      <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg max-sm:bg-[#171717]	" />
-                                      <button  className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl  max-sm:bg-black	">Tag People</button>
-                                    </div>
-                          </div>
-                        </div> : <div className="crop_brithness_container flex flex-wrap gap-6  justify-center">
-                          <button onClick={handleShowCropPage}>
 
-                            <div className="item flex items-center flex-col">
-                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                                <img src={crop} alt="" />
-                              </div>
-                              <p className="text-[#F5F5F5] text-sm">Crop</p>
-                            </div>
-                          </button>
-                          <button onClick={handleBrithnessPage}>
-                            <div className="item flex items-center flex-col">
-                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                                <img src={brithness} alt="" className="w-10 h-10" />
-                              </div>
-                              <p className="text-[#F5F5F5] text-sm">Brightness</p>
-                            </div>
-                          </button>
-                          <button >
+                      </div> : <div className="filer_container flex flex-col items-center bg-[#1B1C1B] pb-7 pt-4 rounded-xl  border-2 border-[#8F8F8F] max-xl:pt-2 max-xl:pb-2 	max-sm:bg-black max-sm:border-0 max-sm:items-start ">
+                        <div className="filter_para mb-[18px] max-xl:mb-2">
+                          <p className="text-lg text-white max-md:text-base ">Filters</p>
+                        </div>
+                        <div className="filter_photo flex flex-wrap gap-4 justify-center max-sm:justify-start max-sm:gap-2 ">
+                          <button onClick={() => setFilter('')} className="text-[#8F8F8F] text-sm ">
 
-                            <div className="item flex items-center flex-col">
-                              <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                                <img src={crop} alt="" />
-                              </div>
-                              <p className="text-[#F5F5F5] text-sm">Crop</p>
-                            </div>
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20  max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px] max-xl:mt-1"> Original</p>
                           </button>
-                          <div className="item flex items-center flex-col">
-                            <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                              <img src={crop} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm">Crop</p>
-                          </div>
-                          <div className="item flex items-center flex-col">
-                            <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                              <img src={crop} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm">Crop</p>
-                          </div>
-                          <div className="item flex items-center flex-col">
-                            <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                              <img src={crop} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm">Crop</p>
-                          </div>
-                          <div className="item flex items-center flex-col">
-                            <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                              <img src={crop} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm">Crop</p>
-                          </div>
-                          <div className="item flex items-center flex-col ">
-                            <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                              <img src={crop} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm">Crop</p>
-                          </div>
-                          <div className="item flex items-center flex-col ">
-                            <div className="img_container p-10 bg-[#000000] max-xl:p-5">
-                              <img src={crop} alt="" />
-                            </div>
-                            <p className="text-[#F5F5F5] text-sm">Crop</p>
-                          </div>
-                        </div>}
+                          <button onClick={() => setFilter('lark')} className="text-[#8F8F8F] text-sm ">
+
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px] max-xl:mt-1"> lark</p>
+                          </button>
+                          <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
+
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px] max-xl:mt-1"> Juno</p>
+
+
+                          </button>
+
+                          <button onClick={() => setFilter('slumber')} className="text-[#8F8F8F] text-sm  ">
+
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px] max-xl:mt-1"> slumber</p>
+
+
+                          </button>
+                          <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
+
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px] max-xl:mt-1"> Juno</p>
+                          </button>
+                          <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm   ">
+
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px] max-xl:mt-1"> Original</p>
+
+
+                          </button>
+                          <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
+
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px] max-xl:mt-1"> Juno</p>
+
+
+                          </button>
+                          <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm   ">
+
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px]  max-xl:mt-1"> Juno</p>
+
+
+                          </button>
+                          <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
+
+                            <img
+                              className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
+                              src={base64Image}
+                              alt="Selected"
+                              id="files"
+
+                            />
+                            <p className="mt-[10px] max-xl:mt-1"> Juno</p>
+                          </button>
+                        </div>
 
                       </div>
+                  }
+                  {
+                    showBrithnessPage === true ?
+                      <button className="signUp   text-lg text-white w-full h-[60px] rounded-xl mt-4  max-xl:h-[40px] max-xl:text-base max-xl:mt-2  max-sm:mb-4 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full max-xl:h-[40px] max-xl:text-base max-xl:mt-2 h-[60px] rounded-xl mt-4  " >Save changes</button> : showEditOption === true ? <button className="signUp max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-lg text-white w-full h-[60px] rounded-xl mt-4 " type="submit"  onClick={handleSavePost} >Post</button> : <button className="signUp  text-lg max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-white w-full h-[60px] rounded-xl mt-4  " onClick={showEditOptionMenu} >Next</button>
+                  }
+                </div> : ""
+            }
+          </div>
+        </ div>
 
-                    </div> : <div className="filer_container flex flex-col items-center bg-[#1B1C1B] pb-7 pt-4 rounded-xl  border-2 border-[#8F8F8F] max-xl:pt-2 max-xl:pb-2 	max-sm:bg-black max-sm:border-0 max-sm:items-start ">
-                      <div className="filter_para mb-[18px] max-xl:mb-2">
-                        <p className="text-lg text-white max-md:text-base ">Filters</p>
-                      </div>
-                      <div className="filter_photo flex flex-wrap gap-4 justify-center max-sm:justify-start max-sm:gap-2 ">
-                        <button onClick={() => setFilter('')} className="text-[#8F8F8F] text-sm ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20  max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px] max-xl:mt-1"> Original</p>
-                        </button>
-                        <button onClick={() => setFilter('lark')} className="text-[#8F8F8F] text-sm ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px] max-xl:mt-1"> lark</p>
-                        </button>
-                        <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px] max-xl:mt-1"> Juno</p>
-
-
-                        </button>
-
-                        <button onClick={() => setFilter('slumber')} className="text-[#8F8F8F] text-sm  ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px] max-xl:mt-1"> slumber</p>
-
-
-                        </button>
-                        <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px] max-xl:mt-1"> Juno</p>
-                        </button>
-                        <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm   ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px] max-xl:mt-1"> Original</p>
-
-
-                        </button>
-                        <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px] max-xl:mt-1"> Juno</p>
-
-
-                        </button>
-                        <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm   ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px]  max-xl:mt-1"> Juno</p>
-
-
-                        </button>
-                        <button onClick={() => setFilter('juno')} className="text-[#8F8F8F] text-sm  ">
-
-                          <img
-                            className="w-[120px] h-[120px] rounded-xl juno-filter max-xl:w-20 max-xl:h-20 max-sm:w-[110px] max-sm:h-[110px] "
-                            src={base64Image}
-                            alt="Selected"
-                            id="files"
-
-                          />
-                          <p className="mt-[10px] max-xl:mt-1"> Juno</p>
-                        </button>
-                      </div>
-
-                    </div>
-                }
-                {
-                  showBrithnessPage === true ?
-                    <button className="signUp   text-lg text-white w-full h-[60px] rounded-xl mt-4  max-xl:h-[40px] max-xl:text-base max-xl:mt-2  max-sm:mb-4 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full max-xl:h-[40px] max-xl:text-base max-xl:mt-2 h-[60px] rounded-xl mt-4  " >Save changes</button> : showEditOption === true ? <button className="signUp max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-lg text-white w-full h-[60px] rounded-xl mt-4 " onClick={handleSavePost} >Post</button> : <button className="signUp  text-lg max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-white w-full h-[60px] rounded-xl mt-4  " onClick={showEditOptionMenu} >Next</button>
-                }
-              </div> : ""
-          }
-        </div>
-      </ div>
-
-    }
-
+    </form>
+      }
 
   </div>
   );

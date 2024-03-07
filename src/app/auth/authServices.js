@@ -64,3 +64,14 @@ export const updateProfile = async (userData) => {
     throw error;
   }
 };
+// add post
+export const addPost = async () => {
+  try {
+    const response = await axios.post('https://tomtomed.onrender.com/api/v1/post/create-post',
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

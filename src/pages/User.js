@@ -47,6 +47,7 @@ const Profile = () => {
   const [profileUserData,setProfileUserData] = useState([userData])
   console.log(profileUserData);
   // 
+  
   const userUpdateData = useSelector((state) => state);
   console.log("updateprofileData", userUpdateData.updateProfile);
 
@@ -75,7 +76,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(ProfileData());
-  }, [dispatch]);
+  }, []);
   // 
   const handleShowPost = () => {
     setShowPost(true);

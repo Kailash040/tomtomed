@@ -5,6 +5,7 @@ import {loginReducer} from './auth/loginSlice';
 // import {logOutReducer} from './auth/logOutSlice';
 import {profileReducer} from './auth/ProfileSlice'
 import {updateReducer} from './auth/updateSlice'
+import {addPostReducer} from './auth/addPostSlice'
 // 
 export const store = configureStore({
   reducer: {
@@ -12,7 +13,7 @@ export const store = configureStore({
     loginAuth:loginReducer,
     // logOutAuth : logOutReducer,
     getProfile : profileReducer,
-    updateProfile : updateReducer
-    
+    updateProfile : updateReducer,
+    addPost :addPostReducer
   },
 });
