@@ -32,9 +32,9 @@ const MainNavigation = () => {
   const [showCropPage, setShowCropPage] = useState(false)
   const [brightness, setBrightness] = useState();
   const [savePost, setSavePost] = useState(false);
-const postData = useSelector((state)=> state.addPost)
-console.log(   postData);
-const dispatch = useDispatch();
+  const postData = useSelector((state) => state.addPost)
+  console.log(postData);
+  const dispatch = useDispatch();
 
   const handleShow = () => {
     setHandleShowToggle(!handleShowToggle)
@@ -344,7 +344,7 @@ const dispatch = useDispatch();
                 <Icon icon="ph:shopping-cart-bold" className="h-5 w-5 text-white " />
 
               </li>
-              <p className="text-sm	 text-[#ffffff] mt-1">E-Commerce</p>
+              <p className="text-sm	 text-[#ffffff] mt-1">Market Place</p>
             </div>
             <div className="navlink_list  items-center flex-col hidden max-xl:flex">
 
@@ -432,10 +432,10 @@ const dispatch = useDispatch();
         </div>
       </div>
     </div>
-   
-      {
-        addPost && 
-        <form onSubmit={handleSubmit} >
+
+    {
+      addPost &&
+      <form onSubmit={handleSubmit} >
         < div className=" absolute  font-roboto z-10 top-[75%] left-[52%] translate-x-[-40%]  translate-y-[-50%] max-xl:top-[90%]  max-xl:left-[45%]  max-lg:left-[40%]  max-sm:fixed max-sm:w-[100%] max-sm:h-[100%] max-sm:right-0	 max-sm:bottom-0  max-sm:top-[50%]  max-sm:bg-black max-sm:translate-x-[-40%]   max-sm:translate-y-[-50%] max-sm:overflow-y-scroll">
           <div className="main_section w-[100%] flex justify-end gap-[30px] max-xl:gap-7 max-xl:items-start max-xl:justify-center   max-xl:mt-6  max-[820px]:gap-1 items-start max-md:flex-col max-md:black    max-sm:bg-black max-sm:items-center  ">
             <div className="left_section w-[520px] h-[552px] max-xl:w-[400px]
@@ -522,7 +522,7 @@ const dispatch = useDispatch();
                             </div>
                             <div className="input_section mt-4">
                               <textarea type="text" className=" bg-[#000000] max-sm:bg-[#171717] text-[#8F8F8F] h-80 pl-5 pt-5 pr-5 w-full rounded-xl" placeholder="Write a caption here..." value={formData.description}
-                              name="description" onChange={handleChange}
+                                name="description" onChange={handleChange}
                               />
                               {/*  */}
                               <div className="search_friends  relative flex justify-between items-center">
@@ -718,15 +718,15 @@ const dispatch = useDispatch();
                   }
                   {
                     showBrithnessPage === true ?
-                      <button className="signUp   text-lg text-white w-full h-[60px] rounded-xl mt-4  max-xl:h-[40px] max-xl:text-base max-xl:mt-2  max-sm:mb-4 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full max-xl:h-[40px] max-xl:text-base max-xl:mt-2 h-[60px] rounded-xl mt-4  " >Save changes</button> : showEditOption === true ? <button className="signUp max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-lg text-white w-full h-[60px] rounded-xl mt-4 " type="submit"  onClick={handleSavePost} >Post</button> : <button className="signUp  text-lg max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-white w-full h-[60px] rounded-xl mt-4  " onClick={showEditOptionMenu} >Next</button>
+                      <button className="signUp   text-lg text-white w-full h-[60px] rounded-xl mt-4  max-xl:h-[40px] max-xl:text-base max-xl:mt-2  max-sm:mb-4 " >Save changes</button> : showCropPage === true ? <button className="signUp  text-lg text-white w-full max-xl:h-[40px] max-xl:text-base max-xl:mt-2 h-[60px] rounded-xl mt-4  " >Save changes</button> : showEditOption === true ? <button className="signUp max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-lg text-white w-full h-[60px] rounded-xl mt-4 " type="submit" onClick={handleSavePost} >Post</button> : <button className="signUp  text-lg max-xl:h-[40px] max-xl:text-base max-xl:mt-2 text-white w-full h-[60px] rounded-xl mt-4  " onClick={showEditOptionMenu} >Next</button>
                   }
                 </div> : ""
             }
           </div>
         </ div>
 
-    </form>
-      }
+      </form>
+    }
 
   </div>
   );

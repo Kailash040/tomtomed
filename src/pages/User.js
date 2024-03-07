@@ -33,7 +33,27 @@ const Profile = () => {
   const [selectedDate, setSelectedDate] = useState('');
   const [showAction, setShowAction] = useState(false);
   const [userAction, setUserAction] = useState(false);
+  const [base64Image, setBase64Image] = useState(null);
+  const [fileInputKey, setFileInputKey] = useState(Date.now());
+
+//  
+const handleImageChange = (e) => {
+  // setBrightness(e.target.value);
+  const file = e.target.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      // setSelectedImage(file);
+      setBase64Image(reader.result); // Base64-encoded image data
+    };
+
+    reader.readAsDataURL(file);
  
+  }
+};
+console.log(base64Image);
   const handleAction = () => {
     setShowAction(!showAction)
   }
@@ -55,7 +75,7 @@ const Profile = () => {
   const [formData, setFormData] = useState({
     name: userData?.data?.data?.name,
     username: userData?.data?.data?.username,
-    image: '',
+    image: userData?.data?.data?.image,
     about: userData?.data?.data?.about,
     isVerified: false,
     address: {
@@ -277,6 +297,7 @@ const Profile = () => {
 
             <div className="flex gap-10 items-center ">
               <div className="user_pic w-[160px] h-[160px] max-xl:w-[100px] max-xl:h-[100px] ">
+
                 {
                   item.image  ?     <img
                   src={item.image}
@@ -337,11 +358,65 @@ const Profile = () => {
                       </div>
 
                       <div className=" profile_edit_section  bg-[#202020] pt-[35px] flex gap-[45px]  max-sm:gap-0 pb-[35px] max-lg:pt-[10px] max-sm:flex-col max-sm:items-center  max-sm:bg-black">
-                        <div className="img hidden max-sm:block"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px]  mb-[30px]" /></div>
+                        <div className="img hidden max-sm:block relative">
+                        <input
+                                  type="file"
+                                  accept="image/*"
+                                 className="absolute"
+                                  id="files"
+                                  onChange={handleImageChange}
+                                  key={fileInputKey}
+                                />
+                                {
+                                  base64Image ? <>
+                                  
+                                  
+                                  <img src={base64Image} alt="img" className="w-[120px] h-[120px] rounded-[1000px]  mb-[30px]" />
+                                  </> : <img src={formData.image} alt="img" className="w-[120px] h-[120px] rounded-[1000px]  mb-[30px]" />
+                           
+                        }
+                          </div>
+                        
                         <div className="left_section pl-[25px] max-sm:pl-0 max-sm:pb-6 max-sm:order-2  max-sm:pt-6  ">
 
                           <div className="profile_details flex flex-col items-center">
-                            <div className="img"><img src={profileimage} alt="" className="w-[120px] h-[120px] rounded-[1000px] max-sm:hidden " /></div>
+                            <div className="img  relative">
+                            <label htmlFor="files" className="flex gap-[30px] max-xl:gap-2 max-xl:flex-col items-center">
+
+
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  style={{ "visibility": "hidden", "position": "absolute" }}
+                                  id="files"
+                                  onChange={handleImageChange}
+                                  key={fileInputKey}
+                                />                
+
+
+{
+                                  base64Image ? <>
+                                  
+                                  
+                                  <img src={base64Image} alt="img" className="w-[120px] h-[120px] rounded-[1000px] max-sm:hidden " />
+                                  </> : <img src={formData.image} alt="img" className="w-[120px] h-[120px] rounded-[1000px] max-sm:hidden " />
+                           
+                        }
+                                
+                                               {/* <img src={formData.image} alt="img" className="w-[120px] h-[120px] rounded-[1000px] max-sm:hidden " /> */}
+
+
+                              </label>
+
+                            {/* <input
+                                  type="file"
+                                  accept="image/*"
+                                  style={{ "visibility": "hidden", "position": "absolute" }}
+                                  id="files"
+                                  // onChange={handleImageChange}
+                                  // key={fileInputKey}
+                                /> */}
+                              </div>
                             <div className="dob  mt-8  bg-[#3D3E3D] w-[190px]  max-sm:w-[320px]  px-3 rounded-lg	 max-lg:mt-[10px]">
                               <div className="dob text-sm text-[#8F8F8F]  pl-3  max-sm:pl-1  max-sm:pt-1  pt-2">Date of Birth</div>
                               <div className="dob text-base  text-[#F5F5F5]  pl-3 mt-[9px] mb-3 max-sm:my-1 max-sm:pl-1 "> <input type="date" className="bg-[#3D3E3D]" value={selectedDate}
@@ -379,7 +454,7 @@ const Profile = () => {
                               Username
                             </label>
                             <input class="  block w-full bg-[#1B1C1B]  max-sm:mt-1  rounded   mt-2 text-base text-white " id="Name" type="text" placeholder="username"
-                              name="username" value={formData.username} onChange={handleChange}
+                              name="username" value={formData.username}  disabled onChange={handleChange}
                             />
                           </div>
                           <div class="w-[584px] max-sm:w-[320px] max-lg:w-[190px]  bg-[#1B1C1B]  px-2 py-3 rounded-lg	 max-sm:px-3 max-sm:py-1 mt-3  max-lg:mt-1 relative flex   items-center">
