@@ -1,4 +1,4 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import postImage from "../assets/postassets/Rectangle 587.png";
 import userImage from "../assets/postassets/Ellipse 3.png";
 import verifyTik from "../assets/postassets/bluetik.svg";
@@ -12,18 +12,19 @@ import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
 // 
-// import { ProfileData } from "../app/auth/ProfileSlice";
-// import { useDispatch, useSelector } from 'react-redux';
+import { getPostData } from "../app/auth/getPostSlice";
+import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(ProfileData());
-  // }, [dispatch]);
-  // // 
-  // const userData = useSelector((state) => state);
-  // console.log(userData)
+  const userData = useSelector((state) => state?.getPost?.data?.post);
+  console.log(userData);
+  const dispatch = useDispatch(getPostData)
+  useEffect(() => {
+    dispatch(getPostData());
+
+  }, [getPostData])
+  console.log();
   const [showComment, setShowComment] = useState(false)
-  
+
   const [showshareModal, setShowShareModal] = useState(false)
   const [showMuteModal, setShowMuteModal] = useState(false)
 
@@ -33,7 +34,7 @@ const Home = () => {
   const handleShareModal = () => {
     setShowShareModal(!showshareModal)
   }
-  const handleShowMuteButton =()=>{
+  const handleShowMuteButton = () => {
     setShowMuteModal(!showMuteModal)
   }
   return (
@@ -173,42 +174,42 @@ const Home = () => {
                       <img src={userImage} alt="photo" className="w-[48px] h-[48px]" />
                       {/*  */}
                       <div className="account_section_item  relative" >
-<button className="" onClick={handleShowMuteButton} >
+                        <button className="" onClick={handleShowMuteButton} >
 
-                       <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white " />
-</button>
-{
-  showMuteModal && <div className="report_block_mute absolute  list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 top-10">
-    <div className="user_div_image flex   gap-[18px] items-center">
-<img src={userImage} alt="user" className="w-[60px] h-[60px]" />
-   <div className="name_username">
-                      <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
-                        {" "}
-                        Amy Roy{" "}
-                        
-                      </p>
-                      <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
-                    </div>
-    </div>
-    <div className="option_div mt-10 flex flex-col gap-6">
-      
-    <div className="flex gap-[18px]">
-    <Icon icon="basil:notification-off-outline" className="w-6 h-6 text-white" />
-    <li className="text-lg text-white">Mute</li>
-    </div>
-    <div className="flex gap-[18px]">
-    <Icon icon="material-symbols:report-outline" className="w-6 h-6 text-white" />
-    <li className="text-lg text-white">Report</li>
-    </div>
-    <div className="flex gap-[18px]">
-    <Icon icon="material-symbols-light:block" className="w-6 h-6 text-[#FB6363]" />
-    <li className="text-lg text-[#FB6363]">Block</li>
-    </div>
-    </div>
-   
-  </div>
-}
-                       
+                          <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white " />
+                        </button>
+                        {
+                          showMuteModal && <div className="report_block_mute absolute  list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 top-10">
+                            <div className="user_div_image flex   gap-[18px] items-center">
+                              <img src={userImage} alt="user" className="w-[60px] h-[60px]" />
+                              <div className="name_username">
+                                <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
+                                  {" "}
+                                  Amy Roy{" "}
+
+                                </p>
+                                <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
+                              </div>
+                            </div>
+                            <div className="option_div mt-10 flex flex-col gap-6">
+
+                              <div className="flex gap-[18px]">
+                                <Icon icon="basil:notification-off-outline" className="w-6 h-6 text-white" />
+                                <li className="text-lg text-white">Mute</li>
+                              </div>
+                              <div className="flex gap-[18px]">
+                                <Icon icon="material-symbols:report-outline" className="w-6 h-6 text-white" />
+                                <li className="text-lg text-white">Report</li>
+                              </div>
+                              <div className="flex gap-[18px]">
+                                <Icon icon="material-symbols-light:block" className="w-6 h-6 text-[#FB6363]" />
+                                <li className="text-lg text-[#FB6363]">Block</li>
+                              </div>
+                            </div>
+
+                          </div>
+                        }
+
                       </div>
                       {/*  */}
                     </div>
@@ -333,30 +334,30 @@ const Home = () => {
                                   <div className="dialogbox  flex flex-col    ">
                                     <div className="flex_container flex   flex-col max-sm:flex-row items-center  max-sm:px-5  ">
 
-                               
-                                <form method="dialog" className="hidden max-sm:block"  >
-      {/* if there is a button in form, it will close the modal */}
-      <button className="p-2 rounded-full bg-[#1B1C1B] mt-[10px]">   <Icon icon="eva:arrow-back-fill" className="w-4 h-4 text-white" /></button>
-    </form>
-                               
-                              
+
+                                      <form method="dialog" className="hidden max-sm:block"  >
+                                        {/* if there is a button in form, it will close the modal */}
+                                        <button className="p-2 rounded-full bg-[#1B1C1B] mt-[10px]">   <Icon icon="eva:arrow-back-fill" className="w-4 h-4 text-white" /></button>
+                                      </form>
 
 
-                                    <div className="searchContainer flex justify-between items-center gap-10   px-6 pt-6  rounded-t-3xl    max-sm:justify-center max-sm:pt-[10px]  w-full max-sm:pr-0 max-sm:w-full" >
-                                      <div className="relative  w-full  flex justify-end items-center max-sm:w-full  ">
-                                        <input
-                                          type="text"
-                                          className="  bg-[#1B1C1B] p-5  max-sm:p-3 max-sm:text-sm	 max-sm:w-full rounded-[30px] text-[#8F8F8F] w-full"
-                                          placeholder="Search Friends "
-                                        />
-                                        <div className="flex gap-6 absolute p-1 bg-[#1B1C1B] right-[18px] ">
-                                          <Icon icon="ep:search" className="text-white w-5 h-5" />
+
+
+                                      <div className="searchContainer flex justify-between items-center gap-10   px-6 pt-6  rounded-t-3xl    max-sm:justify-center max-sm:pt-[10px]  w-full max-sm:pr-0 max-sm:w-full" >
+                                        <div className="relative  w-full  flex justify-end items-center max-sm:w-full  ">
+                                          <input
+                                            type="text"
+                                            className="  bg-[#1B1C1B] p-5  max-sm:p-3 max-sm:text-sm	 max-sm:w-full rounded-[30px] text-[#8F8F8F] w-full"
+                                            placeholder="Search Friends "
+                                          />
+                                          <div className="flex gap-6 absolute p-1 bg-[#1B1C1B] right-[18px] ">
+                                            <Icon icon="ep:search" className="text-white w-5 h-5" />
+                                          </div>
+                                        </div>
+                                        <div className="search_button max-sm:w-full max-sm:z-10 max-sm:hidden">
+                                          <button className="signUp text-white   px-[135px] py-5 max-lg:px-[50px] max-lg:py-[16px] rounded-xl text-lg max-md:px-9 max-md:text-base max-sm:w-full">Share</button>
                                         </div>
                                       </div>
-                                      <div className="search_button max-sm:w-full max-sm:z-10 max-sm:hidden">
-                                        <button className="signUp text-white   px-[135px] py-5 max-lg:px-[50px] max-lg:py-[16px] rounded-xl text-lg max-md:px-9 max-md:text-base max-sm:w-full">Share</button>
-                                      </div>
-                                    </div>
                                     </div>
                                     <div className="list_container  max-sm:h-[100%]  px-5 pb-6 rounded-b-3xl h-95 overflow-y-scroll  scrollbar-thumb-rounded-full scrollbar-track-rounded-full  scrollbar scrollbar-thumb-[#DDDDDD] scrollbar-track-[#414141] max-sm:rounded-t-3xl">
                                       {/* list container . */}
@@ -373,7 +374,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -409,7 +410,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -445,7 +446,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -481,7 +482,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -517,7 +518,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -553,7 +554,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p   className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -589,7 +590,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p  className="max-sm:text-base" >Amy Johnson</p>
+                                            <p className="max-sm:text-base" >Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -625,7 +626,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p  className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -661,7 +662,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p  className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -697,7 +698,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p  className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -733,7 +734,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p  className="max-sm:text-base"> Amy Johnson</p>
+                                            <p className="max-sm:text-base"> Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -769,7 +770,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p  className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -805,7 +806,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p  className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -841,7 +842,7 @@ const Home = () => {
                                           </div>
                                           <div className="text-white">
                                             {" "}
-                                            <p  className="max-sm:text-base">Amy Johnson</p>
+                                            <p className="max-sm:text-base">Amy Johnson</p>
                                             <p className="text-sm text-[#8F8F8F]">@amyj_39!</p>
                                           </div>
                                         </div>
@@ -886,19 +887,19 @@ const Home = () => {
                             <dialog id="my_modal_repost_on_feed" className="modal  ">
                               <div className="modal-box bg-transparent  max-md:bg-black  w-11/12 max-w-5xl p-0  max-md:max-h-[100%] max-md:w-[100%]	"  >
                                 <div className="user_deatails  justify-between items-center mt-5 hidden max-sm:block mb-2 ">
-                                      <div className="left_section flex items-center gap-5  ">
-                                      <form method="dialog">
-      {/* if there is a button in form, it will close the modal */}
-      <button className="p-1 rounded-full bg-[#1B1C1B] ml-[27px]"> <Icon icon="eva:arrow-back-fill" className="w-5 h-5 text-white" /></button>
-    </form>
-                                       
-                                        <div className="item flex gap-2">
-                                          <p className="text-lg max-sm:text-base	" >Repost from Amy Ray</p>
-                                          <p className="text-[#8F8F8F] text-base	"  >@amy_ray</p>
-                                        </div>
-                                      </div>
-                                    
+                                  <div className="left_section flex items-center gap-5  ">
+                                    <form method="dialog">
+                                      {/* if there is a button in form, it will close the modal */}
+                                      <button className="p-1 rounded-full bg-[#1B1C1B] ml-[27px]"> <Icon icon="eva:arrow-back-fill" className="w-5 h-5 text-white" /></button>
+                                    </form>
+
+                                    <div className="item flex gap-2">
+                                      <p className="text-lg max-sm:text-base	" >Repost from Amy Ray</p>
+                                      <p className="text-[#8F8F8F] text-base	"  >@amy_ray</p>
                                     </div>
+                                  </div>
+
+                                </div>
                                 <div className="flex_container flex gap-[30px] max-xl:justify-center max-md:flex-col max-md:items-center max-md:gap-6">
 
                                   <div className="img_container w-[520px] h-[520px] max-xl:w-[320px] max-xl:h-[320px] max-[860px]:w-[250px] max-[860px]:h-[250px] max-md:w-[350px] max-md:h-[300px] ">
@@ -907,36 +908,36 @@ const Home = () => {
                                   </div>
                                   <div className="right_div_container">
 
-                                  
-                                  <div className="right_container w-[470px] rounded-xl max-[860px]:w-[350px]	 max-xl:w-[400px]  h-[400px] bg-[#1B1C1B]  max-md:bg-black">
-                                    
-                                    <div className="user_deatails flex justify-between items-center p-6 max-sm:hidden ">
-                                      <div className="left_section flex items-center gap-5">
-                                        <Icon icon="eva:arrow-back-fill" className="w-5 h-5 text-white" />
-                                        <div className="item">
-                                          <p className="text-lg	" >Repost from Amy Ray</p>
-                                          <p className="text-[#8F8F8F] text-base	"  >@amy_ray</p>
+
+                                    <div className="right_container w-[470px] rounded-xl max-[860px]:w-[350px]	 max-xl:w-[400px]  h-[400px] bg-[#1B1C1B]  max-md:bg-black">
+
+                                      <div className="user_deatails flex justify-between items-center p-6 max-sm:hidden ">
+                                        <div className="left_section flex items-center gap-5">
+                                          <Icon icon="eva:arrow-back-fill" className="w-5 h-5 text-white" />
+                                          <div className="item">
+                                            <p className="text-lg	" >Repost from Amy Ray</p>
+                                            <p className="text-[#8F8F8F] text-base	"  >@amy_ray</p>
+                                          </div>
+                                        </div>
+                                        <div className="right_section">
+                                          <Icon icon="ph:smiley" className="w-[30px] h-[30px] " />
                                         </div>
                                       </div>
-                                      <div className="right_section">
-                                        <Icon icon="ph:smiley" className="w-[30px] h-[30px] " />
+                                      <div className="input_box px-6 w-full  max-sm:px-0">
+                                        <textarea type="text" className="w-full rounded-xl p-6 bg-[#000000] max-sm:text-sm		max-sm:bg-[#1B1C1B]" placeholder="Write a caption here..." />
+                                      </div>
+                                      <div className="search_friends px-6 max-sm:px-0 relative flex justify-between items-center">
+                                        <input type="text" className="  max-sm:text-sm w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg max-sm:bg-[#1B1C1B] 	" placeholder="Search Friends..." />
+                                        <button className="text-base bg-[#1B1C1B] absolute  max-sm:bg-black px-[15px] right-10 py-[10px] rounded-xl max-sm:right-2	">Tag People</button>
                                       </div>
                                     </div>
-                                    <div className="input_box px-6 w-full  max-sm:px-0">
-                                      <textarea type="text" className="w-full rounded-xl p-6 bg-[#000000] max-sm:text-sm		max-sm:bg-[#1B1C1B]" placeholder="Write a caption here..." />
-                                    </div>
-                                    <div className="search_friends px-6 max-sm:px-0 relative flex justify-between items-center">
-                                      <input type="text" className="  max-sm:text-sm w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg max-sm:bg-[#1B1C1B] 	" placeholder="Search Friends..." />
-                                      <button  className="text-base bg-[#1B1C1B] absolute  max-sm:bg-black px-[15px] right-10 py-[10px] rounded-xl max-sm:right-2	">Tag People</button>
-                                    </div>
-                                  </div>
                                     <div className="button_div  mt-10 ">
 
-                                  <button className="w-full signUp py-5  max-sm:py-[15px] rounded-xl	 max-sm:text-base ">Post</button>
+                                      <button className="w-full signUp py-5  max-sm:py-[15px] rounded-xl	 max-sm:text-base ">Post</button>
                                     </div>
                                   </div>
                                 </div>
-                               
+
                               </div>
 
 

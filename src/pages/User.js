@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-
+import { useState, useEffect, useRef, useCallback } from "react";
+import { useParams } from "react-router-dom"
 import userimage from "../assets/postassets/userImage.webp";
 import verifyTik from "../assets/postassets/bluetik.svg";
 import postImage from "../assets/postassets/Rectangle 587.png";
@@ -18,13 +18,31 @@ import group from '../assets/Rectangle 599 (1).png'
 import Setting from "../components/Setting";
 // 
 import { ProfileData } from "../app/auth/ProfileSlice";
+import { getPostData } from '../app/auth/getPostSlice'
 import { updateUserProfile } from '../app/auth/updateSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
-  //
+  const getAPost = useDispatch();
+  const { _id } = useParams();
+  const fetchDetails = useCallback(() => {
+    getAPost(getPostData({ id: _id }))
+  }, [getAPost, _id])
+
+
+  useEffect(() => {
+    fetchDetails()
+  }, [fetchDetails])
+
+  // const getPost = useSelector((state) => state?.getPost);
+  // console.log("getPost", getPost)
+  // const getAPost = useDispatch();
+  // useEffect(() => {
+  //   getAPost(getPostData(_id));
+
+  // }, [getAPost,_id]);
   const [showPost, setShowPost] = useState(true);
   const [showArticle, setShowArticle] = useState(false);
   const [showMedia, setShowMedia] = useState(false);
