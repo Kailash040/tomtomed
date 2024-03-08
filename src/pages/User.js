@@ -23,26 +23,10 @@ import { updateUserProfile } from '../app/auth/updateSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
-  const getAPost = useDispatch();
-  const { _id } = useParams();
-  const fetchDetails = useCallback(() => {
-    getAPost(getPostData({ id: _id }))
-  }, [getAPost, _id])
 
-
-  useEffect(() => {
-    fetchDetails()
-  }, [fetchDetails])
-
-  // const getPost = useSelector((state) => state?.getPost);
-  // console.log("getPost", getPost)
-  // const getAPost = useDispatch();
-  // useEffect(() => {
-  //   getAPost(getPostData(_id));
-
-  // }, [getAPost,_id]);
   const [showPost, setShowPost] = useState(true);
   const [showArticle, setShowArticle] = useState(false);
   const [showMedia, setShowMedia] = useState(false);
@@ -54,6 +38,7 @@ const Profile = () => {
   const [base64Image, setBase64Image] = useState(null);
   const [fileInputKey, setFileInputKey] = useState(Date.now());
   // for update state//
+  const [image, setImage] = useState("")
   const [name, setName] = useState('');
   const [username, setUserName] = useState('');
   const [about, setAbout] = useState('');
@@ -61,7 +46,6 @@ const Profile = () => {
     city: "",
     country: ""
   });
-  const [image, setImage] = useState("")
   // setName(userData?.name)
   // console.log(setName(userData?.name));
   //  
@@ -92,9 +76,7 @@ const Profile = () => {
   //  
   const userData = useSelector((state) => [state?.getProfile?.data?.data]);
   console.log("profile Data", userData)
-  const refData = useRef(useSelector((state) => state?.getProfile?.data?.data))
-  // 
-  console.log(refData);
+
   // 
   // 
   const userUpdateData = useSelector((state) => state);
@@ -186,6 +168,15 @@ const Profile = () => {
       // You can also set an error state or display an error message instead of an alert
     }
   };
+  //
+  const getAllPostData = useSelector((state) => state?.getPost?.data?.post);
+  console.log(getAllPostData);
+  const getAllPost = useDispatch(getPostData)
+  useEffect(() => {
+    getAllPost(getPostData());
+
+  }, [getPostData])
+
   return (
     <>
 
@@ -591,8 +582,13 @@ const Profile = () => {
               </div>
               <div className="post bg-black ">
                 {showPost && (
+                  <>
+                 {
+                   getAllPostData?.map((item,id)=>(
+
                   <div className="post_container bg-black ">
                     <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 ">
+                   
                       <div className="post_name_userName_pic flex justify-between">
                         <div className="name_username">
                           <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
@@ -658,8 +654,9 @@ const Profile = () => {
                       <div className="post">
                         <p className="description  text-[#FFFFFF] font-normal mt-2 mb-2 max-xl:text-sm">
                           {" "}
-                          I wish I loved anything as much as my cat loves catnip
-                          :p
+                          {item?.description}
+                          {/* I wish I loved anything as much as my cat loves catnip
+                          :p */}
                         </p>
                         <p className="text-[#B39DCF] mb-2 max-xl:text-sm">
                           #cats #lovecats #adorable{" "}
@@ -667,7 +664,7 @@ const Profile = () => {
                       </div>
                       <div className="main_image max-lg:flex max-xl:justify-center">
                         <img
-                          src={postImage}
+                          src={item?.image}
                           alt="photo"
                           className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
                         />
@@ -705,81 +702,11 @@ const Profile = () => {
                         29 mins ago
                       </p>
                     </div>
-                    <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 border-t-2 border-[#252525] ">
-                      <div className="post_name_userName_pic flex justify-between">
-                        <div className="name_username">
-                          <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
-                            {" "}
-                            Amy Roy{" "}
-                            <span>
-                              {" "}
-                              <img src={verifyTik} alt="photo" />{" "}
-                            </span>{" "}
-                          </p>
-                          <p className="text-[#8F8F8F] max-xl:text-sm">
-                            @amy_roy
-                          </p>
-                        </div>
-                        <div className="photo flex gap-6 items-center">
-                          <img
-                            src={userImage}
-                            alt="photo"
-                            className="w-11 h-11"
-                          />
-                          <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   " />
-
-                        </div>
-                      </div>
-                      <div className="post">
-                        <p className="description  text-[#FFFFFF] font-normal mt-2 mb-2 max-xl:text-sm">
-                          {" "}
-                          I wish I loved anything as much as my cat loves catnip
-                          :p
-                        </p>
-                        <p className="text-[#B39DCF] mb-2 max-xl:text-sm">
-                          #cats #lovecats #adorable{" "}
-                        </p>
-                      </div>
-                      <div className="main_image max-lg:flex max-xl:justify-center">
-                        <img
-                          src={postImage}
-                          alt="photo"
-                          className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-                        />
-                      </div>
-                      <div className="post_status flex  justify-between  mt-4">
-                        <div className="post_status flex gap-4">
-                          <div className="like_status flex  gap-1 items-center">
-                            <BiMessageAlt className="w-6 h-6 text-white	" />
-                            {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
-                            <p className="text-[#8F8F8F] text-sm font-medium">14</p>
-                          </div>
-                          <div className="like_status  flex  gap-1 items-center">
-                            {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
-                            <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
-                            <p className="text-[#8F8F8F] text-sm font-medium">124</p>
-                          </div>
-
-                          <div className="like_status flex gap-1 items-center">
-                            <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
-
-                            <p className="text-[#8F8F8F] text-sm font-medium">4</p>
-                          </div>
-                          <div className="like_status flex  gap-1 items-center">
-                            {/* <Icon icon="grommet-icons:view" /> */}
-                            <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
-                            <p className="text-[#8F8F8F] text-sm font-medium">34</p>
-                          </div>
-                        </div>
-                        <div className="post_status flex flex-col  items-center gap-3">
-                          <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                      <p className="text-[#8F8F8F]  mt-[13px] pb-5">
-                        29 mins ago
-                      </p>
-                    </div>
+                  
                   </div>
+                   ))
+                  }
+                  </>
                 )}
               </div>
               {showArticle && (
