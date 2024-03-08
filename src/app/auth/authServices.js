@@ -101,3 +101,15 @@ export const getAPost = async (_id) => {
     throw error;
   }
 };
+// 
+export const deletePost = async (_id) => {
+  try {
+    const response = await axios.delete(`https://tomtomed.onrender.com/api/v1/post/delete/${_id}`,
+  
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

@@ -17,6 +17,7 @@ import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
 import Setting from "../components/Setting";
 // 
+import { deleteAPost } from '../app/auth/deletePostSlice'
 import { ProfileData } from "../app/auth/ProfileSlice";
 import { getPostData } from '../app/auth/getPostSlice'
 import { updateUserProfile } from '../app/auth/updateSlice'
@@ -70,12 +71,6 @@ const Profile = () => {
     setShowAction(!showAction)
   }
 
-  const handleUserAction = (_id) => {
-    console.log(_id);
-
-    setUserAction(!userAction && _id)
-
-  }
 
   //  
   const userData = useSelector((state) => [state?.getProfile?.data?.data]);
@@ -180,7 +175,11 @@ const Profile = () => {
     getAllPost(getPostData());
 
   }, [getPostData])
-
+  const dispatchDeleteUser = useDispatch();
+  const handleDelete = (_id) => {
+    dispatchDeleteUser(deleteAPost(_id))
+    toast("Post Deleted successfully")
+  }
   return (
     <>
 
@@ -628,7 +627,7 @@ const Profile = () => {
                               <div className="relative flex pl-6">
                                 <details className="dropdown">
                                   <summary className="">  <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white  relative bottom-[10px]
-                             " onClick={() => handleUserAction(item._id)} /></summary>
+                             "  /></summary>
                                   <ul className="p-2  menu dropdown-content z-[1] ">
                                     <div className="report_block_mute absolute z-30 list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2  " >
                                       {
@@ -658,10 +657,10 @@ const Profile = () => {
                                           <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />
                                           <li className="text-lg text-white">Hide</li>
                                         </div>
-                                        <div className="flex gap-[18px]">
+                                        <button className="flex gap-[18px]" onClick={() => handleDelete(item._id)}>
                                           <Icon icon="fluent:delete-24-regular" className="w-6 h-6 text-[#FB6363]" />
                                           <li className="text-lg text-[#FB6363]">Delete</li>
-                                        </div>
+                                        </button>
                                       </div>
 
                                     </div>
