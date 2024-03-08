@@ -113,3 +113,16 @@ export const deletePost = async (_id) => {
     throw error;
   }
 };
+// like post
+// 
+export const likePost = async (userData,_id) => {
+  try {
+    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/like/${_id}`, userData,
+  
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

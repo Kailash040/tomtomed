@@ -17,6 +17,7 @@ import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
 import Setting from "../components/Setting";
 // 
+import {likeAPost} from '../app/auth/likePostSlice'
 import { deleteAPost } from '../app/auth/deletePostSlice'
 import { ProfileData } from "../app/auth/ProfileSlice";
 import { getPostData } from '../app/auth/getPostSlice'
@@ -179,6 +180,10 @@ const Profile = () => {
   const handleDelete = (_id) => {
     dispatchDeleteUser(deleteAPost(_id))
     toast("Post Deleted successfully")
+  }
+  const dispatchLike = useDispatch();
+  const handlelike =(_id)=>{
+    dispatchLike(likeAPost(_id))
   }
   return (
     <>
@@ -706,8 +711,15 @@ const Profile = () => {
                                 </div>
                                 <div className="like_status  flex  gap-1 items-center">
                                   {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                                  <button onClick={() => handlelike(item._id)}>
+
                                   <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
-                                  <p className="text-[#8F8F8F] text-sm font-medium">124</p>
+                                  </button>
+                                  <p className="text-[#8F8F8F] text-sm font-medium">
+                                    {
+                                      item?.likes?.length === 0  ? <></> :  <>{item?.likes?.length}</>
+                                    }
+                                   </p>
                                 </div>
 
                                 <div className="like_status flex gap-1 items-center">

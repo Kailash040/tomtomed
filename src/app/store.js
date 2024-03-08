@@ -8,6 +8,7 @@ import { addPostReducer } from './auth/addPostSlice'
 import { getPostReducer } from "./auth/getPostSlice";
 // 
 import { deleteAPostReducer } from './auth/deletePostSlice'
+import { likePostReducer } from "./auth/likePostSlice";
 export const store = configureStore({
   reducer: {
     signUpAuth: signUpReducer,
@@ -17,6 +18,7 @@ export const store = configureStore({
     updateProfile: updateReducer,
     addPost: addPostReducer,
     getPost: getPostReducer,
-    deleteAPost: deleteAPostReducer
+    deleteAPost: deleteAPostReducer,
+    likeAPost: likePostReducer
   },
 });
