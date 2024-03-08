@@ -169,13 +169,6 @@ const Profile = () => {
     }
   };
   //
-  const getAllPostData = useSelector((state) => state?.getPost?.data?.post);
-  console.log(getAllPostData);
-  const getAllPost = useDispatch(getPostData)
-  useEffect(() => {
-    getAllPost(getPostData());
-
-  }, [getPostData])
   const dispatchDeleteUser = useDispatch();
   const handleDelete = (_id) => {
     dispatchDeleteUser(deleteAPost(_id))
@@ -184,7 +177,17 @@ const Profile = () => {
   const dispatchLike = useDispatch();
   const handlelike =(_id)=>{
     dispatchLike(likeAPost(_id))
+    toast("Post like successfully")
   }
+  // 
+  const getAllPostData = useSelector((state) => state?.getPost?.data?.post);
+  console.log(getAllPostData);
+  const getAllPost = useDispatch(getPostData)
+  useEffect(() => {
+    getAllPost(getPostData());
+
+  }, [getPostData,dispatchLike])
+
   return (
     <>
 
@@ -713,7 +716,10 @@ const Profile = () => {
                                   {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
                                   <button onClick={() => handlelike(item._id)}>
 
-                                  <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+ {
+                                      item?.likes?.length === 0  ? <>  <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /></> :  <><Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" /></>
+                                    }
+                                
                                   </button>
                                   <p className="text-[#8F8F8F] text-sm font-medium">
                                     {
