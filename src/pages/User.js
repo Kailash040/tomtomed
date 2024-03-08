@@ -69,8 +69,12 @@ const Profile = () => {
   const handleAction = () => {
     setShowAction(!showAction)
   }
-  const handleUserAction = () => {
-    setUserAction(!userAction)
+
+  const handleUserAction = (_id) => {
+    console.log(_id);
+
+    setUserAction(!userAction && _id)
+
   }
 
   //  
@@ -583,133 +587,154 @@ const Profile = () => {
               <div className="post bg-black ">
                 {showPost && (
                   <>
-                 {
-                   getAllPostData?.map((item,id)=>(
+                    {
+                      getAllPostData?.map((item, id) => (
 
-                  <div className="post_container bg-black ">
-                    <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 ">
-                   {
-                    userData?.map((data,id)=>(
+                        <div className="post_container bg-black " key={id}>
+                          <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 ">
 
-                      <div className="post_name_userName_pic flex justify-between">
-                        <div className="name_username">
-                          <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
-                            {" "}
-                           {data.name}
-                            <span>
-                              {" "}
-                              <img src={verifyTik} alt="photo" />{" "}
-                            </span>{" "}
-                          </p>
-                          <p className="text-[#8F8F8F] max-xl:text-sm">
-                          {data.username}
-                          </p>
-                        </div>
-                        <div className="photo flex gap-6 items-center">
-                          <img
-                            src={data.image}
-                            alt="photo"
-                            className="w-11 h-11  rounded-full"
-                          />
-                          <div className="relative">
+                            <div className="post_name_userName_pic flex justify-between items-center"   >
+                              {
+                                userData?.map((data, id) => (
+                                  <div className="flex justify-between w-full">
 
-                            <button onClick={handleUserAction}  >
+                                    <div className="name_username" id={id}>
+                                      <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
+                                        {" "}
+                                        {data?.name}
+                                        <span>
+                                          {" "}
+                                          <img src={verifyTik} alt="photo" />{" "}
+                                        </span>{" "}
+                                      </p>
+                                      <p className="text-[#8F8F8F] max-xl:text-sm">
+                                        {data?.username}
+                                      </p>
+                                    </div>
 
-                              <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   " />
-                            </button>
-                            {
-                              userAction && <div className="report_block_mute absolute z-30 list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 top-10">
-                                <div className="user_div_image flex   gap-[18px] items-center">
-                                  <img src={userImage} alt="user" className="w-[60px] h-[60px]" />
-                                  <div className="name_username">
-                                    <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
-                                      {" "}
-                                      Amy Roy{" "}
+                                    <div className="photo flex gap-6 items-center">
+                                      <img
+                                        src={data?.image}
+                                        alt="photo"
+                                        className="w-11 h-11  rounded-full"
+                                      />
 
-                                    </p>
-                                    <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
+                                    </div>
                                   </div>
-                                </div>
-                                <div className="option_div mt-10 flex flex-col gap-6">
+                                ))
+                              }
+                              {/*  */}
 
-                                  <div className="flex gap-[18px]">
-                                    {/* <Icon icon="solar:pin-outline" /> */}
-                                    <Icon icon="solar:pin-outline" className="w-6 h-6 text-white" />
-                                    <li className="text-lg text-white">Mute</li>
-                                  </div>
-                                  <div className="flex gap-[18px]">
-                                    <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />
-                                    <li className="text-lg text-white">Hide</li>
-                                  </div>
-                                  <div className="flex gap-[18px]">
-                                    <Icon icon="fluent:delete-24-regular" className="w-6 h-6 text-[#FB6363]" />
-                                    <li className="text-lg text-[#FB6363]">Delete</li>
-                                  </div>
-                                </div>
+                              <div className="relative flex pl-6">
+                                <details className="dropdown">
+                                  <summary className="">  <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white  relative bottom-[10px]
+                             " onClick={() => handleUserAction(item._id)} /></summary>
+                                  <ul className="p-2  menu dropdown-content z-[1] ">
+                                    <div className="report_block_mute absolute z-30 list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2  " >
+                                      {
+                                        userData.map((item) => (
+
+                                          <div className="user_div_image flex   gap-[18px] items-center">
+                                            <img src={item?.image} alt="user" className="w-[60px] h-[60px]  rounded-full" />
+                                            <div className="name_username">
+                                              <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
+                                                {" "}
+                                                {item?.name}{" "}
+
+                                              </p>
+                                              <p className="text-[#8F8F8F] max-xl:text-sm">{item?.username}</p>
+                                            </div>
+                                          </div>
+                                        ))
+                                      }
+                                      <div className="option_div mt-10 flex flex-col gap-6">
+
+                                        <div className="flex gap-[18px]">
+                                          {/* <Icon icon="solar:pin-outline" /> */}
+                                          <Icon icon="solar:pin-outline" className="w-6 h-6 text-white" />
+                                          <li className="text-lg text-white">{item._id.slice(0, 3)}</li>
+                                        </div>
+                                        <div className="flex gap-[18px]">
+                                          <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />
+                                          <li className="text-lg text-white">Hide</li>
+                                        </div>
+                                        <div className="flex gap-[18px]">
+                                          <Icon icon="fluent:delete-24-regular" className="w-6 h-6 text-[#FB6363]" />
+                                          <li className="text-lg text-[#FB6363]">Delete</li>
+                                        </div>
+                                      </div>
+
+                                    </div>
+                                  </ul>
+                                </details>
+
+                                {/*  */}
+
+
+
+
 
                               </div>
-                            }
-                          </div>
+                            </div>
 
-                        </div>
-                      </div>
-                    ))
-                   }
-                      <div className="post">
-                        <p className="description  text-[#FFFFFF] font-normal mt-2 mb-2 max-xl:text-sm">
-                          {" "}
-                          {item?.description}
-                          {/* I wish I loved anything as much as my cat loves catnip
+
+
+
+                            <div className="post">
+                              <p className="description  text-[#FFFFFF] font-normal mt-2 mb-2 max-xl:text-sm">
+                                {" "}
+                                {item?.description}
+                                {/* I wish I loved anything as much as my cat loves catnip
                           :p */}
-                        </p>
-                        <p className="text-[#B39DCF] mb-2 max-xl:text-sm">
-                          #cats #lovecats #adorable{" "}
-                        </p>
-                      </div>
-                      <div className="main_image max-lg:flex max-xl:justify-center">
-                        <img
-                          src={item?.image}
-                          alt="photo"
-                          className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-                        />
-                      </div>
-                      <div className="post_status flex  justify-between  mt-4">
-                        <div className="post_status flex gap-4">
-                          <div className="like_status flex  gap-1 items-center">
-                            <BiMessageAlt className="w-6 h-6 text-white	" />
-                            {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
-                            <p className="text-[#8F8F8F] text-sm font-medium">14</p>
-                          </div>
-                          <div className="like_status  flex  gap-1 items-center">
-                            {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
-                            <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
-                            <p className="text-[#8F8F8F] text-sm font-medium">124</p>
+                              </p>
+                              <p className="text-[#B39DCF] mb-2 max-xl:text-sm">
+                                #cats #lovecats #adorable{" "}
+                              </p>
+                            </div>
+                            <div className="main_image max-lg:flex max-xl:justify-center">
+                              <img
+                                src={item?.image}
+                                alt="photo"
+                                className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                              />
+                            </div>
+                            <div className="post_status flex  justify-between  mt-4">
+                              <div className="post_status flex gap-4">
+                                <div className="like_status flex  gap-1 items-center">
+                                  <BiMessageAlt className="w-6 h-6 text-white	" />
+                                  {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
+                                  <p className="text-[#8F8F8F] text-sm font-medium">14</p>
+                                </div>
+                                <div className="like_status  flex  gap-1 items-center">
+                                  {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                                  <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
+                                  <p className="text-[#8F8F8F] text-sm font-medium">124</p>
+                                </div>
+
+                                <div className="like_status flex gap-1 items-center">
+
+                                  <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
+
+                                  <p className="text-[#8F8F8F] text-sm font-medium">4</p>
+                                </div>
+                                <div className="like_status flex  gap-1 items-center">
+                                  {/* <Icon icon="grommet-icons:view" /> */}
+                                  <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
+                                  <p className="text-[#8F8F8F] text-sm font-medium">34</p>
+                                </div>
+                              </div>
+                              <div className="post_status flex flex-col  items-center gap-3">
+                                <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
+                              </div>
+                            </div>
+                            <p className="text-[#8F8F8F]  mt-[13px] ">
+                              29 mins ago
+                            </p>
                           </div>
 
-                          <div className="like_status flex gap-1 items-center">
-
-                            <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-white	" />
-
-                            <p className="text-[#8F8F8F] text-sm font-medium">4</p>
-                          </div>
-                          <div className="like_status flex  gap-1 items-center">
-                            {/* <Icon icon="grommet-icons:view" /> */}
-                            <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
-                            <p className="text-[#8F8F8F] text-sm font-medium">34</p>
-                          </div>
                         </div>
-                        <div className="post_status flex flex-col  items-center gap-3">
-                          <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                      <p className="text-[#8F8F8F]  mt-[13px] ">
-                        29 mins ago
-                      </p>
-                    </div>
-                  
-                  </div>
-                   ))
-                  }
+                      ))
+                    }
                   </>
                 )}
               </div>
