@@ -588,26 +588,28 @@ const Profile = () => {
 
                   <div className="post_container bg-black ">
                     <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 ">
-                   
+                   {
+                    userData?.map((data,id)=>(
+
                       <div className="post_name_userName_pic flex justify-between">
                         <div className="name_username">
                           <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
                             {" "}
-                            Amy Roy{" "}
+                           {data.name}
                             <span>
                               {" "}
                               <img src={verifyTik} alt="photo" />{" "}
                             </span>{" "}
                           </p>
                           <p className="text-[#8F8F8F] max-xl:text-sm">
-                            @amy_roy
+                          {data.username}
                           </p>
                         </div>
                         <div className="photo flex gap-6 items-center">
                           <img
-                            src={userImage}
+                            src={data.image}
                             alt="photo"
-                            className="w-11 h-11"
+                            className="w-11 h-11  rounded-full"
                           />
                           <div className="relative">
 
@@ -651,6 +653,8 @@ const Profile = () => {
 
                         </div>
                       </div>
+                    ))
+                   }
                       <div className="post">
                         <p className="description  text-[#FFFFFF] font-normal mt-2 mb-2 max-xl:text-sm">
                           {" "}
