@@ -116,8 +116,7 @@ const Comments = ({ value, setShowComment }) => {
                     </div>
 
                     <div className="like_status flex gap-1 items-center">
-                      <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
-
+                      <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" /><input type="text" />
                       <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">4</p>
                     </div>
                     <div className="like_status flex  gap-1 items-center">
@@ -293,7 +292,7 @@ const Comments = ({ value, setShowComment }) => {
             </div>
           </div>
           <div className="comment_input w-full flex relative  items-center py-5 px-[27px] bg-[#000000]   border-x-2 border-[#171717] border-b-2">
-            <div className="input_box w-full"><input type="text" className='w-full max-sm:text-sm bg-[#232323] text-white px-[23px] py-[18px] rounded-[30px]' placeholder='Write your comment here... ' /></div>
+            <div className="input_box w-full"><input type="text" className='w-full max-sm:text-sm bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Write your comment here... ' /></div>
             <div className="button_box p-2 bg-[#1B1C1B] absolute right-9 rounded-full ">
               <Icon icon="iconamoon:send-thin" className='w-6 h-6 text-white ' />
             </div>
@@ -700,7 +699,7 @@ const Comments = ({ value, setShowComment }) => {
 
 </div>
           <div className="comment_input w-full flex relative  items-center py-5 px-[27px] bg-[#000000]   border-x-2 border-[#171717] border-b-2">
-            <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-[30px]' placeholder='Reply to Samuel Smith... ' /></div>
+            <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Reply to Samuel Smith... ' /></div>
             <div className="button_box p-2 bg-[#1B1C1B] absolute right-9 rounded-full ">
               <Icon icon="iconamoon:send-thin" className='w-6 h-6 text-white ' />
             </div>
