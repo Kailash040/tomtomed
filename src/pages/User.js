@@ -17,7 +17,7 @@ import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
 import Setting from "../components/Setting";
 // 
-import {likeAPost} from '../app/auth/likePostSlice'
+import { likeAPost } from '../app/auth/likePostSlice'
 import { deleteAPost } from '../app/auth/deletePostSlice'
 import { ProfileData } from "../app/auth/ProfileSlice";
 import { getPostData } from '../app/auth/getPostSlice'
@@ -175,18 +175,18 @@ const Profile = () => {
     toast("Post Deleted successfully")
   }
   const dispatchLike = useDispatch();
-  const handlelike =(_id)=>{
+  const handlelike = (_id) => {
     dispatchLike(likeAPost(_id))
     toast("Post like successfully")
   }
   // 
-  const getAllPostData = useSelector((state) => state?.getPost?.data?.post);
+  const getAllPostData = useSelector((state) => [state?.getPost?.data?.post]);
   console.log(getAllPostData);
   const getAllPost = useDispatch(getPostData)
   useEffect(() => {
     getAllPost(getPostData());
 
-  }, [getPostData,dispatchLike])
+  }, [getPostData, dispatchLike])
 
   return (
     <>
@@ -659,13 +659,13 @@ const Profile = () => {
                                         <div className="flex gap-[18px]">
                                           {/* <Icon icon="solar:pin-outline" /> */}
                                           <Icon icon="solar:pin-outline" className="w-6 h-6 text-white" />
-                                          <li className="text-lg text-white">{item._id.slice(0, 3)}</li>
+                                          <li className="text-lg text-white">{item?._id.slice(0, 3)}</li>
                                         </div>
                                         <div className="flex gap-[18px]">
                                           <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />
                                           <li className="text-lg text-white">Hide</li>
                                         </div>
-                                        <button className="flex gap-[18px]" onClick={() => handleDelete(item._id)}>
+                                        <button className="flex gap-[18px]" onClick={() => handleDelete(item?._id)}>
                                           <Icon icon="fluent:delete-24-regular" className="w-6 h-6 text-[#FB6363]" />
                                           <li className="text-lg text-[#FB6363]">Delete</li>
                                         </button>
@@ -716,16 +716,16 @@ const Profile = () => {
                                   {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
                                   <button onClick={() => handlelike(item._id)}>
 
- {
-                                      item?.likes?.length === 0  ? <>  <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /></> :  <><Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" /></>
+                                    {
+                                      item?.likes?.length === 0 ? <>  <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /></> : <><Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" /></>
                                     }
-                                
+
                                   </button>
                                   <p className="text-[#8F8F8F] text-sm font-medium">
                                     {
-                                      item?.likes?.length === 0  ? <></> :  <>{item?.likes?.length}</>
+                                      item?.likes?.length === 0 ? <></> : <>{item?.likes?.length}</>
                                     }
-                                   </p>
+                                  </p>
                                 </div>
 
                                 <div className="like_status flex gap-1 items-center">

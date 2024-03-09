@@ -80,7 +80,7 @@ export const addPost = async (userData) => {
 // 
 export const getPost = async () => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getAllPost`,
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/auth/myPosts`,
   
       { withCredentials: true, }
     );
