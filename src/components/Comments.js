@@ -116,7 +116,7 @@ const Comments = ({ value, setShowComment }) => {
                     </div>
 
                     <div className="like_status flex gap-1 items-center">
-                      <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" /><input type="text" />
+                      <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
                       <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">4</p>
                     </div>
                     <div className="like_status flex  gap-1 items-center">
