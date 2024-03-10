@@ -1,7 +1,8 @@
 // authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getPost } from './authServices';
-import {getAPost} from './authServices'
+import { getAPost } from './authServices';
+import { getAllUserPost } from './authServices';
 export const getPostData = createAsyncThunk(
     'auth/getPost',
     async (thunkAPI) => {
@@ -27,7 +28,19 @@ export const getAPostData = createAsyncThunk(
         }
     }
 );
+// 
+export const getAllPost = createAsyncThunk(
+    'auth/getAllUserPost',
+    async (thunkAPI) => {
+        try {
+            const response = await getAllUserPost();
+            return response;
 
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data.error);
+        }
+    }
+);
 
 const authSlice = createSlice({
     name: 'getPost',
@@ -52,12 +65,25 @@ const authSlice = createSlice({
         builder.addCase(getAPostData.pending, (state, action) => {
             state.isLoading = true;
         })
-        builder.addCase(getAPostData.fulfilled, (state, action, {payload}) => {
+        builder.addCase(getAPostData.fulfilled, (state, action, { payload }) => {
             state.isLoading = false;
             state.data = action.payload;
-            
+
         })
         builder.addCase(getAPostData.rejected, (state, action) => {
+            console.log("Error", action.payload);
+            state.error = true;
+        })
+        // 
+        builder.addCase(getAllPost.pending, (state, action) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getAllPost.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.data = action.payload;
+
+        })
+        builder.addCase(getAllPost.rejected, (state, action) => {
             console.log("Error", action.payload);
             state.error = true;
         })

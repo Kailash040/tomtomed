@@ -12,16 +12,19 @@ import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
 // 
-import { getPostData } from "../app/auth/getPostSlice";
+import dayjs from 'dayjs';
+import { likeAPost } from '../app/auth/likePostSlice'
+
+import { getAllPost } from "../app/auth/getPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
-  const userData = useSelector((state) => state?.getPost?.data?.post);
-  console.log(userData);
-  const dispatch = useDispatch(getPostData)
+  const allUserData = useSelector((state) => state?.getPost?.data?.postArr);
+  console.log(allUserData);
+  const dispatch = useDispatch(getAllPost)
   useEffect(() => {
-    dispatch(getPostData());
+    dispatch(getAllPost());
 
-  }, [getPostData])
+  }, [])
   console.log();
   const [showComment, setShowComment] = useState(false)
 
@@ -36,6 +39,12 @@ const Home = () => {
   }
   const handleShowMuteButton = () => {
     setShowMuteModal(!showMuteModal)
+  }
+  // 
+  const dispatchLike = useDispatch();
+  const handlelike = (_id) => {
+    dispatchLike(likeAPost(_id))
+    // toast("Post like successfully")
   }
   return (
     <>
@@ -156,22 +165,34 @@ const Home = () => {
             {/*  */}
             {
               showComment === false ? <div className="post_item">
+{
+  allUserData?.map((data,id)=>(
 
-                <div className="post  pl-[50px] pr-[50px] max-xl:pl-0 max-xl:pr-0 border-x-2 border-[#171717] border-b-2 pb-5 max-xl:border-0 ">
+                <div  key={id} className="post  pl-[50px] pr-[50px] max-xl:pl-0 max-xl:pr-0 border-x-2 border-[#171717] border-b-2 pb-5 max-xl:border-0 ">
                   <div className="post_name_userName_pic flex justify-between">
                     <div className="name_username">
                       <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
                         {" "}
-                        Amy Roy{" "}
+                        {
+                          data?.user?.name  ? <> {data?.user?.name}</> :<>name</>
+                        }
+                      {" "}
                         <span>
                           {" "}
                           <img src={verifyTik} alt="photo" />{" "}
                         </span>{" "}
                       </p>
-                      <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
+                      <p className="text-[#8F8F8F] max-xl:text-sm"> {
+                          data?.user?.username  ? <> {data?.user?.username}</> :<>username</>
+                        }</p>
                     </div>
                     <div className="photo flex items-center gap-6">
-                      <img src={userImage} alt="photo" className="w-[48px] h-[48px]" />
+                      {/*  */}
+                      {
+                          data?.user?.image  ? <>  <img src={data?.user?.image} alt="photo" className="w-[48px] h-[48px] rounded-full" /></> :<><img src={userImage} alt="photo" className="w-[48px] h-[48px] rounded-full" /></>
+                        }
+                       
+                      
                       {/*  */}
                       <div className="account_section_item  relative" >
                         <button className="" onClick={handleShowMuteButton} >
@@ -217,18 +238,28 @@ const Home = () => {
                   <div className="post">
                     <p className="description  text-[#FFFFFF] font-normal mt-4 mb-4 max-xl:text-sm max-xl:mt-3 max-xl:mb-3">
                       {" "}
-                      I wish I loved anything as much as my cat loves catnip :p
+                      {
+                          data?.post?.description  ? <> {data?.post?.description}</> :<>description</>
+                        }
                     </p>
                     <p className="text-[#B39DCF] mb-3 max-xl:text-sm">
                       #cats #lovecats #adorable{" "}
                     </p>
                   </div>
                   <div className="main_image">
-                    <img
-                      src={postImage}
-                      alt="photo"
-                      className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-                    />
+                  {
+                          data?.post?.image  ? <>   <img
+                          src={data?.post?.image}
+                          alt="photo"
+                          className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                        /></> :<> <img
+                        src={postImage}
+                        alt="photo"
+                        className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                      /></>
+                        }
+                        
+                   
                   </div>
                   <div className="post_status flex  justify-between  mt-3">
                     <div className="post_status flex gap-4">
@@ -240,13 +271,17 @@ const Home = () => {
                           <BiMessageAlt className="w-6 h-6 text-white	" />
                         </button>
                         {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
-                        <p className="text-[#8F8F8F] text-sm font-medium">14</p>
+                        <p className="text-[#8F8F8F] text-sm font-medium">{data?.post?.comments?.length}</p>
                       </div>
-                      <div className="like_status  flex  gap-1 items-center">
+                      <button className="like_status  flex  gap-1 items-center" onClick={() => handlelike(data?.post?._id)}>
                         {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
-                        <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" />
-                        <p className="text-[#8F8F8F] text-sm font-medium">124</p>
-                      </div>
+                        {
+                            data?.post?.likes?.length === 0 ? <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /> :<>
+                            <Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" />
+                            </>
+                          }
+                        <p className="text-[#8F8F8F] text-sm font-medium">{data?.post?.likes?.length}</p>
+                      </button>
 
                       <div className="like_status flex gap-1 items-center relative">
                         {/*  */}
@@ -965,6 +1000,8 @@ const Home = () => {
                   </div>
                   <p className="time text-sm text-[#8F8F8F] mt-3 max-lg:text-sm" >29 mins ago</p>
                 </div>
+  ))
+}
 
 
               </div> : <Comments value={showComment} onClick={handleShowComment} setShowComment={setShowComment} />

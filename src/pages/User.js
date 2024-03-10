@@ -659,7 +659,7 @@ const Profile = () => {
                                         <div className="flex gap-[18px]">
                                           {/* <Icon icon="solar:pin-outline" /> */}
                                           <Icon icon="solar:pin-outline" className="w-6 h-6 text-white" />
-                                          <li className="text-lg text-white">{item?._id.slice(0, 3)}</li>
+                                          <li className="text-lg text-white">Pin</li>
                                         </div>
                                         <div className="flex gap-[18px]">
                                           <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />

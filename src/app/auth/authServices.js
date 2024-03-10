@@ -90,6 +90,19 @@ export const getPost = async () => {
   }
 };
 // 
+// https://tomtomed.onrender.com/api/v1/post/getAllPost
+export const getAllUserPost = async () => {
+  try {
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getAllPost`,
+  
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+// 
 export const getAPost = async (_id) => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getpost/${_id}`,
