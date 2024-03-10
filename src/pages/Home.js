@@ -248,7 +248,7 @@ const Home = () => {
                       #cats #lovecats #adorable{" "}
                     </p>
                   </div>
-                  <Link to={`/post/${data?.post?.userId}`} className="main_image">
+                  <Link to={`/post/${data?.post?._id}`} className="main_image">
                   {
                           data?.post?.image  ? <>   <img
                           src={data?.post?.image}

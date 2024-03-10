@@ -52,7 +52,7 @@ function App() {
       element: <ForgetPassword />,
     },
     {
-      path :"/post/:userId",
+      path :"/post/:_id",
       element :<UserPost/>
     },
     {

@@ -18,9 +18,9 @@ export const getPostData = createAsyncThunk(
 // 
 export const getAPostData = createAsyncThunk(
     'auth/getAPost',
-    async (thunkAPI) => {
+    async (_id,thunkAPI) => {
         try {
-            const response = await getAPost();
+            const response = await getAPost(_id);
             return response;
 
         } catch (error) {
@@ -65,7 +65,7 @@ const authSlice = createSlice({
         builder.addCase(getAPostData.pending, (state, action) => {
             state.isLoading = true;
         })
-        builder.addCase(getAPostData.fulfilled, (state, action, { payload }) => {
+        builder.addCase(getAPostData.fulfilled, (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
 

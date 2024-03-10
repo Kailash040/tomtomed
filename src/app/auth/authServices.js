@@ -103,10 +103,10 @@ export const getAllUserPost = async () => {
   }
 };
 // 
-export const getAPost = async (_id) => {
+export const getAPost = async (_id,userData) => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getpost/${_id}`,
-  
+  userData,
       { withCredentials: true, }
     );
     return response.data;
@@ -115,6 +115,7 @@ export const getAPost = async (_id) => {
   }
 };
 // 
+
 export const deletePost = async (_id) => {
   try {
     const response = await axios.delete(`https://tomtomed.onrender.com/api/v1/post/delete/${_id}`,
@@ -132,6 +133,19 @@ export const likePost = async (userData,_id) => {
   try {
     const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/like/${_id}`, userData,
   
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+// https://tomtomed.onrender.com/api/v1/post/comment/
+export const commentOnPost = async (_id) => {
+  try {
+    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/comment/${_id}`
+   
+  ,
       { withCredentials: true, }
     );
     return response.data;
