@@ -12,6 +12,8 @@ import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
 // 
+import {  Link } from 'react-router-dom';
+
 import dayjs from 'dayjs';
 import { likeAPost } from '../app/auth/likePostSlice'
 
@@ -246,7 +248,7 @@ const Home = () => {
                       #cats #lovecats #adorable{" "}
                     </p>
                   </div>
-                  <div className="main_image">
+                  <Link to={`/post/${data?.post?.userId}`} className="main_image">
                   {
                           data?.post?.image  ? <>   <img
                           src={data?.post?.image}
@@ -260,7 +262,7 @@ const Home = () => {
                         }
                         
                    
-                  </div>
+                  </Link>
                   <div className="post_status flex  justify-between  mt-3">
                     <div className="post_status flex gap-4">
                       <div className="like_status flex  gap-1 items-center">
@@ -270,11 +272,9 @@ const Home = () => {
 
                           <BiMessageAlt className="w-6 h-6 text-white	" />
                         </button>
-                        {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
                         <p className="text-[#8F8F8F] text-sm font-medium">{data?.post?.comments?.length}</p>
                       </div>
                       <button className="like_status  flex  gap-1 items-center" onClick={() => handlelike(data?.post?._id)}>
-                        {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
                         {
                             data?.post?.likes?.length === 0 ? <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /> :<>
                             <Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" />

@@ -16,6 +16,7 @@ import Notification from "./pages/Notification";
 import NotificationLayout from '../src/pages/NotificationLayout'
 import EmailVerify from "./utils/EmailVerify";
 import Protected from "./components/Protected";
+import UserPost from "./pages/UserPost";
 function App() {
   const appRouter = createBrowserRouter([
     {
@@ -49,6 +50,10 @@ function App() {
     {
       path: "/forget-password",
       element: <ForgetPassword />,
+    },
+    {
+      path :"/post/:userId",
+      element :<UserPost/>
     },
     {
       path: "/login",
