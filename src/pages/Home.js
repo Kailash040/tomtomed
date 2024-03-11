@@ -248,17 +248,17 @@ const Home = () => {
                       #cats #lovecats #adorable{" "}
                     </p>
                   </div>
-                  <Link to={`/post/${data?.post?._id}`} className="main_image">
+                  <Link to={`/post/${data?.post?._id}`} >
                   {
-                          data?.post?.image  ? <>   <img
+                          data?.post?.image  ? <div className="main_image w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80">   <img
                           src={data?.post?.image}
                           alt="photo"
-                          className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-                        /></> :<> <img
+                          className="w-full h-full object-cover"
+                        /></div> :<div className="main_image w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"> <img
                         src={postImage}
                         alt="photo"
-                        className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-                      /></>
+                        className="w-full h-full object-cover"
+                      /></div>
                         }
                         
                    

@@ -26,6 +26,15 @@ import { commentPost } from '../app/auth/commentOnPostSlice';
 import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
   // 
+  // 
+  const [formData, setFormData] = useState({
+    comment: ''
+  });
+  // 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  // 
   const  [ comment,setComment] = useState('')
   const commentDispatch = useDispatch();
   const commentState = useSelector((state) =>  state?.commentPost);
@@ -33,7 +42,6 @@ const Home = () => {
   const aUserData = useSelector((state) => [state?.getPost?.data?.response]);
   console.log(aUserData)
 
-  console.log();
   const [showInput, setShowInput] = useState(false)
 
   const [showshareModal, setShowShareModal] = useState(false)
@@ -51,7 +59,7 @@ const Home = () => {
   // 
   const dispatchLike = useDispatch();
   const handlelike = (_id) => {
-    dispatchLike(likeAPost({_id,comment}))
+    dispatchLike(likeAPost(_id))
     // toast("Post like successfully")
   }
   // 
@@ -64,7 +72,7 @@ const Home = () => {
   }, [userpost]);
 const handleSubmit  = (e)=>{
   e.preventDefault();
-  commentDispatch(commentPost(_id,comment));
+  commentDispatch(commentPost(_id,formData));
 
 }
 
@@ -268,16 +276,16 @@ const handleSubmit  = (e)=>{
                         #cats #lovecats #adorable{" "}
                       </p>
                     </div>
-                    <div className="main_image">
+                    <div className="main_image w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80">
                       {
                         data?.post?.image ? <>   <img
                           src={data?.post?.image}
                           alt="photo"
-                          className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                          className="w-full h-full object-cover"
                         /></> : <> <img
                           src={postImage}
                           alt="photo"
-                          className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                          className="w-full h-full object-cover"
                         /></>
                       }
 
@@ -1030,7 +1038,7 @@ const handleSubmit  = (e)=>{
               <form onSubmit={  handleSubmit} >
 
               <div className="comment_input w-full flex relative  items-center py-5 px-[27px] bg-[#000000]   border-x-2 border-[#171717] border-b-2">
-                <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Write your comment here... ' value={comment} onChange={(e)=>setComment(e.target.value)} /></div>
+                <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Write your comment here... '  name="comment" value={formData.comment} onChange={handleChange} /></div>
                 <button className="button_box p-2 bg-[#1B1C1B] absolute right-9 rounded-full ">
                   <Icon icon="iconamoon:send-thin" className='w-6 h-6 text-white ' />
                 </button>
