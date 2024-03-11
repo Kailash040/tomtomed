@@ -57,9 +57,9 @@ export const updateProfile = async (userData) => {
     const response = await axios.put('https://tomtomed.onrender.com/api/v1/auth/editProfile'
       , userData,
       { withCredentials: true }
-,
+      ,
     );
-     return response.data
+    return response.data
   } catch (error) {
     throw error;
   }
@@ -68,8 +68,8 @@ export const updateProfile = async (userData) => {
 export const addPost = async (userData) => {
   try {
     const response = await axios.post('https://tomtomed.onrender.com/api/v1/post/create-post', userData,
-   
-  
+
+
       { withCredentials: true, }
     );
     return response.data;
@@ -81,7 +81,7 @@ export const addPost = async (userData) => {
 export const getPost = async () => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/auth/myPosts`,
-  
+
       { withCredentials: true, }
     );
     return response.data;
@@ -94,7 +94,7 @@ export const getPost = async () => {
 export const getAllUserPost = async () => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getAllPost`,
-  
+
       { withCredentials: true, }
     );
     return response.data;
@@ -103,10 +103,10 @@ export const getAllUserPost = async () => {
   }
 };
 // 
-export const getAPost = async (_id,userData) => {
+export const getAPost = async (_id, userData) => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getpost/${_id}`,
-  userData,
+      userData,
       { withCredentials: true, }
     );
     return response.data;
@@ -119,7 +119,7 @@ export const getAPost = async (_id,userData) => {
 export const deletePost = async (_id) => {
   try {
     const response = await axios.delete(`https://tomtomed.onrender.com/api/v1/post/delete/${_id}`,
-  
+
       { withCredentials: true, }
     );
     return response.data;
@@ -129,10 +129,10 @@ export const deletePost = async (_id) => {
 };
 // like post
 // 
-export const likePost = async (userData,_id) => {
+export const likePost = async (userData, _id) => {
   try {
     const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/like/${_id}`, userData,
-  
+
       { withCredentials: true, }
     );
     return response.data;
@@ -141,11 +141,12 @@ export const likePost = async (userData,_id) => {
   }
 };
 // https://tomtomed.onrender.com/api/v1/post/comment/
-export const commentOnPost = async (_id) => {
+export const commentOnPost = async (_id, userData) => {
   try {
-    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/comment/${_id}`
-   
-  ,
+    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/comment/${_id}`,
+      userData
+
+      ,
       { withCredentials: true, }
     );
     return response.data;

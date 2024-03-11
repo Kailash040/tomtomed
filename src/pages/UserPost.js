@@ -28,17 +28,16 @@ const Home = () => {
   // 
   // 
   const [formData, setFormData] = useState({
-    comment: ''
+    comment: "",
   });
   // 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   // 
-  const  [ comment,setComment] = useState('')
-  const commentDispatch = useDispatch();
-  const commentState = useSelector((state) =>  state?.commentPost);
-  console.log("postcomment",commentState)
+  // const  [ comment,setComment] = useState('')
+  const commentState = useSelector((state) => state?.commentPost);
+  console.log("postcomment", commentState)
   const aUserData = useSelector((state) => [state?.getPost?.data?.response]);
   console.log(aUserData)
 
@@ -63,18 +62,23 @@ const Home = () => {
     // toast("Post like successfully")
   }
   // 
-
+  const userId = useSelector((state) => state?.getPost?.data?.response?.post?._id);
+  console.log("userId", userId)
+  // 
   let { _id } = useParams();
   console.log(_id)
   const userpost = useDispatch()
   useEffect(() => {
     userpost(getAPostData(_id))
   }, [userpost]);
-const handleSubmit  = (e)=>{
-  e.preventDefault();
-  commentDispatch(commentPost(_id,formData));
+  // 
+  const commentDispatch = useDispatch();
 
-}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    commentDispatch(commentPost(userId, formData));
+
+  }
 
   return (
     <>
@@ -1034,15 +1038,15 @@ const handleSubmit  = (e)=>{
 
             </div>
             {
-              showInput && 
-              <form onSubmit={  handleSubmit} >
+              showInput &&
+              <form onSubmit={handleSubmit} >
 
-              <div className="comment_input w-full flex relative  items-center py-5 px-[27px] bg-[#000000]   border-x-2 border-[#171717] border-b-2">
-                <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Write your comment here... '  name="comment" value={formData.comment} onChange={handleChange} /></div>
-                <button className="button_box p-2 bg-[#1B1C1B] absolute right-9 rounded-full ">
-                  <Icon icon="iconamoon:send-thin" className='w-6 h-6 text-white ' />
-                </button>
-              </div>
+                <div className="comment_input w-full flex relative  items-center py-5 px-[27px] bg-[#000000]   border-x-2 border-[#171717] border-b-2">
+                  <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Write your comment here... ' name="comment" value={formData.comment} onChange={handleChange} /></div>
+                  <button className="button_box p-2 bg-[#1B1C1B] absolute right-9 rounded-full " type="submit" >
+                    <Icon icon="iconamoon:send-thin" className='w-6 h-6 text-white ' />
+                  </button>
+                </div>
               </form>
             }
             {/*  */}
