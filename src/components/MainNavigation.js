@@ -34,8 +34,8 @@ const MainNavigation = () => {
   const [image, setImage] = useState("")
   // 
   const [preview, setPreview] = useState('')
-  const postData = useSelector((state) => state.addPost)
-  console.log(postData);
+  // const postData = useSelector((state) => state.addPost)
+  // console.log(postData);
   const dispatch = useDispatch();
 
   const handleShow = () => {
@@ -94,7 +94,7 @@ const MainNavigation = () => {
     
     setAddPost(true)
   }
-  console.log(image)
+  // console.log(image)
 
   const handleSubmit = (e) => {
     e.preventDefault()

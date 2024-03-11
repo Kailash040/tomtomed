@@ -1,14 +1,14 @@
 // authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { commentOnPost } from './authServices';
+import { commentOnPost , getComments} from './authServices';
 
 export const commentPost = createAsyncThunk(
     'auth/commentOnPost',
-    async (_id,userData, thunkAPI) => {
-        console.log("comddddddddddddddddddddddddddddddddddddddent",userData.comment);
+    async ({_id, comment}, thunkAPI) => {
+       
         try {
-            const response = await commentOnPost(_id,userData);
-            
+            const response = await commentOnPost(_id, comment);
+
             return response;
 
         } catch (error) {
@@ -16,7 +16,22 @@ export const commentPost = createAsyncThunk(
         }
     }
 );
+// 
+export const getUserComment = createAsyncThunk(
+    'auth/getComments',
+    async (postId, userData ,thunkAPI) => {
+       
+        try {
+            const response = await getComments(postId,userData);
 
+            return response;
+
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data.error);
+        }
+    }
+);
+// 
 const authSlice = createSlice({
     name: 'commentPost',
     initialState: {
@@ -34,6 +49,17 @@ const authSlice = createSlice({
             state.data = action.payload;
         })
         builder.addCase(commentPost.rejected, (state, action) => {
+            console.log("Error", action.payload);
+            state.error = true;
+        })
+        builder.addCase(getUserComment.pending, (state, action) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getUserComment.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.data = action.payload;
+        })
+        builder.addCase(getUserComment.rejected, (state, action) => {
             console.log("Error", action.payload);
             state.error = true;
         })

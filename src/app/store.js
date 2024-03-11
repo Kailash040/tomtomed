@@ -7,6 +7,7 @@ import { updateReducer } from './auth/updateSlice'
 import { addPostReducer } from './auth/addPostSlice'
 import { getPostReducer } from "./auth/getPostSlice";
 //  
+import {followReducer} from './auth/followUserSlice'
 import  {commentOnPostReducer} from './auth/commentOnPostSlice'
 import { deleteAPostReducer } from './auth/deletePostSlice'
 import { likePostReducer } from "./auth/likePostSlice";
@@ -21,6 +22,7 @@ export const store = configureStore({
     getPost: getPostReducer,
     deleteAPost: deleteAPostReducer,
     likeAPost: likePostReducer,
-    commentPost:commentOnPostReducer
+    commentPost:commentOnPostReducer,
+    followAUser:followReducer
   },
 });

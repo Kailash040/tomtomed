@@ -141,13 +141,63 @@ export const likePost = async (userData, _id) => {
   }
 };
 // https://tomtomed.onrender.com/api/v1/post/comment/
-export const commentOnPost = async (_id, userData) => {
-  console.log("dfdfdfdfdf",_id,userData);
+export const commentOnPost = async (_id, comment) => {
+  // console.log("dfdfdfdfdf", _id, userData);
   try {
     const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/comment/${_id}`,
-      userData
+      { comment: comment }
 
       ,
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+// 
+// https://tomtomed.onrender.com/api/v1/post/comments/
+// 
+export const getComments = async (postId, userData) => {
+  try {
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/comments/${postId}`, userData,
+
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+// 
+export const followAUser = async (_id,userData) => {
+  try {
+    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/follow/${_id}`,userData,
+
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+// 
+export const unFollowAUser = async (_id,userData) => {
+  try {
+    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/unfollow/${_id}`, userData,
+
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+// 
+export const getAllFollowings = async () => {
+  try {
+    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/getAllFollowings`,
+
       { withCredentials: true, }
     );
     return response.data;

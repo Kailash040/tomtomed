@@ -699,11 +699,18 @@ const Profile = () => {
                               </p>
                             </div>
                             <div className="main_image max-lg:flex max-xl:justify-center">
-                              <img
+                              {
+                                item?.image ?  <img
                                 src={item?.image}
                                 alt="photo"
                                 className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-                              />
+                              /> :<img
+                              src={postImage}
+                              alt="photo"
+                              className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                            />
+                              }
+                             {/* postImage */}
                             </div>
                             <div className="post_status flex  justify-between  mt-4">
                               <div className="post_status flex gap-4">

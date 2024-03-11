@@ -21,7 +21,7 @@ import { getAPostData } from '../app/auth/getPostSlice'
 
 import dayjs from 'dayjs';
 import { likeAPost } from '../app/auth/likePostSlice'
-import { commentPost } from '../app/auth/commentOnPostSlice';
+import { commentPost, getUserComment } from '../app/auth/commentOnPostSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
@@ -33,11 +33,10 @@ const Home = () => {
   // 
 
   // 
-  // const  [ comment,setComment] = useState('')
-  const commentState = useSelector((state) => state?.commentPost);
-  console.log("postcomment", commentState)
+  // const [comment, setComment] = useState('')
+
   const aUserData = useSelector((state) => [state?.getPost?.data?.response]);
-  console.log(aUserData)
+  // console.log(aUserData);
 
   const [showInput, setShowInput] = useState(false)
 
@@ -61,10 +60,10 @@ const Home = () => {
   }
   // 
   const userId = useSelector((state) => state?.getPost?.data?.response?.post?._id);
-  console.log("userId", userId)
+  // console.log("userId", userId)
   // 
   let { _id } = useParams();
-  console.log(_id)
+  // console.log(_id)
   const userpost = useDispatch()
   useEffect(() => {
     userpost(getAPostData(_id))
@@ -73,16 +72,24 @@ const Home = () => {
   // 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log("formdata",formData)
+    // console.log("formdata", formData.comment);
   };
   const commentDispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    commentDispatch(commentPost(userId, formData));
+    commentDispatch(commentPost({ _id: userId, comment: formData.comment }));
 
   }
+  // get-comment
+  const allComment = useSelector((state) => (state?.commentPost?.data?.data))
+  // console.log(allComment);
+  const getCommentDispatch = useDispatch();
+  useEffect(() => {
 
+    getCommentDispatch(getUserComment(_id));
+  }, [getCommentDispatch])
+  // console.log(getCommentDispatch);
   return (
     <>
       <MainNavigation />
@@ -1074,56 +1081,63 @@ const Home = () => {
               <div className="comment_list">
 
 
-                <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
-                  <div className="comment_item">
-                    <div className="details_user flex justify-between">
-                      <div className="name">
-                        <p className="name font-bold text-white text-base max-sm:text-sm	">Samuel Smith</p>
-                        <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs'>2m ago</p>
+                {
+                  allComment?.map((data) => (
+                    <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
+
+                      <div className="comment_item">
+                        <div className="details_user flex justify-between">
+                          <div className="name">
+                            <p className="name font-bold text-white text-base max-sm:text-sm	">Samuel Smith</p>
+                            <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs'>2m ago</p>
+                          </div>
+                          <div className="dp">
+                            <img src={userReply} alt="user" className='w-[38px] h-[38px]' />
+                          </div>
+                        </div>
+                        <div className="comment w-[540px] max-sm:w-full ">
+                          <p className='text-[#F5F5F5] font-normal leading-5	max-sm:text-sm	'  >   {
+                            data.comment ? <>{data?.comment}</> : <>comment</>
+                          }  </p>
+                        </div>
+                        <div className="post_status flex  justify-between  mt-2">
+                          <div className="post_status flex gap-4">
+                            <div className="like_status flex  gap-1 items-center">
+                              <button
+
+                              >
+
+                                <Icon icon="majesticons:comment-2-line" className="w-6 h-6 text-[#8F8F8F]  max-sm:w-[14px] max-sm:h-[14px]	" />
+                              </button>
+                              {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">{data.comment.length}</p>
+                            </div>
+                            <div className="like_status  flex  gap-1 items-center">
+                              {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                              <Icon icon="icon-park-outline:like" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">{data.likes.length}</p>
+                            </div>
+
+                            <div className="like_status flex gap-1 items-center">
+                              <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
+
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">4</p>
+                            </div>
+                            <div className="like_status flex  gap-1 items-center">
+                              {/* <Icon icon="grommet-icons:view" /> */}
+                              <Icon icon="grommet-icons:view" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">34</p>
+                            </div>
+                          </div>
+
+                        </div>
+                        {/* show comment */}
+
                       </div>
-                      <div className="dp">
-                        <img src={userReply} alt="user" className='w-[38px] h-[38px]' />
-                      </div>
-                    </div>
-                    <div className="comment w-[540px] max-sm:w-full ">
-                      <p className='text-[#F5F5F5] font-normal leading-5	max-sm:text-sm	'  >The post we all need! That’s a beautiful neko </p>
-                    </div>
-                    <div className="post_status flex  justify-between  mt-2">
-                      <div className="post_status flex gap-4">
-                        <div className="like_status flex  gap-1 items-center">
-                          <button
-
-                          >
-
-                            <Icon icon="majesticons:comment-2-line" className="w-6 h-6 text-[#8F8F8F]  max-sm:w-[14px] max-sm:h-[14px]	" />
-                          </button>
-                          {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
-                          <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">14</p>
-                        </div>
-                        <div className="like_status  flex  gap-1 items-center">
-                          {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
-                          <Icon icon="icon-park-outline:like" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
-                          <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">124</p>
-                        </div>
-
-                        <div className="like_status flex gap-1 items-center">
-                          <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
-
-                          <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">4</p>
-                        </div>
-                        <div className="like_status flex  gap-1 items-center">
-                          {/* <Icon icon="grommet-icons:view" /> */}
-                          <Icon icon="grommet-icons:view" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
-                          <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">34</p>
-                        </div>
-                      </div>
 
                     </div>
-                    {/* show comment */}
-
-                  </div>
-
-                </div>
+                  ))
+                }
 
               </div>
 
