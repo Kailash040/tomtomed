@@ -31,9 +31,7 @@ const Home = () => {
     comment: "",
   });
   // 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+
   // 
   // const  [ comment,setComment] = useState('')
   const commentState = useSelector((state) => state?.commentPost);
@@ -72,6 +70,11 @@ const Home = () => {
     userpost(getAPostData(_id))
   }, [userpost]);
   // 
+  // 
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log("formdata",formData)
+  };
   const commentDispatch = useDispatch();
 
   const handleSubmit = (e) => {

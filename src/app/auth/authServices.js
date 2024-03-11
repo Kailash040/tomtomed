@@ -142,6 +142,7 @@ export const likePost = async (userData, _id) => {
 };
 // https://tomtomed.onrender.com/api/v1/post/comment/
 export const commentOnPost = async (_id, userData) => {
+  console.log("dfdfdfdfdf",_id,userData);
   try {
     const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/comment/${_id}`,
       userData

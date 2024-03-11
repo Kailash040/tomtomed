@@ -4,9 +4,11 @@ import { commentOnPost } from './authServices';
 
 export const commentPost = createAsyncThunk(
     'auth/commentOnPost',
-    async (_id, thunkAPI) => {
+    async (_id,userData, thunkAPI) => {
+        console.log("comddddddddddddddddddddddddddddddddddddddent",userData.comment);
         try {
-            const response = await commentOnPost(_id);
+            const response = await commentOnPost(_id,userData);
+            
             return response;
 
         } catch (error) {
