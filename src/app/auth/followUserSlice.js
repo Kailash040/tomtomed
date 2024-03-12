@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { followAUser, unFollowAUser, getAllFollowings } from './authServices';
 export const FollowUser = createAsyncThunk(
     'auth/followAUser',
-    async (_id, userData,thunkAPI) => {
+    async (_id, userData, thunkAPI) => {
         try {
-            const response = await followAUser(_id,userData);
+            const response = await followAUser(_id, userData);
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data.error);
@@ -15,9 +15,9 @@ export const FollowUser = createAsyncThunk(
 // 
 export const unFollowUser = createAsyncThunk(
     'auth/unfollowAUser',
-    async (_id,userData, thunkAPI) => {
+    async (_id, userData, thunkAPI) => {
         try {
-            const response = await unFollowAUser(_id,userData);
+            const response = await unFollowAUser(_id, userData);
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data.error);
@@ -27,9 +27,9 @@ export const unFollowUser = createAsyncThunk(
 // 
 export const getAllFollower = createAsyncThunk(
     'auth/getfollower',
-    async (thunkAPI) => {
+    async (userData, thunkAPI) => {
         try {
-            const response = await getAllFollowings();
+            const response = await getAllFollowings(userData);
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data.error);

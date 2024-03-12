@@ -1082,8 +1082,8 @@ const Home = () => {
 
 
                 {
-                  allComment?.map((data) => (
-                    <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]">
+                  allComment?.map((data ,id) => (
+                    <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]" key={id}>
 
                       <div className="comment_item">
                         <div className="details_user flex justify-between">

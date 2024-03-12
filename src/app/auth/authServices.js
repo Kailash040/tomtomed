@@ -196,8 +196,20 @@ export const unFollowAUser = async (_id,userData) => {
 // 
 export const getAllFollowings = async () => {
   try {
-    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/getAllFollowings`,
-
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollowings`,
+    
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+// 
+export const getAllFollowers = async () => {
+  try {
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollowings`,
+    
       { withCredentials: true, }
     );
     return response.data;

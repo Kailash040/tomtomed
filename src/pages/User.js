@@ -23,6 +23,7 @@ import { ProfileData } from "../app/auth/ProfileSlice";
 import { getPostData } from '../app/auth/getPostSlice'
 import { updateUserProfile } from '../app/auth/updateSlice'
 import { useDispatch, useSelector } from 'react-redux';
+import {getAllFollower} from '../app/auth/followUserSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -67,7 +68,7 @@ const Profile = () => {
 
     }
   };
-  console.log(base64Image);
+  // console.log(base64Image);
   const handleAction = () => {
     setShowAction(!showAction)
   }
@@ -75,12 +76,12 @@ const Profile = () => {
 
   //  
   const userData = useSelector((state) => [state?.getProfile?.data?.data]);
-  console.log("profile Data", userData)
+  // console.log("profile Data", userData)
 
   // 
   // 
-  const userUpdateData = useSelector((state) => state);
-  console.log("updateprofileData", userUpdateData.updateProfile);
+  // const userUpdateData = useSelector((state) => state);
+  // console.log("updateprofileData", userUpdateData.updateProfile);
 
   // 
   const [formData, setFormData] = useState({
@@ -96,10 +97,10 @@ const Profile = () => {
     }
   });
   // 
-  console.log(formData);
+  // console.log(formData);
   useEffect(() => {
     setName(userData?.data?.name)
-    console.log(name);
+    // console.log(name);
   }, [])
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -181,13 +182,19 @@ const Profile = () => {
   }
   // 
   const getAllPostData = useSelector((state) => [state?.getPost?.data?.post]);
-  console.log(getAllPostData);
+  // console.log(getAllPostData);
   const getAllPost = useDispatch(getPostData)
   useEffect(() => {
     getAllPost(getPostData());
 
   }, [getPostData, dispatchLike])
-
+// 
+const  followers  = useSelector((state)=>state)
+console.log(followers)
+const getFollower =  useDispatch();
+useEffect(()=>{
+  getFollower(getAllFollower())
+},[])
   return (
     <>
 
@@ -700,17 +707,17 @@ const Profile = () => {
                             </div>
                             <div className="main_image max-lg:flex max-xl:justify-center">
                               {
-                                item?.image ?  <img
-                                src={item?.image}
-                                alt="photo"
-                                className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-                              /> :<img
-                              src={postImage}
-                              alt="photo"
-                              className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
-                            />
+                                item?.image ? <img
+                                  src={item?.image}
+                                  alt="photo"
+                                  className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                                /> : <img
+                                  src={postImage}
+                                  alt="photo"
+                                  className="w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"
+                                />
                               }
-                             {/* postImage */}
+                              {/* postImage */}
                             </div>
                             <div className="post_status flex  justify-between  mt-4">
                               <div className="post_status flex gap-4">
