@@ -170,9 +170,9 @@ export const getComments = async (postId, userData) => {
   }
 };
 // 
-export const followAUser = async (_id,userData) => {
+export const followAUser = async (_id, userData) => {
   try {
-    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/follow/${_id}`,userData,
+    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/follow/${_id}`, userData,
 
       { withCredentials: true, }
     );
@@ -182,7 +182,7 @@ export const followAUser = async (_id,userData) => {
   }
 };
 // 
-export const unFollowAUser = async (_id,userData) => {
+export const unFollowAUser = async (_id, userData) => {
   try {
     const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/unfollow/${_id}`, userData,
 
@@ -197,7 +197,7 @@ export const unFollowAUser = async (_id,userData) => {
 export const getAllFollowings = async () => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollowings`,
-    
+
       { withCredentials: true, }
     );
     return response.data;
@@ -208,8 +208,8 @@ export const getAllFollowings = async () => {
 // 
 export const getAllFollowers = async () => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollowings`,
-    
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollowers`,
+
       { withCredentials: true, }
     );
     return response.data;

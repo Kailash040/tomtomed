@@ -1,6 +1,6 @@
 // authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { followAUser, unFollowAUser, getAllFollowings } from './authServices';
+import { followAUser, unFollowAUser, getAllFollowings , getAllFollowers } from './authServices';
 export const FollowUser = createAsyncThunk(
     'auth/followAUser',
     async (_id, userData, thunkAPI) => {
@@ -25,11 +25,23 @@ export const unFollowUser = createAsyncThunk(
     }
 );
 // 
+export const getAllFollowing = createAsyncThunk(
+    'auth/getfollowing',
+    async (userData, thunkAPI) => {
+        try {
+            const response = await getAllFollowings(userData);
+            return response;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data.error);
+        }
+    }
+);
+// 
 export const getAllFollower = createAsyncThunk(
     'auth/getfollower',
     async (userData, thunkAPI) => {
         try {
-            const response = await getAllFollowings(userData);
+            const response = await getAllFollowers(userData);
             return response;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data.error);
@@ -67,6 +79,17 @@ const authSlice = createSlice({
             state.data = action.payload;
         })
         builder.addCase(unFollowUser.rejected, (state, action) => {
+            console.log("Error", action.payload);
+            state.error = true;
+        })
+        builder.addCase(getAllFollowing.pending, (state, action) => {
+            state.isLoading = true;
+        })
+        builder.addCase(getAllFollowing.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.data = action.payload;
+        })
+        builder.addCase(getAllFollowing.rejected, (state, action) => {
             console.log("Error", action.payload);
             state.error = true;
         })

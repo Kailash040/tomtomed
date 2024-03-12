@@ -23,7 +23,7 @@ import { ProfileData } from "../app/auth/ProfileSlice";
 import { getPostData } from '../app/auth/getPostSlice'
 import { updateUserProfile } from '../app/auth/updateSlice'
 import { useDispatch, useSelector } from 'react-redux';
-import {getAllFollower} from '../app/auth/followUserSlice'
+import {getAllFollowing, getAllFollower} from '../app/auth/followUserSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -189,12 +189,16 @@ const Profile = () => {
 
   }, [getPostData, dispatchLike])
 // 
-const  followers  = useSelector((state)=>state)
-console.log(followers)
-const getFollower =  useDispatch();
+const  followings  = useSelector((state)=>state?.followAUser?.data?.data)
+console.log(followings)
+const getFollowing =  useDispatch();
 useEffect(()=>{
-  getFollower(getAllFollower())
+  getFollowing(getAllFollowing())
 },[])
+// const getFollower = useDispatch();
+// useEffect(()=>{
+//   getFollower(getAllFollower())
+// },[])
   return (
     <>
 
@@ -203,7 +207,10 @@ useEffect(()=>{
         {/*  */}
 
         {/*  */}
-        <div className="left_section w-1/5 max-xl:hidden">
+        <div className="left_section w-1/5 max-xl:hidden sticky top-0">
+          <div  className="sticky top-0" >
+
+         
           <div className="Premium_buutton mb-9 w-[220px] ">
             <div class="rounded-xl	 bg-gradient-to-r from-[#4879FA]  to-[#7D4CFF] p-[1px]">
               <div class="flex   items-center justify-center bg-[#202020] rounded-xl h-[60px] ">
@@ -334,6 +341,7 @@ useEffect(()=>{
                 <div className="save flex text-[#8F8F8F] mt-[13px] mb-[17px] ml-1"> <p>@sammy_03   </p>  <p>+4 more</p></div>
               </div>
             </div>
+          </div>
           </div>
         </div>
         <div className="right_section   w-4/5 max-xl:w-[500px] max-sm:w-[350px] ">
@@ -915,6 +923,7 @@ useEffect(()=>{
                 </div>
               )}
               {showFollowing && (
+
                 <div className="following">
                   <div className="mt-[30px] relative hidden max-xl:block">
                     <input
@@ -925,7 +934,10 @@ useEffect(()=>{
                     <Icon icon="iconamoon:search-light" className="absolute left-[92%]  bottom-[15px] w-[18px] h-[18px] text-white " />
 
                   </div>
-                  <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
+            {
+              followings?.map((item,id)=>(
+
+                  <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]"   key={id}>
                     <div className="child flex gap-[18px] items-center ">
                       <div className="followers_child">
                         {" "}
@@ -940,7 +952,7 @@ useEffect(()=>{
                           {" "}
                           Amy Johnson <img src={verifyTik} alt="verify" />
                         </p>
-                        <p className="text-sm text-[#8F8F8F]">Amy_07</p>
+                        <p className="text-sm text-[#8F8F8F]">{item?.username}</p>
                       </div>
                     </div>
                     <div className="child">
@@ -948,61 +960,12 @@ useEffect(()=>{
                         <button className="text-[#7D4CFF]">Unfollow</button>
                         <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
                       </div>
-                      {/* <div className="followers_child"></div> */}
+                      
                     </div>
                   </div>
-                  <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
-                    <div className="child flex gap-[18px] items-center ">
-                      <div className="followers_child">
-                        {" "}
-                        <img
-                          src={userimage}
-                          alt="user"
-                          className="w-[60px] h-[60px] rounded-full"
-                        />
-                      </div>
-                      <div className="followers_child">
-                        <p className="text-[#2A2A2A] flex">
-                          {" "}
-                          Amy Johnson <img src={verifyTik} alt="verify" />
-                        </p>
-                        <p className="text-sm text-[#8F8F8F]">Amy_07</p>
-                      </div>
-                    </div>
-                    <div className="child">
-                      <div className="followers_child flex gap-[18px] items-center">
-                        <button className="text-[#7D4CFF]">Unfollow</button>
-                        <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
-                      </div>
-                      {/* <div className="followers_child"></div> */}
-                    </div>
-                  </div>
-                  <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
-                    <div className="child flex gap-[18px] items-center ">
-                      <div className="followers_child">
-                        {" "}
-                        <img
-                          src={userimage}
-                          alt="user"
-                          className="w-[60px] h-[60px] rounded-full"
-                        />
-                      </div>
-                      <div className="followers_child">
-                        <p className="text-[#2A2A2A] flex">
-                          {" "}
-                          Amy Johnson <img src={verifyTik} alt="verify" />
-                        </p>
-                        <p className="text-sm text-[#8F8F8F]">Amy_07</p>
-                      </div>
-                    </div>
-                    <div className="child">
-                      <div className="followers_child flex gap-[18px] items-center">
-                        <button className="text-[#7D4CFF]">Unfollow</button>
-                        <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
-                      </div>
-                      {/* <div className="followers_child"></div> */}
-                    </div>
-                  </div>
+              ))
+            }
+                
                 </div>
               )}
             </div>

@@ -39,9 +39,9 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(loginUser(formData));
-    if(userData === "User Login Success"){
-    toast.success("User Login Success");
-    navigate("/")
+    if (userData === "User Login Success") {
+      toast.success("User Login Success");
+      navigate("/")
     }
     // toast.success("login SuccessFully");
     // 
