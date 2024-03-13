@@ -1187,7 +1187,7 @@ const handleShowReply = ()=>[
                   allComment?.map((data, id) => (
 
                     <div className="reply_container" key={id}>
-<p className="text-white text-lg	font-semibold  py-3 border-2 border-[#171717] px-[30px]	">  Replies  ({data?.replies?.length}) </p>
+{/* <p className="text-white text-lg	font-semibold  py-3 border-2 border-[#171717] px-[30px]	">  Replies  ({data?.replies?.length}) </p> */}
                       {/* Using map() for inner array */}
                       {
                         data?.replies?.map((replies, id) => (
