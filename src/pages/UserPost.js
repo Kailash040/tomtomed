@@ -21,7 +21,7 @@ import { getAPostData } from '../app/auth/getPostSlice'
 
 import dayjs from 'dayjs';
 import { likeAPost } from '../app/auth/likePostSlice'
-import { commentPost, getUserComment , replyPostComment } from '../app/auth/commentOnPostSlice';
+import { commentPost, getUserComment, replyPostComment } from '../app/auth/commentOnPostSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,9 +34,9 @@ const Home = () => {
   // 
 
   // 
- const  [replyUser ,setReplyUser] = useState({
-  comment:""
- })
+  const [replyUser, setReplyUser] = useState({
+    comment: ""
+  })
 
   const aUserData = useSelector((state) => [state?.getPost?.data?.response]);
   // console.log(aUserData);
@@ -73,8 +73,8 @@ const Home = () => {
   }, [userpost]);
   // 
   // 
-  const handleChangeReplyInput = (e)=>{
-    setReplyUser({...replyUser, [e.target.name]: e.target.value })
+  const handleChangeReplyInput = (e) => {
+    setReplyUser({ ...replyUser, [e.target.name]: e.target.value })
     console.log(replyUser)
   }
 
@@ -90,12 +90,12 @@ const Home = () => {
 
   }
   const replyDispatch = useDispatch();
-const  [ commentId,setCommentId] =useState(null)
-  const handleReplySubmit = (e , _id)=>{
+  const [commentId, setCommentId] = useState(null)
+  const handleReplySubmit = (e, _id) => {
     e.preventDefault()
     // 
     replyDispatch(replyPostComment({ _id: commentId, comment: replyUser.comment }))
-      }
+  }
 
 
   // get-comment
@@ -103,18 +103,23 @@ const  [ commentId,setCommentId] =useState(null)
   // 
   const allComment = useSelector((state) => (state?.commentPost?.data?.data))
   console.log(allComment);
+  // const allReply = useSelector((state) => (state?.commentPost?.data?.data));
+  // console.log(allReply);
   const getCommentDispatch = useDispatch();
   useEffect(() => {
 
     getCommentDispatch(getUserComment(_id));
-  }, [getCommentDispatch , commentId])
+  }, [getCommentDispatch, commentId])
   // console.log(getCommentDispatch);
   // 
-  const  [showReplyInput,setShowReplyInput] =useState(false)
-  const  handleReplyComment = ()=>{
+  const [showReplyInput, setShowReplyInput] = useState(false)
+  const handleReplyComment = () => {
     setShowReplyInput(!showReplyInput)
   }
-
+  const [showReply,setShowReply] =useState(false)
+const handleShowReply = ()=>[
+  setShowReply(!showReply)
+]
   return (
     <>
       <MainNavigation />
@@ -1107,7 +1112,7 @@ const  [ commentId,setCommentId] =useState(null)
 
 
                 {
-                  allComment?.map((data ,id) => (
+                  allComment?.map((data, id) => (
                     <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]" key={id}>
 
                       <div className="comment_item">
@@ -1129,14 +1134,91 @@ const  [ commentId,setCommentId] =useState(null)
                           <div className="post_status flex gap-4">
                             <div className="like_status flex  gap-1 items-center">
                               <button
-onClick={handleReplyComment}
+                                onClick={handleReplyComment}
                               >
 
                                 <Icon icon="majesticons:comment-2-line" className="w-6 h-6 text-[#8F8F8F]  max-sm:w-[14px] max-sm:h-[14px]	" />
                               </button>
                               {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
                               <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">{data.comment.length}</p>
-                              
+
+                            </div>
+                            <button className="like_status  flex  gap-1 items-center" >
+                              {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
+                              <Icon icon="icon-park-outline:like" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">{data.likes.length}</p>
+                            </button>
+
+                            <div className="like_status flex gap-1 items-center">
+                              <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
+
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">0</p>
+                            </div>
+                            <div className="like_status flex  gap-1 items-center">
+                              {/* <Icon icon="grommet-icons:view" /> */}
+                              <Icon icon="grommet-icons:view" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">0</p>
+                            </div>
+                          </div>
+
+                        </div>
+                        <button className="text-[#8F8F8F] text-xs	" onClick={handleShowReply}>You replied to this comment</button>
+                        {/* show comment */}
+                        {
+                          showReplyInput && <form onSubmit={handleReplySubmit} >
+
+                            <div className="comment_input w-full flex relative  items-center pt-5 bg-[#000000]" onChange={() => setCommentId(data?._id)}  key={id} >
+                              <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Write your comment here... ' name="comment" value={replyUser.comment} onChange={handleChangeReplyInput} /></div>
+                              <button className="button_box p-2 bg-[#1B1C1B] absolute right-3 rounded-full " type="submit" >
+                                <Icon icon="iconamoon:send-thin" className='w-6 h-6 text-white ' />
+                              </button>
+                            </div>
+                          </form>
+                        }
+                      </div>
+                    </div>
+                  ))
+                }
+{
+  showReply && 
+<>
+
+                {
+                  allComment?.map((data, id) => (
+
+                    <div className="reply_container" key={id}>
+<p className="text-white text-lg	font-semibold  py-3 border-2 border-[#171717] px-[30px]	">  Replies  ({data?.replies?.length}) </p>
+                      {/* Using map() for inner array */}
+                      {
+                        data?.replies?.map((replies, id) => (
+                          <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]" key={id}>
+                      <div className="comment_item">
+                        <div className="details_user flex justify-between">
+                          <div className="name">
+                            <p className="name font-bold text-white text-base max-sm:text-sm	">Samuel Smith</p>
+                            <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs'>2m ago</p>
+                          </div>
+                          <div className="dp">
+                            <img src={userReply} alt="user" className='w-[38px] h-[38px]' />
+                          </div>
+                        </div>
+                        <div className="comment w-[540px] max-sm:w-full ">
+                          <p className='text-[#F5F5F5] font-normal leading-5	max-sm:text-sm	'  >   {
+                            data.comment ? <>{replies?.comment}</> : <>comment</>
+                          }  </p>
+                        </div>
+                        <div className="post_status flex  justify-between  mt-2">
+                          <div className="post_status flex gap-4">
+                            <div className="like_status flex  gap-1 items-center">
+                              <button
+                               
+                              >
+
+                                <Icon icon="majesticons:comment-2-line" className="w-6 h-6 text-[#8F8F8F]  max-sm:w-[14px] max-sm:h-[14px]	" />
+                              </button>
+                              {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">0</p>
+
                             </div>
                             <button className="like_status  flex  gap-1 items-center" >
                               {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
@@ -1158,23 +1240,16 @@ onClick={handleReplyComment}
 
                         </div>
                         {/* show comment */}
-{
-  showReplyInput &&   <form onSubmit={  handleReplySubmit } >
-
-  <div className="comment_input w-full flex relative  items-center pt-5 bg-[#000000]" onChange={()=>setCommentId(data?._id)}   >
-    <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Write your comment here... ' name="comment" value={replyUser.comment} onChange={handleChangeReplyInput} /></div>
-    <button className="button_box p-2 bg-[#1B1C1B] absolute right-3 rounded-full " type="submit" >
-      <Icon icon="iconamoon:send-thin" className='w-6 h-6 text-white ' />
-    </button>
-  </div>
-</form>
-}
+                      
                       </div>
-                 
+                    </div>
+                        ))
+                      }
                     </div>
                   ))
                 }
-
+</>
+}
               </div>
 
             </div>
