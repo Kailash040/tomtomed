@@ -10,6 +10,8 @@ const SingleUser = () => {
     useEffect(() => {
       user(getAUserProfile(_id))
     }, [user]);
+    const userData =  useSelector((state)=>state?.aUser?.data)
+    console.log(userData);
     return (
         <div>
             <MainNavigation />
