@@ -182,7 +182,8 @@ const Profile = () => {
   }
   // 
   const getAllPostData = useSelector((state) => [state?.getPost?.data?.post]);
-  // console.log(getAllPostData);
+
+  console.log(getAllPostData);
   const getAllPost = useDispatch(getPostData)
   useEffect(() => {
     getAllPost(getPostData());
@@ -195,10 +196,10 @@ const getFollowing =  useDispatch();
 useEffect(()=>{
   getFollowing(getAllFollowing())
 },[])
-// const getFollower = useDispatch();
-// useEffect(()=>{
-//   getFollower(getAllFollower())
-// },[])
+const getFollower = useDispatch();
+useEffect(()=>{
+  getFollower(getAllFollower())
+},[])
   return (
     <>
 
@@ -942,7 +943,7 @@ useEffect(()=>{
                       <div className="followers_child">
                         {" "}
                         <img
-                          src={userimage}
+                          src={item?.image}
                           alt="user"
                           className="w-[60px] h-[60px] rounded-full"
                         />

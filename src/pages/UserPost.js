@@ -21,9 +21,10 @@ import { getAPostData } from '../app/auth/getPostSlice'
 
 import dayjs from 'dayjs';
 import { likeAPost } from '../app/auth/likePostSlice'
-import { commentPost, getUserComment } from '../app/auth/commentOnPostSlice';
+import { commentPost, getUserComment , replyPostComment } from '../app/auth/commentOnPostSlice';
 
 import { useDispatch, useSelector } from 'react-redux';
+
 const Home = () => {
   // 
   // 
@@ -33,7 +34,9 @@ const Home = () => {
   // 
 
   // 
-  // const [comment, setComment] = useState('')
+ const  [replyUser ,setReplyUser] = useState({
+  comment:""
+ })
 
   const aUserData = useSelector((state) => [state?.getPost?.data?.response]);
   // console.log(aUserData);
@@ -70,9 +73,14 @@ const Home = () => {
   }, [userpost]);
   // 
   // 
+  const handleChangeReplyInput = (e)=>{
+    setReplyUser({...replyUser, [e.target.name]: e.target.value })
+    console.log(replyUser)
+  }
+
+  // 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // console.log("formdata", formData.comment);
   };
   const commentDispatch = useDispatch();
 
@@ -81,15 +89,32 @@ const Home = () => {
     commentDispatch(commentPost({ _id: userId, comment: formData.comment }));
 
   }
+  const replyDispatch = useDispatch();
+const  [ commentId,setCommentId] =useState(null)
+  const handleReplySubmit = (e , _id)=>{
+    e.preventDefault()
+    // 
+    replyDispatch(replyPostComment({ _id: commentId, comment: replyUser.comment }))
+      }
+
+
   // get-comment
+
+  // 
   const allComment = useSelector((state) => (state?.commentPost?.data?.data))
-  // console.log(allComment);
+  console.log(allComment);
   const getCommentDispatch = useDispatch();
   useEffect(() => {
 
     getCommentDispatch(getUserComment(_id));
-  }, [getCommentDispatch])
+  }, [getCommentDispatch , commentId])
   // console.log(getCommentDispatch);
+  // 
+  const  [showReplyInput,setShowReplyInput] =useState(false)
+  const  handleReplyComment = ()=>{
+    setShowReplyInput(!showReplyInput)
+  }
+
   return (
     <>
       <MainNavigation />
@@ -1104,37 +1129,48 @@ const Home = () => {
                           <div className="post_status flex gap-4">
                             <div className="like_status flex  gap-1 items-center">
                               <button
-
+onClick={handleReplyComment}
                               >
 
                                 <Icon icon="majesticons:comment-2-line" className="w-6 h-6 text-[#8F8F8F]  max-sm:w-[14px] max-sm:h-[14px]	" />
                               </button>
                               {/* <img src={comment} alt="comment" className="w-6 h-6	" /> */}
                               <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">{data.comment.length}</p>
+                              
                             </div>
-                            <div className="like_status  flex  gap-1 items-center">
+                            <button className="like_status  flex  gap-1 items-center" >
                               {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
                               <Icon icon="icon-park-outline:like" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
                               <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">{data.likes.length}</p>
-                            </div>
+                            </button>
 
                             <div className="like_status flex gap-1 items-center">
                               <Icon icon="fluent:share-ios-24-filled" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
 
-                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">4</p>
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">0</p>
                             </div>
                             <div className="like_status flex  gap-1 items-center">
                               {/* <Icon icon="grommet-icons:view" /> */}
                               <Icon icon="grommet-icons:view" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
-                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">34</p>
+                              <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">0</p>
                             </div>
                           </div>
 
                         </div>
                         {/* show comment */}
+{
+  showReplyInput &&   <form onSubmit={  handleReplySubmit } >
 
+  <div className="comment_input w-full flex relative  items-center pt-5 bg-[#000000]" onChange={()=>setCommentId(data?._id)}   >
+    <div className="input_box w-full"><input type="text" className='w-full  max-sm:text-sm	 bg-[#232323] text-white px-[23px] py-[18px] rounded-xl	' placeholder='Write your comment here... ' name="comment" value={replyUser.comment} onChange={handleChangeReplyInput} /></div>
+    <button className="button_box p-2 bg-[#1B1C1B] absolute right-3 rounded-full " type="submit" >
+      <Icon icon="iconamoon:send-thin" className='w-6 h-6 text-white ' />
+    </button>
+  </div>
+</form>
+}
                       </div>
-
+                 
                     </div>
                   ))
                 }

@@ -18,7 +18,7 @@ export const getPostData = createAsyncThunk(
 // 
 export const getAPostData = createAsyncThunk(
     'auth/getAPost',
-    async (_id,thunkAPI) => {
+    async (_id, thunkAPI) => {
         try {
             const response = await getAPost(_id);
             return response;

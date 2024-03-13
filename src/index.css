@@ -109,3 +109,6 @@ body.modal-active {
 summary{
 	color: black;
 }
+.position_element{
+	position: static !important;
+}

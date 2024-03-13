@@ -22,7 +22,9 @@ import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
   const allUserData = useSelector((state) => state?.getPost?.data?.postArr);
   console.log(allUserData);
-  const dispatch = useDispatch(getAllPost)
+  const allreducers = useSelector((state) => state)
+  console.log(allreducers);
+  const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllPost());
 
@@ -275,11 +277,11 @@ const Home = () => {
                           data?.post?.image ? <div className="main_image w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80">   <img
                             src={data?.post?.image}
                             alt="photo"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover rounded-lg	"
                           /></div> : <div className="main_image w-[520px] h-[554px] max-xl:w-96 max-xl:max-h-80"> <img
                             src={postImage}
                             alt="photo"
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover rounded-lg	"
                           /></div>
                         }
 

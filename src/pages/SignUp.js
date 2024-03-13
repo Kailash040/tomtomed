@@ -37,10 +37,10 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(signUpUser(formData))
-if(userData?.data?.success === "PENDING"){
-  toast.success(userData.data.message)
+    if (userData?.data?.success === "PENDING") {
+      toast.success(userData.data.message)
 
-}
+    }
 
     // toast.success(userData)
   };

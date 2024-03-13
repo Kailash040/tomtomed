@@ -208,8 +208,24 @@ export const getAllFollowings = async () => {
 // 
 export const getAllFollowers = async () => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollowers`,
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollower`,
 
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+// https://tomtomed.onrender.com/api/v1/post/reply-comment/
+
+export const replyOnComment = async (_id, comment) => {
+  // console.log("dfdfdfdfdf", _id, userData);
+  try {
+    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/reply-comment/${_id}`,
+      { comment: comment }
+
+      ,
       { withCredentials: true, }
     );
     return response.data;
