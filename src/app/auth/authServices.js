@@ -233,3 +233,16 @@ export const replyOnComment = async (_id, comment) => {
     throw error;
   }
 };
+// https://tomtomed.onrender.com/api/v1/user/get-user
+// 
+export const getAUser = async (_id) => {
+  try {
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/get-user/${_id}`,
+
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

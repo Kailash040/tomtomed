@@ -11,7 +11,8 @@ import { followReducer } from './auth/followUserSlice'
 import { commentOnPostReducer } from './auth/commentOnPostSlice'
 import { deleteAPostReducer } from './auth/deletePostSlice'
 import { likePostReducer } from "./auth/likePostSlice";
-import {followersReducer} from './auth/followerSlice'
+import {followersReducer} from './auth/followerSlice';
+import  {aUserReducer} from './auth/getAUserSlice'
 export const store = configureStore({
   reducer: {
     signUpAuth: signUpReducer,
@@ -25,6 +26,7 @@ export const store = configureStore({
     likeAPost: likePostReducer,
     commentPost: commentOnPostReducer,
     followAUser: followReducer,
-    follows:followersReducer
+    follows:followersReducer,
+    aUser:aUserReducer
   },
 });
