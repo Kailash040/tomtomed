@@ -192,6 +192,8 @@ const Profile = () => {
 // 
 const  followings  = useSelector((state)=>state?.followAUser?.data?.data)
 console.log(followings)
+const  followers  = useSelector((state)=>state?.follows?.data?.data)
+console.log(followers);
 const getFollowing =  useDispatch();
 useEffect(()=>{
   getFollowing(getAllFollowing())
@@ -831,13 +833,16 @@ useEffect(()=>{
                     />
                     <Icon icon="iconamoon:search-light" className="absolute left-[92%]  bottom-[15px] w-[18px] h-[18px] text-white " />
 
-                  </div>
-                  <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
+                  </div> 
+                  {
+  followers?.map((data,id)=>(
+    
+                  <div className="followers_item hidden justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]"   key={id}>
                     <div className="child flex gap-[18px] items-center ">
                       <div className="followers_child">
                         {" "}
                         <img
-                          src={userimage}
+                          src={data.image}
                           alt="user"
                           className="w-[60px] h-[60px] rounded-full"
                         />
@@ -845,9 +850,9 @@ useEffect(()=>{
                       <div className="followers_child">
                         <p className="text-[#2A2A2A] flex">
                           {" "}
-                          Amy Johnson <img src={verifyTik} alt="verify" />
+                         {data?.name}<img src={verifyTik} alt="verify" />
                         </p>
-                        <p className="text-sm text-[#8F8F8F]">Amy_07</p>
+                        <p className="text-sm text-[#8F8F8F]">{data?.username}</p>
                       </div>
                     </div>
                     <div className="child">
@@ -867,60 +872,9 @@ useEffect(()=>{
                       {/* <div className="followers_child"></div> */}
                     </div>
                   </div>
-                  <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
-                    <div className="child flex gap-[18px] items-center ">
-                      <div className="followers_child">
-                        {" "}
-                        <img
-                          src={userimage}
-                          alt="user"
-                          className="w-[60px] h-[60px] rounded-full"
-                        />
-                      </div>
-                      <div className="followers_child">
-                        <p className="text-[#2A2A2A] flex">
-                          {" "}
-                          Amy Johnson <img src={verifyTik} alt="verify" />
-                        </p>
-                        <p className="text-sm text-[#8F8F8F]">Amy_07</p>
-                      </div>
-                    </div>
-                    <div className="child">
-                      <div className="followers_child flex gap-[18px] items-center">
-                        <button className="text-[#7D4CFF]">Follow back</button>
-                        <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
-
-                      </div>
-                      {/* <div className="followers_child"></div> */}
-                    </div>
-                  </div>
-                  <div className="followers_item flex justify-between items-center bg-[#F5F5F5] px-[18px] py-[10px] rounded-xl mt-[18px]">
-                    <div className="child flex gap-[18px] items-center ">
-                      <div className="followers_child">
-                        {" "}
-                        <img
-                          src={userimage}
-                          alt="user"
-                          className="w-[60px] h-[60px] rounded-full"
-                        />
-                      </div>
-                      <div className="followers_child">
-                        <p className="text-[#2A2A2A] flex">
-                          {" "}
-                          Amy Johnson <img src={verifyTik} alt="verify" />
-                        </p>
-                        <p className="text-sm text-[#8F8F8F]">Amy_07</p>
-                      </div>
-                    </div>
-                    <div className="child">
-                      <div className="followers_child flex gap-[18px] items-center">
-                        <button className="text-[#7D4CFF]">Follow back</button>
-                        <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
-
-                      </div>
-                      {/* <div className="followers_child"></div> */}
-                    </div>
-                  </div>
+  ))
+}
+                 
                 </div>
               )}
               {showFollowing && (
