@@ -220,14 +220,21 @@ const Home = () => {
                               <ul className=" menu dropdown-content z-[1] ">
                                 <div className="report_block_mute absolute  list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 ">
                                   <div className="user_div_image flex   gap-[18px] items-center">
-                                    <img src={userImage} alt="user" className="w-[60px] h-[60px]" />
+                                  {
+                              data?.user?.image ? <>  <img src={data?.user?.image} alt="photo" className="w-[60px] h-[60px] rounded-full" /></> : <><img src={userImage} alt="photo" className="w-[48px] h-[48px] rounded-full" /></>
+                            }
+                                    {/* <img src={userImage} alt="user" className="w-[60px] h-[60px]" /> */}
                                     <div className="name_username">
                                       <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
                                         {" "}
-                                        Amy Roy{" "}
+                                        {
+                              data?.user?.name ? <> {data?.user?.name}</> : <>name</>
+                            }{" "}
 
                                       </p>
-                                      <p className="text-[#8F8F8F] max-xl:text-sm">@amy_roy</p>
+                                      <p className="text-[#8F8F8F] max-xl:text-sm">@{
+                            data?.user?.username ? <> {data?.user?.username}</> : <>username</>
+                          }</p>
                                     </div>
                                   </div>
                                   <div className="option_div mt-10 flex flex-col gap-6">
