@@ -100,9 +100,9 @@ const SingleUser = () => {
 
     // 
     const followings = useSelector((state) => state?.followAUser?.data?.data)
-    console.log(followings)
+    // console.log(followings)
     const followers = useSelector((state) => state?.follows?.data?.data)
-    console.log(followers);
+    // console.log(followers);
 
     // /////////////////////////////////////////////////////////////////
     return (
