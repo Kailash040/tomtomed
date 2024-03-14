@@ -204,7 +204,7 @@ const Home = () => {
                         </div>
                         <div className="photo flex items-center gap-6">
                           {/*  */}
-                          <Link to={`/user/${data?.user?._id}`} >
+                          <Link to={`/user/${data?.post?.userId}`} >
 
                             {
                               data?.user?.image ? <>  <img src={data?.user?.image} alt="photo" className="w-[48px] h-[48px] rounded-full" /></> : <><img src={userImage} alt="photo" className="w-[48px] h-[48px] rounded-full" /></>
