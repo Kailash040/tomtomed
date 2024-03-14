@@ -1,16 +1,16 @@
-import {useEffect} from 'react'
+import { useEffect } from 'react'
 import MainNavigation from '../components/MainNavigation'
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {getAUserProfile}  from '../app/auth/getAUserSlice'
+import { getAUserProfile } from '../app/auth/getAUserSlice'
 const SingleUser = () => {
     let { _id } = useParams();
     console.log(_id);
     const user = useDispatch()
     useEffect(() => {
-      user(getAUserProfile(_id))
+        user(getAUserProfile(_id))
     }, [user]);
-    const userData =  useSelector((state)=>state?.aUser?.data)
+    const userData = useSelector((state) => state?.aUser?.data)
     console.log(userData);
     return (
         <div>

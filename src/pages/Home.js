@@ -20,7 +20,7 @@ import { FollowUser, unFollowUser } from '../app/auth/followUserSlice'
 import { getAllPost } from "../app/auth/getPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
-  const allUserData = useSelector((state) => state?.getPost?.data?.postArr);
+  const allUserData = useSelector((state) => state?.getPost?.data?.allPost);
   console.log(allUserData);
   const allreducers = useSelector((state) => state)
   console.log(allreducers);
