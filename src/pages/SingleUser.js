@@ -22,7 +22,7 @@ import 'react-toastify/dist/ReactToastify.css';
 ////////////////////////////
 const SingleUser = () => {
     let { _id } = useParams();
-    console.log(_id);
+    // console.log(_id);
     const user = useDispatch()
     useEffect(() => {
         user(getAUserProfile(_id))
