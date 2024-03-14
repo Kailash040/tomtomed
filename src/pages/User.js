@@ -181,12 +181,7 @@ const Profile = () => {
     toast("Post like successfully")
   }
   // 
-  const getAllPostData = useSelector((state) => [state?.getPost?.data?.post]);
-
-  console.log("getall post data", getAllPostData);
-  const getAllPosts = useSelector((state) => [state?.getPost?.data]);
-
-  console.log(" post data", getAllPosts);
+ 
   const getProfile = useSelector((state) => [state?.getPost?.data?.profile]);
 
   console.log(" get profile", getProfile);
@@ -937,7 +932,10 @@ const Profile = () => {
                 </div>
               )}
             </div>
-            <div className="trending_suggestion max-xl:hidden">
+            <div className="trending_suggestion max-xl:hidden sticky top-0">
+              <div  className="sticky top-0">
+
+              
               <div className="right_section flex">
                 <div className="trending w-[320px]	 max-xl:hidden">
                   <div>
@@ -1040,6 +1038,7 @@ const Profile = () => {
                   </div>
                   <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
