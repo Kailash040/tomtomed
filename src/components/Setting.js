@@ -5,6 +5,8 @@ import avatar from '../assets/Avatar (1).png'
 import qrCode from '../assets/Group 34038.png'
 import {logOut} from '../app/auth/loginSlice'
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom'
+
 const Setting = () => {
     const [openTab, setOpenTab] = useState(0);
     // 
@@ -14,10 +16,13 @@ const Setting = () => {
 
 //   console.log(userData)
       const dispatch = useDispatch();
-
+      const navigate = useNavigate();
   const handleLogout = () => {
-    //   localStorage.removeItem('token');
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
     dispatch(logOut());
+    navigate("/login")
+
   };
     const handleForgetPassword = (e) => {
         e.preventDefault()

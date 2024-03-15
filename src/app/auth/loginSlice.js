@@ -84,9 +84,9 @@ const authSlice = createSlice({
                 // localStorage.setItem('userData', JSON.stringify(state.data));
                 state.isAuthenticated = true;
                 state.accessToken = action.payload.accessToken;
-                // localStorage.setItem('accessToken', JSON.stringify(state.data.accessToken));
+                localStorage.setItem('accessToken', JSON.stringify(state.data.accessToken));
                 state.refreshToken = action.payload.refreshToken;
-                // localStorage.setItem('refreshToken', JSON.stringify(action.payload.refreshToken));
+                localStorage.setItem('refreshToken', JSON.stringify(action.payload.refreshToken));
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.isLoading = false;
