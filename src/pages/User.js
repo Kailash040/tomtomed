@@ -858,7 +858,10 @@ const Profile = () => {
                           <div className="followers_child">
                             <p className="text-[#2A2A2A] flex">
                               {" "}
-                              {data?.name}<img src={verifyTik} alt="verify" />
+                              {
+                                data?.name  ? <>{data?.name}</>  : "name"
+                              }
+                              <img src={verifyTik} alt="verify" />
                             </p>
                             <p className="text-sm text-[#8F8F8F]">{data?.username}</p>
                           </div>
@@ -870,12 +873,12 @@ const Profile = () => {
 
                               <Icon icon="iconamoon:menu-kebab-horizontal-bold" className="text-[#2A2A2A] w-[20px] " />
                             </button>
-                            {
+                            {/* {
                               showAction && <div className="absolute flex flex-col top-5 right-0 bg-[#202020] py-6 px-[18px] gap-[27px] rounded-xl	">
                                 <button className="text-base font-semibold text-white	">UnFollow</button>
                                 <button className="font-medium text-[#FB6363]">Block</button>
                               </div>
-                            }
+                            } */}
                           </div>
                           {/* <div className="followers_child"></div> */}
                         </div>
