@@ -46,9 +46,10 @@ const Login = () => {
     if (userData === "User Login Success") {
       toast.success("User Login Success");
     }
+
     navigate("/")
     // toast.success("login SuccessFully");
-    // 
+
   };
   // 
   const splideOptions = {
