@@ -16,7 +16,7 @@ import profileImage from '../assets/Avatar.png'
 import { Editor } from 'primereact/editor';
 import { addPosts } from "../app/auth/addPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
-
+import  {searchUser} from '../app/auth/searchUserSlice'
 const MainNavigation = () => {
   const [text, setText] = useState('');
   const [handleShowToggle, setHandleShowToggle] = useState(false);
@@ -31,7 +31,9 @@ const MainNavigation = () => {
   const [brightness, setBrightness] = useState();
   const [savePost, setSavePost] = useState(false);
   const [description, setDescription] = useState("");
-  const [image, setImage] = useState("")
+  const [image, setImage] = useState("");
+  const [query, setQuery] = useState('');
+
   // 
   const [preview, setPreview] = useState('')
   // const postData = useSelector((state) => state.addPost)
@@ -95,12 +97,12 @@ const MainNavigation = () => {
     setAddPost(true)
   }
   // console.log(image)
-
+const searchDispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault()
     const formData = new FormData();
     formData.append('description', description);
-    formData.append('image', image)
+    formData.append('image', image);
     dispatch(addPosts(formData));
   }
   return (<div className="font-roboto ">
@@ -509,8 +511,9 @@ const MainNavigation = () => {
                               />
                               {/*  */}
                               <div className="search_friends  relative flex justify-between items-center">
-                                <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl	text-lg max-sm:bg-[#171717]	" />
-                                <button className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl  max-sm:bg-black	">Tag People</button>
+                                <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl text-white	text-lg max-sm:bg-[#171717]	" value={query}
+        onChange={(e) => setQuery(e.target.value)} />
+                                <button className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl  max-sm:bg-black	"    onClick={()=>searchDispatch(searchUser(query))} >Tag People</button>
                               </div>
                             </div>
                           </div> : <div className="crop_brithness_container flex flex-wrap gap-6  justify-center">

@@ -246,3 +246,15 @@ export const getAUser = async (_id) => {
     throw error;
   }
 };
+// search user
+export const searchTheUser = async (query) => {
+  try {
+    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/search?query=${query}`,
+
+      { withCredentials: true, }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
