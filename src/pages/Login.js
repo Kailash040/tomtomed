@@ -40,13 +40,13 @@ const Login = () => {
     e.preventDefault();
     if (!(formData.username || formData.email)) {
       toast.error("Provide Required Fields!");
-      // return;
+      return;
     }
     dispatch(loginUser(formData));
     if (userData === "User Login Success") {
       toast.success("User Login Success");
-      navigate("/")
     }
+    navigate("/")
     // toast.success("login SuccessFully");
     // 
   };
