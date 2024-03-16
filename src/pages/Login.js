@@ -43,8 +43,6 @@ const Login = () => {
       toast.success("User Login Success");
       navigate("/")
     }
-    // toast.success("login SuccessFully");
-    // 
   };
   // 
   const splideOptions = {
