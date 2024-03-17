@@ -100,13 +100,13 @@ const SignUp = () => {
                   class=" px-[18px] text-white py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
                   name="username" value={formData.username} onChange={handleChange}
-
+required
                 />
               </div>
               <div className="username mb-2 max-xl:mb-[18px]">
                 <input type="email" id="contact" placeholder="Email or phone" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   name="email" value={formData.email} onChange={handleChange}
-
+required
                 />
 
               </div>
@@ -116,6 +116,7 @@ const SignUp = () => {
                   class="px-[18px] py-5 text-white rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
                   name="password" value={formData.password} onChange={handleChange}
+                  required
                 />
               </div>
               <div className="username mt-3 max-xl:mt-10 ">

@@ -105,6 +105,7 @@ const Login = () => {
                   class=" px-[18px] py-5 rounded-xl bg-[#101010]  text-white w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
                   name="username" value={formData.username} onChange={handleChange}
+                  required
                 />
               </div>
 
@@ -115,6 +116,7 @@ const Login = () => {
                   placeholder="Password"
                   name="password"
                   value={formData.password} onChange={handleChange}
+                  required
                 />
               </div>
               <div className="username list-none mb-2 mt-2">
