@@ -1,6 +1,7 @@
 // authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { signUp } from './authServices';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const signUpUser = createAsyncThunk(
     'auth/signUp',
@@ -8,7 +9,7 @@ export const signUpUser = createAsyncThunk(
         try {
             const response = await signUp(userData);
             return response;
-          
+
         } catch (error) {
             return thunkAPI.rejectWithValue(error.response.data.error);
         }
@@ -23,16 +24,19 @@ const authSlice = createSlice({
         error: false,
     },
     reducers: {},
-    extraReducers: (builder)=> {
+    extraReducers: (builder) => {
         builder.addCase(signUpUser.pending, (state, action) => {
             state.isLoading = true;
         })
         builder.addCase(signUpUser.fulfilled, (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
+            toast.success("Verification email has been sent to your account. Check your email for further instructions.");
         })
         builder.addCase(signUpUser.rejected, (state, action) => {
-            console.log("Error", action.payload);
+            // console.log("Error", action.payload);
+            toast.error("Please enter valid username and email");
+            <ToastContainer />
             state.error = true;
         })
     },

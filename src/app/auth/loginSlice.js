@@ -1,6 +1,7 @@
 // authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { login, logOutUser } from './authServices';
+import { ToastContainer, toast } from 'react-toastify';
 
 export const loginUser = createAsyncThunk(
     'auth/login',
@@ -27,37 +28,6 @@ export const logOut = createAsyncThunk(
     }
 );
 
-// const authSlice = createSlice({
-//     name: 'loginAuth',
-//     initialState: {
-//         token: localStorage.getItem('token') || null,
-//         user: null,
-//         isLoading: false,
-//         error: null,
-//     },
-//     reducers: {
-//         setToken(state, action) {
-//             state.token = action.payload;
-//             localStorage.setItem('accessToken', action.payload); // Save token in localStorage
-//         },
-//     },
-//     extraReducers: (builder) => {
-//         builder.addCase(loginUser.pending, (state, action) => {
-//             state.isLoading = true;
-//         })
-//         builder.addCase(loginUser.fulfilled, (state, action) => {
-//             state.isLoading = false;
-//             state.data = action.payload;
-//             // Save user data to local storage upon successful login
-//             localStorage.setItem('token', JSON.stringify(action.payload.accessToken));
-//         })
-//         builder.addCase(loginUser.rejected, (state, action) => {
-//             console.log("Error", action.payload);
-//             state.error = true;
-//         })
-//     },
-// });
-
 const authSlice = createSlice({
     name: 'loginAuth',
     initialState: {
@@ -80,17 +50,21 @@ const authSlice = createSlice({
                 state.isLoading = false;
                 state.data = action.payload;
 
-               
+
                 // localStorage.setItem('userData', JSON.stringify(state.data));
                 state.isAuthenticated = true;
-                state.accessToken = action.payload.accessToken;
-                localStorage.setItem('accessToken', JSON.stringify(state.data.accessToken));
-                state.refreshToken = action.payload.refreshToken;
-                localStorage.setItem('refreshToken', JSON.stringify(action.payload.refreshToken));
+                state.accessToken = action?.payload?.accessToken;
+                localStorage.setItem('accessToken', JSON.stringify(state?.data?.accessToken));
+                state.refreshToken = action?.payload?.refreshToken;
+                localStorage.setItem('refreshToken', JSON.stringify(action?.payload?.refreshToken));
+                toast.success("login successful");
+
+                <ToastContainer />
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.payload;
+                toast.error("Invalid email or password");
             })
             .addCase(logOut.pending, (state) => {
                 state.isLoading = true;

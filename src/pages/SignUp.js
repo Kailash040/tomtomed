@@ -18,32 +18,45 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { signUpUser } from "../app/auth/signUpSlice";
+import { useForm } from "react-hook-form"
 
 const SignUp = () => {
   const userData = useSelector((state) => state?.signUpAuth);
   console.log(userData)
   const dispatch = useDispatch();
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    email: ''
-  });
+  // const [formData, setFormData] = useState({
+  //   username: '',
+  //   password: '',
+  //   email: ''
+  // });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  // const handleChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(signUpUser(formData))
-    if (userData?.data?.success === "PENDING") {
-      toast.success(userData.data.message)
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   dispatch(signUpUser(formData))
+  //   if (userData?.data?.success === "PENDING") {
+  //     toast.success(userData.data.message)
 
-    }
+  //   }
 
-    // toast.success(userData)
-  };
+  //   // toast.success(userData)
+  // };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => {
+
+    dispatch(signUpUser(data));
+
+  }
+  // 
   const splideOptions = {
     type: 'slide',
     perPage: 1,
@@ -93,31 +106,30 @@ const SignUp = () => {
 
               Sign Up{" "}
             </p>
-            <form onSubmit={handleSubmit} >
-              <div className="username mb-2 max-xl:mb-[18px]">
+            <form onSubmit={handleSubmit(onSubmit)} >
+              <div className="username mb-2 max-xl:mb-[18px] flex flex-col">
                 <input
                   type="text"
                   class=" px-[18px] text-white py-5 rounded-xl bg-[#101010] w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
-                  name="username" value={formData.username} onChange={handleChange}
-required
+                  {...register("username", { required: true })}
                 />
+                {errors.username && <span className="text-[red]" >username is required</span>}
               </div>
-              <div className="username mb-2 max-xl:mb-[18px]">
+              <div className="username mb-2 max-xl:mb-[18px] flex flex-col">
                 <input type="email" id="contact" placeholder="Email or phone" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
-                  name="email" value={formData.email} onChange={handleChange}
-required
+                  {...register("email", { required: true })}
                 />
-
+                {errors.email && <span className="text-[red]" >email is required</span>}
               </div>
-              <div className="username ">
+              <div className="username flex flex-col ">
                 <input
                   type="password"
                   class="px-[18px] py-5 text-white rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
-                  name="password" value={formData.password} onChange={handleChange}
-                  required
+                  {...register("password", { required: true })}
                 />
+                {errors.password && <span className="text-[red]" >password is required</span>}
               </div>
               <div className="username mt-3 max-xl:mt-10 ">
                 <button

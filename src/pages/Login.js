@@ -19,39 +19,57 @@ import 'react-toastify/dist/ReactToastify.css';
 import { loginUser } from '../app/auth/loginSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
+import { useForm } from "react-hook-form"
 
 const Login = () => {
 
   /////////////////////
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state?.loginAuth?.data?.message);
-  console.log(userData)
-  const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  });
+  // const userData = useSelector((state) => state?.loginAuth?.data?.success);
+  // console.log(userData)
+  //   const [formData, setFormData] = useState({
+  //     username: '',
+  //     password: '',
+  //   });
+  // // 
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  //   const handleChange = (e) => {
+  //     setFormData({ ...formData, [e.target.name]: e.target.value });
+  //   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!(formData.username || formData.email)) {
-      toast.error("Provide Required Fields!");
-      return;
-    }
-    dispatch(loginUser(formData));
-    if (userData === "User Login Success") {
-      toast.success("User Login Success");
-    }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (!(formData.username || formData.email)) {
+  //     toast.error("Provide Required Fields!");
+  //     return;
+  //   }
+  //   dispatch(loginUser(formData));
+  //   if (userData === "User Login Success") {
+  //     toast.success("User Login Success");
+  //   }
 
-    navigate("/")
+  //   navigate("/")
+  //   // toast.success("login SuccessFully");
+
+  // };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => {
+
+    dispatch(loginUser(data));
     // toast.success("login SuccessFully");
-
-  };
+    // console.log(loginUser());
+    // console.log(data);
+    navigate("/")
+  }
   // 
+
+
   const splideOptions = {
     type: 'slide',
     perPage: 1,
@@ -98,26 +116,28 @@ const Login = () => {
 
               Login{" "}
             </p>
-            <form onSubmit={handleSubmit}>
-              <div className="username mb-2 max-xl:mb-[18px]">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="username mb-2 max-xl:mb-[18px] flex flex-col">
                 <input
                   type="text"
                   class=" px-[18px] py-5 rounded-xl bg-[#101010]  text-white w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
                   placeholder="Username"
-                  name="username" value={formData.username} onChange={handleChange}
-                  required
+                  {...register("username", { required: true })}
+                // required
                 />
+                {errors.username && <span className="text-[red]" >username is required</span>}
               </div>
 
-              <div className="username ">
+              <div className="username flex flex-col ">
                 <input
                   type="password"
                   class="px-[18px] py-5 rounded-xl bg-[#101010] text-white w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
                   name="password"
-                  value={formData.password} onChange={handleChange}
-                  required
+                  {...register("password", { required: true })}
+                // required
                 />
+                {errors.password && <span className="text-[red]" >password is required</span>}
               </div>
               <div className="username list-none mb-2 mt-2">
                 <li className="text-[#B68FE7]">
@@ -127,14 +147,15 @@ const Login = () => {
                 </li>
               </div>
               <div className="username mt-3 max-xl:mt-10 ">
-                <button
+                {/* <button
                   type="submit"
                   class="border  px-[18px] py-5 rounded-xl   w-[360px] text-white max-xl:pt-[14px] max-xl:pb-[15px] max-xl:h-[48px] max-xl:w-[340px] signUp "
-                  placeholder="Password"
+                 
                 >
                   {" "}
                   login{" "}
-                </button>
+                </button> */}
+                <input type="submit" class="border  px-[18px] py-5 rounded-xl   w-[360px] text-white max-xl:pt-[14px] max-xl:pb-[15px] max-xl:h-[48px] max-xl:w-[340px] signUp " />
               </div>
               <div className="or_container flex justify-center mt-5 items-center gap-[21px] pl-[10px] pr-[10px]">
                 <div className="line h-[1px] bg-[#8F8F8F] w-full"></div>
