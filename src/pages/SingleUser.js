@@ -327,9 +327,9 @@ const SingleUser = () => {
                                     Connect People. Share Opinions. Make a Living.{" "}
                                 </p>
                             </div>
-                            <div className="Premium_buutton my-[18px] w-[220px] ">
+                            <div className="Premium_buutton my-[18px] w-[120px] ">
                                 <div class="rounded-xl	 bg-gradient-to-r from-[#4879FA]  to-[#7D4CFF] p-[1px]">
-                                    <div class="flex   items-center justify-center bg-[#202020] rounded-xl h-[60px] ">
+                                    <div class="flex   items-center justify-center bg-[#202020] rounded-xl h-[40px] ">
                                         <button class="text-base  	 text-[#B68FE7]">Follow</button>
                                     </div>
                                 </div>
