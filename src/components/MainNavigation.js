@@ -16,7 +16,7 @@ import profileImage from '../assets/Avatar.png'
 import { Editor } from 'primereact/editor';
 import { addPosts } from "../app/auth/addPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
-import  {searchUser} from '../app/auth/searchUserSlice'
+import { searchUser } from '../app/auth/searchUserSlice'
 const MainNavigation = () => {
   const [text, setText] = useState('');
   const [handleShowToggle, setHandleShowToggle] = useState(false);
@@ -33,11 +33,26 @@ const MainNavigation = () => {
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
   const [query, setQuery] = useState('');
-
+  const [tag, setTag] = useState([])
+  const usertag = useSelector((state) => state?.searchUser?.data);
+  // console.log(setTag(usertag));
+  const searchDispatch = useDispatch();
+  // 
+  const handleSearch = () => {
+    searchDispatch(searchUser(query))
+    // if (query.trim() !== '') {
+    //   setTag([...tag, setQuery]);
+    //   setQuery(''); // Clear the search input after adding to history
+    // }
+  }
+  // console.log(tag);
   // 
   const [preview, setPreview] = useState('')
   // const postData = useSelector((state) => state.addPost)
   // console.log(postData);
+useEffect(()=>{
+  setTag(usertag)
+},[tag])
   const dispatch = useDispatch();
 
   const handleShow = () => {
@@ -89,20 +104,20 @@ const MainNavigation = () => {
     setArticlePage(false);
     setShowThoughtPage(false)
   }
- 
+
   const handleImageChange = (e) => {
     setPreview(URL.createObjectURL(e.target.files[0]))
     setImage(e.target.files[0])
-    
+
     setAddPost(true)
   }
   // console.log(image)
-const searchDispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault()
     const formData = new FormData();
     formData.append('description', description);
     formData.append('image', image);
+    formData.append("tag", tag)
     dispatch(addPosts(formData));
   }
   return (<div className="font-roboto ">
@@ -511,10 +526,13 @@ const searchDispatch = useDispatch();
                               />
                               {/*  */}
                               <div className="search_friends  relative flex justify-between items-center">
-                                <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl text-white	text-lg max-sm:bg-[#171717]	" value={query}
-        onChange={(e) => setQuery(e.target.value)} />
-                                <button className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl  max-sm:bg-black	"    onClick={()=>searchDispatch(searchUser(query))} >Tag People</button>
+                                <input type="text" className="w-full py-[14px] px-[18px] bg-[#000000] rounded-xl text-white	text-lg max-sm:bg-[#171717]	" value={query} name="query"
+                                  onChange={(e) => setQuery(e.target.value)} />
+                                <button className="text-base text-white bg-[#1B1C1B] absolute  px-[15px] right-1 py-[10px] rounded-xl  max-sm:bg-black	" onClick={handleSearch} >Tag People</button>
                               </div>
+                              {/* {tag.map((query, index) => (
+                                <p className="text-white list-none" key={index}>{query.name}</p>
+                              ))} */}
                             </div>
                           </div> : <div className="crop_brithness_container flex flex-wrap gap-6  justify-center">
                             <button onClick={handleShowCropPage}>

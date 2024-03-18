@@ -23,22 +23,22 @@ import { getAllPost } from "../app/auth/getPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
   const allUserData = useSelector((state) => state?.getPost?.data?.allPost);
-  console.log(allUserData);
+  // console.log(allUserData);
   const dispatchuser = useDispatch();
   useEffect(() => {
     dispatchuser(ProfileData());
     // setProfileUserData(profileUserData)
   }, [])
   const myId = useSelector((state) => state?.getProfile?.data?.data?._id);
-  console.log("my Id", myId);
-  const allreducers = useSelector((state) => state)
-  console.log(allreducers);
+  // console.log("my Id", myId);
+  // const allreducers = useSelector((state) => state)
+  // console.log(allreducers);
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllPost());
 
   }, [])
-  console.log();
+  // console.log();
   const [showComment, setShowComment] = useState(false)
 
   const [showshareModal, setShowShareModal] = useState(false)
@@ -1054,6 +1054,14 @@ const Home = () => {
                             <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
                             <p className="text-[#8F8F8F] text-sm font-medium">34</p>
                           </div>
+                {
+                  data?.user?._id === myId ?  <> </> :
+                            <div className="like_status flex  gap-1 items-center">
+                              {/* <Icon icon="grommet-icons:view" /> */}
+                              <Icon icon="typcn:user-add-outline" className="w-6 h-6 text-white	" />
+                              {/* <p className="text-[#8F8F8F] text-sm font-medium">34</p> */}
+                            </div>
+                }
                         </div>
                         <div className="post_status">
                           <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />

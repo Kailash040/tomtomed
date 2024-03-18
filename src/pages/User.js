@@ -663,7 +663,7 @@ const Profile = () => {
                                         <div className="report_block_mute absolute z-30 list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2  " >
 
 
-                                          <div className="user_div_image flex   gap-[18px] items-center">
+                                          {/* <div className="user_div_image flex   gap-[18px] items-center">
                                             <img src={data?.image} alt="user" className="w-[60px] h-[60px]  rounded-full" />
                                             <div className="name_username">
                                               <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
@@ -673,9 +673,9 @@ const Profile = () => {
                                               </p>
                                               <p className="text-[#8F8F8F] max-xl:text-sm">{item?.username}</p>
                                             </div>
-                                          </div>
+                                          </div> */}
 
-                                          <div className="option_div mt-10 flex flex-col gap-6">
+                                          <div className="option_div flex flex-col gap-6">
 
                                             <div className="flex gap-[18px]">
                                               {/* <Icon icon="solar:pin-outline" /> */}
