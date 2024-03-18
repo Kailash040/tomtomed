@@ -12,6 +12,8 @@ import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
 // 
+import { ProfileData } from "../app/auth/ProfileSlice";
+
 import { Link } from 'react-router-dom';
 
 import dayjs from 'dayjs';
@@ -22,6 +24,13 @@ import { useDispatch, useSelector } from 'react-redux';
 const Home = () => {
   const allUserData = useSelector((state) => state?.getPost?.data?.allPost);
   console.log(allUserData);
+  const dispatchuser = useDispatch();
+  useEffect(() => {
+    dispatchuser(ProfileData());
+    // setProfileUserData(profileUserData)
+  }, [])
+  const myId = useSelector((state) => state?.getProfile?.data?.data?._id);
+  console.log("my Id", myId);
   const allreducers = useSelector((state) => state)
   console.log(allreducers);
   const dispatch = useDispatch()
@@ -57,6 +66,8 @@ const Home = () => {
   const handleUnfollow = (_id) => {
     unFolloweDispatch(unFollowUser(_id))
   }
+  // 
+
   // 
   return (
     <>
@@ -202,7 +213,7 @@ const Home = () => {
                             data?.user?.username ? <> {data?.user?.username}</> : <>username</>
                           }</p>
                         </div>
-                        <div className="photo flex items-center gap-6">
+                        <div className="photo flex  gap-6">
                           {/*  */}
                           <Link to={`/user/${data?.post?.userId}`} >
 
@@ -214,18 +225,20 @@ const Home = () => {
 
                           {/*  */}
                           <div className="account_section_item  relative" >
+                            {
+                              data?.user?._id === myId ? <div  className="relative top-[15px]"><Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white     bottom-[10px]" /></div> :
+                                <details className="dropdown">
+                                  <summary className="">  <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   relative bottom-[10px]" /></summary>
 
-                            <details className="dropdown">
-                              <summary className="">  <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   relative bottom-[10px]" /></summary>
-                              <ul className=" menu dropdown-content z-[1] ">
-                                <div className="report_block_mute absolute  list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 ">
-                                  <div className="user_div_image flex   gap-[18px] items-center">
-                                  {
+                                  <ul className=" menu dropdown-content z-[1] ">
+                                    <div className="report_block_mute absolute  list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 ">
+                                      {/* <div className="user_div_image flex   gap-[18px] items-center"> */}
+                                      {/* {
                               data?.user?.image ? <>  <img src={data?.user?.image} alt="photo" className="w-[60px] h-[60px] rounded-full" /></> : <><img src={userImage} alt="photo" className="w-[48px] h-[48px] rounded-full" /></>
-                            }
-                                    {/* <img src={userImage} alt="user" className="w-[60px] h-[60px]" /> */}
-                                    <div className="name_username">
-                                      <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
+                            } */}
+                                      {/* <img src={userImage} alt="user" className="w-[60px] h-[60px]" /> */}
+                                      {/* <div className="name_username"> */}
+                                      {/* <p className="text-[#FFFFFF] max-xl:text-sm flex items-center gap-1 font-bold	">
                                         {" "}
                                         {
                               data?.user?.name ? <> {data?.user?.name}</> : <>name</>
@@ -234,37 +247,38 @@ const Home = () => {
                                       </p>
                                       <p className="text-[#8F8F8F] max-xl:text-sm">@{
                             data?.user?.username ? <> {data?.user?.username}</> : <>username</>
-                          }</p>
-                                    </div>
-                                  </div>
-                                  <div className="option_div mt-10 flex flex-col gap-6">
+                          }</p> */}
+                                      {/* </div> */}
+                                      {/* </div> */}
+                                      <div className="option_div  flex flex-col gap-6">
 
-                                    <div className="flex gap-[18px]">
-                                      <Icon icon="basil:notification-off-outline" className="w-6 h-6 text-white" />
-                                      <li className="text-lg text-white">Mute</li>
-                                    </div>
-                                    <div className="flex gap-[18px]">
-                                      <Icon icon="material-symbols:report-outline" className="w-6 h-6 text-white" />
-                                      <li className="text-lg text-white">Report</li>
-                                    </div>
-                                    <div className="flex gap-[18px]">
-                                      <Icon icon="material-symbols-light:block" className="w-6 h-6 text-[#FB6363]" />
-                                      <li className="text-lg text-[#FB6363]">Block</li>
-                                    </div>
-                                    <button className=" flex gap-[18px] " onClick={() => handleFollow(data?.user?._id)}>
-                                      <Icon icon="typcn:user-add-outline" className="w-6 h-6 text-[#FB6363]" />
-                                      <li className="text-lg text-[#FB6363]">follow</li>
-                                    </button>
-                                    <button className="flex gap-[18px] " onClick={() => handleUnfollow(data?.user?._id)}>
-                                      <Icon icon="typcn:user-add-outline" className="w-6 h-6 text-[#FB6363]" />
+                                        <div className="flex gap-[18px]">
+                                          <Icon icon="basil:notification-off-outline" className="w-6 h-6 text-white" />
+                                          <li className="text-lg text-white">Mute</li>
+                                        </div>
+                                        <div className="flex gap-[18px]">
+                                          <Icon icon="material-symbols:report-outline" className="w-6 h-6 text-white" />
+                                          <li className="text-lg text-white">Report</li>
+                                        </div>
+                                        <div className="flex gap-[18px]">
+                                          <Icon icon="material-symbols-light:block" className="w-6 h-6 text-[#FB6363]" />
+                                          <li className="text-lg text-[#FB6363]">Block</li>
+                                        </div>
+                                        <button className="  gap-[18px] hidden " onClick={() => handleFollow(data?.user?._id)}>
+                                          <Icon icon="typcn:user-add-outline" className="w-6 h-6 text-[#FB6363]" />
+                                          <li className="text-lg text-[#FB6363]">follow</li>
+                                        </button>
+                                        <button className=" gap-[18px]  hidden" onClick={() => handleUnfollow(data?.user?._id)}>
+                                          <Icon icon="typcn:user-add-outline" className="w-6 h-6 text-[#FB6363]" />
 
-                                      <li className="text-lg text-[#FB6363]">unfollow</li>
-                                    </button>
-                                  </div>
+                                          <li className="text-lg text-[#FB6363]">unfollow</li>
+                                        </button>
+                                      </div>
 
-                                </div>
-                              </ul>
-                            </details>
+                                    </div>
+                                  </ul>
+                                </details>
+                            }
 
 
                           </div>
