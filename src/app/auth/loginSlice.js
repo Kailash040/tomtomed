@@ -78,6 +78,7 @@ const authSlice = createSlice({
 
                 state.refreshToken = null;
                 // localStorage.removeItem('refreshToken');
+                toast.success("logout successful");
 
             })
             .addCase(logOut.rejected, (state, action) => {
