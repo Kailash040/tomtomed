@@ -124,7 +124,13 @@ const MainNavigation = () => {
 
     // setAddPost(false)
   }
+  const apiKey = process.env.BASE_URL;
+  console.log(`API Base URL: ${apiKey}`);
   return (<div className="font-roboto ">
+    <p className="text-white text-[40px]">
+
+    
+    </p>
     <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:px-3  max-xl:pt-2 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >
       <div className="tomtomad w-1/5
  ">
