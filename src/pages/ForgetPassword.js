@@ -28,7 +28,7 @@ const SignUp = () => {
     // else {
     //   toast.error(response.data.message)
     // }
-    dispatch(forgetPasswords({ email }))
+    dispatch(forgetPasswords( email ))
   }
   return (
     <div className=" font-roboto  relative  h-[100vh]  mt-10 flex flex-col justify-between w-[1250px] max-xl:w-full  mx-[auto] ">
