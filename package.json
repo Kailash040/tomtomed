@@ -1,7 +1,7 @@
 {
   "name": "tomtomad",
   "version": "0.1.0",
-  "proxy": "https://tomtomed.onrender.com/",
+  "proxy": "https://tomtomed-3nrb.onrender.com",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.7.18",

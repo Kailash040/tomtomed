@@ -65,7 +65,7 @@ const Login = () => {
     // toast.success("login SuccessFully");
     // console.log(loginUser());
     // console.log(data);
-    // navigate("/")
+    navigate("/")
   }
   // 
 

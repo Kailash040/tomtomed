@@ -120,11 +120,11 @@ const MainNavigation = () => {
     formData.append('image', image);
     formData.append("tag", tag);
     dispatch(addPosts(formData));
-    toast.success("Post Created SuccessFully");
+    // toast.success("Post Created SuccessFully");
 
     // setAddPost(false)
   }
-  const apiKey = process.env.BASEURL;
+  const apiKey = process.env.REACT_APP_API_KEY;
   console.log(`API Base URL: ${apiKey}`);
   return (<div className="font-roboto ">
     <p className="text-white text-[40px]">

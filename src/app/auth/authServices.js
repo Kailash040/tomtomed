@@ -3,7 +3,7 @@ import axios from 'axios';
 // for Login 1
 export const login = async (userData) => {
   try {
-    const response = await axios.post('https://tomtomed.onrender.com/api/v1/auth/login', userData,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/auth/login`, userData,
       { withCredentials: true, }
     );
     return response.data;
@@ -16,7 +16,7 @@ export const login = async (userData) => {
 // for signUp 1
 export const signUp = async (userData) => {
   try {
-    const response = await axios.post('https://tomtomed.onrender.com/api/v1/auth/register', userData,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/auth/register`, userData,
       { withCredentials: true, }
     );
     return response.data;
@@ -28,7 +28,7 @@ export const signUp = async (userData) => {
 // 
 export const logOutUser = async () => {
   try {
-    const response = await axios.get('https://tomtomed.onrender.com/api/v1/auth/logout',
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/auth/logout`,
       { withCredentials: true, }
     );
     console.log(response.data);
@@ -40,7 +40,7 @@ export const logOutUser = async () => {
 // 4
 export const getProfile = async () => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/auth/profile`
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/auth/profile`
       ,
       { withCredentials: true },
 
@@ -54,7 +54,7 @@ export const getProfile = async () => {
 // 5
 export const updateProfile = async (userData) => {
   try {
-    const response = await axios.put('https://tomtomed.onrender.com/api/v1/auth/editProfile'
+    const response = await axios.put(process.env.REACT_APP_API_KEY + `/api/v1/auth/editProfile`
       , userData,
       { withCredentials: true }
       ,
@@ -67,13 +67,13 @@ export const updateProfile = async (userData) => {
 // add post 6
 export const addPost = async (userData) => {
   try {
-    const response = await axios.post('https://tomtomed.onrender.com/api/v1/post/create-post', userData,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/post/create-post`, userData,
 
 
       { withCredentials: true, }
     );
     return response.data;
-    
+
   } catch (error) {
     throw error;
   }
@@ -81,7 +81,7 @@ export const addPost = async (userData) => {
 // 7
 export const getPost = async () => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/auth/myPosts`,
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/auth/myPosts`,
 
       { withCredentials: true, }
     );
@@ -94,7 +94,7 @@ export const getPost = async () => {
 // https://tomtomed.onrender.com/api/v1/post/getAllPost
 export const getAllUserPost = async () => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getAllPost`,
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/post/getAllPost`,
 
       { withCredentials: true, }
     );
@@ -106,7 +106,7 @@ export const getAllUserPost = async () => {
 // 9
 export const getAPost = async (_id, userData) => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getpost/${_id}`,
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/post/getpost/${_id}`,
       userData,
       { withCredentials: true, }
     );
@@ -119,7 +119,7 @@ export const getAPost = async (_id, userData) => {
 
 export const deletePost = async (_id) => {
   try {
-    const response = await axios.delete(`https://tomtomed.onrender.com/api/v1/post/delete/${_id}`,
+    const response = await axios.delete(process.env.REACT_APP_API_KEY + `/api/v1/post/delete/${_id}`,
 
       { withCredentials: true, }
     );
@@ -132,7 +132,7 @@ export const deletePost = async (_id) => {
 // 11
 export const likePost = async (userData, _id) => {
   try {
-    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/like/${_id}`, userData,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/post/like/${_id}`, userData,
 
       { withCredentials: true, }
     );
@@ -145,7 +145,7 @@ export const likePost = async (userData, _id) => {
 export const commentOnPost = async (_id, comment) => {
   // console.log("dfdfdfdfdf", _id, userData);
   try {
-    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/comment/${_id}`,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/post/comment/${_id}`,
       { comment: comment }
 
       ,
@@ -161,7 +161,7 @@ export const commentOnPost = async (_id, comment) => {
 // 
 export const getComments = async (postId, userData) => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/comments/${postId}`, userData,
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/post/comments/${postId}`, userData,
 
       { withCredentials: true, }
     );
@@ -173,7 +173,7 @@ export const getComments = async (postId, userData) => {
 // 14
 export const followAUser = async (_id, userData) => {
   try {
-    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/follow/${_id}`, userData,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/user/follow/${_id}`, userData,
 
       { withCredentials: true, }
     );
@@ -185,7 +185,7 @@ export const followAUser = async (_id, userData) => {
 // 15
 export const unFollowAUser = async (_id, userData) => {
   try {
-    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/unfollow/${_id}`, userData,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/user/unfollow/${_id}`, userData,
 
       { withCredentials: true, }
     );
@@ -197,7 +197,7 @@ export const unFollowAUser = async (_id, userData) => {
 // 16
 export const getAllFollowings = async () => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollowings`,
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/user/getAllFollowings`,
 
       { withCredentials: true, }
     );
@@ -209,7 +209,7 @@ export const getAllFollowings = async () => {
 // 17
 export const getAllFollowers = async () => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollower`,
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/user/getAllFollower`,
 
       { withCredentials: true, }
     );
@@ -223,7 +223,7 @@ export const getAllFollowers = async () => {
 export const replyOnComment = async (_id, comment) => {
   // console.log("dfdfdfdfdf", _id, userData);
   try {
-    const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/reply-comment/${_id}`,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/post/reply-comment/${_id}`,
       { comment: comment }
 
       ,
@@ -238,7 +238,7 @@ export const replyOnComment = async (_id, comment) => {
 //  19
 export const getAUser = async (_id) => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/get-user/${_id}`,
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/user/get-user/${_id}`,
 
       { withCredentials: true, }
     );
@@ -250,7 +250,7 @@ export const getAUser = async (_id) => {
 // search user 20
 export const searchTheUser = async (query) => {
   try {
-    const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/search?query=${query}`,
+    const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/user/search?query=${query}`,
 
       { withCredentials: true, }
     );
@@ -261,7 +261,7 @@ export const searchTheUser = async (query) => {
 };
 export const forgetPassword = async (email) => {
   try {
-    const response = await axios.post('https://tomtomed.onrender.com/api/v1/user/request-passwordreset', email,
+    const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/user/request-passwordreset`, email,
       { withCredentials: true, }
     );
     return response.data;
