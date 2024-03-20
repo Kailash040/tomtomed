@@ -124,7 +124,7 @@ const MainNavigation = () => {
 
     // setAddPost(false)
   }
-  const apiKey = process.env.BASE_URL;
+  const apiKey = process.env.BASEURL;
   console.log(`API Base URL: ${apiKey}`);
   return (<div className="font-roboto ">
     <p className="text-white text-[40px]">
