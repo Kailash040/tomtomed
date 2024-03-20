@@ -13,7 +13,8 @@ import { deleteAPostReducer } from './auth/deletePostSlice'
 import { likePostReducer } from "./auth/likePostSlice";
 import {followersReducer} from './auth/followerSlice';
 import  {aUserReducer} from './auth/getAUserSlice'
-import {searchUserReducer} from './auth/searchUserSlice'
+import {searchUserReducer} from './auth/searchUserSlice';
+import {forgetPasswordReducer} from './auth/forgetPasswordSlice'
 export const store = configureStore({
   reducer: {
     signUpAuth: signUpReducer,
@@ -29,6 +30,7 @@ export const store = configureStore({
     followAUser: followReducer,
     follows:followersReducer,
     aUser:aUserReducer,
-    searchUser:searchUserReducer
+    searchUser:searchUserReducer,
+    forgetPassword: forgetPasswordReducer
   },
 });

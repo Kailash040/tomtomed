@@ -1,16 +1,35 @@
-import React from "react";
+import { useDebugValue, useState } from "react";
+import axios from 'axios';
 
 import applestore from "../assets/postassets/applestore.png";
 import playstore from "../assets/postassets/playstore.png";
 import bg from '../assets/postassets/bgtom.png';
 import bgBottom from '../assets/postassets/bgtombotton.png'
-
+import { ToastContainer, toast } from 'react-toastify';
 import footer from '../assets/postassets/footerImage.png'
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import { forgetPasswords } from '../app/auth/forgetPasswordSlice'
 import forgetPassword from '../assets/Group 34044.png'
+import { useDispatch, useSelector } from "react-redux";
 const SignUp = () => {
+  const [email, setEmail] = useState("")
+  const navigate = useNavigate()
 
+  const data = useSelector((state) => state?.forgetPassword)
+  console.log(data);
+  const dispatch = useDispatch();
+  const handleRequest = async (e) => {
+    e.preventDefault();
+    // const response = await axios.post("https://tomtomed.onrender.com/api/v1/user/request-passwordreset", { email }, { withCredentials: true })
+    // console.log(response.status)
+    // if (response.status === 201) {
+    //   alert("Email send to you respective email address")
+    // }
+    // else {
+    //   toast.error(response.data.message)
+    // }
+    dispatch(forgetPasswords({ email }))
+  }
   return (
     <div className=" font-roboto  relative  h-[100vh]  mt-10 flex flex-col justify-between w-[1250px] max-xl:w-full  mx-[auto] ">
       <div className=" absolute ">
@@ -37,23 +56,27 @@ const SignUp = () => {
 
               <img src={forgetPassword} className="w-full h-full object-cover " alt="" />
             </div>
-            <form className="flex flex-col justify-between  items-center
-            ">
+            <form className="flex flex-col justify-between  items-center  
+            "  onSubmit={handleRequest} >
 
 
               <div className="username ">
                 <input
                   type="text"
-                  class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
+                  class="px-[18px] py-5 rounded-xl  text-white bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Enter Email "
+                  name="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
               <div className="username mt-3 max-xl:mt-6 ">
                 <button
-                  type="submit"
+
                   class="border  px-[18px] py-5 rounded-xl   w-[360px] text-white max-xl:pt-[14px] max-xl:pb-[15px] max-xl:h-[48px] max-xl:w-[340px] signUp "
                   placeholder="Password"
+
                 >
                   {" "}
                   Reset Password{" "}

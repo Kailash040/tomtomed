@@ -1123,7 +1123,7 @@ const Home = () => {
                           </div>
                           <div className="dp">
                             {
-                              data?.userProfile?.image ?  <img src={ data?.userProfile?.image} alt="user" className='w-[38px] h-[38px]' /> :<img src={userReply} alt="user" className='w-[38px] h-[38px]' />
+                              data?.userProfile?.image ?  <img src={ data?.userProfile?.image} alt="user" className='w-[38px] h-[38px] rounded-full ' /> :<img src={userReply} alt="user" className='w-[38px] h-[38px]' />
                             }
                           </div>
                         </div>

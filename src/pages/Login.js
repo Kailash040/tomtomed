@@ -141,7 +141,7 @@ const Login = () => {
               </div>
               <div className="username list-none mb-2 mt-2">
                 <li className="text-[#B68FE7]">
-                  <a href="">
+                  <a href="/forget-password">
                     Forgot  Password?
                   </a>
                 </li>

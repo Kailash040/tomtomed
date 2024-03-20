@@ -16,6 +16,8 @@ import profileImage from '../assets/Avatar.png'
 import { Editor } from 'primereact/editor';
 import { addPosts } from "../app/auth/addPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
+
 import { searchUser } from '../app/auth/searchUserSlice'
 const MainNavigation = () => {
   const [text, setText] = useState('');
@@ -23,7 +25,6 @@ const MainNavigation = () => {
   const [addPost, setAddPost] = useState(false);
   const [showArticlePage, setArticlePage] = useState(false)
   const [showThoughtPage, setShowThoughtPage] = useState(false)
-
   const [filterImage, setFilter] = useState(null);
   const [showEditOption, setShowEditOptions] = useState(false)
   const [showBrithnessPage, setShowBrithnessPage] = useState(false)
@@ -35,24 +36,24 @@ const MainNavigation = () => {
   const [query, setQuery] = useState('');
   const [tag, setTag] = useState([])
   const usertag = useSelector((state) => state?.searchUser?.data);
-  // console.log(setTag(usertag));
+  
+  console.log(usertag);
   const searchDispatch = useDispatch();
   // 
   const handleSearch = () => {
     searchDispatch(searchUser(query))
-    // if (query.trim() !== '') {
-    //   setTag([...tag, setQuery]);
-    //   setQuery(''); // Clear the search input after adding to history
-    // }
+
+    setTag([...tag, usertag]);
+    // setQuery(''); // Clear the search input after adding to history
+    console.log(tag);
   }
-  // console.log(tag);
   // 
   const [preview, setPreview] = useState('')
   // const postData = useSelector((state) => state.addPost)
   // console.log(postData);
-useEffect(()=>{
-  setTag(usertag)
-},[tag])
+  // useEffect(()=>{
+  //   setTag(usertag)
+  // },[tag])
   const dispatch = useDispatch();
 
   const handleShow = () => {
@@ -117,8 +118,11 @@ useEffect(()=>{
     const formData = new FormData();
     formData.append('description', description);
     formData.append('image', image);
-    formData.append("tag", tag)
+    formData.append("tag", tag);
     dispatch(addPosts(formData));
+    toast.success("Post Created SuccessFully");
+
+    // setAddPost(false)
   }
   return (<div className="font-roboto ">
     <div class="  flex items-center justify-between   pl-[60px] pr-[60px] pt-[40px] max-xl:px-3  max-xl:pt-2 font-roboto w-full max-xl:gap-0 max-xl:justify-between  "  >

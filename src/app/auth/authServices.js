@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// for Login
+// for Login 1
 export const login = async (userData) => {
   try {
     const response = await axios.post('https://tomtomed.onrender.com/api/v1/auth/login', userData,
@@ -13,7 +13,7 @@ export const login = async (userData) => {
   }
 };
 // 
-// for signUp
+// for signUp 1
 export const signUp = async (userData) => {
   try {
     const response = await axios.post('https://tomtomed.onrender.com/api/v1/auth/register', userData,
@@ -24,7 +24,7 @@ export const signUp = async (userData) => {
     throw error;
   }
 };
-// logOut
+// logOut 3
 // 
 export const logOutUser = async () => {
   try {
@@ -37,7 +37,7 @@ export const logOutUser = async () => {
     throw error;
   }
 };
-// 
+// 4
 export const getProfile = async () => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/auth/profile`
@@ -51,7 +51,7 @@ export const getProfile = async () => {
     throw error;
   }
 };
-// 
+// 5
 export const updateProfile = async (userData) => {
   try {
     const response = await axios.put('https://tomtomed.onrender.com/api/v1/auth/editProfile'
@@ -64,7 +64,7 @@ export const updateProfile = async (userData) => {
     throw error;
   }
 };
-// add post
+// add post 6
 export const addPost = async (userData) => {
   try {
     const response = await axios.post('https://tomtomed.onrender.com/api/v1/post/create-post', userData,
@@ -73,11 +73,12 @@ export const addPost = async (userData) => {
       { withCredentials: true, }
     );
     return response.data;
+    
   } catch (error) {
     throw error;
   }
 };
-// 
+// 7
 export const getPost = async () => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/auth/myPosts`,
@@ -89,7 +90,7 @@ export const getPost = async () => {
     throw error;
   }
 };
-// 
+// 8
 // https://tomtomed.onrender.com/api/v1/post/getAllPost
 export const getAllUserPost = async () => {
   try {
@@ -102,7 +103,7 @@ export const getAllUserPost = async () => {
     throw error;
   }
 };
-// 
+// 9
 export const getAPost = async (_id, userData) => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/post/getpost/${_id}`,
@@ -114,7 +115,7 @@ export const getAPost = async (_id, userData) => {
     throw error;
   }
 };
-// 
+// 10
 
 export const deletePost = async (_id) => {
   try {
@@ -128,7 +129,7 @@ export const deletePost = async (_id) => {
   }
 };
 // like post
-// 
+// 11
 export const likePost = async (userData, _id) => {
   try {
     const response = await axios.post(`https://tomtomed.onrender.com/api/v1/post/like/${_id}`, userData,
@@ -140,7 +141,7 @@ export const likePost = async (userData, _id) => {
     throw error;
   }
 };
-// https://tomtomed.onrender.com/api/v1/post/comment/
+// https://tomtomed.onrender.com/api/v1/post/comment/ 12
 export const commentOnPost = async (_id, comment) => {
   // console.log("dfdfdfdfdf", _id, userData);
   try {
@@ -155,7 +156,7 @@ export const commentOnPost = async (_id, comment) => {
     throw error;
   }
 };
-// 
+// 13
 // https://tomtomed.onrender.com/api/v1/post/comments/
 // 
 export const getComments = async (postId, userData) => {
@@ -169,7 +170,7 @@ export const getComments = async (postId, userData) => {
     throw error;
   }
 };
-// 
+// 14
 export const followAUser = async (_id, userData) => {
   try {
     const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/follow/${_id}`, userData,
@@ -181,7 +182,7 @@ export const followAUser = async (_id, userData) => {
     throw error;
   }
 };
-// 
+// 15
 export const unFollowAUser = async (_id, userData) => {
   try {
     const response = await axios.post(`https://tomtomed.onrender.com/api/v1/user/unfollow/${_id}`, userData,
@@ -193,7 +194,7 @@ export const unFollowAUser = async (_id, userData) => {
     throw error;
   }
 };
-// 
+// 16
 export const getAllFollowings = async () => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollowings`,
@@ -205,7 +206,7 @@ export const getAllFollowings = async () => {
     throw error;
   }
 };
-// 
+// 17
 export const getAllFollowers = async () => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/getAllFollower`,
@@ -217,7 +218,7 @@ export const getAllFollowers = async () => {
     throw error;
   }
 };
-// https://tomtomed.onrender.com/api/v1/post/reply-comment/
+// https://tomtomed.onrender.com/api/v1/post/reply-comment/ 18
 
 export const replyOnComment = async (_id, comment) => {
   // console.log("dfdfdfdfdf", _id, userData);
@@ -234,7 +235,7 @@ export const replyOnComment = async (_id, comment) => {
   }
 };
 // https://tomtomed.onrender.com/api/v1/user/get-user
-// 
+//  19
 export const getAUser = async (_id) => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/get-user/${_id}`,
@@ -246,7 +247,7 @@ export const getAUser = async (_id) => {
     throw error;
   }
 };
-// search user
+// search user 20
 export const searchTheUser = async (query) => {
   try {
     const response = await axios.get(`https://tomtomed.onrender.com/api/v1/user/search?query=${query}`,
@@ -254,6 +255,17 @@ export const searchTheUser = async (query) => {
       { withCredentials: true, }
     );
     return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+export const forgetPassword = async (email) => {
+  try {
+    const response = await axios.post('https://tomtomed.onrender.com/api/v1/user/request-passwordreset', email,
+      { withCredentials: true, }
+    );
+    return response.data;
+
   } catch (error) {
     throw error;
   }
