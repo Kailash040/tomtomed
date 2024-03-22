@@ -28,9 +28,13 @@ const SignUp = () => {
     // else {
     //   toast.error(response.data.message)
     // }
-    dispatch(forgetPasswords( email ))
+    dispatch(forgetPasswords( {email} ))
+    console.log(email);
+    setEmail("")
+
   }
   return (
+    <>
     <div className=" font-roboto  relative  h-[100vh]  mt-10 flex flex-col justify-between w-[1250px] max-xl:w-full  mx-[auto] ">
       <div className=" absolute ">
         <img src={bg} alt="" />
@@ -168,6 +172,7 @@ const SignUp = () => {
         <img src={footer} alt="" className=" h-[92px] w-full" />
       </div>
     </div>
+    </>
   );
 };
 export default SignUp;

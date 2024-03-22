@@ -31,11 +31,8 @@ const authSlice = createSlice({
             .addCase(forgetPasswords.fulfilled, (state, action) => {
 
                 state.isLoading = false;
-                // state.isAuthenticated = false;
-
                 state.data = action.payload;
-                state.error = false;
-                toast.success("Email send to you respective email address");
+                toast.success("Reset Password Link has been sent to your account.");
                 <ToastContainer />
 
             })
