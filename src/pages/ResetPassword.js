@@ -1,17 +1,46 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
 import applestore from "../assets/postassets/applestore.png";
 import playstore from "../assets/postassets/playstore.png";
 import bg from '../assets/postassets/bgtom.png';
 import bgBottom from '../assets/postassets/bgtombotton.png'
-
 import footer from '../assets/postassets/footerImage.png'
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
+import axios from 'axios'
 import forgetPassword from '../assets/Group 34044.png'
 import resetPassword from '../assets/Rectangle 23985 (1).png'
-const SignUp = () => {
 
+const SignUp = () => {
+  const navigate = useNavigate();
+  const [data, setData] = useState({
+    password: "",
+    cpassword: ""
+  })
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get('userId');
+  const token = urlParams.get('token');
+  useEffect(() => {
+    if (!token) {
+      console.log("No token");
+    } else {
+      verifyToken(token, userId);
+    }
+  }, []);
+
+  const verifyToken = async (token, userId) => {
+
+    const response = await axios.put("https://tomtomed.onrender.com/api/v1/user/resetpassword", { userId: userId, token: token }, { withCredentials: true });
+    console.log(response)
+  };
+  const handleChange = (e) => {
+    setData({ ...data, [e.target.name]: e.target.value })
+  }
+  const handlePasswordReset = async (e) => {
+    e.preventDefault();
+    const response = await axios.put("https://tomtomed.onrender.com/api/v1/user/changePassword", { userId, data }, { withCredentials: true })
+    if (response.status === 201) {
+      navigate("/login")
+    }
+  }
   return (
     <div className=" font-roboto  relative  h-[100vh]  mt-10 flex flex-col justify-between w-[1250px] max-xl:w-full  mx-[auto]  ">
       <div className=" absolute ">
@@ -31,7 +60,7 @@ const SignUp = () => {
 
             <p className="text-[24px] font-medium text-white mb-2 pt-2 text-center  max-xl:pt-[86px]    max-xl:mt-[0] ">
 
-            Reset Password{" "}
+              Reset Password{" "}
             </p>
             <p className="w-[400px]  text-center mb-5 mt-5 text-[#8F8F8F]	 ">Please enter your new password below. Make sure it's strong and unique to keep your account secure.</p>
             <div className="banner_container hidden max-xl:block max-xl:mb-[60px]  max-xl:w-[260px] max-xl:h-[214px] mb-5">
@@ -44,26 +73,31 @@ const SignUp = () => {
 
               <div className="username ">
                 <input
-                  type="text"
-                  class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
+                  type="password"
+                  class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Enter New Password "
+                  name="password"
+                  value={data.password}
+                  onChange={handleChange}
                 />
               </div>
               <div className="username mt-3 ">
                 <input
-                  type="text"
-                  class="px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
+                  type="password"
+                  class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Re-enter New Password "
+                  name="cpassword"
+                  value={data.cpassword}
+                  onChange={handleChange}
                 />
               </div>
               <div className="username mt-3 max-xl:mt-6 ">
                 <button
+                  onClick={handlePasswordReset}
                   type="submit"
                   class="border  px-[18px] py-5 rounded-xl   w-[360px] text-white max-xl:pt-[14px] max-xl:pb-[15px] max-xl:h-[48px] max-xl:w-[340px] signUp "
-                  placeholder="Password"
                 >
-                  {" "}
-                  Confirm{" "}
+                  Confirm
                 </button>
               </div>
 
