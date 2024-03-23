@@ -28,7 +28,7 @@ const SignUp = () => {
 
   const verifyToken = async (token, userId) => {
 
-    const response = await axios.put("https://tomtomed.onrender.com/api/v1/user/resetpassword", { userId: userId, token: token }, { withCredentials: true });
+    const response = await axios.put("https://tomtomed-3nrb.onrender.com/api/v1/user/resetpassword", { userId: userId, token: token }, { withCredentials: true });
     console.log(response)
   };
   const handleChange = (e) => {
@@ -36,7 +36,7 @@ const SignUp = () => {
   }
   const handlePasswordReset = async (e) => {
     e.preventDefault();
-    const response = await axios.put("https://tomtomed.onrender.com/api/v1/user/changePassword", { userId, data }, { withCredentials: true })
+    const response = await axios.put("https://tomtomed-3nrb.onrender.com/api/v1/user/changePassword", { userId, data }, { withCredentials: true })
     if (response.status === 201) {
       navigate("/login")
     }
