@@ -15,11 +15,11 @@ import repostFeedUser from "../assets/Rectangle 587.png";
 import userReply from '../assets/Ellipse 219.png'
 
 import MainNavigation from '../components/MainNavigation';
+import moment from "moment";
 
 import { useParams } from 'react-router-dom';
 import { getAPostData } from '../app/auth/getPostSlice'
 
-import dayjs from 'dayjs';
 import { likeAPost } from '../app/auth/likePostSlice'
 import { commentPost, getUserComment, replyPostComment } from '../app/auth/commentOnPostSlice';
 
@@ -59,6 +59,12 @@ const Home = () => {
   const dispatchLike = useDispatch();
   const handlelike = (_id) => {
     dispatchLike(likeAPost(_id))
+    // toast("Post like successfully")
+  }
+  // 
+  const dispatchCommentLike = useDispatch();
+  const handleCommentlike = (_id) => {
+    dispatchCommentLike(likeAPost(_id))
     // toast("Post like successfully")
   }
   // 
@@ -102,7 +108,7 @@ const Home = () => {
 
   // 
   const allComment = useSelector((state) => state?.commentPost?.data?.data)
-  console.log(  "all comment",  allComment);
+  console.log("all comment", allComment);
   // const allReply = useSelector((state) => (state?.commentPost?.data?.data));
   // console.log(allReply);
   const getCommentDispatch = useDispatch();
@@ -240,7 +246,7 @@ const Home = () => {
             {/*  */}
             <div className="post_item">
               {
-                aUserData?.slice(0, 1)?.map((data, id) => (
+                aUserData?.map((data, id) => (
 
                   <div key={id} className="post  pl-[50px] pr-[50px] max-xl:pl-0 max-xl:pr-0 border-x-2 border-[#171717] border-b-2 pb-5 max-xl:border-0 ">
                     <div className="post_name_userName_pic flex justify-between">
@@ -1070,7 +1076,8 @@ const Home = () => {
                         <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                       </div>
                     </div>
-                    <p className="time text-sm text-[#8F8F8F] mt-3 max-lg:text-sm" >29 mins ago</p>
+                    <p className="time text-sm text-[#8F8F8F] mt-3 max-lg:text-sm" >{moment(data?.post?.createdAt).fromNow()}
+                    </p>
                   </div>
                 ))
               }
@@ -1119,17 +1126,18 @@ const Home = () => {
                         <div className="details_user flex justify-between">
                           <div className="name">
                             <p className="name font-bold text-white text-base max-sm:text-sm	">{data?.userProfile?.name}</p>
-                            <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs'>2m ago</p>
+                            <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs'>                       {moment(data?.comment?.createdAt).fromNow()}
+</p>
                           </div>
                           <div className="dp">
                             {
-                              data?.userProfile?.image ?  <img src={ data?.userProfile?.image} alt="user" className='w-[38px] h-[38px] rounded-full ' /> :<img src={userReply} alt="user" className='w-[38px] h-[38px]' />
+                              data?.userProfile?.image ? <img src={data?.userProfile?.image} alt="user" className='w-[38px] h-[38px] rounded-full ' /> : <img src={userReply} alt="user" className='w-[38px] h-[38px]' />
                             }
                           </div>
                         </div>
                         <div className="comment w-[540px] max-sm:w-full ">
                           <p className='text-[#F5F5F5] font-normal leading-5	max-sm:text-sm	'  >   {
-                            data?.comment?.comment ? <>{ data?.comment?.comment}</> : <>comment</>
+                            data?.comment?.comment ? <>{data?.comment?.comment}</> : <>comment</>
                           }  </p>
                         </div>
                         <div className="post_status flex  justify-between  mt-2">
@@ -1145,7 +1153,17 @@ const Home = () => {
                               <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">{data?.comment?.replies?.length}</p>
 
                             </div>
-                            <button className="like_status  flex  gap-1 items-center" >
+                            {/* ..... */}
+                             <button className="like_status  flex  gap-1 items-center  hidden" onClick={() => handleCommentlike(data?.comment?._id)}>
+                          {
+                            data?.comment?.likes?.length === 0 ? <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /> : <>
+                              <Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" />
+                            </>
+                          }
+                          <p className="text-[#8F8F8F] text-sm font-medium">{data?.comment?.likes?.length}</p>
+                        </button>
+                        {/* ..... */}
+                            <button className="like_status  flex  gap-1 items-center " >
                               {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
                               <Icon icon="icon-park-outline:like" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
                               <p className="text-[#8F8F8F] text-sm font-medium max-sm:text-xs">{data?.comment?.likes?.length}</p>

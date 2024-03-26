@@ -12,25 +12,31 @@ import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
 // 
+import moment from "moment";
+
+import { ToastContainer, toast } from 'react-toastify';
+
 import { ProfileData } from "../app/auth/ProfileSlice";
 
 import { Link } from 'react-router-dom';
 
-import dayjs from 'dayjs';
 import { likeAPost } from '../app/auth/likePostSlice'
 import { FollowUser, unFollowUser } from '../app/auth/followUserSlice'
 import { getAllPost } from "../app/auth/getPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteAPost } from '../app/auth/deletePostSlice'
+
 const Home = () => {
+  const [followIcons,setFollowsIcons] = useState(true)
   const allUserData = useSelector((state) => state?.getPost?.data?.allPost);
-  // console.log(allUserData);
+  console.log("all userData", allUserData);
   const dispatchuser = useDispatch();
   useEffect(() => {
     dispatchuser(ProfileData());
     // setProfileUserData(profileUserData)
   }, [])
   const myId = useSelector((state) => state?.getProfile?.data?.data?._id);
-  // console.log("my Id", myId);
+  console.log("my Id", myId);
   // const allreducers = useSelector((state) => state)
   // console.log(allreducers);
   const dispatch = useDispatch()
@@ -57,20 +63,28 @@ const Home = () => {
     dispatchLike(likeAPost(_id, useData))
     // toast("Post like successfully")
   }
-  const followerDispatch = useDispatch()
+
+  const followerDispatch = useDispatch();
   const handleFollow = (_id) => {
     followerDispatch(FollowUser(_id))
+    setFollowsIcons(followIcons)
   }
   // 
   const unFolloweDispatch = useDispatch();
   const handleUnfollow = (_id) => {
     unFolloweDispatch(unFollowUser(_id))
+    setFollowsIcons(followIcons)
   }
   // 
-
+  const dispatchDeleteUser = useDispatch();
+  const handleDelete = (_id) => {
+    dispatchDeleteUser(deleteAPost(_id))
+    toast("Post Deleted successfully")
+  }
   // 
   return (
     <>
+      <ToastContainer />
 
       <div class="  flex pl-[60px] pr-[60px]   font-roboto min-[1440px]:justify-between  max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
         <div className="left_section flex   ">
@@ -210,7 +224,7 @@ const Home = () => {
                             </span>{" "}
                           </p>
                           <p className="text-[#8F8F8F] max-xl:text-sm"> {
-                            data?.user?.username ? <> {data?.user?.username}</> : <>username</>
+                            data?.user?.username ? <> @{data?.user?.username}</> : <>username</>
                           }</p>
                         </div>
                         <div className="photo flex  gap-6">
@@ -219,27 +233,61 @@ const Home = () => {
 
                           {/*  */}
                           {
-                            data?.user?._id   === myId ?    <Link to={`/user`} >
+                            data?.user?._id === myId ? <Link to={`/user`} >
 
-                            {
-                              data?.user?.image ? <>  <img src={data?.user?.image} alt="photo" className="w-[48px] h-[48px] rounded-full" /></> : <><img src={userImage} alt="photo" className="w-[48px] h-[48px] rounded-full" /></>
-                            }
-                          </Link> : 
-                          <Link to={`/user/${data?.post?.userId}`} >
+                              {
+                                data?.user?.image ? <>  <img src={data?.user?.image} alt="photo" className="w-[48px] h-[48px] rounded-full" /></> : <><img src={userImage} alt="photo" className="w-[48px] h-[48px] rounded-full" /></>
+                              }
+                            </Link> :
+                              <Link to={`/user/${data?.post?.userId}`} >
 
-                            {
-                              data?.user?.image ? <>  <img src={data?.user?.image} alt="photo" className="w-[48px] h-[48px] rounded-full" /></> : <><img src={userImage} alt="photo" className="w-[48px] h-[48px] rounded-full" /></>
-                            }
-                          </Link>
+                                {
+                                  data?.user?.image ? <>  <img src={data?.user?.image} alt="photo" className="w-[48px] h-[48px] rounded-full" /></> : <><img src={userImage} alt="photo" className="w-[48px] h-[48px] rounded-full" /></>
+                                }
+                              </Link>
                           }
-                         
+
                           {/*  */}
 
 
                           {/*  */}
                           <div className="account_section_item  relative" >
                             {
-                              data?.user?._id === myId ? <div  className="relative top-[15px]"><Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white     bottom-[10px]" /></div> :
+                              data?.user?._id === myId ? <details className="dropdown">
+                                <summary className="">  <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   relative bottom-[10px]" /></summary>
+
+                                <ul className=" menu dropdown-content z-[1] ">
+                                  <div className="report_block_mute absolute  list-none bg-[#141414] w-[200px] flex flex-col items-center py-6 px-[31px] rounded-xl	right-2 ">
+
+                                    <div className="option_div  flex flex-col gap-6">
+
+                                      <div className="flex gap-[18px]">
+                                        <Icon icon="solar:pin-outline" className="w-6 h-6 text-white" />
+                                        <li className="text-lg text-white">Pin</li>
+                                      </div>
+                                      <div className="flex gap-[18px]">
+                                        <Icon icon="clarity:eye-hide-line" className="w-6 h-6 text-white" />
+
+                                        <li className="text-lg text-white">Hide</li>
+                                      </div>
+                                      <button className="flex gap-[18px] " onClick={() => handleDelete(data?.post?._id)}>
+                                        <Icon icon="fluent:delete-24-regular" className="w-6 h-6 text-[#FB6363]" />
+                                        <li className="text-lg text-[#FB6363]">Delete</li>
+                                      </button>
+                                      <button className="  gap-[18px] hidden " onClick={() => handleFollow(data?.user?._id)}>
+                                        <Icon icon="typcn:user-add-outline" className="w-6 h-6 text-[#FB6363]" />
+                                        <li className="text-lg text-[#FB6363]">follow</li>
+                                      </button>
+                                      <button className=" gap-[18px]  hidden" onClick={() => handleUnfollow(data?.user?._id)}>
+                                        <Icon icon="typcn:user-add-outline" className="w-6 h-6 text-[#FB6363]" />
+
+                                        <li className="text-lg text-[#FB6363]">unfollow</li>
+                                      </button>
+                                    </div>
+
+                                  </div>
+                                </ul>
+                              </details> :
                                 <details className="dropdown">
                                   <summary className="">  <Icon icon="mingcute:more-2-line" className="w-5 h-6 text-white   relative bottom-[10px]" /></summary>
 
@@ -301,9 +349,8 @@ const Home = () => {
                       <div className="post">
                         <p className="description  text-[#FFFFFF] font-normal mt-4 mb-4 max-xl:text-sm max-xl:mt-3 max-xl:mb-3">
                           {" "}
-                          {
-                            data?.post?.description ? <> {data?.post?.description}</> : <>description</>
-                          }
+                          {data?.post?.description}
+
                         </p>
                         <p className="text-[#B39DCF] mb-3 max-xl:text-sm">
                           #cats #lovecats #adorable{" "}
@@ -328,7 +375,7 @@ const Home = () => {
                         <div className="post_status flex gap-4">
                           <div className="like_status flex  gap-1 items-center">
                             <button
-                              onClick={handleShowComment}
+                            // onClick={handleShowComment}
                             >
 
                               <BiMessageAlt className="w-6 h-6 text-white	" />
@@ -1054,20 +1101,30 @@ const Home = () => {
                             <Icon icon="grommet-icons:view" className="w-6 h-6 text-white	" />
                             <p className="text-[#8F8F8F] text-sm font-medium">34</p>
                           </div>
-                {
-                  data?.user?._id === myId ?  <> </> :
-                            <div className="like_status flex  gap-1 items-center">
-                              {/* <Icon icon="grommet-icons:view" /> */}
-                              <Icon icon="typcn:user-add-outline" className="w-6 h-6 text-white	" />
-                              {/* <p className="text-[#8F8F8F] text-sm font-medium">34</p> */}
-                            </div>
-                }
+                          {
+                            data?.user?._id === myId ? <> </> :
+                              <div className="like_status flex  gap-1 items-center">
+                                {/* <Icon icon="grommet-icons:view" /> */}
+
+                                <button onClick={() => handleFollow(data?.user?._id)}  className="text-xs text-white">
+Follow
+                                </button>  
+                                <button onClick={() => handleUnfollow(data?.user?._id)} className="text-xs text-white">
+
+Unfollow
+                                </button>
+
+                              </div>
+                          }
                         </div>
                         <div className="post_status">
                           <Icon icon="solar:bookmark-outline" className="w-6 h-6 text-white" />
                         </div>
                       </div>
-                      <p className="time text-sm text-[#8F8F8F] mt-3 max-lg:text-sm" >29 mins ago</p>
+                      <p className="time text-sm text-[#8F8F8F] mt-3 max-lg:text-sm" >
+                        {moment(data?.post?.createdAt).fromNow()}
+
+                      </p>
                     </div>
                   ))
                 }

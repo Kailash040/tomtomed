@@ -117,7 +117,7 @@ const SignUp = () => {
                 {errors.username && <span className="text-[red]" >username is required</span>}
               </div>
               <div className="username mb-2 max-xl:mb-[18px] flex flex-col">
-                <input type="email" id="contact" placeholder="Email or phone" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
+                <input type="email" id="contact" placeholder="Email" class="text-white px-[18px] py-5 rounded-xl bg-[#101010] w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   {...register("email", { required: true })}
                 />
                 {errors.email && <span className="text-[red]" >email is required</span>}

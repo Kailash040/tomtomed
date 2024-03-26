@@ -270,3 +270,4 @@ export const forgetPassword = async (email) => {
     throw error;
   }
 };
+// reset password

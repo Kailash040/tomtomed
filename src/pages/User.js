@@ -26,6 +26,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllFollowing, getAllFollower } from '../app/auth/followUserSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import moment from"moment";
 
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
@@ -390,7 +391,7 @@ const Profile = () => {
 
                       <p className="mt-2 text-lg	text-white max-xl:text-sm max-xl:mt-2  ">
                         {
-                          item?.username ? <>{item?.username}</> : "username"
+                          item?.username ? <>@{item?.username}</> : "username"
                         }
 
                       </p>
@@ -639,7 +640,7 @@ const Profile = () => {
                                         </span>{" "}
                                       </p>
                                       <p className="text-[#8F8F8F] max-xl:text-sm">
-                                        {data?.username}
+                                        @{ data?.username}
                                       </p>
                                     </div>
 
@@ -777,7 +778,7 @@ const Profile = () => {
                                 </div>
                               </div>
                               <p className="text-[#8F8F8F]  mt-[13px] ">
-                                29 mins ago
+                              {moment(item?.post?.createdAt).fromNow()}
                               </p>
                             </div>
 

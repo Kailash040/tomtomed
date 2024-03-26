@@ -13,6 +13,7 @@ import { Icon } from '@iconify/react';
 import imagesave from '../assets/Rectangle 599.png'
 import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
+import moment from"moment";
 
 // 
 import { likeAPost } from '../app/auth/likePostSlice'
@@ -551,7 +552,7 @@ const SingleUser = () => {
                                                                     </div>
                                                                 </div>
                                                                 <p className="text-[#8F8F8F]  mt-[13px] ">
-                                                                    29 mins ago
+                                                                {moment(item?.post?.createdAt).fromNow()}
                                                                 </p>
                                                             </div>
 
