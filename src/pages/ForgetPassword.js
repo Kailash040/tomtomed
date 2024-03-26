@@ -12,29 +12,33 @@ import { forgetPasswords } from '../app/auth/forgetPasswordSlice'
 import forgetPassword from '../assets/Group 34044.png'
 import { useDispatch, useSelector } from "react-redux";
 const SignUp = () => {
-  const [email, setEmail] = useState("")
   const navigate = useNavigate()
+  const [email, setEmail] = useState("")
 
   const data = useSelector((state) => state?.forgetPassword)
   console.log(data);
   const dispatch = useDispatch();
   const handleRequest = async (e) => {
     e.preventDefault();
-    // const response = await axios.post("https://tomtomed.onrender.com/api/v1/user/request-passwordreset", { email }, { withCredentials: true })
-    // console.log(response.status)
+    // const response = await axios.post("https://tomtomed-3nrb.onrender.com/api/v1/user/request-passwordreset", { email }, { withCredentials: true })
+    // // console.log(response.status)
     // if (response.status === 201) {
-    //   alert("Email send to you respective email address")
+    //   toast.success("Email send to you respective email address")
     // }
-    // else {
-    //   toast.error(response.data.message)
+    // // else {  
+    // //   toast.error(response.data.message)
+    // // }
+    // if(response.status === 404){
+    //   toast.error("Edfdfd")
+
     // }
     dispatch(forgetPasswords({ email }))
     console.log(email);
-    setEmail("")
-
+    // setEmail("")
   }
   return (
     <>
+    <ToastContainer/>
       <div className=" font-roboto  relative  h-[100vh]  mt-10 flex flex-col justify-between w-[1250px] max-xl:w-full  mx-[auto] ">
         <div className=" absolute ">
           <img src={bg} alt="" />

@@ -66,6 +66,8 @@ const authSlice = createSlice({
         builder.addCase(FollowUser.fulfilled, (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
+            console.log("follow a user",state.data);
+
         })
         builder.addCase(FollowUser.rejected, (state, action) => {
             console.log("Error", action.payload);
@@ -73,10 +75,12 @@ const authSlice = createSlice({
         })
         builder.addCase(unFollowUser.pending, (state, action) => {
             state.isLoading = true;
+            
         })
         builder.addCase(unFollowUser.fulfilled, (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
+            console.log("unfollow unfollow",state.data);
         })
         builder.addCase(unFollowUser.rejected, (state, action) => {
             console.log("Error", action.payload);

@@ -77,7 +77,7 @@ const Profile = () => {
 
   //  
   const userData = useSelector((state) => [state?.getProfile?.data?.data]);
-  // console.log("profile Data", userData)
+  console.log("profile Data", userData)
 
   // 
   // 
@@ -197,9 +197,9 @@ const Profile = () => {
   }, [getPostData, dispatchLike])
   // 
   const followings = useSelector((state) => state?.followAUser?.data?.data)
-  console.log(followings)
+  console.log("followings",followings)
   const followers = useSelector((state) => state?.follows?.data?.data)
-  console.log(followers);
+  console.log("followers",followers);
   const getFollowing = useDispatch();
   useEffect(() => {
     getFollowing(getAllFollowing())
@@ -867,7 +867,8 @@ const Profile = () => {
                             <p className="text-sm text-[#8F8F8F]">{data?.username}</p>
                           </div>
                         </div>
-                        <div className="child">
+                        <div className="child flex gap-6 ">
+                            <div className="followers_child  text-[#7D4CFF] text-base">Follow back</div>
                           <div className="followers_child flex gap-[18px] items-center relative">
 
                             <button onClick={handleAction}>
@@ -881,7 +882,6 @@ const Profile = () => {
                               </div>
                             } */}
                           </div>
-                          {/* <div className="followers_child"></div> */}
                         </div>
                       </div>
                     ))

@@ -39,6 +39,7 @@ const authSlice = createSlice({
             .addCase(forgetPasswords.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = true;
+                toast.error("mail address not found.");
             });
     },
 });

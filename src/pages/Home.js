@@ -25,9 +25,10 @@ import { FollowUser, unFollowUser } from '../app/auth/followUserSlice'
 import { getAllPost } from "../app/auth/getPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAPost } from '../app/auth/deletePostSlice'
+import { getAllFollowing, getAllFollower } from '../app/auth/followUserSlice'
 
 const Home = () => {
-  const [followIcons,setFollowsIcons] = useState(true)
+  // const [followIcons, setFollowsIcons] = useState(true)
   const allUserData = useSelector((state) => state?.getPost?.data?.allPost);
   console.log("all userData", allUserData);
   const dispatchuser = useDispatch();
@@ -37,13 +38,25 @@ const Home = () => {
   }, [])
   const myId = useSelector((state) => state?.getProfile?.data?.data?._id);
   console.log("my Id", myId);
-  // const allreducers = useSelector((state) => state)
-  // console.log(allreducers);
+  const getFollowing = useDispatch();
+  useEffect(() => {
+    getFollowing(getAllFollowing())
+  }, [])
+  // 
+  const myProfileFollower = useSelector((state) => state?.follows?.data?.data);
+  console.log("myProfileFollowers", myProfileFollower);
+  const getFollower = useDispatch();
+  useEffect(() => {
+    getFollower(getAllFollower())
+  }, [])
+  // 
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllPost());
 
   }, [])
+  // 
+
   // console.log();
   const [showComment, setShowComment] = useState(false)
 
@@ -63,23 +76,24 @@ const Home = () => {
     dispatchLike(likeAPost(_id, useData))
     // toast("Post like successfully")
   }
-
+  const follow = useSelector((state) => state?.followAUser);
+  console.log("follow a user", follow);
   const followerDispatch = useDispatch();
   const handleFollow = (_id) => {
     followerDispatch(FollowUser(_id))
-    setFollowsIcons(followIcons)
+    // setFollowsIcons(followIcons)
   }
   // 
   const unFolloweDispatch = useDispatch();
   const handleUnfollow = (_id) => {
     unFolloweDispatch(unFollowUser(_id))
-    setFollowsIcons(followIcons)
+    // setFollowsIcons(followIcons)
   }
   // 
   const dispatchDeleteUser = useDispatch();
   const handleDelete = (_id) => {
     dispatchDeleteUser(deleteAPost(_id))
-    toast("Post Deleted successfully")
+    toast("Post Deleted successfully");
   }
   // 
   return (
@@ -1102,17 +1116,22 @@ const Home = () => {
                             <p className="text-[#8F8F8F] text-sm font-medium">34</p>
                           </div>
                           {
-                            data?.user?._id === myId ? <> </> :
+                            data?.user?._id === myId ?
+                              <> </> :
                               <div className="like_status flex  gap-1 items-center">
                                 {/* <Icon icon="grommet-icons:view" /> */}
+                                <></>
 
-                                <button onClick={() => handleFollow(data?.user?._id)}  className="text-xs text-white">
-Follow
-                                </button>  
-                                <button onClick={() => handleUnfollow(data?.user?._id)} className="text-xs text-white">
+                                {/* <p>{data?.user?._id}</p> */}
 
-Unfollow
+
+                                {/*  */}
+
+                                <button onClick={() => handleUnfollow(data?.user?._id)} className="text-xs text-white">  unFollow
                                 </button>
+                                <button onClick={() => handleFollow(data?.user?._id)} className="text-xs text-white"> Follow
+                                </button>
+
 
                               </div>
                           }

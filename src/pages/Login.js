@@ -22,9 +22,9 @@ import { useNavigate } from 'react-router-dom'
 import { useForm } from "react-hook-form"
 
 const Login = () => {
+  const navigate = useNavigate();
 
   /////////////////////
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   // const userData = useSelector((state) => state?.loginAuth?.data?.success);
   // console.log(userData)
