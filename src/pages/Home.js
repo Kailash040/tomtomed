@@ -25,21 +25,21 @@ import { getAllFollowing, getAllFollower } from '../app/auth/followUserSlice'
 const Home = () => {
   const allUserData = useSelector((state) => state?.getPost?.data?.allPost);
   const reversedItems = allUserData?.slice()?.reverse();
-  console.log("reversed items", reversedItems);
+  // console.log("reversed items", reversedItems);
   const dispatchuser = useDispatch();
   useEffect(() => {
     dispatchuser(ProfileData());
     // setProfileUserData(profileUserData)
   }, [])
   const myId = useSelector((state) => state?.getProfile?.data?.data?._id);
-  console.log("my Id", myId);
+  // console.log("my Id", myId);
   const getFollowing = useDispatch();
   useEffect(() => {
     getFollowing(getAllFollowing())
   }, [])
   // 
   const myProfileFollower = useSelector((state) => state?.follows?.data?.data);
-  console.log("myProfileFollowers", myProfileFollower);
+  // console.log("myProfileFollowers", myProfileFollower);
   const getFollower = useDispatch();
   useEffect(() => {
     getFollower(getAllFollower())
@@ -68,7 +68,7 @@ const Home = () => {
     // toast("Post like successfully")
   }
   const follow = useSelector((state) => state?.followAUser);
-  console.log("follow a user", follow);
+  // console.log("follow a user", follow);
   const followerDispatch = useDispatch();
   const handleFollow = (_id) => {
     followerDispatch(FollowUser(_id))
@@ -84,7 +84,6 @@ const Home = () => {
   const dispatchDeleteUser = useDispatch();
 
   const dispatch = useDispatch();
-  const getList = () => { }
   useEffect(() => {
     dispatch(getAllPost());
 
