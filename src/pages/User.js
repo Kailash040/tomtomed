@@ -26,7 +26,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllFollowing, getAllFollower } from '../app/auth/followUserSlice'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import moment from"moment";
+import moment from "moment";
 
 // import { BrowserRouter as Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
 const Profile = () => {
@@ -182,7 +182,7 @@ const Profile = () => {
     toast("Post like successfully")
   }
   // 
- 
+
   const getProfile = useSelector((state) => [state?.getPost?.data?.profile]);
 
   console.log(" get profile", getProfile);
@@ -197,9 +197,9 @@ const Profile = () => {
   }, [getPostData, dispatchLike])
   // 
   const followings = useSelector((state) => state?.followAUser?.data?.data)
-  console.log("followings",followings)
+  console.log("followings", followings)
   const followers = useSelector((state) => state?.follows?.data?.data)
-  console.log("followers",followers);
+  console.log("followers", followers);
   const getFollowing = useDispatch();
   useEffect(() => {
     getFollowing(getAllFollowing())
@@ -640,7 +640,7 @@ const Profile = () => {
                                         </span>{" "}
                                       </p>
                                       <p className="text-[#8F8F8F] max-xl:text-sm">
-                                        @{ data?.username}
+                                        @{data?.username}
                                       </p>
                                     </div>
 
@@ -778,7 +778,7 @@ const Profile = () => {
                                 </div>
                               </div>
                               <p className="text-[#8F8F8F]  mt-[13px] ">
-                              {moment(item?.post?.createdAt).fromNow()}
+                                {moment(item?.post?.createdAt).fromNow()}
                               </p>
                             </div>
 
@@ -860,7 +860,7 @@ const Profile = () => {
                             <p className="text-[#2A2A2A] flex">
                               {" "}
                               {
-                                data?.name  ? <>{data?.name}</>  : "name"
+                                data?.name ? <>{data?.name}</> : "name"
                               }
                               <img src={verifyTik} alt="verify" />
                             </p>
@@ -868,7 +868,7 @@ const Profile = () => {
                           </div>
                         </div>
                         <div className="child flex gap-6 ">
-                            <div className="followers_child  text-[#7D4CFF] text-base">Follow back</div>
+                          <div className="followers_child  text-[#7D4CFF] text-base">Follow back</div>
                           <div className="followers_child flex gap-[18px] items-center relative">
 
                             <button onClick={handleAction}>
@@ -937,112 +937,112 @@ const Profile = () => {
               )}
             </div>
             <div className="trending_suggestion max-xl:hidden sticky top-0">
-              <div  className="sticky top-0">
+              <div className="sticky top-0">
 
-              
-              <div className="right_section flex">
-                <div className="trending w-[320px]	 max-xl:hidden">
-                  <div>
-                    <div className="news_section flex justify-between rounded-xl ">
-                      <p className="text-xl text-white font-semibold">Trending</p>
-                      <button className="text-[#B68FE7] text-base	 font-medium">
-                        See All
-                      </button>
-                    </div>
-                    <div className="news_trend rounded-xl bg-newbgcolor mt-2">
-                      <div className="news_trend   pt-3 pb-3 pl-3 pr-3 border-b-2 border-[#313131] ">
-                        <div className="new_trend flex justify-between items-center">
-                          <p className="text-base font-normal text-white">
-                            #Cristiano_Ronaldos
-                          </p>
-                          <p className="text-sm text-[#8F8F8F] font-normal	">
-                            {" "}
-                            10K Posts
-                          </p>
-                        </div>
-                        <div className="new_trend">
-                          <p className="text-base font-normal text-[#8F8F8F]">
-                            Sports{" "}
-                          </p>
-                        </div>
-                      </div>
-                      {/*  */}
-                      <div className="news_trend   pt-3 pb-3 pl-3 pr-3 border-b-2 border-[#313131]">
-                        <div className="new_trend flex justify-between items-center">
-                          <p className="text-base font-normal text-white">
-                            #Cristiano_Ronaldos
-                          </p>
-                          <p className="text-sm text-[#8F8F8F] font-normal	">
-                            {" "}
-                            10K Posts
-                          </p>
-                        </div>
-                        <div className="new_trend">
-                          <p className="text-base font-normal text-[#8F8F8F]">
-                            Sports{" "}
-                          </p>
-                        </div>
-                      </div>
-                      {/*  */}
-                      <div className="news_trend   pt-3 pb-3 pl-3 pr-3 ">
-                        <div className="new_trend flex justify-between items-center">
-                          <p className="text-base font-normal text-white">
-                            #Cristiano_Ronaldos
-                          </p>
-                          <p className="text-sm text-[#8F8F8F] font-normal	">
-                            {" "}
-                            10K Posts
-                          </p>
-                        </div>
-                        <div className="new_trend">
-                          <p className="text-base font-normal text-[#8F8F8F]">
-                            Sports{" "}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className=" w-[320px] mt-10" >
 
-                <div className="news_section flex justify-between items-center">
-                  <p className="text-xl text-white font-semibold">Suggestions</p>
-                  <button className="text-[#B68FE7] text-base	 font-medium">
-                    See All
-                  </button>
-                </div>
-                <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
-                  <div className="img_name flex items-center gap-3 ">
-                    <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
-                    <div className="name_photo">
-                      <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
-                      <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
+                <div className="right_section flex">
+                  <div className="trending w-[320px]	 max-xl:hidden">
+                    <div>
+                      <div className="news_section flex justify-between rounded-xl ">
+                        <p className="text-xl text-white font-semibold">Trending</p>
+                        <button className="text-[#B68FE7] text-base	 font-medium">
+                          See All
+                        </button>
+                      </div>
+                      <div className="news_trend rounded-xl bg-newbgcolor mt-2">
+                        <div className="news_trend   pt-3 pb-3 pl-3 pr-3 border-b-2 border-[#313131] ">
+                          <div className="new_trend flex justify-between items-center">
+                            <p className="text-base font-normal text-white">
+                              #Cristiano_Ronaldos
+                            </p>
+                            <p className="text-sm text-[#8F8F8F] font-normal	">
+                              {" "}
+                              10K Posts
+                            </p>
+                          </div>
+                          <div className="new_trend">
+                            <p className="text-base font-normal text-[#8F8F8F]">
+                              Sports{" "}
+                            </p>
+                          </div>
+                        </div>
+                        {/*  */}
+                        <div className="news_trend   pt-3 pb-3 pl-3 pr-3 border-b-2 border-[#313131]">
+                          <div className="new_trend flex justify-between items-center">
+                            <p className="text-base font-normal text-white">
+                              #Cristiano_Ronaldos
+                            </p>
+                            <p className="text-sm text-[#8F8F8F] font-normal	">
+                              {" "}
+                              10K Posts
+                            </p>
+                          </div>
+                          <div className="new_trend">
+                            <p className="text-base font-normal text-[#8F8F8F]">
+                              Sports{" "}
+                            </p>
+                          </div>
+                        </div>
+                        {/*  */}
+                        <div className="news_trend   pt-3 pb-3 pl-3 pr-3 ">
+                          <div className="new_trend flex justify-between items-center">
+                            <p className="text-base font-normal text-white">
+                              #Cristiano_Ronaldos
+                            </p>
+                            <p className="text-sm text-[#8F8F8F] font-normal	">
+                              {" "}
+                              10K Posts
+                            </p>
+                          </div>
+                          <div className="new_trend">
+                            <p className="text-base font-normal text-[#8F8F8F]">
+                              Sports{" "}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
                 </div>
-                <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
-                  <div className="img_name flex items-center gap-3 ">
-                    <div className="img w-[76px] h-[84px]"> <img src={suggestionImage} alt="" className="w-full h-full object-cover" /> </div>
-                    <div className="name_photo">
-                      <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
-                      <p className="text-[#8F8F8F] text-base " >@Emilyy__</p>
-                    </div>
+                <div className=" w-[320px] mt-10" >
+
+                  <div className="news_section flex justify-between items-center">
+                    <p className="text-xl text-white font-semibold">Suggestions</p>
+                    <button className="text-[#B68FE7] text-base	 font-medium">
+                      See All
+                    </button>
                   </div>
-                  <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
-                </div>
-                <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
-                  <div className="img_name flex items-center gap-3 ">
-                    <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
-                    <div className="name_photo">
-                      <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
-                      <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
+                  <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+                    <div className="img_name flex items-center gap-3 ">
+                      <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+                      <div className="name_photo">
+                        <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+                        <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
+                      </div>
                     </div>
+                    <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
                   </div>
-                  <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+                  <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+                    <div className="img_name flex items-center gap-3 ">
+                      <div className="img w-[76px] h-[84px]"> <img src={suggestionImage} alt="" className="w-full h-full object-cover" /> </div>
+                      <div className="name_photo">
+                        <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+                        <p className="text-[#8F8F8F] text-base " >@Emilyy__</p>
+                      </div>
+                    </div>
+                    <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+                  </div>
+                  <div className="savepostCard flex justify-between rounded-xl	  bg-[#202020] p-2 mt-3 items-center">
+                    <div className="img_name flex items-center gap-3 ">
+                      <div className="img w-[76px] h-[84px]"> <img src={imagesave} alt="" className="w-full h-full object-cover" /> </div>
+                      <div className="name_photo">
+                        <p className="text-[#F5F5F5] font-normal	" >James Carter</p>
+                        <p className="text-[#8F8F8F] text-base " >@jamie_c03</p>
+                      </div>
+                    </div>
+                    <div className="save"> <button className="text-lg	text-[#85C6E1] " >Follow</button> </div>
+                  </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>

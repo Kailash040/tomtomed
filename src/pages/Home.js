@@ -11,15 +11,10 @@ import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
-// 
 import moment from "moment";
-
 import { ToastContainer, toast } from 'react-toastify';
-
 import { ProfileData } from "../app/auth/ProfileSlice";
-
 import { Link } from 'react-router-dom';
-
 import { likeAPost } from '../app/auth/likePostSlice'
 import { FollowUser, unFollowUser } from '../app/auth/followUserSlice'
 import { getAllPost } from "../app/auth/getPostSlice";
@@ -28,9 +23,9 @@ import { deleteAPost } from '../app/auth/deletePostSlice'
 import { getAllFollowing, getAllFollower } from '../app/auth/followUserSlice'
 
 const Home = () => {
-  // const [followIcons, setFollowsIcons] = useState(true)
   const allUserData = useSelector((state) => state?.getPost?.data?.allPost);
-  console.log("all userData", allUserData);
+  const reversedItems = allUserData?.slice()?.reverse();
+  console.log("reversed items", reversedItems);
   const dispatchuser = useDispatch();
   useEffect(() => {
     dispatchuser(ProfileData());
@@ -50,11 +45,7 @@ const Home = () => {
     getFollower(getAllFollower())
   }, [])
   // 
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getAllPost());
-
-  }, [])
+  
   // 
 
   // console.log();
@@ -91,9 +82,18 @@ const Home = () => {
   }
   // 
   const dispatchDeleteUser = useDispatch();
+
+  const dispatch = useDispatch();
+  const getList  = ()=>{}
+  useEffect(() => {
+    dispatch(getAllPost());
+
+  }, [])
   const handleDelete = (_id) => {
     dispatchDeleteUser(deleteAPost(_id))
-    toast("Post Deleted successfully");
+    // toast("Post Deleted successfully");
+    dispatch(getAllPost());
+    // dispatch()
   }
   // 
   return (
@@ -104,8 +104,6 @@ const Home = () => {
         <div className="left_section flex   ">
           <div className="news_savePost_group_section 	max-xl:hidden sticky  top-[0px]">
             <div className="sticky  top-[0px]">
-
-
               <div className="w-[220px]" >
                 <div className="Premium_buutton mb-9">
                   <div class="rounded-xl	 bg-gradient-to-r from-[#4879FA]  to-[#7D4CFF] p-[1px]">
@@ -221,7 +219,7 @@ const Home = () => {
             {
               showComment === false ? <div className="post_item">
                 {
-                  allUserData?.map((data, id) => (
+                  reversedItems?.map((data, id) => (
 
                     <div key={id} className="post  pl-[50px] pr-[50px] max-xl:pl-0 max-xl:pr-0 border-x-2 border-[#171717] border-b-2 pb-5 max-xl:border-0 ">
                       <div className="post_name_userName_pic flex justify-between">
@@ -238,7 +236,7 @@ const Home = () => {
                             </span>{" "}
                           </p>
                           <p className="text-[#8F8F8F] max-xl:text-sm"> {
-                            data?.user?.username ? <> @{data?.user?.username}</> : <>username</>
+                            data?.user?.username ? <> {data?.user?.username}</> : <>username</>
                           }</p>
                         </div>
                         <div className="photo flex  gap-6">

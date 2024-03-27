@@ -1,6 +1,8 @@
 // authSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { deletePost } from './authServices';
+import { ToastContainer, toast } from 'react-toastify';
+
 export const deleteAPost = createAsyncThunk(
     'auth/deletePost',
     async (_id,thunkAPI) => {
@@ -28,6 +30,10 @@ const authSlice = createSlice({
         builder.addCase(deleteAPost.fulfilled, (state, action) => {
             state.isLoading = false;
             state.data = action.payload;
+    toast("Post Deleted successfully");
+    <ToastContainer />
+
+
         })
         builder.addCase(deleteAPost.rejected, (state, action) => {
             console.log("Error", action.payload);
