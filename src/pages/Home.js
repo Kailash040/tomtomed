@@ -1119,14 +1119,6 @@ const Home = () => {
                             data?.user?._id === myId ?
                               <> </> :
                               <div className="like_status flex  gap-1 items-center">
-                                {/* <Icon icon="grommet-icons:view" /> */}
-                                <></>
-
-                                {/* <p>{data?.user?._id}</p> */}
-
-
-                                {/*  */}
-
                                 <button onClick={() => handleUnfollow(data?.user?._id)} className="text-xs text-white">  unFollow
                                 </button>
                                 <button onClick={() => handleFollow(data?.user?._id)} className="text-xs text-white"> Follow
