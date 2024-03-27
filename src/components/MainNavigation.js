@@ -37,7 +37,7 @@ const MainNavigation = () => {
   const [tag, setTag] = useState([])
   const usertag = useSelector((state) => state?.searchUser?.data);
   
-  console.log(usertag);
+  // console.log(usertag);
   const searchDispatch = useDispatch();
   // 
   const handleSearch = () => {
@@ -124,8 +124,8 @@ const MainNavigation = () => {
 
     // setAddPost(false)
   }
-  const apiKey = process.env.REACT_APP_API_KEY;
-  console.log(`API Base URL: ${apiKey}`);
+  // const apiKey = process.env.REACT_APP_API_KEY;
+  // console.log(`API Base URL: ${apiKey}`);
   return (<div className="font-roboto ">
     <p className="text-white text-[40px]">
 

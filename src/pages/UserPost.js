@@ -87,12 +87,23 @@ const Home = () => {
   // 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
   };
   const commentDispatch = useDispatch();
+  const getCommentDispatch = useDispatch();
+  useEffect(() => {
+
+    getCommentDispatch(getUserComment(_id));
+  }, [getCommentDispatch])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     commentDispatch(commentPost({ _id: userId, comment: formData.comment }));
+    // useEffect(() => {
+
+    // getCommentDispatch(getUserComment(_id));
+    getUserComment(_id)
+    // }, [ commentId])
 
   }
   const replyDispatch = useDispatch();
@@ -108,21 +119,26 @@ const Home = () => {
 
   // 
   const allComment = useSelector((state) => state?.commentPost?.data?.data)
-  console.log("all comment", allComment);
+  // console.log("all comment", allComment);
+  const reversedItems = allComment?.slice()?.reverse();
+  const [myPost, SetMyPost] = useState(allComment);
+  console.log(myPost);
+  console.log("reverse item", reversedItems);
   // const allReply = useSelector((state) => (state?.commentPost?.data?.data));
   // console.log(allReply);
-  const getCommentDispatch = useDispatch();
-  useEffect(() => {
+  // const getCommentDispatch = useDispatch();
+  // useEffect(() => {
 
-    getCommentDispatch(getUserComment(_id));
-  }, [getCommentDispatch, commentId])
+  //   getCommentDispatch(getUserComment(_id));
+
+  // }, [ commentId])
   // console.log(getCommentDispatch);
   // 
   const [showReplyInput, setShowReplyInput] = useState(false)
   const handleReplyComment = () => {
     setShowReplyInput(!showReplyInput)
   }
-  const [showReply, setShowReply] = useState(false)
+  const [showReply, setShowReply] = useState(false);
   const handleShowReply = () => [
     setShowReply(!showReply)
   ]
@@ -1119,7 +1135,7 @@ const Home = () => {
 
 
                 {
-                  allComment?.map((data, id) => (
+                  reversedItems?.map((data, id) => (
                     <div className="comment_section  py-3 border-2 border-[#171717] px-[30px]" key={id}>
 
                       <div className="comment_item">
@@ -1127,7 +1143,7 @@ const Home = () => {
                           <div className="name">
                             <p className="name font-bold text-white text-base max-sm:text-sm	">{data?.userProfile?.name}</p>
                             <p className='time  text-[#8F8F8F]  text-sm max-sm:text-xs'>                       {moment(data?.comment?.createdAt).fromNow()}
-</p>
+                            </p>
                           </div>
                           <div className="dp">
                             {
@@ -1154,15 +1170,15 @@ const Home = () => {
 
                             </div>
                             {/* ..... */}
-                             <button className="like_status  flex  gap-1 items-center  hidden" onClick={() => handleCommentlike(data?.comment?._id)}>
-                          {
-                            data?.comment?.likes?.length === 0 ? <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /> : <>
-                              <Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" />
-                            </>
-                          }
-                          <p className="text-[#8F8F8F] text-sm font-medium">{data?.comment?.likes?.length}</p>
-                        </button>
-                        {/* ..... */}
+                            <button className="like_status  flex  gap-1 items-center  hidden" onClick={() => handleCommentlike(data?.comment?._id)}>
+                              {
+                                data?.comment?.likes?.length === 0 ? <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /> : <>
+                                  <Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" />
+                                </>
+                              }
+                              <p className="text-[#8F8F8F] text-sm font-medium">{data?.comment?.likes?.length}</p>
+                            </button>
+                            {/* ..... */}
                             <button className="like_status  flex  gap-1 items-center " >
                               {/* <img src={like} alt="like" className="w-6 h-6	" /> */}
                               <Icon icon="icon-park-outline:like" className="w-6 h-6 text-[#8F8F8F] max-sm:w-[14px] max-sm:h-[14px]	" />
