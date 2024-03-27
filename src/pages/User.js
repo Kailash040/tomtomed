@@ -187,7 +187,8 @@ const Profile = () => {
 
   const getProfile = useSelector((state) => [state?.getPost?.data?.profile]);
 
-  console.log(" get profile", getProfile);
+  // console.log(" get profile", getProfile);
+  const myPostLength = useSelector((state) => state?.getPost?.data?.totalpost);
   const getPost = useSelector((state) => state?.getPost?.data?.getAllPost);
   const reversedItems = getPost?.slice()?.reverse();
 console.log("reverse item",reversedItems);
@@ -200,9 +201,9 @@ console.log("reverse item",reversedItems);
   }, [getPostData, dispatchLike])
   // 
   const followings = useSelector((state) => state?.followAUser?.data?.data)
-  console.log("followings", followings)
+  // console.log("followings", followings)
   const followers = useSelector((state) => state?.follows?.data?.data)
-  console.log("followers", followers);
+  // console.log("followers", followers);
   const getFollowing = useDispatch();
   useEffect(() => {
     getFollowing(getAllFollowing())
@@ -590,7 +591,10 @@ console.log("reverse item",reversedItems);
                 <div className="user_item items-center flex flex-col">
                   <button onClick={handleShowPost} className="flex flex-col gap-[14px] items-center" >
                     <p className="text-base text-white">Posts</p>
-                    <p className="text-base text-[#D6B5FF]">2,031 </p>
+                    
+
+                        <p className="text-base text-[#D6B5FF]">{myPostLength} </p>
+                      
                   </button>
                 </div>
                 <div className="user_item items-center flex flex-col ">
