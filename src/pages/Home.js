@@ -45,7 +45,7 @@ const Home = () => {
     getFollower(getAllFollower())
   }, [])
   // 
-  
+
   // 
 
   // console.log();
@@ -84,7 +84,7 @@ const Home = () => {
   const dispatchDeleteUser = useDispatch();
 
   const dispatch = useDispatch();
-  const getList  = ()=>{}
+  const getList = () => { }
   useEffect(() => {
     dispatch(getAllPost());
 

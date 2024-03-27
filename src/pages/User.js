@@ -174,7 +174,9 @@ const Profile = () => {
   const dispatchDeleteUser = useDispatch();
   const handleDelete = (_id) => {
     dispatchDeleteUser(deleteAPost(_id))
-    toast("Post Deleted successfully")
+    // toast("Post Deleted successfully")
+    getAllPost(getPostData());
+
   }
   const dispatchLike = useDispatch();
   const handlelike = (_id) => {
@@ -187,8 +189,9 @@ const Profile = () => {
 
   console.log(" get profile", getProfile);
   const getPost = useSelector((state) => state?.getPost?.data?.getAllPost);
-
-  console.log(" get post", getPost);
+  const reversedItems = getPost?.slice()?.reverse();
+console.log("reverse item",reversedItems);
+  // console.log(" get post", getPost);
   // 
   const getAllPost = useDispatch(getPostData)
   useEffect(() => {
@@ -619,7 +622,7 @@ const Profile = () => {
                 {showPost && (
                   <>
                     {
-                      getPost?.map((item, id) => (
+                      reversedItems?.map((item, id) => (
 
                         <div className="post_container bg-black " key={id}>
                           <div className="post  mt-[18px] px-[50px] pt-6 max-xl:px-6 ">
