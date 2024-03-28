@@ -11,6 +11,7 @@ import suggestionImage from '../assets/Rectangle 600.png'
 import group from '../assets/Rectangle 599 (1).png'
 import Comments from "../components/Comments";
 import repostFeedUser from "../assets/Rectangle 587.png";
+import { ToastContainer, toast } from 'react-toastify';
 // 
 import userReply from '../assets/Ellipse 219.png'
 
@@ -56,27 +57,34 @@ const Home = () => {
     setShowMuteModal(!showMuteModal)
   }
   // 
-  const dispatchLike = useDispatch();
-  const handlelike = (_id) => {
-    dispatchLike(likeAPost(_id))
-    // toast("Post like successfully")
-  }
+
   // 
-  const dispatchCommentLike = useDispatch();
-  const handleCommentlike = (_id) => {
-    dispatchCommentLike(likeAPost(_id))
-    // toast("Post like successfully")
-  }
+
   // 
   const userId = useSelector((state) => state?.getPost?.data?.response?.post?._id);
   // console.log("userId", userId)
   // 
   let { _id } = useParams();
   // console.log(_id)
+  const dispatchCommentLike = useDispatch();
+  const handleCommentlike = (_id) => {
+    dispatchCommentLike(likeAPost(_id))
+
+    // toast("Post like successfully")
+  }
+  // for single post
   const userpost = useDispatch()
+  const dispatchLike = useDispatch();
   useEffect(() => {
     userpost(getAPostData(_id))
-  }, [userpost]);
+  }, [userpost, dispatchLike]);
+  // for post like
+  const handlelike = (_id) => {
+    dispatchLike(likeAPost(_id))
+    userpost(getAPostData(_id))
+
+    // toast("Post like successfully")
+  }
   // 
   // 
   const handleChangeReplyInput = (e) => {
@@ -91,18 +99,16 @@ const Home = () => {
   };
   const commentDispatch = useDispatch();
   const getCommentDispatch = useDispatch();
-  useEffect(() => {
 
-    getCommentDispatch(getUserComment(_id));
-  }, [getCommentDispatch])
 
   const handleSubmit = (e) => {
     e.preventDefault();
     commentDispatch(commentPost({ _id: userId, comment: formData.comment }));
     // useEffect(() => {
 
-    // getCommentDispatch(getUserComment(_id));
-    getUserComment(_id)
+    getUserComment(_id);
+
+    // getUserComment(_id)
     // }, [ commentId])
 
   }
@@ -121,8 +127,8 @@ const Home = () => {
   const allComment = useSelector((state) => state?.commentPost?.data?.data)
   // console.log("all comment", allComment);
   const reversedItems = allComment?.slice()?.reverse();
-  const [myPost, SetMyPost] = useState(allComment);
-  console.log(myPost);
+  // const [myPost, SetMyPost] = useState(allComment);
+  // console.log(myPost);
   console.log("reverse item", reversedItems);
   // const allReply = useSelector((state) => (state?.commentPost?.data?.data));
   // console.log(allReply);
@@ -139,11 +145,16 @@ const Home = () => {
     setShowReplyInput(!showReplyInput)
   }
   const [showReply, setShowReply] = useState(false);
-  const handleShowReply = () => [
+  const handleShowReply = () => {
     setShowReply(!showReply)
-  ]
+  }
+  useEffect(() => {
+
+    getCommentDispatch(getUserComment(_id));
+  }, [getCommentDispatch])
   return (
     <>
+      <ToastContainer />
       <MainNavigation />
 
       <div class="  flex pl-[60px] pr-[60px]   font-roboto min-[1440px]:justify-between  max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
@@ -374,6 +385,7 @@ const Home = () => {
                               <Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" />
                             </>
                           }
+
                           <p className="text-[#8F8F8F] text-sm font-medium">{data?.post?.likes?.length}</p>
                         </button>
 
@@ -1170,11 +1182,11 @@ const Home = () => {
 
                             </div>
                             {/* ..... */}
-                            <button className="like_status  flex  gap-1 items-center  hidden" onClick={() => handleCommentlike(data?.comment?._id)}>
+                            <button className="like_status  flex  gap-1 items-center hidden " onClick={() => handleCommentlike(data?.comment?._id)}>
                               {
-                                data?.comment?.likes?.length === 0 ? <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /> : <>
+                                data?.comment?.likes?.length === 0 ? <Icon icon="icon-park-outline:like" className="w-6 h-6 text-white	" /> :
                                   <Icon icon="ph:heart-fill" className="w-6 h-6 text-[red]	" />
-                                </>
+
                               }
                               <p className="text-[#8F8F8F] text-sm font-medium">{data?.comment?.likes?.length}</p>
                             </button>
