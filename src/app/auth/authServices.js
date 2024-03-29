@@ -1,12 +1,12 @@
 import axios from 'axios';
-
+// import { useNavigate } from "react-router-dom";
 // for Login 1
 export const login = async (userData) => {
   try {
     const response = await axios.post(process.env.REACT_APP_API_KEY + `/api/v1/auth/login`, userData,
       { withCredentials: true, }
     );
-    return response.data;
+    //  response.data;
 
   } catch (error) {
     throw error;
@@ -31,7 +31,8 @@ export const logOutUser = async () => {
     const response = await axios.get(process.env.REACT_APP_API_KEY + `/api/v1/auth/logout`,
       { withCredentials: true, }
     );
-    console.log(response.data);
+    // response.data
+
 
   } catch (error) {
     throw error;

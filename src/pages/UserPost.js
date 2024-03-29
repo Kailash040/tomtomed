@@ -1210,9 +1210,9 @@ const Home = () => {
                           </div>
 
                         </div>
-                        <button className="text-[#8F8F8F] text-xs	" onClick={handleShowReply}>You replied to this comment</button>
+                        <button className="text-[#8F8F8F] text-xs	 hidden" onClick={handleShowReply}>You replied to this comment</button>
                         {/* show comment */}
-                        {
+                        {/* {
                           showReplyInput && <form onSubmit={handleReplySubmit} >
 
                             <div className="comment_input w-full flex relative  items-center pt-5 bg-[#000000]" onChange={() => setCommentId(data?._id)} key={id} >
@@ -1222,7 +1222,7 @@ const Home = () => {
                               </button>
                             </div>
                           </form>
-                        }
+                        } */}
                       </div>
                     </div>
                   ))

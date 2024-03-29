@@ -116,12 +116,12 @@ const Login = () => {
 
               Login{" "}
             </p>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}   autoComplete="off">
               <div className="username mb-2 max-xl:mb-[18px] flex flex-col">
                 <input
                   type="text"
                   class=" px-[18px] py-5 rounded-xl bg-[#101010]  text-white w-[360px] max-xl:w-[340px] max-xl:h-[48px]  max-xl:bg-[#1B1C1B]"
-                  placeholder="Username"
+                  placeholder="Username" autocomplete="off"
                   {...register("username", { required: true })}
                 // required
                 />
@@ -134,6 +134,7 @@ const Login = () => {
                   class="px-[18px] py-5 rounded-xl bg-[#101010] text-white w-[360px] max-xl:bg-[#1B1C1B] max-xl:w-[340px] max-xl:h-[48px]"
                   placeholder="Password"
                   name="password"
+                  autocomplete="off"
                   {...register("password", { required: true })}
                 // required
                 />
