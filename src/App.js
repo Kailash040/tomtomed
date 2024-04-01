@@ -21,7 +21,7 @@ import SingleUser from "./pages/SingleUser";
 function App() {
   const appRouter = createBrowserRouter([
     {
-      path: "/",
+      path: "/*",
       element: <ErrorPage />,
       // errorElement: <ErrorPage />,
       // children: [
