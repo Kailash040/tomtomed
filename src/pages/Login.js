@@ -62,9 +62,6 @@ const Login = () => {
   const onSubmit = (data) => {
 
     dispatch(loginUser(data));
-    // toast.success("login SuccessFully");
-    // console.log(loginUser());
-    // console.log(loginUser);
     navigate("/")
   }
   // 

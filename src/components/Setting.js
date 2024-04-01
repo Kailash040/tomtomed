@@ -3,27 +3,21 @@ import { Icon } from '@iconify/react';
 import arrow from '../assets/arrow/arrow.svg'
 import avatar from '../assets/Avatar (1).png'
 import qrCode from '../assets/Group 34038.png'
-import {logOut} from '../app/auth/loginSlice'
+import { logOut } from '../app/auth/loginSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
 
 const Setting = () => {
     const [openTab, setOpenTab] = useState(0);
-    // 
-    // 
-//     const userData = useSelector((state) => state);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        dispatch(logOut());
+        navigate("/login")
 
-
-//   console.log(userData)
-      const dispatch = useDispatch();
-      const navigate = useNavigate();
-  const handleLogout = () => {
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-    dispatch(logOut());
-    navigate("/login")
-
-  };
+    };
     const handleForgetPassword = (e) => {
         e.preventDefault()
     }
@@ -37,7 +31,7 @@ const Setting = () => {
                             <button className=" p-1 bg-black rounded-full ">
 
                                 <Icon icon="eva:arrow-back-fill" className="w-5 h-5  text-white text-xl	" /></button>
-                            <p  className='max-sm:hidden' >Settings</p>
+                            <p className='max-sm:hidden' >Settings</p>
                         </form>
 
 
@@ -59,7 +53,7 @@ const Setting = () => {
                                 <Icon icon="material-symbols:settings-account-box-outline" className='w-[23px] h-[23px]' />
                                 <p className='max-sm:hidden'>
 
-                                Account
+                                    Account
                                 </p>
                             </div>
 
@@ -88,7 +82,7 @@ const Setting = () => {
                                 <Icon icon="fluent:people-team-48-regular" className='w-[23px] h-[23px]' />
                                 <p className='max-sm:hidden'>
 
-                                Teams
+                                    Teams
                                 </p>
                             </div>
                             {
@@ -116,7 +110,7 @@ const Setting = () => {
                                 <Icon icon="streamline:fingerprint-2" className='w-[23px] h-[23px]' />
                                 <p className='max-sm:hidden'>
 
-                                Passwords & Security
+                                    Passwords & Security
                                 </p>
                             </div>
                             {
@@ -142,13 +136,13 @@ const Setting = () => {
                                 <Icon icon="material-symbols:display-settings-outline" className='w-[23px] h-[23px]' />
                                 <p className='max-sm:hidden'>
 
-                                Display settings
+                                    Display settings
                                 </p>
                             </div>
                             {
                                 openTab === 3 ? <img src={arrow} alt="arrow" /> : ""
                             }
-                           
+
                         </button>
                         <button
                             className={
@@ -167,13 +161,13 @@ const Setting = () => {
                                 <Icon icon="material-symbols:privacy-tip-outline" className='w-[23px] h-[23px]' />
                                 <p className='max-sm:hidden'>
 
-                                Privacy
+                                    Privacy
                                 </p>
                             </div>
                             {
                                 openTab === 4 ? <img src={arrow} alt="arrow" /> : ""
                             }
-                       
+
                         </button>
                         <button
                             className={
@@ -192,7 +186,7 @@ const Setting = () => {
                                 <Icon icon="material-symbols-light:help-outline" className='w-[23px] h-[23px]' />
                                 <p className='max-sm:hidden'>
 
-                                Help Center
+                                    Help Center
                                 </p>
                             </div>
                             {
@@ -215,11 +209,11 @@ const Setting = () => {
 
                         >
                             <div className="icons_left flex gap-3 items-center">
-                            {/* <Icon icon="mynaui:logout" /> */}
+                                {/* <Icon icon="mynaui:logout" /> */}
                                 <Icon icon="mynaui:logout" className='w-[23px] h-[23px]' />
-                                <button  onClick={handleLogout} className='max-sm:hidden'>
+                                <button onClick={handleLogout} className='max-sm:hidden'>
 
-                                Log out
+                                    Log out
                                 </button>
                             </div>
                             {
@@ -269,28 +263,28 @@ const Setting = () => {
                                             }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 14 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
                                                 e.preventDefault();
                                                 setOpenTab(13);
-                                            }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>  :
-                                            openTab === 15 ?    <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
-                                                e.preventDefault();
-                                                setOpenTab(14);
-                                            }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>
+                                            }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> :
+                                                openTab === 15 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                                    e.preventDefault();
+                                                    setOpenTab(14);
+                                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>
 
-                                                :
-                                                openTab === 16 ?   <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
-                                                    e.preventDefault();
-                                                    setOpenTab(1);
-                                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 17 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
-                                                    e.preventDefault();
-                                                    setOpenTab(1);
-                                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>  : openTab === 18 ?  <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
-                                                    e.preventDefault();
-                                                    setOpenTab(1);
-                                                }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button>   :
-                                                // 
-                                                <Icon icon="material-symbols:settings-account-box-outline" className=' w-[23px] h-[23px]' />}
+                                                    :
+                                                    openTab === 16 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                                        e.preventDefault();
+                                                        setOpenTab(1);
+                                                    }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 17 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                                        e.preventDefault();
+                                                        setOpenTab(1);
+                                                    }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> : openTab === 18 ? <button className='p-1 bg-[#1B1C1B] rounded-full' onClick={e => {
+                                                        e.preventDefault();
+                                                        setOpenTab(1);
+                                                    }}  ><Icon icon="eva:arrow-back-fill" className='w-5 h-5 ' /></button> :
+                                                        // 
+                                                        <Icon icon="material-symbols:settings-account-box-outline" className=' w-[23px] h-[23px]' />}
 
                             {
-                                <h1 className='text-xl	 max-sm:text-base'>{openTab === 0 ? "Account" : openTab === 1 ? "Teams" : openTab === 6 ? "Manage Access" : openTab === 3 ? "Passwords & Security" : openTab === 2 ? "Passwords & Security" : openTab === 7 ? "Change Password" : openTab === 8 ? "Two-Factor Authentication" : openTab === 9 ? "SMS Authentication" : openTab === 10 ? "Change Mobile Number" : openTab === 11 ? "Verify Code" : openTab === 12 ? "Google Authentication" : openTab === 13 ? "Google Authentication" : openTab === 14 ?"Verify Code" : openTab === 15 ? "Google Authentication setup complete": openTab === 16 ? "Add new member"    :  openTab === 17  ?"Accounts assigned to you (2)":  openTab === 18 ? "Members you assigned (1)": "Settings"}</h1>
+                                <h1 className='text-xl	 max-sm:text-base'>{openTab === 0 ? "Account" : openTab === 1 ? "Teams" : openTab === 6 ? "Manage Access" : openTab === 3 ? "Passwords & Security" : openTab === 2 ? "Passwords & Security" : openTab === 7 ? "Change Password" : openTab === 8 ? "Two-Factor Authentication" : openTab === 9 ? "SMS Authentication" : openTab === 10 ? "Change Mobile Number" : openTab === 11 ? "Verify Code" : openTab === 12 ? "Google Authentication" : openTab === 13 ? "Google Authentication" : openTab === 14 ? "Verify Code" : openTab === 15 ? "Google Authentication setup complete" : openTab === 16 ? "Add new member" : openTab === 17 ? "Accounts assigned to you (2)" : openTab === 18 ? "Members you assigned (1)" : "Settings"}</h1>
 
                             }
                         </div>
@@ -321,11 +315,11 @@ const Setting = () => {
                                 </button>
 
                                 {openTab === 6 ? "" : <button
-                                onClick={e => {
-                                    e.preventDefault();
-                                    setOpenTab(16);
-                                }}
-                                className='flex items-center gap-[18px] justify-between w-full mt-[30px]  max-sm:mt-6 '>
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        setOpenTab(16);
+                                    }}
+                                    className='flex items-center gap-[18px] justify-between w-full mt-[30px]  max-sm:mt-6 '>
 
 
                                     <p>Add new member</p>
@@ -335,43 +329,43 @@ const Setting = () => {
 
                             </div> : ""}
                             {
-    openTab === 1 ? 
-<div className='w-full'>
+                                openTab === 1 ?
+                                    <div className='w-full'>
 
 
-    <button
-    onClick={e => {
-        e.preventDefault();
-        setOpenTab(17);
-    }} 
-    className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
+                                        <button
+                                            onClick={e => {
+                                                e.preventDefault();
+                                                setOpenTab(17);
+                                            }}
+                                            className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
 
-    <div className='flex items-center gap-[18px]'>
+                                            <div className='flex items-center gap-[18px]'>
 
-       
 
-        <p>Accounts assigned to you</p>
-    </div>
-    <img src={arrow} alt="arrow" />
-</button>
-<button
- onClick={e => {
-    e.preventDefault();
-    setOpenTab(18);
-}} 
-className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
 
-<div className='flex items-center gap-[18px]'>
+                                                <p>Accounts assigned to you</p>
+                                            </div>
+                                            <img src={arrow} alt="arrow" />
+                                        </button>
+                                        <button
+                                            onClick={e => {
+                                                e.preventDefault();
+                                                setOpenTab(18);
+                                            }}
+                                            className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
 
-   
+                                            <div className='flex items-center gap-[18px]'>
 
-    <p>Members you have assigned</p>
-</div>
-<img src={arrow} alt="arrow" />
-</button>
-</div>
-:""
-}
+
+
+                                                <p>Members you have assigned</p>
+                                            </div>
+                                            <img src={arrow} alt="arrow" />
+                                        </button>
+                                    </div>
+                                    : ""
+                            }
                             {/*  */}
                             {openTab === 6 ? <div className='flex flex-col   justify-between w-full'>
 
@@ -561,7 +555,7 @@ className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
 
                                         </div>
                                         <div className="right w-full  ">
-                                            <input type="text" placeholder='Mobile Number'  className='w-full  h-[64px] max-sm:h-[48px]  rounded-lg	max-sm:text-sm max-sm:px-3 px-4 bg-[#1B1C1B] ' />
+                                            <input type="text" placeholder='Mobile Number' className='w-full  h-[64px] max-sm:h-[48px]  rounded-lg	max-sm:text-sm max-sm:px-3 px-4 bg-[#1B1C1B] ' />
                                         </div>
                                     </div>
                                 </div>
@@ -659,133 +653,133 @@ className='flex justify-between w-full mt-[30px] max-sm:mt-6 items-center'>
                                     </form>
                                 </dialog>                      {/*  */}
                                 <div className="verfy_code">
-                                <button 
-                                 
-                                 onClick={e => {
-                                     e.preventDefault();
-                                     setOpenTab(14);
-                                 }}
-                                className='flex items-center gap-[18px] justify-between w-full mt-[30px] '>
+                                    <button
+
+                                        onClick={e => {
+                                            e.preventDefault();
+                                            setOpenTab(14);
+                                        }}
+                                        className='flex items-center gap-[18px] justify-between w-full mt-[30px] '>
 
 
-<p>Verify Code</p>
-<img src={arrow} alt="arrow" />
-</button>
+                                        <p>Verify Code</p>
+                                        <img src={arrow} alt="arrow" />
+                                    </button>
                                 </div>
                             </div> : ""}
                             {/*  */}
-                            {openTab === 14 ?   <div className='w-full' >
+                            {openTab === 14 ? <div className='w-full' >
 
 
-<div className="heading flex flex-col text-justify	">
-    <p className='text-base  text-[#8F8F8F] max-sm:text-sm ' >Enter Verification Code sent to your mobile number</p>
+                                <div className="heading flex flex-col text-justify	">
+                                    <p className='text-base  text-[#8F8F8F] max-sm:text-sm ' >Enter Verification Code sent to your mobile number</p>
 
-</div>
-<div className="enter_otp flex flex-col justify-center  mt-5  w-full relative
+                                </div>
+                                <div className="enter_otp flex flex-col justify-center  mt-5  w-full relative
 ">
-    <div className="input_box  text-justify ">
+                                    <div className="input_box  text-justify ">
 
-        <input type="text" className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-lg max-sm:py-3 max-sm:text-sm	' placeholder='Enter Code' />
-    </div>
-    <div className="button   right-2 absolute">
+                                        <input type="text" className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-lg max-sm:py-3 max-sm:text-sm	' placeholder='Enter Code' />
+                                    </div>
+                                    <div className="button   right-2 absolute">
 
-        <button
-        // 
-        onClick={e => {
-            e.preventDefault();
-            setOpenTab(15);
-        }}
-         className='bg-[black] py-[15px] px-[70px] rounded-xl max-sm:py-[9px] max-sm:px-[22px]	 max-sm:text-sm' >Confirm</button>
-    </div>
-</div>
-</div>  :""}
- {/*  */}
- {openTab ===15  ? 
-<div className="heading flex flex-col text-justify	">
-    <p className='text-base  text-[#8F8F8F] max-sm:text-white ' >Your Google Authenticator setup is complete!
+                                        <button
+                                            // 
+                                            onClick={e => {
+                                                e.preventDefault();
+                                                setOpenTab(15);
+                                            }}
+                                            className='bg-[black] py-[15px] px-[70px] rounded-xl max-sm:py-[9px] max-sm:px-[22px]	 max-sm:text-sm' >Confirm</button>
+                                    </div>
+                                </div>
+                            </div> : ""}
+                            {/*  */}
+                            {openTab === 15 ?
+                                <div className="heading flex flex-col text-justify	">
+                                    <p className='text-base  text-[#8F8F8F] max-sm:text-white ' >Your Google Authenticator setup is complete!
 
-</p>
-<p     className='text-base  text-[#8F8F8F] max-sm:text-white'   >Your account is now protected with an extra layer of security.</p>
-</div>:""}
-{
-    openTab === 16 ?    <div className='w-full' >
-<div className="heading flex flex-col text-justify	">
-                                            <p className='text-base  text-[#8F8F8F] max-sm:text-sm	 ' >Effortlessly grant edit access by searching for users and sending them permissions to modify content.</p>
+                                    </p>
+                                    <p className='text-base  text-[#8F8F8F] max-sm:text-white'   >Your account is now protected with an extra layer of security.</p>
+                                </div> : ""}
+                            {
+                                openTab === 16 ? <div className='w-full' >
+                                    <div className="heading flex flex-col text-justify	">
+                                        <p className='text-base  text-[#8F8F8F] max-sm:text-sm	 ' >Effortlessly grant edit access by searching for users and sending them permissions to modify content.</p>
+
+                                    </div>
+
+                                    <div className="enter_otp flex flex-col justify-center  mt-5  w-full relative
+">
+                                        <div className="input_box  text-justify ">
+
+                                            <input type="text" className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-[30px] max-sm:text-sm	 max-sm:py-[11px]' placeholder='Search name or username...' />
+                                        </div>
+                                        <div className="button   right-2 absolute p-2 bg-[#1B1C1B]  rounded-full">
+
+                                            <Icon icon="ep:search" className='w-5 h-5' />
 
                                         </div>
-
-    <div className="enter_otp flex flex-col justify-center  mt-5  w-full relative
-">
-    <div className="input_box  text-justify ">
-
-        <input type="text" className=' bg-[#1B1C1B] w-full py-6 px-[18px] rounded-[30px] max-sm:text-sm	 max-sm:py-[11px]' placeholder='Search name or username...' />
-    </div>
-    <div className="button   right-2 absolute p-2 bg-[#1B1C1B]  rounded-full">
-  
-    <Icon icon="ep:search"   className='w-5 h-5' />
-        
-    </div>
-</div> 
+                                    </div>
 
 
-{/*  */}
-<div className='flex gap-3 mt-[30px]'>
+                                    {/*  */}
+                                    <div className='flex gap-3 mt-[30px]'>
 
-<button className="img" onClick={()=>document.getElementById('my_modal_account_access').showModal()}><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></button>
-<div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
-</div>
-<dialog id="my_modal_account_access" className="modal">
-  <div className="modal-box w-[430px]   bg-[#141414] max-sm:w-[345px] ">
-    <h3 className="font-extrabold	 text-lg max-sm:text-[15px] ">Give Amy Johnson access of your account?!</h3>
-    <div className="suggest_button_cancel_accept flex justify-between mt-[52px]">
-<button  className='text-xl	text-[#FB6363] max-sm:text-[15px]'>Cancel</button>
-<div className='w-[1px] bg-[#393939]'></div>
-<button  className='text-xl max-sm:text-[15px]	'>Give Access</button>
-    </div>
-  </div>
-  <form method="dialog" className="modal-backdrop">
-    <button>close</button>
-  </form>
-</dialog>
-{/*  */}
-</div>
-    :""
-}
-{
-    openTab === 17 ? 
-    <div>
+                                        <button className="img" onClick={() => document.getElementById('my_modal_account_access').showModal()}><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></button>
+                                        <div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
+                                    </div>
+                                    <dialog id="my_modal_account_access" className="modal">
+                                        <div className="modal-box w-[430px]   bg-[#141414] max-sm:w-[345px] ">
+                                            <h3 className="font-extrabold	 text-lg max-sm:text-[15px] ">Give Amy Johnson access of your account?!</h3>
+                                            <div className="suggest_button_cancel_accept flex justify-between mt-[52px]">
+                                                <button className='text-xl	text-[#FB6363] max-sm:text-[15px]'>Cancel</button>
+                                                <div className='w-[1px] bg-[#393939]'></div>
+                                                <button className='text-xl max-sm:text-[15px]	'>Give Access</button>
+                                            </div>
+                                        </div>
+                                        <form method="dialog" className="modal-backdrop">
+                                            <button>close</button>
+                                        </form>
+                                    </dialog>
+                                    {/*  */}
+                                </div>
+                                    : ""
+                            }
+                            {
+                                openTab === 17 ?
+                                    <div>
 
-<div className="heading flex flex-col text-justify	">
+                                        <div className="heading flex flex-col text-justify	">
                                             <p className='text-base  text-[#8F8F8F]  max-sm:text-sm' >View and manage accounts assigned specifically to you, ensuring efficient organization and oversight.</p>
 
                                         </div>
                                         <div className='flex gap-3 mt-[30px]'>
 
-<div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
-<div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
-</div>
-<div className='flex gap-3 mt-[18px]'>
-
-<div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
-<div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
-</div>
-    </div>
-    :""
-}
-{openTab  === 18    ? <div>
-
-<div className="heading flex flex-col text-justify	">
-                                            <p className='text-base  text-[#8F8F8F] max-sm:text-sm ' >Track and manage members whom you've designated to oversee account activities, ensuring streamlined collaboration.</p>
-
+                                            <div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
+                                            <div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
                                         </div>
-                                        <div className='flex gap-3 mt-[30px]'>
+                                        <div className='flex gap-3 mt-[18px]'>
 
-<div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
-<div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
-</div>
+                                            <div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
+                                            <div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
+                                        </div>
+                                    </div>
+                                    : ""
+                            }
+                            {openTab === 18 ? <div>
 
-    </div> :"" }
- {/*  */}
+                                <div className="heading flex flex-col text-justify	">
+                                    <p className='text-base  text-[#8F8F8F] max-sm:text-sm ' >Track and manage members whom you've designated to oversee account activities, ensuring streamlined collaboration.</p>
+
+                                </div>
+                                <div className='flex gap-3 mt-[30px]'>
+
+                                    <div className="img" ><img src={avatar} alt="avatar" className='w-[54px] h-[54px]' /></div>
+                                    <div className="iname flex flex-col  item_equal	">   <p className='font-semibold	text-base' >Amy Johnson</p><p className='text-sm text-[#8F8F8F]' >@amyj_39</p> </div>
+                                </div>
+
+                            </div> : ""}
+                            {/*  */}
                         </div>
 
                         {/*  */}
