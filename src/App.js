@@ -22,7 +22,7 @@ function App() {
   const appRouter = createBrowserRouter([
     {
       path: "/*",
-      element: <ErrorPage />,
+      // element: <ErrorPage />,
       // errorElement: <ErrorPage />,
       // children: [
       //   { index: true, element: <Protected Component={Home} /> },
