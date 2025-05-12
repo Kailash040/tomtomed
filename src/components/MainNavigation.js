@@ -136,7 +136,7 @@ const MainNavigation = () => {
  ">
         <NavLink to="/">
           <h1 className=" text-tom font-roboto font-semibold text-3xl	 max-xl:text-2xl ">
-            TOM<span class="text-tomad ">TOMED</span>
+            LOGO<span class="text-tomad ">.</span>
           </h1>
         </NavLink>
       </div>

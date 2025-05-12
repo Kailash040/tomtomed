@@ -21,6 +21,7 @@ import { getAllPost } from "../app/auth/getPostSlice";
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteAPost } from '../app/auth/deletePostSlice'
 import { getAllFollowing, getAllFollower } from '../app/auth/followUserSlice'
+import MainNavigation from "../components/MainNavigation";
 
 const Home = () => {
   const allUserData = useSelector((state) => state?.getPost?.data?.allPost);
@@ -98,7 +99,7 @@ const Home = () => {
   return (
     <>
       <ToastContainer />
-
+<MainNavigation/>
       <div class="  flex pl-[60px] pr-[60px]   font-roboto min-[1440px]:justify-between  max-xl:justify-center max-xl:p-3  mt-10 max-xl:mt-1 ">
         <div className="left_section flex   ">
           <div className="news_savePost_group_section 	max-xl:hidden sticky  top-[0px]">
